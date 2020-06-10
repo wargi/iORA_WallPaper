@@ -14,11 +14,31 @@ class MainViewController: UIViewController {
                                  UIImage(named: "Palette"),
                                  UIImage(named: "Under_the_Sea")]
    
+   let titleView: UIView = {
+      let view = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
+      let titlabel = UILabel(frame: view.frame)
+      titlabel.textAlignment = .center
+      titlabel.text = "iORA Studio"
+      titlabel.font = .systemFont(ofSize: 20)
+      view.addSubview(titlabel)
+      return view
+   }()
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      print(collectionView.bounds.size.width)
+      navigationItem.titleView = titleView
    }
+   
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      guard let detailImgVC = segue.destination as? DetailImageViewController,
+         let cell = sender as? WallPapeerCollectionViewCell,
+         let indexPath = collectionView.indexPath(for: cell) else { fatalError() }
+      
+      detailImgVC.image = wallpapers[indexPath.item]
+   }
+   
+   
    
    @IBAction private func goBlog(_ sender: UIButton) {
       guard let url = URL(string: "https://blog.naver.com/iorastudio") else { fatalError("Invalid URL") }
