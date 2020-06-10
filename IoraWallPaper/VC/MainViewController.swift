@@ -10,10 +10,23 @@ import UIKit
 
 class MainViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
-   var wallpapers: [UIImage?] = [UIImage(named: "Life_is_sample"), UIImage(named: "Palette")]
+   var wallpapers: [UIImage?] = [UIImage(named: "Life_is_sample"),
+                                 UIImage(named: "Palette"),
+                                 UIImage(named: "Under_the_Sea")]
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      
+      print(collectionView.bounds.size.width)
+   }
+   
+   @IBAction private func goBlog(_ sender: UIButton) {
+      guard let url = URL(string: "https://blog.naver.com/iorastudio") else { fatalError("Invalid URL") }
+      if UIApplication.shared.canOpenURL(url) {
+         UIApplication.shared.open(url,
+                                   options: [:],
+                                   completionHandler: nil)
+      }
    }
 }
 
@@ -38,12 +51,12 @@ extension MainViewController: UICollectionViewDelegate {
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
+   
+   
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      let width = (UIScreen.main.bounds.size.width - 5) / 2
-      print(UIScreen.main.bounds.size)
+      let width = (collectionView.bounds.size.width - 15) / 2
       
-      
-      return CGSize(width: width, height: width * 2)
+      return CGSize(width: width, height: width * 2.1654)
    }
    
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

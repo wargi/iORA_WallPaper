@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class WallPapeerCollectionViewCell: UICollectionViewCell {
    static let identifier = "WallPapeerCollectionViewCell"
@@ -14,5 +15,7 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
    
    func prepare(image: UIImage) {
       self.wallpaperImageView.image = image
+      print(self.bounds.size.width)
+      print("#2", self.wallpaperImageView.bounds.size.width)
    }
 }

@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		49A370F9930181A69515B738 /* Pods_IoraWallPaper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABB0D29F9DDC3A2A1D02674 /* Pods_IoraWallPaper.framework */; };
+		8E15327C248F69BC00261639 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E15327B248F69BB00261639 /* GoogleService-Info.plist */; };
 		8E888033248DF71300E7E620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E888032248DF71300E7E620 /* AppDelegate.swift */; };
 		8E888035248DF71300E7E620 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E888034248DF71300E7E620 /* SceneDelegate.swift */; };
 		8E888037248DF71300E7E620 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E888036248DF71300E7E620 /* MainViewController.swift */; };
@@ -14,9 +16,12 @@
 		8E88803C248DF71400E7E620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E88803B248DF71400E7E620 /* Assets.xcassets */; };
 		8E88803F248DF71400E7E620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E88803D248DF71400E7E620 /* LaunchScreen.storyboard */; };
 		8E88804B248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88804A248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift */; };
+		8E95A9E72490839600F55F82 /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95A9E62490839600F55F82 /* DetailImageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3485C558D3B708322FB9F7F4 /* Pods-IoraWallPaper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoraWallPaper.release.xcconfig"; path = "Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper.release.xcconfig"; sourceTree = "<group>"; };
+		8E15327B248F69BB00261639 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8E88802F248DF71300E7E620 /* IoraWallPaper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IoraWallPaper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E888032248DF71300E7E620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E888034248DF71300E7E620 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +31,9 @@
 		8E88803E248DF71400E7E620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E888040248DF71400E7E620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E88804A248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallPapeerCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E95A9E62490839600F55F82 /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
+		AC5DAF1AAEC8A387DB304794 /* Pods-IoraWallPaper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoraWallPaper.debug.xcconfig"; path = "Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper.debug.xcconfig"; sourceTree = "<group>"; };
+		BABB0D29F9DDC3A2A1D02674 /* Pods_IoraWallPaper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IoraWallPaper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +41,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49A370F9930181A69515B738 /* Pods_IoraWallPaper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E3445EDFA6C763AF13F8802 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BABB0D29F9DDC3A2A1D02674 /* Pods_IoraWallPaper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8E888026248DF71300E7E620 = {
 			isa = PBXGroup;
 			children = (
 				8E888031248DF71300E7E620 /* IoraWallPaper */,
 				8E888030248DF71300E7E620 /* Products */,
+				AC6E1B9442743CF7E9D213B0 /* Pods */,
+				6E3445EDFA6C763AF13F8802 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -59,10 +78,10 @@
 			isa = PBXGroup;
 			children = (
 				8E888047248DF72200E7E620 /* App&Scene */,
-				8E888036248DF71300E7E620 /* MainViewController.swift */,
 				8E888048248DF73900E7E620 /* VC */,
 				8E888049248DF73E00E7E620 /* View */,
 				8E888046248DF71B00E7E620 /* Resource */,
+				8E15327B248F69BB00261639 /* GoogleService-Info.plist */,
 				8E888040248DF71400E7E620 /* Info.plist */,
 			);
 			path = IoraWallPaper;
@@ -90,7 +109,8 @@
 		8E888048248DF73900E7E620 /* VC */ = {
 			isa = PBXGroup;
 			children = (
-				8E88804A248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift */,
+				8E888036248DF71300E7E620 /* MainViewController.swift */,
+				8E95A9E62490839600F55F82 /* DetailImageViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -98,8 +118,18 @@
 		8E888049248DF73E00E7E620 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E88804A248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		AC6E1B9442743CF7E9D213B0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC5DAF1AAEC8A387DB304794 /* Pods-IoraWallPaper.debug.xcconfig */,
+				3485C558D3B708322FB9F7F4 /* Pods-IoraWallPaper.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,9 +139,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E888043248DF71400E7E620 /* Build configuration list for PBXNativeTarget "IoraWallPaper" */;
 			buildPhases = (
+				784C3AE0246C03BE47A0E4B1 /* [CP] Check Pods Manifest.lock */,
 				8E88802B248DF71300E7E620 /* Sources */,
 				8E88802C248DF71300E7E620 /* Frameworks */,
 				8E88802D248DF71300E7E620 /* Resources */,
+				5A2F42AC83746C1977CF0E2B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -161,12 +193,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E88803F248DF71400E7E620 /* LaunchScreen.storyboard in Resources */,
+				8E15327C248F69BC00261639 /* GoogleService-Info.plist in Resources */,
 				8E88803C248DF71400E7E620 /* Assets.xcassets in Resources */,
 				8E88803A248DF71300E7E620 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A2F42AC83746C1977CF0E2B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		784C3AE0246C03BE47A0E4B1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-IoraWallPaper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8E88802B248DF71300E7E620 /* Sources */ = {
@@ -175,6 +250,7 @@
 			files = (
 				8E888037248DF71300E7E620 /* MainViewController.swift in Sources */,
 				8E88804B248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift in Sources */,
+				8E95A9E72490839600F55F82 /* DetailImageViewController.swift in Sources */,
 				8E888033248DF71300E7E620 /* AppDelegate.swift in Sources */,
 				8E888035248DF71300E7E620 /* SceneDelegate.swift in Sources */,
 			);
@@ -318,6 +394,7 @@
 		};
 		8E888044248DF71400E7E620 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC5DAF1AAEC8A387DB304794 /* Pods-IoraWallPaper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -337,6 +414,7 @@
 		};
 		8E888045248DF71400E7E620 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3485C558D3B708322FB9F7F4 /* Pods-IoraWallPaper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
