@@ -14,8 +14,20 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
    @IBOutlet private weak var wallpaperImageView: UIImageView!
    
    func prepare(image: UIImage) {
-      self.wallpaperImageView.image = image
-      print(self.bounds.size.width)
-      print("#2", self.wallpaperImageView.bounds.size.width)
+      guard let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/iora-wallpaper.appspot.com/o/WallPaper%2FWallPaper003.png?alt=media&token=56a11d2a-d73f-4c0f-846d-08d1ec6ece5e") else { fatalError("invalid url") }
+      let session = URLSession.shared
+      DispatchQueue.global().async {
+         let take = session.dataTask(with: url) { (data, resp, err) in
+            if let err = err {
+               print(err.localizedDescription)
+            } else if let _ = data {
+               DispatchQueue.main.async {
+                  self.wallpaperImageView.image = image
+               }
+            }
+         }
+         
+         take.resume()
+      }
    }
 }

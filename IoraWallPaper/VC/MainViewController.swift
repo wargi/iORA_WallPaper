@@ -10,9 +10,12 @@ import UIKit
 
 class MainViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
-   var wallpapers: [UIImage?] = [UIImage(named: "Life_is_sample"),
-                                 UIImage(named: "Palette"),
-                                 UIImage(named: "Under_the_Sea")]
+   var images: [UIImage?] = [UIImage(named: "Life_is_sample"),
+                             UIImage(named: "Palette"),
+                             UIImage(named: "Under_the_Sea")]
+   var wallpapers: [WallPaper] = [WallPaper(imageName: "", imageURL: "", tag: nil, brightness: 1),
+                                  WallPaper(imageName: "", imageURL: "", tag: nil, brightness: 0),
+                                  WallPaper(imageName: "", imageURL: "", tag: nil, brightness: 0)]
    
    let titleView: UIView = {
       let view = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
@@ -28,6 +31,8 @@ class MainViewController: UIViewController {
       super.viewDidLoad()
       
       navigationItem.titleView = titleView
+      WallPapers.shared.data = wallpapers
+      WallPapers.shared.images = images
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -35,9 +40,18 @@ class MainViewController: UIViewController {
          let cell = sender as? WallPapeerCollectionViewCell,
          let indexPath = collectionView.indexPath(for: cell) else { fatalError() }
       
-      detailImgVC.image = wallpapers[indexPath.item]
+      detailImgVC.image = images[indexPath.item]
+      detailImgVC.wallPaper = wallpapers[indexPath.item]
    }
    
+   @IBAction private func goInsta(_ sender: UIButton) {
+      guard let url = URL(string: "https://instagram.com/iora_studio?igshid=1erlpx3rebg7b") else { fatalError("Invalid URL") }
+      if UIApplication.shared.canOpenURL(url) {
+         UIApplication.shared.open(url,
+                                   options: [:],
+                                   completionHandler: nil)
+      }
+   }
    
    
    @IBAction private func goBlog(_ sender: UIButton) {
@@ -52,16 +66,19 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return wallpapers.count
+      return images.count
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPapeerCollectionViewCell.identifier, for: indexPath) as? WallPapeerCollectionViewCell else {
          fatalError("Not Found Cell")
       }
-      guard let image = wallpapers[indexPath.row] else { fatalError("image is nil") }
+      guard let image = images[indexPath.row] else { fatalError("image is nil") }
       
-      cell.prepare(image: image)
+      DispatchQueue.global().async {
+         cell.prepare(image: image)
+      }
+      
       
       return cell
    }
