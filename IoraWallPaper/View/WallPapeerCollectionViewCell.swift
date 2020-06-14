@@ -12,17 +12,22 @@ import Foundation
 class WallPapeerCollectionViewCell: UICollectionViewCell {
    static let identifier = "WallPapeerCollectionViewCell"
    @IBOutlet private weak var wallpaperImageView: UIImageView!
+   @IBOutlet var activityIndicator: UIActivityIndicatorView!
    
-   func prepare(image: UIImage) {
-      guard let url = URL(string: "https://firebasestorage.googleapis.com/v0/b/iora-wallpaper.appspot.com/o/WallPaper%2FWallPaper003.png?alt=media&token=56a11d2a-d73f-4c0f-846d-08d1ec6ece5e") else { fatalError("invalid url") }
+   func prepare(info: WallPaper) {
+      DispatchQueue.main.async {
+         self.activityIndicator.startAnimating()
+      }
+      guard let url = URL(string: info.imageURL) else { fatalError("invalid url") }
       let session = URLSession.shared
       DispatchQueue.global().async {
          let take = session.dataTask(with: url) { (data, resp, err) in
             if let err = err {
                print(err.localizedDescription)
-            } else if let _ = data {
+            } else if let data = data {
                DispatchQueue.main.async {
-                  self.wallpaperImageView.image = image
+                  self.activityIndicator.stopAnimating()
+                  self.wallpaperImageView.image = UIImage(data: data)
                }
             }
          }
@@ -30,4 +35,6 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
          take.resume()
       }
    }
+   
+   
 }

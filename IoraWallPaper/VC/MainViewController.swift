@@ -7,32 +7,26 @@
 //
 
 import UIKit
+import Firebase
 
 class MainViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
    var images: [UIImage?] = [UIImage(named: "Life_is_sample"),
                              UIImage(named: "Palette"),
                              UIImage(named: "Under_the_Sea")]
-   var wallpapers: [WallPaper] = [WallPaper(imageName: "", imageURL: "", tag: nil, brightness: 1),
-                                  WallPaper(imageName: "", imageURL: "", tag: nil, brightness: 0),
-                                  WallPaper(imageName: "", imageURL: "", tag: nil, brightness: 0)]
-   
-   let titleView: UIView = {
-      let view = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 44))
-      let titlabel = UILabel(frame: view.frame)
-      titlabel.textAlignment = .center
-      titlabel.text = "iORA Studio"
-      titlabel.font = .systemFont(ofSize: 20)
-      view.addSubview(titlabel)
-      return view
-   }()
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      WallPapers.shared.dataDownload {
+         print("=================3=================")
+         DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            print(WallPapers.shared.data.count)
+         }
+         
+      }
       
-      navigationItem.titleView = titleView
-      WallPapers.shared.data = wallpapers
-      WallPapers.shared.images = images
+      Database.database().reference()
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -41,7 +35,7 @@ class MainViewController: UIViewController {
          let indexPath = collectionView.indexPath(for: cell) else { fatalError() }
       
       detailImgVC.image = images[indexPath.item]
-      detailImgVC.wallPaper = wallpapers[indexPath.item]
+      detailImgVC.wallPaper = WallPapers.shared.data[indexPath.item]
    }
    
    @IBAction private func goInsta(_ sender: UIButton) {
@@ -52,7 +46,6 @@ class MainViewController: UIViewController {
                                    completionHandler: nil)
       }
    }
-   
    
    @IBAction private func goBlog(_ sender: UIButton) {
       guard let url = URL(string: "https://blog.naver.com/iorastudio") else { fatalError("Invalid URL") }
@@ -66,19 +59,15 @@ class MainViewController: UIViewController {
 
 extension MainViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return images.count
+      return WallPapers.shared.data.count
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPapeerCollectionViewCell.identifier, for: indexPath) as? WallPapeerCollectionViewCell else {
          fatalError("Not Found Cell")
       }
-      guard let image = images[indexPath.row] else { fatalError("image is nil") }
       
-      DispatchQueue.global().async {
-         cell.prepare(image: image)
-      }
-      
+      cell.prepare(info: WallPapers.shared.data[indexPath.item])
       
       return cell
    }

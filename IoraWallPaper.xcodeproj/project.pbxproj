@@ -17,6 +17,8 @@
 		8E88803C248DF71400E7E620 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E88803B248DF71400E7E620 /* Assets.xcassets */; };
 		8E88803F248DF71400E7E620 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E88803D248DF71400E7E620 /* LaunchScreen.storyboard */; };
 		8E88804B248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E88804A248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift */; };
+		8E8B4A722494C5200072620A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B4A712494C5200072620A /* CalendarViewController.swift */; };
+		8E8B4A742494C6930072620A /* DayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B4A732494C6930072620A /* DayCollectionViewCell.swift */; };
 		8E922AC92490CBC400424D10 /* WallPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E922AC82490CBC400424D10 /* WallPaper.swift */; };
 		8E95A9E72490839600F55F82 /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95A9E62490839600F55F82 /* DetailImageViewController.swift */; };
 		8ECD80372490C6E800DA4B5E /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80332490C6E700DA4B5E /* NanumSquareRoundR.ttf */; };
@@ -38,6 +40,8 @@
 		8E88803E248DF71400E7E620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8E888040248DF71400E7E620 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E88804A248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallPapeerCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E8B4A712494C5200072620A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		8E8B4A732494C6930072620A /* DayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E922AC82490CBC400424D10 /* WallPaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallPaper.swift; sourceTree = "<group>"; };
 		8E95A9E62490839600F55F82 /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
 		8ECD80332490C6E700DA4B5E /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				8E888036248DF71300E7E620 /* MainViewController.swift */,
 				8E95A9E62490839600F55F82 /* DetailImageViewController.swift */,
 				8E45512624922AD200CD9F7C /* ShowPreViewController.swift */,
+				8E8B4A712494C5200072620A /* CalendarViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -134,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				8E88804A248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift */,
+				8E8B4A732494C6930072620A /* DayCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -286,6 +292,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E8B4A722494C5200072620A /* CalendarViewController.swift in Sources */,
+				8E8B4A742494C6930072620A /* DayCollectionViewCell.swift in Sources */,
 				8E922AC92490CBC400424D10 /* WallPaper.swift in Sources */,
 				8E888037248DF71300E7E620 /* MainViewController.swift in Sources */,
 				8E45512724922AD200CD9F7C /* ShowPreViewController.swift in Sources */,
