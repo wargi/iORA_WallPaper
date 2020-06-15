@@ -11,22 +11,17 @@ import Firebase
 
 class MainViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
-   var images: [UIImage?] = [UIImage(named: "Life_is_sample"),
-                             UIImage(named: "Palette"),
-                             UIImage(named: "Under_the_Sea")]
    
    override func viewDidLoad() {
       super.viewDidLoad()
       WallPapers.shared.dataDownload {
-         print("=================3=================")
          DispatchQueue.main.async {
+            for _ in 0 ..< WallPapers.shared.data.count {
+               WallPapers.shared.images.append(nil)
+            }
             self.collectionView.reloadData()
-            print(WallPapers.shared.data.count)
          }
-         
       }
-      
-      Database.database().reference()
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -34,8 +29,8 @@ class MainViewController: UIViewController {
          let cell = sender as? WallPapeerCollectionViewCell,
          let indexPath = collectionView.indexPath(for: cell) else { fatalError() }
       
-      detailImgVC.image = images[indexPath.item]
-      detailImgVC.wallPaper = WallPapers.shared.data[indexPath.item]
+      detailImgVC.image = WallPapers.shared.images[indexPath.item]
+      detailImgVC.brightness = WallPapers.shared.data[indexPath.item].brightness
    }
    
    @IBAction private func goInsta(_ sender: UIButton) {
@@ -67,7 +62,12 @@ extension MainViewController: UICollectionViewDataSource {
          fatalError("Not Found Cell")
       }
       
-      cell.prepare(info: WallPapers.shared.data[indexPath.item])
+      if let image = WallPapers.shared.images[indexPath.item] {
+         cell.wallpaperImageView.image = image
+      } else {
+         cell.prepare(item: indexPath.item)
+      }
+      
       
       return cell
    }

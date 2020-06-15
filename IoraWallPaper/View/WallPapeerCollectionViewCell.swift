@@ -11,29 +11,24 @@ import Foundation
 
 class WallPapeerCollectionViewCell: UICollectionViewCell {
    static let identifier = "WallPapeerCollectionViewCell"
-   @IBOutlet private weak var wallpaperImageView: UIImageView!
+   @IBOutlet weak var wallpaperImageView: UIImageView!
    @IBOutlet var activityIndicator: UIActivityIndicatorView!
    
-   func prepare(info: WallPaper) {
-      DispatchQueue.main.async {
-         self.activityIndicator.startAnimating()
-      }
-      guard let url = URL(string: info.imageURL) else { fatalError("invalid url") }
-      let session = URLSession.shared
-      DispatchQueue.global().async {
-         let take = session.dataTask(with: url) { (data, resp, err) in
-            if let err = err {
-               print(err.localizedDescription)
-            } else if let data = data {
-               DispatchQueue.main.async {
-                  self.activityIndicator.stopAnimating()
-                  self.wallpaperImageView.image = UIImage(data: data)
-               }
-            }
+   func prepare(item: Int) {
+      isUserInteractionEnabled = false
+      self.activityIndicator.startAnimating()
+      
+      WallPapers.shared.imageDownload(index: item) { image in
+         DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.wallpaperImageView.image = image
+            self.isUserInteractionEnabled = true
          }
-         
-         take.resume()
       }
+   }
+   
+   override func prepareForReuse() {
+      wallpaperImageView.image = nil
    }
    
    

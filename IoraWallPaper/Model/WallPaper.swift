@@ -27,32 +27,43 @@ class WallPapers {
    private init() {}
    
    func dataDownload(completion: @escaping () -> ()) {
-      print("입장")
-      print(self.ref.child("list").observe(.value, with: <#T##(DataSnapshot) -> Void#>))
-      self.ref.child("list").observe(.value) { (snap) in
-         print(snap)
-      }
-      
       self.ref.child("list").observe(.value) { (snapshot) in
-         print("=================0==================")
          DispatchQueue.global().async {
             self.images.removeAll()
             self.data.removeAll()
-            for value in snapshot.children {
-               print("=================1==================")
-               print(value)
+            for value in snapshot.children.reversed() {
                guard let snap = value as? DataSnapshot, let dic = snap.value as? NSDictionary else { return }
                do {
-                  print("====================2====================")
                   let data = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
                   let wallpaper = try JSONDecoder().decode(WallPaper.self, from: data)
                   self.data.append(wallpaper)
-                  completion()
                } catch {
                   print(error.localizedDescription)
                }
             }
+            completion()
          }
+      }
+   }
+   
+   func imageDownload(index: Int, completion: @escaping (UIImage?) -> ()) {
+      guard let url = URL(string: data[index].imageURL) else { fatalError("invalid url") }
+      let session = URLSession.shared
+      
+      DispatchQueue.global().async {
+         let take = session.dataTask(with: url) { (data, resp, err) in
+            if let err = err {
+               print(err.localizedDescription)
+            } else if let data = data {
+               DispatchQueue.main.async {
+                  let image = UIImage(data: data)
+                  self.images[index] = image
+                  completion(image)
+               }
+            }
+         }
+         
+         take.resume()
       }
    }
 }

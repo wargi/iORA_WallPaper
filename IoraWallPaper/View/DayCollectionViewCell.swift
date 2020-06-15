@@ -12,7 +12,8 @@ class DayCollectionViewCell: UICollectionViewCell {
    static let identifier = "DayCollectionViewCell"
    @IBOutlet weak var dayLabel: UILabel!
    
-   func setValue(text: String) {
+   func setValue(text: String, textColor: UIColor) {
       dayLabel.text = text
+      dayLabel.textColor = textColor
    }
 }

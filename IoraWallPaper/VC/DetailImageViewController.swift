@@ -9,12 +9,16 @@
 import UIKit
 
 class DetailImageViewController: UIViewController {
-   var image: UIImage?
-   var wallPaper: WallPaper?
    @IBOutlet private weak var backButton: UIButton!
    @IBOutlet private weak var saveButton: UIButton!
    @IBOutlet private weak var previewButton: UIButton!
    @IBOutlet private weak var shareButton: UIButton!
+   var image: UIImage?
+   var brightness: Int?
+   lazy var color: UIColor = {
+      guard let brightness = brightness else { return .black }
+      return brightness == 0 ? .white : .black
+   }()
    
    @IBOutlet private weak var wallPaperImageView: UIImageView!
    override func viewDidLoad() {
@@ -24,7 +28,7 @@ class DetailImageViewController: UIViewController {
    }
    
    func prepare() {
-      guard let info = wallPaper else { fatalError("wall paper is invalid") }
+      guard let image = image else { fatalError("wall paper is invalid") }
       wallPaperImageView.image = image
       
       let backImage = UIImage(named: "back")?.withRenderingMode(.alwaysTemplate)
@@ -32,17 +36,10 @@ class DetailImageViewController: UIViewController {
       let downloadImage = UIImage(named: "download")?.withRenderingMode(.alwaysTemplate)
       let shareImage = UIImage(named: "share")?.withRenderingMode(.alwaysTemplate)
       
-      if info.brightness == 0 {
-         backButton.imageView?.tintColor = .white
-         saveButton.imageView?.tintColor = .white
-         previewButton.imageView?.tintColor = .white
-         shareButton.imageView?.tintColor = .white
-      } else {
-         backButton.imageView?.tintColor = .black
-         saveButton.imageView?.tintColor = .black
-         previewButton.imageView?.tintColor = .black
-         shareButton.imageView?.tintColor = .black
-      }
+      backButton.imageView?.tintColor = color
+      saveButton.imageView?.tintColor = color
+      previewButton.imageView?.tintColor = color
+      shareButton.imageView?.tintColor = color
       
       backButton.setImage(backImage, for: .normal)
       previewButton.setImage(previewImage, for: .normal)
@@ -51,9 +48,13 @@ class DetailImageViewController: UIViewController {
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      guard let showVC = segue.destination as? ShowPreViewController else { return }
-      showVC.wallPaper = wallPaper
-      showVC.image = image
+      if let showVC = segue.destination as? ShowPreViewController  {
+         showVC.brightness = brightness
+         showVC.image = image
+      } else if let calVC = segue.destination as? CalendarViewController {
+         calVC.brightness = brightness
+         calVC.image = image
+      }
    }
    
    @IBAction func popAction() {

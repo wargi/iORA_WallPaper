@@ -14,36 +14,48 @@ class ShowPreViewController: UIViewController {
    @IBOutlet private weak var downloadButton: UIButton!
    @IBOutlet private weak var displayTimeLabel: UILabel!
    @IBOutlet private weak var displayDateLabel: UILabel!
-   var wallPaper: WallPaper?
+   var brightness: Int?
    var image: UIImage?
+   lazy var color: UIColor = {
+      guard let brightness = brightness else { return .black }
+      return brightness == 0 ? .white : .black
+   }()
    
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      prepareImage()
+      setImageAndTintColor()
    }
    
-   func prepareImage() {
-//      guard let info = wallPaper else { fatalError("Invalid WallPaper") }
+   func setImageAndTintColor() {
+      guard let image = image else { return }
       imageView.image = image
       
       let closeImage = UIImage(named: "close")?.withRenderingMode(.alwaysTemplate)
       let downImage = UIImage(named: "pDownload")?.withRenderingMode(.alwaysTemplate)
       
-      if wallPaper?.brightness == 0 {
-         closeButton.imageView?.tintColor = .white
-         downloadButton.imageView?.tintColor = .white
-         displayTimeLabel.textColor = .white
-         displayDateLabel.textColor = .white
-      } else {
-         closeButton.imageView?.tintColor = .black
-         downloadButton.imageView?.tintColor = .black
-         displayTimeLabel.textColor = .black
-         displayDateLabel.textColor = .black
-      }
+      closeButton.imageView?.tintColor = color
+      downloadButton.imageView?.tintColor = color
+      displayTimeLabel.textColor = color
+      displayDateLabel.textColor = color
       
       closeButton.setImage(closeImage, for: .normal)
       downloadButton.setImage(downImage, for: .normal)
+   }
+   
+   @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+      //사진 저장 한후
+      if let error = error {
+         print(error.localizedDescription)
+      } else {
+         print("success")
+      }
+   }
+   
+   @IBAction private func downloadAction(_ sender: UIButton) {
+      guard let image = imageView.image else { return }
+
+      UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
    }
    
    @IBAction private func closeAction(_ sender: UIButton) {
