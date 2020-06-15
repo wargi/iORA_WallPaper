@@ -142,15 +142,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Palette" translatesAutoresizingMaskIntoConstraints="NO" id="GBM-tQ-sxe">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorPalette" translatesAutoresizingMaskIntoConstraints="NO" id="GBM-tQ-sxe">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eBg-qs-HDP">
                                 <rect key="frame" x="175" y="12" width="190" height="40"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mew-W7-nvh">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mew-W7-nvh">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <state key="normal" title="달력"/>
+                                        <state key="normal" image="calendar"/>
                                         <connections>
                                             <segue destination="TuU-La-Pew" kind="presentation" id="5jV-7r-S1u"/>
                                         </connections>
@@ -171,6 +171,9 @@
                                         <state key="normal" image="download">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="downlaodAction:" destination="tu2-80-rfH" eventType="touchUpInside" id="NP5-vZ-8ro"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8r-uv-tqC">
                                         <rect key="frame" x="150" y="0.0" width="40" height="40"/>
@@ -218,6 +221,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="backButton" destination="Yl1-2v-ant" id="MCM-UQ-Hus"/>
+                        <outlet property="calendarButton" destination="Mew-W7-nvh" id="VvO-wt-lPT"/>
                         <outlet property="previewButton" destination="h6O-vY-bk0" id="oRS-Lh-gTI"/>
                         <outlet property="saveButton" destination="qdW-qK-58k" id="Ya4-7w-9kb"/>
                         <outlet property="shareButton" destination="U8r-uv-tqC" id="g0m-30-2T9"/>
@@ -236,7 +240,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Palette" translatesAutoresizingMaskIntoConstraints="NO" id="7mE-Ob-DY4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorPalette" translatesAutoresizingMaskIntoConstraints="NO" id="7mE-Ob-DY4">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgo-F4-MUS">
@@ -328,11 +332,18 @@
                                     <action selector="downloadAction:" destination="TuU-La-Pew" eventType="touchUpInside" id="UGC-pp-8hZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mps-fM-bL2">
-                                <rect key="frame" x="267.5" y="16" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mps-fM-bL2">
+                                <rect key="frame" x="275" y="16.5" width="28.5" height="28.5"/>
+                                <state key="normal" image="calendar"/>
                                 <connections>
                                     <action selector="showAlertCalendarList:" destination="TuU-La-Pew" eventType="touchUpInside" id="f3X-kD-rsu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJT-kk-oui">
+                                <rect key="frame" x="226.5" y="16.5" width="28.5" height="28.5"/>
+                                <state key="normal" image="palette"/>
+                                <connections>
+                                    <action selector="paletteAction:" destination="TuU-La-Pew" eventType="touchUpInside" id="QaZ-kO-sLv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -347,18 +358,22 @@
                             <constraint firstItem="zgo-F4-MUS" firstAttribute="top" secondItem="ToQ-qg-Ua3" secondAttribute="top" constant="12" id="PnQ-3N-TqX"/>
                             <constraint firstItem="wY9-sW-zWt" firstAttribute="centerY" secondItem="zgo-F4-MUS" secondAttribute="centerY" constant="-1.2" id="VRb-M2-6jd"/>
                             <constraint firstItem="7mE-Ob-DY4" firstAttribute="top" secondItem="9UP-MW-GRS" secondAttribute="top" id="ioq-5M-UX8"/>
-                            <constraint firstItem="wY9-sW-zWt" firstAttribute="leading" secondItem="mps-fM-bL2" secondAttribute="trailing" constant="10" id="jpv-NJ-40s"/>
+                            <constraint firstItem="wY9-sW-zWt" firstAttribute="leading" secondItem="mps-fM-bL2" secondAttribute="trailing" constant="20" id="jpv-NJ-40s"/>
                             <constraint firstItem="mps-fM-bL2" firstAttribute="centerY" secondItem="wY9-sW-zWt" secondAttribute="centerY" id="pLZ-aC-WUW"/>
+                            <constraint firstItem="mps-fM-bL2" firstAttribute="leading" secondItem="eJT-kk-oui" secondAttribute="trailing" constant="20" id="qdb-l2-WXG"/>
                             <constraint firstItem="D3d-wE-PEB" firstAttribute="centerY" secondItem="ToQ-qg-Ua3" secondAttribute="centerY" id="sbp-md-rE4"/>
+                            <constraint firstItem="eJT-kk-oui" firstAttribute="centerY" secondItem="wY9-sW-zWt" secondAttribute="centerY" id="wFo-7n-gh2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ToQ-qg-Ua3"/>
                     </view>
                     <connections>
+                        <outlet property="calendarButton" destination="mps-fM-bL2" id="uY3-at-Vpl"/>
                         <outlet property="closeButton" destination="zgo-F4-MUS" id="xrF-es-zpw"/>
                         <outlet property="collectionView" destination="SER-Eh-flq" id="mvW-nf-Qiz"/>
                         <outlet property="downloadButton" destination="wY9-sW-zWt" id="4dS-3t-r95"/>
                         <outlet property="imageView" destination="7mE-Ob-DY4" id="1G0-ng-slt"/>
                         <outlet property="monthLabel" destination="Mzg-sh-cr1" id="thb-C4-aGP"/>
+                        <outlet property="paletteButton" destination="eJT-kk-oui" id="Sq9-A5-Kf5"/>
                         <outlet property="yearLabel" destination="kSA-Sf-97P" id="iId-Yd-XBM"/>
                     </connections>
                 </viewController>
@@ -374,7 +389,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Palette" translatesAutoresizingMaskIntoConstraints="NO" id="jrv-Qg-Tmb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorPalette" translatesAutoresizingMaskIntoConstraints="NO" id="jrv-Qg-Tmb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:34" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XT2-rD-svC">
@@ -461,13 +476,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Palette" width="375" height="812"/>
+        <image name="ColorPalette" width="375" height="812"/>
         <image name="back" width="25" height="25"/>
         <image name="blog" width="25" height="25"/>
+        <image name="calendar" width="28.333333969116211" height="28.333333969116211"/>
         <image name="close" width="25" height="25"/>
         <image name="download" width="25" height="25"/>
         <image name="insta" width="25" height="25"/>
         <image name="pDownload" width="28.333333969116211" height="27.666666030883789"/>
+        <image name="palette" width="28.333333969116211" height="28.333333969116211"/>
         <image name="preview" width="25" height="25"/>
         <image name="share" width="25" height="25"/>
     </resources>

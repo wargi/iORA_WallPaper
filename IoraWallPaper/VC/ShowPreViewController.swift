@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class ShowPreViewController: UIViewController {
    @IBOutlet private weak var imageView: UIImageView!
@@ -43,19 +44,18 @@ class ShowPreViewController: UIViewController {
       downloadButton.setImage(downImage, for: .normal)
    }
    
-   @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
-      //사진 저장 한후
-      if let error = error {
-         print(error.localizedDescription)
-      } else {
-         print("success")
-      }
-   }
-   
    @IBAction private func downloadAction(_ sender: UIButton) {
       guard let image = imageView.image else { return }
 
-      UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+      PHPhotoLibrary.shared().savePhoto(image: image, albumName: "iORA")
+      
+      let alert = UIAlertController(title: "Save Success :)", message: nil, preferredStyle: .alert)
+      let action = UIAlertAction(title: "OK", style: .default) { (_) in
+         self.dismiss(animated: true, completion: nil)
+      }
+      alert.addAction(action)
+      
+      present(alert, animated: true, completion: nil)
    }
    
    @IBAction private func closeAction(_ sender: UIButton) {

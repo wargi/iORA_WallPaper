@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class CalendarViewController: UIViewController {
    var image: UIImage?
@@ -16,6 +17,8 @@ class CalendarViewController: UIViewController {
       return brightness == 0 ? .white : .black
    }()
    @IBOutlet private weak var imageView: UIImageView!
+   @IBOutlet private weak var paletteButton: UIButton!
+   @IBOutlet private weak var calendarButton: UIButton!
    @IBOutlet private weak var downloadButton: UIButton!
    @IBOutlet private weak var closeButton: UIButton!
    @IBOutlet private weak var yearLabel: UILabel!
@@ -42,14 +45,20 @@ class CalendarViewController: UIViewController {
       imageView.image = image
       
       let closeImage = UIImage(named: "close")?.withRenderingMode(.alwaysTemplate)
+      let paletteImage = UIImage(named: "palette")?.withRenderingMode(.alwaysTemplate)
+      let calendarImage = UIImage(named: "calendar")?.withRenderingMode(.alwaysTemplate)
       let downImage = UIImage(named: "pDownload")?.withRenderingMode(.alwaysTemplate)
       
       yearLabel.textColor = color
       monthLabel.textColor = color
       closeButton.imageView?.tintColor = color
+      paletteButton.imageView?.tintColor = color
+      calendarButton.imageView?.tintColor = color
       downloadButton.imageView?.tintColor = color
       
       closeButton.setImage(closeImage, for: .normal)
+      paletteButton.setImage(paletteImage, for: .normal)
+      calendarButton.setImage(calendarImage, for: .normal)
       downloadButton.setImage(downImage, for: .normal)
    }
    
@@ -64,8 +73,13 @@ class CalendarViewController: UIViewController {
       collectionView.reloadData()
    }
    
-   @IBAction private func downloadAction(_ sender: UIButton) {
+   @IBAction private func paletteAction(_ sender: UIButton) {
+      let calendarColor: UIColor = color == UIColor.black ? .white : .black
       
+      yearLabel.textColor = calendarColor
+      monthLabel.textColor = calendarColor
+      color = calendarColor
+      collectionView.reloadData()
    }
    
    @IBAction private func showAlertCalendarList(_ sender: UIButton) {
@@ -97,6 +111,30 @@ class CalendarViewController: UIViewController {
       alert.addAction(cancelAction)
       
       present(alert, animated: true, completion: nil)
+   }
+   
+   @IBAction private func downloadAction(_ sender: UIButton) {
+      closeButton.isHidden = true
+      paletteButton.isHidden = true
+      calendarButton.isHidden = true
+      downloadButton.isHidden = true
+      
+      guard let layer = UIApplication.shared.keyWindow?.layer else { return }
+      var screenImage: UIImage?
+      let scale = UIScreen.main.scale
+      UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale)
+      guard let context = UIGraphicsGetCurrentContext() else { return }
+      layer.render(in: context)
+      screenImage = UIGraphicsGetImageFromCurrentImageContext()
+      UIGraphicsEndImageContext()
+      
+      guard let image = screenImage else { return }
+      PHPhotoLibrary.shared().savePhoto(image: image, albumName: "iORA")
+      
+      closeButton.isHidden = false
+      paletteButton.isHidden = false
+      calendarButton.isHidden = false
+      downloadButton.isHidden = false
    }
    
    @IBAction private func closeAction(_ sender: UIButton) {

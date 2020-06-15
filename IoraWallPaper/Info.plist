@@ -2,9 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>
-Permissions are required to save photos. Please allow permission request</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>IORA needs access to your photos to save photos</string>
 	<key>FirebaseScreenReportingEnabled</key>
 	<false/>
 	<key>CFBundleDevelopmentRegion</key>
