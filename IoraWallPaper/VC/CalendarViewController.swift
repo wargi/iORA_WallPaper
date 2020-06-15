@@ -23,6 +23,7 @@ class CalendarViewController: UIViewController {
    @IBOutlet private weak var closeButton: UIButton!
    @IBOutlet private weak var yearLabel: UILabel!
    @IBOutlet private weak var monthLabel: UILabel!
+   @IBOutlet private weak var lineView: UIView!
    @IBOutlet private weak var collectionView: UICollectionView!
    var emptyCellCount = 0
    let dateArr = ["S", "M", "T", "W", "T", "F", "S"]
@@ -51,6 +52,7 @@ class CalendarViewController: UIViewController {
       
       yearLabel.textColor = color
       monthLabel.textColor = color
+      lineView.backgroundColor = color
       closeButton.imageView?.tintColor = color
       paletteButton.imageView?.tintColor = color
       calendarButton.imageView?.tintColor = color
@@ -78,6 +80,7 @@ class CalendarViewController: UIViewController {
       
       yearLabel.textColor = calendarColor
       monthLabel.textColor = calendarColor
+      lineView.backgroundColor = calendarColor
       color = calendarColor
       collectionView.reloadData()
    }

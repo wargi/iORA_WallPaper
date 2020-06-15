@@ -15,5 +15,12 @@ class DayCollectionViewCell: UICollectionViewCell {
    func setValue(text: String, textColor: UIColor) {
       dayLabel.text = text
       dayLabel.textColor = textColor
+      dayLabel.font = UIFont(name: "NanumSquareRoundB", size: 15)
    }
+   
+   override func prepareForReuse() {
+      dayLabel.font = UIFont(name: "NanumSquareRoundB", size: 15)
+   }
+   
+   
 }

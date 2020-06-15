@@ -65,8 +65,6 @@ class DetailImageViewController: UIViewController {
    @IBAction private func downlaodAction(_ sender: UIButton) {
       guard let image = image else { return }
       
-      
-      
       PHPhotoLibrary.shared().savePhoto(image: image, albumName: "iORA")
       
       let alert = UIAlertController(title: "Save Success :)", message: nil, preferredStyle: .alert)
@@ -74,6 +72,15 @@ class DetailImageViewController: UIViewController {
       present(alert, animated: true) {
          self.dismiss(animated: true, completion: nil)
       }
+   }
+   
+   @IBAction private func shareAction(_ sender: UIButton) {
+      guard let image = image else { return }
+      
+      let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+      print(activityVC)
+      
+      present(activityVC, animated: true, completion: nil)
    }
    
    @IBAction func popAction() {
