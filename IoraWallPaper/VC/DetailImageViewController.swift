@@ -10,27 +10,30 @@ import UIKit
 import Photos
 
 class DetailImageViewController: UIViewController {
+   // 배경 화면 관련
+   public var image: UIImage?
+   @IBOutlet private weak var wallPaperImageView: UIImageView!
+   
+   // 상단 버튼
    @IBOutlet private weak var backButton: UIButton!
    @IBOutlet private weak var calendarButton: UIButton!
    @IBOutlet private weak var previewButton: UIButton!
    @IBOutlet private weak var saveButton: UIButton!
    @IBOutlet private weak var shareButton: UIButton!
-   var image: UIImage?
-   var brightness: Int?
-   lazy var color: UIColor = {
-      guard let brightness = brightness else { return .black }
-      return brightness == 0 ? .white : .black
-   }()
    
-   @IBOutlet private weak var wallPaperImageView: UIImageView!
+   // 버튼 컬러 설정 관련
+   public var brightness: Int?
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      prepare()
+      setImageAndColor()
    }
    
-   func prepare() {
+   // 이미지 설정 및 버튼 컬러 설정
+   func setImageAndColor() {
       guard let image = image else { fatalError("wall paper is invalid") }
+      let color = WallPapers.shared.getColor(brightness: brightness)
       wallPaperImageView.image = image
       
       let backImage = UIImage(named: "back")?.withRenderingMode(.alwaysTemplate)
@@ -62,6 +65,8 @@ class DetailImageViewController: UIViewController {
       }
    }
    
+   //MARK: 상단 버튼 액션
+   // 파일 다운로드
    @IBAction private func downlaodAction(_ sender: UIButton) {
       guard let image = image else { return }
       
@@ -74,6 +79,7 @@ class DetailImageViewController: UIViewController {
       }
    }
    
+   // Share Action
    @IBAction private func shareAction(_ sender: UIButton) {
       guard let image = image else { return }
       
@@ -83,6 +89,7 @@ class DetailImageViewController: UIViewController {
       present(activityVC, animated: true, completion: nil)
    }
    
+   // Close Action
    @IBAction func popAction() {
       navigationController?.popViewController(animated: true)
    }

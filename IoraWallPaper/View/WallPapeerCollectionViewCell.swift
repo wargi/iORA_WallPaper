@@ -14,11 +14,11 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
    @IBOutlet weak var wallpaperImageView: UIImageView!
    @IBOutlet var activityIndicator: UIActivityIndicatorView!
    
-   func prepare(item: Int) {
+   func configure(itemAt: Int) {
       isUserInteractionEnabled = false
       self.activityIndicator.startAnimating()
       
-      WallPapers.shared.imageDownload(index: item) { image in
+      WallPapers.shared.imageDownload(index: itemAt) { image in
          DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.wallpaperImageView.image = image
@@ -29,7 +29,5 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
    
    override func prepareForReuse() {
       wallpaperImageView.image = nil
-   }
-   
-   
+   }   
 }

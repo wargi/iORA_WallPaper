@@ -2,7 +2,7 @@
 //  WallPaper.swift
 //  IoraWallPaper
 //
-//  Created by 박소정 on 2020/06/10.
+//  Created by 박상욱 on 2020/06/10.
 //  Copyright © 2020 sangwook park. All rights reserved.
 //
 
@@ -10,6 +10,7 @@ import UIKit
 import Foundation
 import Firebase
 
+// 받아오는 데이터
 struct WallPaper: Codable {
    let brightness: Int
    let imageName: String
@@ -17,7 +18,7 @@ struct WallPaper: Codable {
    let tag: String?
 }
 
-
+// 데이터 다운로드 및 싱글톤 객체
 class WallPapers {
    static let shared = WallPapers()
    private let ref = Database.database().reference()
@@ -25,8 +26,8 @@ class WallPapers {
    var data: [WallPaper] = []
    
    private init() {}
-   
-   func dataDownload(completion: @escaping () -> ()) {
+   // 데이터 다운로드
+   func dataDownload(completion: (() -> ())? = nil) {
       self.ref.child("list").observe(.value) { (snapshot) in
          DispatchQueue.global().async {
             self.images.removeAll()
@@ -41,11 +42,12 @@ class WallPapers {
                   print(error.localizedDescription)
                }
             }
-            completion()
+            completion?()
          }
       }
    }
    
+   // 이미지 다운로드
    func imageDownload(index: Int, completion: @escaping (UIImage?) -> ()) {
       guard let url = URL(string: data[index].imageURL) else { fatalError("invalid url") }
       let session = URLSession.shared
@@ -65,5 +67,11 @@ class WallPapers {
          
          take.resume()
       }
+   }
+   
+   // 버튼 컬러 설정
+   func getColor(brightness: Int?) -> UIColor {
+      guard let brightness = brightness else { return .black }
+      return brightness == 0 ? .white : .black
    }
 }
