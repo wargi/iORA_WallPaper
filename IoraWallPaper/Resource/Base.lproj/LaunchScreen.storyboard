@@ -39,6 +39,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="launch" width="55.666667938232422" height="55.666667938232422"/>
+        <image name="launch" width="386" height="386"/>
     </resources>
 </document>

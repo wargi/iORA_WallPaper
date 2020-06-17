@@ -14,8 +14,6 @@ class MainViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
    // 상단 UI
    @IBOutlet private weak var navigationView: UIView!
-   @IBOutlet private weak var instaButton: UIButton!
-   @IBOutlet private weak var blogButton: UIButton!
    
    override func viewDidLoad() {
       super.viewDidLoad()      
@@ -28,20 +26,6 @@ class MainViewController: UIViewController {
       let refreshControl = UIRefreshControl()
       refreshControl.addTarget(self, action: #selector(dataLoad), for: .valueChanged)
       collectionView.refreshControl = refreshControl
-      
-      let instImage = UIImage(named: "insta")?.withRenderingMode(.alwaysTemplate)
-      let blogImage = UIImage(named: "blog")?.withRenderingMode(.alwaysTemplate)
-      
-      if traitCollection.userInterfaceStyle == .dark {
-         instaButton.imageView?.tintColor = .white
-         blogButton.imageView?.tintColor = .white
-      } else {
-         instaButton.imageView?.tintColor = .black
-         blogButton.imageView?.tintColor = .black
-      }
-      
-      instaButton.setImage(instImage, for: .normal)
-      blogButton.setImage(blogImage, for: .normal)
    }
    
    // 데이타 로드

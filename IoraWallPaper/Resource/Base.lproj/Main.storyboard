@@ -81,7 +81,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IORA STUDIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQj-Zr-pL0">
-                                        <rect key="frame" x="126.5" y="14" width="122.5" height="22.5"/>
+                                        <rect key="frame" x="124.5" y="13.5" width="126" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -127,9 +127,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="UNV-nh-qdb"/>
                     <connections>
-                        <outlet property="blogButton" destination="fJt-G3-jMT" id="aQG-Cb-Dta"/>
                         <outlet property="collectionView" destination="GAt-gH-Su7" id="Pn6-I0-eMe"/>
-                        <outlet property="instaButton" destination="Y0m-MG-Q7O" id="TCe-7Y-Ox2"/>
                         <outlet property="navigationView" destination="fgb-yh-tAm" id="qwt-IN-pbo"/>
                     </connections>
                 </viewController>
@@ -153,6 +151,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mew-W7-nvh">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="4"/>
                                         <state key="normal" image="calendar"/>
                                         <connections>
                                             <segue destination="TuU-La-Pew" kind="presentation" id="5jV-7r-S1u"/>
@@ -346,7 +345,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJT-kk-oui">
-                                <rect key="frame" x="226.5" y="16.5" width="28.5" height="28.5"/>
+                                <rect key="frame" x="225" y="14" width="30" height="33.5"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.29999999999999999" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="palette"/>
                                 <connections>
                                     <action selector="paletteAction:" destination="TuU-La-Pew" eventType="touchUpInside" id="QaZ-kO-sLv"/>
@@ -358,6 +358,7 @@
                             <constraint firstItem="ToQ-qg-Ua3" firstAttribute="trailing" secondItem="wY9-sW-zWt" secondAttribute="trailing" constant="23" id="1v1-go-tXz"/>
                             <constraint firstItem="7mE-Ob-DY4" firstAttribute="trailing" secondItem="ToQ-qg-Ua3" secondAttribute="trailing" id="79F-Wb-Yi9"/>
                             <constraint firstAttribute="bottom" secondItem="7mE-Ob-DY4" secondAttribute="bottom" id="Eiz-J1-TaK"/>
+                            <constraint firstItem="eJT-kk-oui" firstAttribute="height" secondItem="mps-fM-bL2" secondAttribute="height" multiplier="1.17544" id="H4I-MY-0Zo"/>
                             <constraint firstItem="7mE-Ob-DY4" firstAttribute="leading" secondItem="ToQ-qg-Ua3" secondAttribute="leading" id="IWB-S4-Bt2"/>
                             <constraint firstItem="zgo-F4-MUS" firstAttribute="leading" secondItem="ToQ-qg-Ua3" secondAttribute="leading" constant="18" id="NIV-iu-RhK"/>
                             <constraint firstItem="D3d-wE-PEB" firstAttribute="centerX" secondItem="ToQ-qg-Ua3" secondAttribute="centerX" id="NVv-wV-Wkl"/>
@@ -380,7 +381,7 @@
                         <outlet property="imageView" destination="7mE-Ob-DY4" id="1G0-ng-slt"/>
                         <outlet property="lineView" destination="S3v-3M-N0W" id="3RE-t2-zzB"/>
                         <outlet property="monthLabel" destination="Mzg-sh-cr1" id="thb-C4-aGP"/>
-                        <outlet property="paletteButton" destination="eJT-kk-oui" id="Sq9-A5-Kf5"/>
+                        <outlet property="paletteButton" destination="eJT-kk-oui" id="DdD-43-0vz"/>
                         <outlet property="yearLabel" destination="kSA-Sf-97P" id="iId-Yd-XBM"/>
                     </connections>
                 </viewController>
@@ -491,7 +492,7 @@
         <image name="download" width="25" height="25"/>
         <image name="insta" width="25" height="25"/>
         <image name="pDownload" width="28.333333969116211" height="27.666666030883789"/>
-        <image name="palette" width="28.333333969116211" height="28.333333969116211"/>
+        <image name="palette" width="30" height="30"/>
         <image name="preview" width="25" height="25"/>
         <image name="share" width="25" height="25"/>
     </resources>
