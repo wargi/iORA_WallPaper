@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Photos
 
 class CalendarViewController: UIViewController {
    // 배경화면 관련
@@ -136,28 +135,12 @@ class CalendarViewController: UIViewController {
    // 다운로드 액션
    @IBAction private func downloadAction(_ sender: UIButton) {
       isHiddenDisplayUI(isHidden: true)
-      
-      guard let layer = UIApplication.shared.keyWindow?.layer else { return }
-      var screenImage: UIImage?
-      let scale = UIScreen.main.scale
-      UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale)
-      guard let context = UIGraphicsGetCurrentContext() else { return }
-      layer.render(in: context)
-      screenImage = UIGraphicsGetImageFromCurrentImageContext()
-      UIGraphicsEndImageContext()
-      
-      guard let image = screenImage else { return }
-      PHPhotoLibrary.shared().savePhoto(image: image, albumName: "iORA")
-      
+      WallPapers.shared.screenImageDownload()
       isHiddenDisplayUI(isHidden: false)
       
-      let alert = UIAlertController(title: "Save Success :)", message: nil, preferredStyle: .alert)
-      let action = UIAlertAction(title: "OK", style: .default) { (_) in
+      present(WallPapers.shared.downloadAlert(handler: { (_) in
          self.dismiss(animated: true, completion: nil)
-      }
-      alert.addAction(action)
-      
-      present(alert, animated: true, completion: nil)
+      }), animated: true, completion: nil)
    }
    
    // Close Action

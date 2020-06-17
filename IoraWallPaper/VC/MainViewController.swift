@@ -12,13 +12,13 @@ import Firebase
 class MainViewController: UIViewController {
    // 이미지 리스트 컬렉션 뷰
    @IBOutlet private weak var collectionView: UICollectionView!
-   // 상단 버튼
+   // 상단 UI
+   @IBOutlet private weak var navigationView: UIView!
    @IBOutlet private weak var instaButton: UIButton!
    @IBOutlet private weak var blogButton: UIButton!
    
    override func viewDidLoad() {
-      super.viewDidLoad()
-      
+      super.viewDidLoad()      
       configure()
       dataLoad()
    }
@@ -118,7 +118,7 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       let width = (collectionView.bounds.size.width - 15) / 2
       
-      return CGSize(width: width, height: width * 2.1654)
+      return CGSize(width: width, height: width * 2)
    }
    
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

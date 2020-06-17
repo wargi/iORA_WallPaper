@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Photos
 
 class ShowPreViewController: UIViewController {
    // 배경 화면 관련
@@ -51,7 +50,7 @@ class ShowPreViewController: UIViewController {
    }
    
    // 화면에 표시된 UI 숨김
-   func isHiddenDisplayView(isHidden: Bool) {
+   func isHiddenDisplayUI(isHidden: Bool) {
       closeButton.isHidden = isHidden
       downloadButton.isHidden = isHidden
       displayTimeLabel.isHidden = isHidden
@@ -61,30 +60,13 @@ class ShowPreViewController: UIViewController {
    //MARK: 상단 버튼 액션
    // 파일 다운로드
    @IBAction private func downloadAction(_ sender: UIButton) {
-      isHiddenDisplayView(isHidden: true)
+      isHiddenDisplayUI(isHidden: true)
+      WallPapers.shared.screenImageDownload()
+      isHiddenDisplayUI(isHidden: false)
       
-      guard let layer = UIApplication.shared.keyWindow?.layer else { return }
-      var screenImage: UIImage?
-      let scale = UIScreen.main.scale
-      UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale)
-      guard let context = UIGraphicsGetCurrentContext() else { return }
-      layer.render(in: context)
-      screenImage = UIGraphicsGetImageFromCurrentImageContext()
-      UIGraphicsEndImageContext()
-      
-      guard let image = screenImage else { return }
-      
-      PHPhotoLibrary.shared().savePhoto(image: image, albumName: "iORA")
-      
-      isHiddenDisplayView(isHidden: false)
-      
-      let alert = UIAlertController(title: "Save Success :)", message: nil, preferredStyle: .alert)
-      let action = UIAlertAction(title: "OK", style: .default) { (_) in
+      present(WallPapers.shared.downloadAlert(handler: { (_) in
          self.dismiss(animated: true, completion: nil)
-      }
-      alert.addAction(action)
-      
-      present(alert, animated: true, completion: nil)
+      }), animated: true, completion: nil)
    }
    
    // Close Action

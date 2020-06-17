@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Photos
 
 class DetailImageViewController: UIViewController {
    // 배경 화면 관련
@@ -28,6 +27,16 @@ class DetailImageViewController: UIViewController {
       super.viewDidLoad()
       
       setImageAndColor()
+   }
+   
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      if let showVC = segue.destination as? ShowPreViewController  {
+         showVC.brightness = brightness
+         showVC.image = image
+      } else if let calVC = segue.destination as? CalendarViewController {
+         calVC.brightness = brightness
+         calVC.image = image
+      }
    }
    
    // 이미지 설정 및 버튼 컬러 설정
@@ -55,26 +64,23 @@ class DetailImageViewController: UIViewController {
       shareButton.setImage(shareImage, for: .normal)
    }
    
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let showVC = segue.destination as? ShowPreViewController  {
-         showVC.brightness = brightness
-         showVC.image = image
-      } else if let calVC = segue.destination as? CalendarViewController {
-         calVC.brightness = brightness
-         calVC.image = image
-      }
+   // 화면에 표시된 UI 숨김
+   func isHiddenDisplayUI(isHidden: Bool) {
+      backButton.isHidden = isHidden
+      calendarButton.isHidden = isHidden
+      previewButton.isHidden = isHidden
+      saveButton.isHidden = isHidden
+      shareButton.isHidden = isHidden
    }
+
    
    //MARK: 상단 버튼 액션
    // 파일 다운로드
    @IBAction private func downlaodAction(_ sender: UIButton) {
-      guard let image = image else { return }
-      
-      PHPhotoLibrary.shared().savePhoto(image: image, albumName: "iORA")
-      
-      let alert = UIAlertController(title: "Save Success :)", message: nil, preferredStyle: .alert)
-      
-      present(alert, animated: true) {
+      isHiddenDisplayUI(isHidden: true)
+      WallPapers.shared.screenImageDownload()
+      isHiddenDisplayUI(isHidden: false)
+      present(WallPapers.shared.downloadAlert(), animated: true) {
          self.dismiss(animated: true, completion: nil)
       }
    }
