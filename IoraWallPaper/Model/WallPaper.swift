@@ -11,27 +11,6 @@ import Foundation
 import Firebase
 import Photos
 
-//{
-//    brightness = 0;
-//    imageName = View02;
-//    imageType =     {
-//        retina = nil;
-//        super = "https://firebasestorage.googleapis.com/v0/b/iora-wallpaper.appspot.com/o/WallPaper%2Fview02.png?alt=media&token=21d12265-a523-4ad5-bdf0-f37f0f493fcc";
-//    };
-//    tag = "#view";
-//}
-//{
-//    brightness = 0;
-//    imageName = View01;
-//    imageType =     {
-//        retina = nil;
-//        super = "https://firebasestorage.googleapis.com/v0/b/iora-wallpaper.appspot.com/o/WallPaper%2Fview01.png?alt=media&token=0539aa4a-fd2f-4765-82af-afcecfa2d828";
-//    };
-//    tag = "#view";
-//}
-//"{\n  \"brightness\" : 0,\n  \"imageName\" : \"view01\",\n  \"imageType\" : {\n    \"super\" : \"https:\\/\\/firebasestorage.googleapis.com\\/v0\\/b\\/iora-wallpaper.appspot.com\\/o\\/WallPaper%2Fview01.png?alt=media&token=0539aa4a-fd2f-4765-82af-afcecfa2d828\",\n    \"retina\" : \"nil\"\n  },\n  \"tag\" : \"#view\"\n}"
-
-
 struct ImageType: Codable {
    let superRetinaDeviceImageURL: String?
    let retinaDeviceImageURL: String?
@@ -43,7 +22,7 @@ struct ImageType: Codable {
 }
 
 // 받아오는 데이터
-struct WallPaperList: Decodable {
+struct WallPaper: Decodable {
    let brightness: Int // brightness
    let imageName: String // imageName
    let imageType: ImageType // imageType
@@ -59,9 +38,10 @@ enum DisplayType: Int {
 class WallPapers {
    static let shared = WallPapers()
    private let ref = Database.database().reference()
-   var displayType: DisplayType?
+   private var displayType: DisplayType?
    var images: [UIImage?] = []
-   var data: [WallPaperList] = []
+   var data: [WallPaper] = []
+   var tags: [String] = []
    
    private init() {}
    // 데이터 다운로드
@@ -70,11 +50,11 @@ class WallPapers {
          DispatchQueue.global().async {
             self.images.removeAll()
             self.data.removeAll()
-            for value in snapshot.children.reversed().shuffled() {
+            for value in snapshot.children.reversed() {
                guard let snap = value as? DataSnapshot, let dic = snap.value as? NSDictionary else { return }
                do {
                   let data = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
-                  let wallpaper = try JSONDecoder().decode(WallPaperList.self, from: data)
+                  let wallpaper = try JSONDecoder().decode(WallPaper.self, from: data)
                   self.data.append(wallpaper)
                } catch {
                   print(error.localizedDescription)
@@ -133,7 +113,14 @@ class WallPapers {
       return alert
    }
    
-   // 이미지 다운로드
+   // 이미지 파일 다운로드
+   func imageFileDownload(image: UIImage?) {
+      guard let image = image else { return }
+      
+      PHPhotoLibrary.shared().savePhoto(image: image, albumName: "IORA")
+   }
+   
+   // 달력 이미지 파일 다운로드
    func screenImageDownload() {
       guard let layer = UIApplication.shared.keyWindow?.layer else { return }
       var screenImage: UIImage?
@@ -147,5 +134,24 @@ class WallPapers {
       guard let image = screenImage else { return }
       
       PHPhotoLibrary.shared().savePhoto(image: image, albumName: "IORA")
+   }
+   
+   // 디바이스 사이즈 계산
+   func getDeviceScreenSize() {
+      // (414.0, 896.0) // 11 pro max
+      // (375.0, 812.0) // 11 pro
+      // (414.0, 896.0) // 11
+      // (414.0, 736.0) // 8 plus
+      // (375.0, 667.0) // se
+      // (375.0, 667.0) // 8
+      
+      switch UIScreen.main.bounds.size.height {
+      case 896, 812:
+         self.displayType = .superRetina
+      case 736, 667:
+         self.displayType = .retina
+      default:
+         break
+      }
    }
 }

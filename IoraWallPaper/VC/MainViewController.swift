@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
          let indexPath = collectionView.indexPath(for: cell) else { fatalError() }
       
       detailImgVC.image = WallPapers.shared.images[indexPath.item]
-      detailImgVC.brightness = WallPapers.shared.data[indexPath.item].brightness
+      detailImgVC.info = WallPapers.shared.data[indexPath.item]
    }
    
    //MARK: 버튼 액션

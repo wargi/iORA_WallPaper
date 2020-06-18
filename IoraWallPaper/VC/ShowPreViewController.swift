@@ -49,20 +49,10 @@ class ShowPreViewController: UIViewController {
       downloadButton.setImage(downImage, for: .normal)
    }
    
-   // 화면에 표시된 UI 숨김
-   func isHiddenDisplayUI(isHidden: Bool) {
-      closeButton.isHidden = isHidden
-      downloadButton.isHidden = isHidden
-      displayTimeLabel.isHidden = isHidden
-      displayDateLabel.isHidden = isHidden
-   }
-   
    //MARK: 상단 버튼 액션
    // 파일 다운로드
    @IBAction private func downloadAction(_ sender: UIButton) {
-      isHiddenDisplayUI(isHidden: true)
-      WallPapers.shared.screenImageDownload()
-      isHiddenDisplayUI(isHidden: false)
+      WallPapers.shared.imageFileDownload(image: image)
       
       present(WallPapers.shared.downloadAlert(handler: { (_) in
          self.dismiss(animated: true, completion: nil)

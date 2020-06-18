@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fZd-Bb-I4I">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -28,11 +28,11 @@
             <objects>
                 <viewController modalTransitionStyle="partialCurl" id="BYZ-38-t0r" customClass="MainViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GAt-gH-Su7">
-                                <rect key="frame" x="0.0" y="50" width="375" height="573"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="fEr-2J-Vda">
                                     <size key="itemSize" width="143" height="117"/>
@@ -78,23 +78,23 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgb-yh-tAm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IORA STUDIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQj-Zr-pL0">
-                                        <rect key="frame" x="126.5" y="14" width="122.5" height="22.5"/>
+                                        <rect key="frame" x="146" y="14" width="122.5" height="22.5"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJt-G3-jMT">
-                                        <rect key="frame" x="334" y="12.5" width="25" height="25"/>
+                                        <rect key="frame" x="373" y="12.5" width="25" height="25"/>
                                         <state key="normal" image="blog"/>
                                         <connections>
                                             <action selector="goBlog:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1a7-83-2d0"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0m-MG-Q7O">
-                                        <rect key="frame" x="297" y="12.5" width="25" height="25"/>
+                                        <rect key="frame" x="336" y="12.5" width="25" height="25"/>
                                         <state key="normal" image="insta"/>
                                         <connections>
                                             <action selector="goInsta:" destination="BYZ-38-t0r" eventType="touchUpInside" id="FWp-gs-9IC"/>
@@ -140,14 +140,14 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="tu2-80-rfH" customClass="DetailImageViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xv6-eb-mAU">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorPalette" translatesAutoresizingMaskIntoConstraints="NO" id="GBM-tQ-sxe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eBg-qs-HDP">
-                                <rect key="frame" x="175" y="12" width="190" height="40"/>
+                                <rect key="frame" x="214" y="12" width="190" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mew-W7-nvh">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
@@ -207,6 +207,30 @@
                                     <action selector="popAction" destination="tu2-80-rfH" eventType="touchUpInside" id="VH1-7u-Bmx"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fi7-8k-trK">
+                                <rect key="frame" x="0.0" y="695" width="414" height="113"/>
+                                <subviews>
+                                    <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YLE-Pi-Y09">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#palette #warm #combination #colors" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQw-qe-P8Z">
+                                        <rect key="frame" x="20" y="20" width="376" height="20"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="wQw-qe-P8Z" secondAttribute="trailing" constant="18" id="E4Q-xx-11D"/>
+                                    <constraint firstAttribute="bottom" secondItem="YLE-Pi-Y09" secondAttribute="bottom" id="X6X-xQ-xbm"/>
+                                    <constraint firstItem="YLE-Pi-Y09" firstAttribute="top" secondItem="Fi7-8k-trK" secondAttribute="top" id="bYa-nu-WFY"/>
+                                    <constraint firstAttribute="trailing" secondItem="YLE-Pi-Y09" secondAttribute="trailing" id="m5G-U9-g84"/>
+                                    <constraint firstItem="YLE-Pi-Y09" firstAttribute="leading" secondItem="Fi7-8k-trK" secondAttribute="leading" id="sKQ-sY-LlD"/>
+                                    <constraint firstItem="wQw-qe-P8Z" firstAttribute="top" secondItem="Fi7-8k-trK" secondAttribute="top" constant="20" id="vYV-CA-5WR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -214,8 +238,13 @@
                             <constraint firstItem="Yl1-2v-ant" firstAttribute="centerY" secondItem="eBg-qs-HDP" secondAttribute="centerY" id="1tn-Uv-NBg"/>
                             <constraint firstItem="Yl1-2v-ant" firstAttribute="leading" secondItem="WnZ-zq-QwQ" secondAttribute="leading" constant="18" id="ACa-gx-ILG"/>
                             <constraint firstAttribute="bottom" secondItem="GBM-tQ-sxe" secondAttribute="bottom" id="D0a-iL-Zlr"/>
+                            <constraint firstAttribute="bottom" secondItem="Fi7-8k-trK" secondAttribute="bottom" id="E5s-00-6ev"/>
+                            <constraint firstItem="wQw-qe-P8Z" firstAttribute="leading" secondItem="Yl1-2v-ant" secondAttribute="leading" constant="2" id="Lxh-O4-2FJ"/>
+                            <constraint firstItem="Fi7-8k-trK" firstAttribute="height" secondItem="Xv6-eb-mAU" secondAttribute="height" multiplier="0.14" id="RCw-Bh-9wb"/>
                             <constraint firstAttribute="trailing" secondItem="eBg-qs-HDP" secondAttribute="trailing" constant="10" id="Wu6-AL-nmJ"/>
+                            <constraint firstItem="WnZ-zq-QwQ" firstAttribute="trailing" secondItem="Fi7-8k-trK" secondAttribute="trailing" id="Yn9-CX-OXd"/>
                             <constraint firstItem="eBg-qs-HDP" firstAttribute="top" secondItem="WnZ-zq-QwQ" secondAttribute="top" constant="12" id="axn-U1-vel"/>
+                            <constraint firstItem="Fi7-8k-trK" firstAttribute="leading" secondItem="WnZ-zq-QwQ" secondAttribute="leading" id="jOW-nJ-c7N"/>
                             <constraint firstAttribute="trailing" secondItem="GBM-tQ-sxe" secondAttribute="trailing" id="tr5-Oj-WCl"/>
                             <constraint firstItem="GBM-tQ-sxe" firstAttribute="leading" secondItem="Xv6-eb-mAU" secondAttribute="leading" id="vN0-jk-vsn"/>
                         </constraints>
@@ -230,6 +259,8 @@
                         <outlet property="previewButton" destination="h6O-vY-bk0" id="oRS-Lh-gTI"/>
                         <outlet property="saveButton" destination="qdW-qK-58k" id="Ya4-7w-9kb"/>
                         <outlet property="shareButton" destination="U8r-uv-tqC" id="g0m-30-2T9"/>
+                        <outlet property="tagLabel" destination="wQw-qe-P8Z" id="6ZU-Cs-heF"/>
+                        <outlet property="tagView" destination="Fi7-8k-trK" id="HYE-Zu-L7g"/>
                         <outlet property="wallPaperImageView" destination="GBM-tQ-sxe" id="ghD-cA-mF8"/>
                     </connections>
                 </viewController>
@@ -242,14 +273,14 @@
             <objects>
                 <viewController storyboardIdentifier="CalendarViewController" title="CalendarViewController" modalPresentationStyle="fullScreen" id="TuU-La-Pew" customClass="CalendarViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9UP-MW-GRS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorPalette" translatesAutoresizingMaskIntoConstraints="NO" id="7mE-Ob-DY4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgo-F4-MUS">
-                                <rect key="frame" x="18" y="12" width="40" height="40"/>
+                                <rect key="frame" x="18" y="56" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="8er-xf-YdV"/>
                                     <constraint firstAttribute="width" constant="40" id="Ah8-Ot-E9A"/>
@@ -263,7 +294,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-wE-PEB">
-                                <rect key="frame" x="87.5" y="203" width="200" height="261"/>
+                                <rect key="frame" x="107" y="322.5" width="200" height="261"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSA-Sf-97P">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="17.5"/>
@@ -331,21 +362,21 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wY9-sW-zWt">
-                                <rect key="frame" x="323.5" y="17" width="28.5" height="28"/>
+                                <rect key="frame" x="362.5" y="61" width="28.5" height="28"/>
                                 <state key="normal" image="pDownload"/>
                                 <connections>
                                     <action selector="downloadAction:" destination="TuU-La-Pew" eventType="touchUpInside" id="UGC-pp-8hZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mps-fM-bL2">
-                                <rect key="frame" x="275" y="16.5" width="28.5" height="28.5"/>
+                                <rect key="frame" x="314" y="60.5" width="28.5" height="28.5"/>
                                 <state key="normal" image="calendar"/>
                                 <connections>
                                     <action selector="showAlertCalendarList:" destination="TuU-La-Pew" eventType="touchUpInside" id="f3X-kD-rsu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eJT-kk-oui">
-                                <rect key="frame" x="225" y="14" width="30" height="33.5"/>
+                                <rect key="frame" x="264" y="58" width="30" height="33.5"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.29999999999999999" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" image="palette"/>
                                 <connections>
@@ -394,26 +425,26 @@
             <objects>
                 <viewController storyboardIdentifier="ShowPreViewController" title="ShowPreViewController" modalPresentationStyle="fullScreen" id="hjq-DW-yC7" customClass="ShowPreViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xNd-i1-xtq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorPalette" translatesAutoresizingMaskIntoConstraints="NO" id="jrv-Qg-Tmb">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:34" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XT2-rD-svC">
-                                <rect key="frame" x="105" y="61.5" width="165.5" height="99.5"/>
+                                <rect key="frame" x="124.5" y="99.5" width="165.5" height="99.5"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundL" family="NanumSquareRound" pointSize="85"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, December 25" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvn-XL-3Ll">
-                                <rect key="frame" x="95" y="163" width="185.5" height="23.5"/>
+                                <rect key="frame" x="114.5" y="201" width="185.5" height="23.5"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AI6-Qz-XP1">
-                                <rect key="frame" x="18" y="12" width="40" height="40"/>
+                                <rect key="frame" x="18" y="56" width="40" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="9oh-kO-SB2"/>
                                     <constraint firstAttribute="height" constant="40" id="wLx-cp-jZY"/>
@@ -426,7 +457,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0d-sb-ivc">
-                                <rect key="frame" x="323.5" y="17" width="28.5" height="28"/>
+                                <rect key="frame" x="362.5" y="61" width="28.5" height="28"/>
                                 <state key="normal" image="pDownload"/>
                                 <connections>
                                     <action selector="downloadAction:" destination="hjq-DW-yC7" eventType="touchUpInside" id="PJH-p5-9rx"/>
@@ -468,7 +499,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fZd-Bb-I4I" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="8jh-O8-PuI">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -20,29 +20,45 @@ class DetailImageViewController: UIViewController {
    @IBOutlet private weak var saveButton: UIButton!
    @IBOutlet private weak var shareButton: UIButton!
    
+   // 하단 태그 관련
+   @IBOutlet private weak var tagView: UIView!
+   @IBOutlet private weak var tagLabel: UILabel!
+   
    // 버튼 컬러 설정 관련
-   public var brightness: Int?
+   public var info: WallPaper?
    
    override func viewDidLoad() {
       super.viewDidLoad()
       
       setImageAndColor()
+      configure()
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      guard let info = info else { fatalError("Invalid WallPaper") }
       if let showVC = segue.destination as? ShowPreViewController  {
-         showVC.brightness = brightness
+         showVC.brightness = info.brightness
          showVC.image = image
       } else if let calVC = segue.destination as? CalendarViewController {
-         calVC.brightness = brightness
+         calVC.brightness = info.brightness
          calVC.image = image
       }
    }
    
+   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+      super.touchesEnded(touches, with: event)
+      tagView.isHidden = !tagView.isHidden
+   }
+   
+   func configure() {
+      tagLabel.text = info?.tag
+   }
+   
    // 이미지 설정 및 버튼 컬러 설정
    func setImageAndColor() {
+      guard let info = info else { fatalError("Invalid WallPaper") }
       guard let image = image else { fatalError("wall paper is invalid") }
-      let color = WallPapers.shared.getColor(brightness: brightness)
+      let color = WallPapers.shared.getColor(brightness: info.brightness)
       wallPaperImageView.image = image
       
       let backImage = UIImage(named: "back")?.withRenderingMode(.alwaysTemplate)
@@ -64,22 +80,10 @@ class DetailImageViewController: UIViewController {
       shareButton.setImage(shareImage, for: .normal)
    }
    
-   // 화면에 표시된 UI 숨김
-   func isHiddenDisplayUI(isHidden: Bool) {
-      backButton.isHidden = isHidden
-      calendarButton.isHidden = isHidden
-      previewButton.isHidden = isHidden
-      saveButton.isHidden = isHidden
-      shareButton.isHidden = isHidden
-   }
-
-   
    //MARK: 상단 버튼 액션
    // 파일 다운로드
    @IBAction private func downlaodAction(_ sender: UIButton) {
-      isHiddenDisplayUI(isHidden: true)
-      WallPapers.shared.screenImageDownload()
-      isHiddenDisplayUI(isHidden: false)
+      WallPapers.shared.imageFileDownload(image: image)
       present(WallPapers.shared.downloadAlert(), animated: true) {
          self.dismiss(animated: true, completion: nil)
       }
