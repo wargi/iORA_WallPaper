@@ -43,7 +43,12 @@ class WallPapers {
    var data: [WallPaper] = []
    var tags: [String] = []
    
-   private init() {}
+   private init() {
+   }
+   
+   deinit {
+   }
+   
    // 데이터 다운로드
    func dataDownload(completion: (() -> ())? = nil) {
       self.ref.child("list").observe(.value) { (snapshot) in

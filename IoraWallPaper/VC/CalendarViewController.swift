@@ -21,6 +21,7 @@ class CalendarViewController: UIViewController {
    
    // 달력 관련
    @IBOutlet private weak var collectionView: UICollectionView!
+   @IBOutlet private weak var stackView: UIStackView!
    @IBOutlet private weak var yearLabel: UILabel!
    @IBOutlet private weak var monthLabel: UILabel!
    @IBOutlet private weak var lineView: UIView!
@@ -39,8 +40,14 @@ class CalendarViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
+      configure()
       setImageAndColor()
       calendarCreate(year: year, month: month)
+   }
+   
+   func configure() {
+      let pan = UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(_:)))
+      stackView.addGestureRecognizer(pan)
    }
    
    // 이미지 설정 및 버튼 컬러 설정
@@ -65,6 +72,17 @@ class CalendarViewController: UIViewController {
       paletteButton.setImage(paletteImage, for: .normal)
       calendarButton.setImage(calendarImage, for: .normal)
       downloadButton.setImage(downImage, for: .normal)
+   }
+   
+   @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
+      guard let targetView = sender.view else { return }
+      
+      let translation = sender.translation(in: view)
+      
+      targetView.center.x += translation.x
+      targetView.center.y += translation.y
+      
+      sender.setTranslation(.zero, in: view)
    }
    
    // 달력 생성

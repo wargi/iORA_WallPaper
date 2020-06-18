@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class MainViewController: UIViewController {
    // 이미지 리스트 컬렉션 뷰

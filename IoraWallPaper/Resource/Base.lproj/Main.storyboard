@@ -151,7 +151,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mew-W7-nvh">
                                         <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="4"/>
+                                        <inset key="imageEdgeInsets" minX="7" minY="5" maxX="7" maxY="7.5"/>
                                         <state key="normal" image="calendar"/>
                                         <connections>
                                             <segue destination="TuU-La-Pew" kind="presentation" id="5jV-7r-S1u"/>
@@ -316,7 +316,7 @@
                                             <constraint firstAttribute="height" constant="1" id="KLv-Pt-Mie"/>
                                         </constraints>
                                     </view>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SER-Eh-flq">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SER-Eh-flq">
                                         <rect key="frame" x="0.0" y="63" width="200" height="198"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="e9w-XM-XJI">
@@ -413,6 +413,7 @@
                         <outlet property="lineView" destination="S3v-3M-N0W" id="3RE-t2-zzB"/>
                         <outlet property="monthLabel" destination="Mzg-sh-cr1" id="thb-C4-aGP"/>
                         <outlet property="paletteButton" destination="eJT-kk-oui" id="DdD-43-0vz"/>
+                        <outlet property="stackView" destination="D3d-wE-PEB" id="rqI-tb-Z9M"/>
                         <outlet property="yearLabel" destination="kSA-Sf-97P" id="iId-Yd-XBM"/>
                     </connections>
                 </viewController>
