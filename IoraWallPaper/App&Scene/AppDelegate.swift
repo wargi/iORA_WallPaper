@@ -16,6 +16,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
       FirebaseApp.configure()
       
+      // (414.0, 896.0) // 11 pro max
+      // (375.0, 812.0) // 11 pro
+      // (414.0, 896.0) // 11
+      // (414.0, 736.0) // 8 plus
+      // (375.0, 667.0) // se
+      // (375.0, 667.0) // 8
+      
+      switch UIScreen.main.bounds.size.height {
+      case 896, 812:
+         WallPapers.shared.displayType = .superRetina
+      case 736, 667:
+         WallPapers.shared.displayType = .retina
+      default:
+         break
+      }
+      
       return true
    }
 

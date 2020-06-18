@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
    @IBOutlet private weak var navigationView: UIView!
    
    override func viewDidLoad() {
-      super.viewDidLoad()      
+      super.viewDidLoad()
       configure()
       dataLoad()
    }
