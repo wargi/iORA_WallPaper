@@ -25,6 +25,7 @@ class CalendarViewController: UIViewController {
    @IBOutlet private weak var yearLabel: UILabel!
    @IBOutlet private weak var monthLabel: UILabel!
    @IBOutlet private weak var lineView: UIView!
+
    private let dateArr = ["S", "M", "T", "W", "T", "F", "S"]
    private let monthArr = ["January", "February", "March", "April", "May", "June",
                            "July", "August", "September", "October", "November", "December"]
@@ -34,6 +35,7 @@ class CalendarViewController: UIViewController {
    private lazy var year = calendar.component(.year, from: currentDate)
    private lazy var month = calendar.component(.month, from: currentDate)
    
+   // 컬러 관련
    public var brightness: Int?
    public lazy var color = WallPapers.shared.getColor(brightness: brightness)
    
@@ -45,6 +47,7 @@ class CalendarViewController: UIViewController {
       calendarCreate(year: year, month: month)
    }
    
+   // 기본 설정
    func configure() {
       let pan = UIPanGestureRecognizer(target: self, action: #selector(self.handlePanGesture(_:)))
       stackView.addGestureRecognizer(pan)
@@ -74,13 +77,28 @@ class CalendarViewController: UIViewController {
       downloadButton.setImage(downImage, for: .normal)
    }
    
+   // 달력 이동 관련 팬 제스쳐
    @objc func handlePanGesture(_ sender: UIPanGestureRecognizer) {
       guard let targetView = sender.view else { return }
       
-      let translation = sender.translation(in: view)
+      let centerX = Int(view.center.x)
+      let centerY = Int(view.center.y)
+      let targetCenterX = Int(targetView.center.x)
+      let targetCenterY = Int(targetView.center.y)
       
-      targetView.center.x += translation.x
-      targetView.center.y += translation.y
+      let translation = sender.translation(in: view)
+      let velocity = sender.velocity(in: view)
+      
+      if targetCenterX == centerX && targetCenterY == centerY &&
+         abs(velocity.x) < 654 && abs(velocity.y) < 654 {
+      } else if targetCenterX == centerX && abs(velocity.x) < 654 {
+         targetView.center.y += translation.y
+      } else if targetCenterY == centerY && abs(velocity.y) < 654 {
+         targetView.center.x += translation.x
+      } else {
+         targetView.center.x += translation.x
+         targetView.center.y += translation.y
+      }
       
       sender.setTranslation(.zero, in: view)
    }

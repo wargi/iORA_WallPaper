@@ -31,6 +31,32 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oM9-bg-3UY" userLabel="Not Connect View">
+                                <rect key="frame" x="0.0" y="50" width="414" height="758"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBh-Bb-uCz">
+                                        <rect key="frame" x="125.5" y="320.5" width="163.5" height="33.5"/>
+                                        <string key="text">You're offline.
+Check your connection</string>
+                                        <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect to the Internet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkJ-f1-G33">
+                                        <rect key="frame" x="10" y="293" width="394" height="22.5"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="vBh-Bb-uCz" firstAttribute="centerX" secondItem="oM9-bg-3UY" secondAttribute="centerX" id="OgR-2B-ln2"/>
+                                    <constraint firstItem="vBh-Bb-uCz" firstAttribute="top" secondItem="AkJ-f1-G33" secondAttribute="bottom" constant="5" id="YPy-GV-Md0"/>
+                                    <constraint firstItem="AkJ-f1-G33" firstAttribute="leading" secondItem="oM9-bg-3UY" secondAttribute="leading" constant="10" id="ZKF-WQ-2cn"/>
+                                    <constraint firstAttribute="trailing" secondItem="AkJ-f1-G33" secondAttribute="trailing" constant="10" id="qFf-4B-Ms3"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="GAt-gH-Su7">
                                 <rect key="frame" x="0.0" y="50" width="414" height="758"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -117,10 +143,15 @@
                         <constraints>
                             <constraint firstItem="GAt-gH-Su7" firstAttribute="top" secondItem="fgb-yh-tAm" secondAttribute="bottom" id="82d-kX-yxl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fgb-yh-tAm" secondAttribute="trailing" id="FT8-0Z-skv"/>
+                            <constraint firstAttribute="bottom" secondItem="oM9-bg-3UY" secondAttribute="bottom" id="HBa-Te-t2Q"/>
+                            <constraint firstItem="vBh-Bb-uCz" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="NKr-Sv-Xn6"/>
                             <constraint firstAttribute="bottom" secondItem="GAt-gH-Su7" secondAttribute="bottom" id="RHx-4c-aDe"/>
                             <constraint firstItem="fgb-yh-tAm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="X7k-MU-ZwM"/>
                             <constraint firstItem="GAt-gH-Su7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hzJ-CO-kKk"/>
+                            <constraint firstItem="oM9-bg-3UY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ncD-PZ-cGQ"/>
                             <constraint firstItem="fgb-yh-tAm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pbM-ZE-7vk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oM9-bg-3UY" secondAttribute="trailing" id="pve-De-QXT"/>
+                            <constraint firstItem="oM9-bg-3UY" firstAttribute="top" secondItem="fgb-yh-tAm" secondAttribute="bottom" id="vpW-Tc-CuC"/>
                             <constraint firstAttribute="trailing" secondItem="GAt-gH-Su7" secondAttribute="trailing" id="wN4-NX-ezf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -129,6 +160,7 @@
                     <connections>
                         <outlet property="collectionView" destination="GAt-gH-Su7" id="Pn6-I0-eMe"/>
                         <outlet property="navigationView" destination="fgb-yh-tAm" id="qwt-IN-pbo"/>
+                        <outlet property="notConnectView" destination="oM9-bg-3UY" id="LMR-Y4-Anp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -309,7 +341,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3v-3M-N0W" userLabel="LineView">
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3v-3M-N0W" userLabel="LineView">
                                         <rect key="frame" x="0.0" y="57" width="200" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>

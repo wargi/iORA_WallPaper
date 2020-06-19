@@ -152,8 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				8E922AC82490CBC400424D10 /* WallPaper.swift */,
-				8E8B4A752497282F0072620A /* PHPhotoLibrary+PhotoSave.swift */,
-				8EDCBF74249BB53400022E19 /* Reachability.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -172,6 +170,8 @@
 		8EDCBF71249BADE900022E19 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				8E8B4A752497282F0072620A /* PHPhotoLibrary+PhotoSave.swift */,
+				8EDCBF74249BB53400022E19 /* Reachability.swift */,
 				8EDCBF72249BADF900022E19 /* GoogleService-Info.plist */,
 			);
 			path = Supporting;

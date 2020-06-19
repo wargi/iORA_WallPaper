@@ -13,15 +13,40 @@ class MainViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
    // 상단 UI
    @IBOutlet private weak var navigationView: UIView!
+   @IBOutlet private weak var notConnectView: UIView!
+   private var reachability: Reachability?
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      
       configure()
       dataLoad()
    }
    
-   // 기본 뷰 컨트롤러 설정
+   // 기본 설정
    func configure() {
+      reachability = Reachability()
+      
+      do {
+         try reachability?.startNotifier()
+      } catch {
+         print(error.localizedDescription)
+      }
+      
+      // 네트워크 사용 가능 상태 일 때
+      reachability?.whenReachable = { reachability in
+         self.collectionView.isHidden = false
+         self.dataLoad()
+      }
+      
+      // 네트워크 사용 불가능 상태 일 때
+      reachability?.whenUnreachable = { _ in
+         self.collectionView.isHidden = true
+      }
+      
+      let tap = UITapGestureRecognizer(target: self, action: #selector(self.dataLoad))
+      notConnectView.addGestureRecognizer(tap)
+      
       let refreshControl = UIRefreshControl()
       refreshControl.addTarget(self, action: #selector(dataLoad), for: .valueChanged)
       collectionView.refreshControl = refreshControl
@@ -34,6 +59,7 @@ class MainViewController: UIViewController {
             for _ in 0 ..< WallPapers.shared.data.count {
                WallPapers.shared.images.append(nil)
             }
+            
             self.collectionView.refreshControl?.endRefreshing()
             self.collectionView.reloadData()
          }
@@ -69,6 +95,12 @@ class MainViewController: UIViewController {
                                    options: [:],
                                    completionHandler: nil)
       }
+   }
+   
+   // 네트워크 추적 해제
+   deinit {
+      reachability?.stopNotifier()
+      reachability = nil
    }
 }
 

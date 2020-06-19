@@ -29,6 +29,7 @@ struct WallPaper: Decodable {
    let tag: String?
 }
 
+// 디스플레이 타입 설정
 enum DisplayType: Int {
    case retina = 0
    case superRetina = 1
@@ -43,18 +44,12 @@ class WallPapers {
    var data: [WallPaper] = []
    var tags: [String] = []
    
-   private init() {
-   }
-   
-   deinit {
-   }
-   
    // 데이터 다운로드
    func dataDownload(completion: (() -> ())? = nil) {
+      images.removeAll()
+      data.removeAll()
       self.ref.child("list").observe(.value) { (snapshot) in
          DispatchQueue.global().async {
-            self.images.removeAll()
-            self.data.removeAll()
             for value in snapshot.children.reversed() {
                guard let snap = value as? DataSnapshot, let dic = snap.value as? NSDictionary else { return }
                do {
