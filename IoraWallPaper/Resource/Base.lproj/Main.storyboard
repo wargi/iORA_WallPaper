@@ -92,7 +92,7 @@ Check your connection</string>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="50" height="50"/>
                                         <connections>
-                                            <outlet property="activityIndicator" destination="ira-Al-iUP" id="6Rx-IL-3mh"/>
+                                            <outlet property="activityIndicator" destination="ira-Al-iUP" id="yzt-O5-o15"/>
                                             <outlet property="wallpaperImageView" destination="8m4-1T-ly9" id="J6g-6D-Uot"/>
                                             <segue destination="tu2-80-rfH" kind="show" id="gGO-xV-JoC"/>
                                         </connections>
@@ -101,7 +101,6 @@ Check your connection</string>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="0V7-8L-FFn"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="hHl-nE-p7t"/>
-                                    <outlet property="prefetchDataSource" destination="BYZ-38-t0r" id="5L4-Kh-aWQ"/>
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgb-yh-tAm">

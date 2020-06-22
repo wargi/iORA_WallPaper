@@ -16,12 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       FirebaseApp.configure()
       WallPapers.shared.getDeviceScreenSize()
       
-      WallPapers.shared.dataDownload {
-         for _ in WallPapers.shared.data {
-            WallPapers.shared.images.append(nil)
-         }
-      }
-      
       return true
    }
 

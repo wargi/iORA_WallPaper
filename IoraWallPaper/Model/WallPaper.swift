@@ -39,11 +39,11 @@ enum DisplayType: Int {
 class WallPapers {
    static let shared = WallPapers()
    private let ref = Database.database().reference()
-   var lastUpdate: Date?
    private var displayType: DisplayType?
+   var lastUpdateDate: Date?
    var images: [UIImage?] = []
    var data: [WallPaper] = []
-   var downloadTasks: [URLSessionDataTask] = []
+   var tags: [String] = []
    
    // 데이터 다운로드
    func dataDownload(completion: (() -> ())? = nil) {
@@ -66,69 +66,40 @@ class WallPapers {
       }
    }
    
+   func dataDownload() {
+      <#function body#>
+   }
+   
    // 이미지 다운로드
-   func imageDownload(at index: Int, completion: (() -> ())? = nil) {
-      guard images[index] == nil else { return }
+   func imageDownload(index: Int, completion: @escaping (UIImage?) -> ()) {
       guard let deviceType = displayType else { fatalError("Invalid Display Size") }
-      
       var urlString: String?
       if deviceType == .superRetina {
          urlString = data[index].imageType.superRetinaDeviceImageURL
       } else {
          urlString = data[index].imageType.retinaDeviceImageURL
       }
-      
-      guard let urlStr = urlString, let url = URL(string: urlStr),
-         !downloadTasks.contains(where: { $0.originalRequest?.url == url }) else {
-            return
+      guard let urlStr = urlString, let url = URL(string: urlStr) else {
+         fatalError("Invalid URL")
       }
       
       let session = URLSession.shared
       
-      let task = session.dataTask(with: url) { [weak self] (data, resp, err) in
-         if let err = err {
-            print(err.localizedDescription)
+      DispatchQueue.global().async {
+         let take = session.dataTask(with: url) { (data, resp, err) in
+            if let err = err {
+               print(err.localizedDescription)
+            } else if let data = data {
+               DispatchQueue.main.async {
+                  let image = UIImage(data: data)
+                  self.images[index] = image
+                  completion(image)
+               }
+            }
          }
          
-         if let data = data, let image = UIImage(data: data), let strongSelf = self {
-            strongSelf.images[index] = image
-            DispatchQueue.main.async {
-               completion?()
-            }
-            strongSelf.completeTask()
-         }
+         take.resume()
       }
-      
-      task.resume()
-      downloadTasks.append(task)
-   }
-   
-   func completeTask() {
-      downloadTasks = downloadTasks.filter { $0.state != .completed }
-   }
-   
-   func cancelDownload(at index: Int) {
-      guard let deviceType = displayType else { fatalError("Invalid Display Size") }
-      
-      var urlString: String?
-      if deviceType == .superRetina {
-         urlString = data[index].imageType.superRetinaDeviceImageURL
-      } else {
-         urlString = data[index].imageType.retinaDeviceImageURL
-      }
-      
-      guard let urlStr = urlString, let url = URL(string: urlStr),
-         downloadTasks.contains(where: {$0.originalRequest?.url == url }) else {
-            return
-      }
-      
-      guard let taskIndex = downloadTasks.firstIndex(where: { $0.originalRequest?.url == url }) else {
-         return
-      }
-      
-      let task = downloadTasks[taskIndex]
-      task.cancel()
-      downloadTasks.remove(at: taskIndex)
    }
    
    // 버튼 컬러 설정

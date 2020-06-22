@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
+
       configure()
       dataLoad()
    }
@@ -54,15 +54,18 @@ class MainViewController: UIViewController {
    
    // 데이타 로드
    @objc func dataLoad() {
-      DispatchQueue.global().async {
-         WallPapers.shared.downloadTasks.forEach { $0.cancel() }
-         WallPapers.shared.downloadTasks.removeAll()
-         
+      WallPapers.shared.dataDownload {
          DispatchQueue.main.async {
-            self.collectionView.reloadData()
+            for _ in 0 ..< WallPapers.shared.data.count {
+               WallPapers.shared.images.append(nil)
+            }
+            
             self.collectionView.refreshControl?.endRefreshing()
+            self.collectionView.reloadData()
          }
       }
+      
+      
    }
    
    // 화면 전환 전 데이터 전달
@@ -117,16 +120,7 @@ extension MainViewController: UICollectionViewDataSource {
       if let image = WallPapers.shared.images[indexPath.item] {
          cell.wallpaperImageView.image = image
       } else {
-         cell.activityIndicator.startAnimating()
-         cell.isUserInteractionEnabled = false
-         cell.wallpaperImageView.image = nil
-         WallPapers.shared.imageDownload(at: indexPath.item) {
-            if collectionView.indexPathsForVisibleItems.contains(indexPath) == .some(true) {
-               collectionView.reloadItems(at: [indexPath])
-               cell.activityIndicator.stopAnimating()
-               cell.isUserInteractionEnabled = true
-            }
-         }
+         cell.configure(itemAt: indexPath.item)
       }
       
       
@@ -134,24 +128,7 @@ extension MainViewController: UICollectionViewDataSource {
    }
 }
 
-extension MainViewController: UICollectionViewDataSourcePrefetching {
-   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-      indexPaths.forEach {
-         let reloadTargetItem = IndexPath(item: $0.item, section: 0)
-         WallPapers.shared.imageDownload(at: $0.item) {
-            
-            if collectionView.indexPathsForVisibleItems.contains(reloadTargetItem) == .some(true) {
-               collectionView.reloadItems(at: [reloadTargetItem])
-            }
-         }
-      }
-   }
-   
-   func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
-      indexPaths.forEach {
-         WallPapers.shared.cancelDownload(at: $0.item)
-      }
-   }
+extension MainViewController: UICollectionViewDelegate {
 }
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {   
