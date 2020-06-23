@@ -15,6 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
       FirebaseApp.configure()
       WallPapers.shared.getDeviceScreenSize()
+      WallPapers.shared.dataDownload {
+         DispatchQueue.main.async {
+            let set: Set<String> = Set(WallPapers.shared.tags)
+            WallPapers.shared.tags = Array(set)
+            WallPapers.shared.tags.sort()
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didFinishLaunchingWithOptions"),
+                                            object: nil)
+         }
+      }
+
       
       return true
    }

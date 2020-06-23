@@ -22,11 +22,21 @@ struct ImageType: Codable {
 }
 
 // 받아오는 데이터
-struct WallPaper: Decodable {
+struct WallPaper: Codable {
    let brightness: Int // brightness
    let imageName: String // imageName
    let imageType: ImageType // imageType
-   let tag: String?
+   let tag: String
+}
+
+class MyWallPaper {
+   let wallpaper: WallPaper
+   var image: UIImage?
+   
+   init(wallpaper: WallPaper) {
+      self.wallpaper = wallpaper
+      self.image = nil
+   }
 }
 
 // 디스플레이 타입 설정
@@ -41,14 +51,12 @@ class WallPapers {
    private let ref = Database.database().reference()
    private var displayType: DisplayType?
    var lastUpdateDate: Date?
-   var images: [UIImage?] = []
-   var data: [WallPaper] = []
+   var datas: [MyWallPaper] = []
    var tags: [String] = []
    
    // 데이터 다운로드
    func dataDownload(completion: (() -> ())? = nil) {
-      images.removeAll()
-      data.removeAll()
+      datas.removeAll()
       self.ref.child("list").observe(.value) { (snapshot) in
          DispatchQueue.global().async {
             for value in snapshot.children.reversed() {
@@ -56,7 +64,11 @@ class WallPapers {
                do {
                   let data = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
                   let wallpaper = try JSONDecoder().decode(WallPaper.self, from: data)
-                  self.data.append(wallpaper)
+                  self.datas.append(MyWallPaper(wallpaper: wallpaper))
+                  WallPapers.shared.tags.append(contentsOf:  wallpaper.tag.split(separator: " ").map {
+                     String($0)
+                  })
+                  
                } catch {
                   print(error.localizedDescription)
                }
@@ -66,18 +78,14 @@ class WallPapers {
       }
    }
    
-   func dataDownload() {
-      <#function body#>
-   }
-   
    // 이미지 다운로드
-   func imageDownload(index: Int, completion: @escaping (UIImage?) -> ()) {
+   func imageDownload(info: MyWallPaper, completion: @escaping (UIImage?) -> ()) {
       guard let deviceType = displayType else { fatalError("Invalid Display Size") }
       var urlString: String?
       if deviceType == .superRetina {
-         urlString = data[index].imageType.superRetinaDeviceImageURL
+         urlString = info.wallpaper.imageType.superRetinaDeviceImageURL
       } else {
-         urlString = data[index].imageType.retinaDeviceImageURL
+         urlString = info.wallpaper.imageType.retinaDeviceImageURL
       }
       guard let urlStr = urlString, let url = URL(string: urlStr) else {
          fatalError("Invalid URL")
@@ -92,7 +100,7 @@ class WallPapers {
             } else if let data = data {
                DispatchQueue.main.async {
                   let image = UIImage(data: data)
-                  self.images[index] = image
+                  info.image = image
                   completion(image)
                }
             }

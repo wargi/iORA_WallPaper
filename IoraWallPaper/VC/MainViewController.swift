@@ -18,13 +18,14 @@ class MainViewController: UIViewController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-
+      
       configure()
-      dataLoad()
    }
    
    // 기본 설정
    func configure() {
+      NotificationCenter.default.addObserver(self, selector: #selector(self.dataLoad), name: NSNotification.Name(rawValue: "didFinishLaunchingWithOptions"), object: nil)
+      
       reachability = Reachability()
       
       do {
@@ -54,28 +55,18 @@ class MainViewController: UIViewController {
    
    // 데이타 로드
    @objc func dataLoad() {
-      WallPapers.shared.dataDownload {
-         DispatchQueue.main.async {
-            for _ in 0 ..< WallPapers.shared.data.count {
-               WallPapers.shared.images.append(nil)
-            }
-            
-            self.collectionView.refreshControl?.endRefreshing()
-            self.collectionView.reloadData()
-         }
-      }
-      
-      
+      self.collectionView.refreshControl?.endRefreshing()
+      self.collectionView.reloadData()
    }
    
    // 화면 전환 전 데이터 전달
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      guard let detailImgVC = segue.destination as? DetailImageViewController,
+      if let detailImgVC = segue.destination as? DetailImageViewController,
          let cell = sender as? WallPapeerCollectionViewCell,
-         let indexPath = collectionView.indexPath(for: cell) else { fatalError() }
-      
-      detailImgVC.image = WallPapers.shared.images[indexPath.item]
-      detailImgVC.info = WallPapers.shared.data[indexPath.item]
+         let indexPath = collectionView.indexPath(for: cell) {
+         
+         detailImgVC.datas = Array(WallPapers.shared.datas[indexPath.item...])
+      }
    }
    
    //MARK: 버튼 액션
@@ -109,7 +100,7 @@ class MainViewController: UIViewController {
 //MARK: UICollectionView DataSource & Delegate
 extension MainViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return WallPapers.shared.data.count
+      return WallPapers.shared.datas.count
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -117,12 +108,17 @@ extension MainViewController: UICollectionViewDataSource {
          fatalError("Not Found Cell")
       }
       
-      if let image = WallPapers.shared.images[indexPath.item] {
+      let index = indexPath.item
+      
+      cell.layer.cornerRadius = 5
+      cell.layer.borderWidth = 0.1
+      cell.layer.borderColor = UIColor.gray.cgColor
+      
+      if let image = WallPapers.shared.datas[index].image {
          cell.wallpaperImageView.image = image
       } else {
-         cell.configure(itemAt: indexPath.item)
+         cell.configure(info: WallPapers.shared.datas[index])
       }
-      
       
       return cell
    }

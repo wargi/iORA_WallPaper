@@ -10,7 +10,7 @@ import UIKit
 
 class CalendarViewController: UIViewController {
    // 배경화면 관련
-   var image: UIImage?
+   public var info: MyWallPaper?
    @IBOutlet private weak var imageView: UIImageView!
    
    // 상단 버튼
@@ -36,8 +36,7 @@ class CalendarViewController: UIViewController {
    private lazy var month = calendar.component(.month, from: currentDate)
    
    // 컬러 관련
-   public var brightness: Int?
-   public lazy var color = WallPapers.shared.getColor(brightness: brightness)
+   public lazy var color = WallPapers.shared.getColor(brightness: info?.wallpaper.brightness)
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -55,7 +54,7 @@ class CalendarViewController: UIViewController {
    
    // 이미지 설정 및 버튼 컬러 설정
    func setImageAndColor() {
-      guard let image = image else { return }
+      guard let image = info?.image else { return }
       imageView.image = image
       
       let closeImage = UIImage(named: "close")?.withRenderingMode(.alwaysTemplate)
