@@ -63,13 +63,18 @@ class MainViewController: UIViewController {
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
       if let detailImgVC = segue.destination as? DetailImageViewController,
          let cell = sender as? WallPapeerCollectionViewCell,
-         let indexPath = collectionView.indexPath(for: cell) {
+         let index = collectionView.indexPath(for: cell)?.item {
          
-         detailImgVC.datas = Array(WallPapers.shared.datas[indexPath.item...])
+         if WallPapers.shared.datas.count - index > 9 {
+            let end = index + 9
+            detailImgVC.datas = Array(WallPapers.shared.datas[index...end])
+         } else {
+            detailImgVC.datas = Array(WallPapers.shared.datas[index...])
+         }
       }
    }
    
-   //MARK: 버튼 액션
+   //MARK: Button Action
    // 인스타그램으로 이동
    @IBAction private func goInsta(_ sender: UIButton) {
       guard let url = URL(string: "https://instagram.com/iora_studio?igshid=1erlpx3rebg7b") else { fatalError("Invalid URL") }

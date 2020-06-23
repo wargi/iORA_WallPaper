@@ -25,7 +25,7 @@ class CalendarViewController: UIViewController {
    @IBOutlet private weak var yearLabel: UILabel!
    @IBOutlet private weak var monthLabel: UILabel!
    @IBOutlet private weak var lineView: UIView!
-
+   
    private let dateArr = ["S", "M", "T", "W", "T", "F", "S"]
    private let monthArr = ["January", "February", "March", "April", "May", "June",
                            "July", "August", "September", "October", "November", "December"]
@@ -198,9 +198,7 @@ extension CalendarViewController: UICollectionViewDataSource {
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DayCollectionViewCell.identifier,
-                                                          for: indexPath) as? DayCollectionViewCell else {
-                                                            fatalError("Not Match Cell")
-      }
+         for: indexPath) as? DayCollectionViewCell else { fatalError("Not Match Cell") }
       
       switch (indexPath.section, indexPath.row) {
       case (0, _):

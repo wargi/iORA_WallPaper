@@ -35,14 +35,17 @@
                                 <rect key="frame" x="8" y="0.0" width="406" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qjb-Gg-TIU">
-                                        <rect key="frame" x="0.0" y="0.0" width="25" height="56"/>
-                                        <state key="normal" image="back"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="56"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="odr-Tf-zr0"/>
+                                        </constraints>
+                                        <state key="normal" image="search_back"/>
                                         <connections>
                                             <action selector="popAction:" destination="klj-nG-AVz" eventType="touchUpInside" id="Upb-0k-BLS"/>
                                         </connections>
                                     </button>
                                     <searchBar contentMode="redraw" placeholder="Enter the tag you want to find!" translatesAutoresizingMaskIntoConstraints="NO" id="as1-dx-5Hg">
-                                        <rect key="frame" x="27" y="0.0" width="379" height="56"/>
+                                        <rect key="frame" x="37" y="0.0" width="369" height="56"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                         <scopeButtonTitles>
                                             <string>Title</string>
@@ -171,8 +174,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m02-ra-U3V">
-                                        <rect key="frame" x="16" y="12.666666666666671" width="25" height="25"/>
-                                        <state key="normal" image="back"/>
+                                        <rect key="frame" x="15.999999999999998" y="13.333333333333327" width="23.333333333333329" height="23.333333333333329"/>
+                                        <state key="normal" image="search_back"/>
                                         <connections>
                                             <action selector="goInsta:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xse-w3-UIe"/>
                                             <action selector="popAction:" destination="TrM-fv-R4H" eventType="touchUpInside" id="dfS-L3-3Jm"/>
@@ -313,7 +316,7 @@ Check your connection</string>
                                             <constraint firstAttribute="width" constant="35" id="RAD-4N-Amm"/>
                                             <constraint firstAttribute="height" constant="35" id="dvp-Na-sCI"/>
                                         </constraints>
-                                        <inset key="imageEdgeInsets" minX="7.5" minY="7.5" maxX="7.5" maxY="7.5"/>
+                                        <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                         <state key="normal" image="search"/>
                                         <connections>
                                             <segue destination="klj-nG-AVz" kind="show" id="7BK-eV-iXK"/>
@@ -808,7 +811,7 @@ Check your connection</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9Ng-Na-zMd"/>
+        <segue reference="dhe-y0-aBO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="ColorPalette" width="375" height="812"/>
@@ -821,7 +824,8 @@ Check your connection</string>
         <image name="pDownload" width="28.333333969116211" height="27.666666030883789"/>
         <image name="palette" width="30" height="30"/>
         <image name="preview" width="25" height="25"/>
-        <image name="search" width="25" height="25"/>
+        <image name="search" width="23.333333969116211" height="23.333333969116211"/>
+        <image name="search_back" width="23.333333969116211" height="23.333333969116211"/>
         <image name="share" width="25" height="25"/>
     </resources>
 </document>

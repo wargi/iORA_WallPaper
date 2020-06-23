@@ -17,7 +17,18 @@ class SearchViewController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
+      configure()
+      NotificationCenter.default.addObserver(self,
+                                             selector: #selector(self.configure),
+                                             name: NSNotification.Name(rawValue: "didFinishLaunchingWithOptions"),
+                                             object: nil)
+      
+   }
+   
+   @objc func configure() {
       filtered = WallPapers.shared.tags
+      
+      tableView.reloadData()
    }
    
    override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +54,7 @@ class SearchViewController: UIViewController {
          let index = tableView.indexPath(for: cell)?.row else { return }
       
       let tag = filtered[index]
-
+      
       let wallpapers = WallPapers.shared.datas.filter { $0.wallpaper.tag.contains(tag) }
       
       resultVC.resultWallPapers = wallpapers

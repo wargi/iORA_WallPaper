@@ -15,12 +15,12 @@ class DetailImageViewController: UIViewController {
    @IBOutlet private weak var previewButton: UIButton!
    @IBOutlet private weak var saveButton: UIButton!
    @IBOutlet private weak var shareButton: UIButton!
-   
-   @IBOutlet private weak var collectionView: UICollectionView!
+   // 페이지 컨트롤
    @IBOutlet private weak var pageControl: UIPageControl!
+   // 디테일 컬렉션 뷰
+   @IBOutlet private weak var collectionView: UICollectionView!
    private var fromTap = false
-   
-   // 버튼 컬러 설정 관련
+   // 페이지 데이터 목록
    public var datas: [MyWallPaper] = []
    
    override func viewDidLoad() {
@@ -40,8 +40,8 @@ class DetailImageViewController: UIViewController {
       }
    }
    
+   // 앱 기본 설정
    func configure() {
-      
       pageControl.numberOfPages = datas.count
       
       datas.forEach { info in
@@ -76,7 +76,7 @@ class DetailImageViewController: UIViewController {
       shareButton.setImage(shareImage, for: .normal)
    }
    
-   //MARK: 상단 버튼 액션
+   //MARK: Button Action
    // 파일 다운로드
    @IBAction private func downlaodAction(_ sender: UIButton) {
       guard let image = datas[pageControl.currentPage].image else { return }
@@ -96,6 +96,7 @@ class DetailImageViewController: UIViewController {
       present(activityVC, animated: true, completion: nil)
    }
    
+   // Page Change Action
    @IBAction func pageChange(_ sender: UIPageControl) {
       fromTap = true
       
@@ -111,6 +112,7 @@ class DetailImageViewController: UIViewController {
    }
 }
 
+//MARK: Page Control / ScrollView Delegate
 extension DetailImageViewController: UIScrollViewDelegate {
    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
       fromTap = false
@@ -131,6 +133,7 @@ extension DetailImageViewController: UIScrollViewDelegate {
    }
 }
 
+//MARK: UICollectionView DataSource & Delegate
 extension DetailImageViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       return datas.count
@@ -140,7 +143,6 @@ extension DetailImageViewController: UICollectionViewDataSource {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.identifier, for: indexPath) as? DetailCollectionViewCell else { fatalError("Invalid Cell") }
       
       let target = datas[indexPath.row]
-      
       cell.configure(info: target)
       
       return cell
@@ -151,6 +153,4 @@ extension DetailImageViewController: UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.height - 0.1)
    }
-   
-   
 }

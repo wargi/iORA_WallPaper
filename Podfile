@@ -9,7 +9,8 @@ target 'IoraWallPaper' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
-  pod 'Firebase/Firestore'
+  pod 'Firebase/Core'
+  pod 'Firebase/Messaging'
   
   # Pods for IoraWallPaper
   

@@ -35,6 +35,8 @@
 /* Begin PBXFileReference section */
 		3485C558D3B708322FB9F7F4 /* Pods-IoraWallPaper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoraWallPaper.release.xcconfig"; path = "Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper.release.xcconfig"; sourceTree = "<group>"; };
 		8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		8E1BE51D24A188DA00317984 /* iORADebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iORADebug.entitlements; sourceTree = "<group>"; };
+		8E1BE51E24A188EC00317984 /* iORA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iORA.entitlements; sourceTree = "<group>"; };
 		8E242FDC24A119640087A41F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8E242FDE24A119C40087A41F /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		8E45512624922AD200CD9F7C /* ShowPreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPreViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +105,8 @@
 		8E888031248DF71300E7E620 /* IoraWallPaper */ = {
 			isa = PBXGroup;
 			children = (
+				8E1BE51E24A188EC00317984 /* iORA.entitlements */,
+				8E1BE51D24A188DA00317984 /* iORADebug.entitlements */,
 				8E888047248DF72200E7E620 /* App&Scene */,
 				8E922AC72490CBAF00424D10 /* Model */,
 				8E888048248DF73900E7E620 /* VC */,
@@ -473,8 +477,10 @@
 			baseConfigurationReference = AC5DAF1AAEC8A387DB304794 /* Pods-IoraWallPaper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = IoraWallPaper/iORADebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3ZS2532XM8;
 				INFOPLIST_FILE = IoraWallPaper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -482,6 +488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wargi.IoraWallPaper;
 				PRODUCT_NAME = iORA;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -495,8 +502,10 @@
 			baseConfigurationReference = 3485C558D3B708322FB9F7F4 /* Pods-IoraWallPaper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = IoraWallPaper/iORA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 3ZS2532XM8;
 				INFOPLIST_FILE = IoraWallPaper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -504,6 +513,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wargi.IoraWallPaper;
 				PRODUCT_NAME = iORA;
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -12,13 +12,11 @@ class ShowPreViewController: UIViewController {
    // 배경 화면 관련
    public var info: MyWallPaper?
    @IBOutlet private weak var imageView: UIImageView!
-   
    // 상단 버튼
    @IBOutlet private weak var closeButton: UIButton!
    @IBOutlet private weak var downloadButton: UIButton!
    @IBOutlet private weak var displayTimeLabel: UILabel!
    @IBOutlet private weak var displayDateLabel: UILabel!
-   
    // 버튼 컬러 설정
    public lazy var color: UIColor = {
       guard let brightness = info?.wallpaper.brightness else { return .black }
@@ -48,8 +46,8 @@ class ShowPreViewController: UIViewController {
       downloadButton.setImage(downImage, for: .normal)
    }
    
-   //MARK: 상단 버튼 액션
-   // 파일 다운로드
+   //MARK: Button Action
+   // 파일 다운로드 Action
    @IBAction private func downloadAction(_ sender: UIButton) {
       guard let image = info?.image else { return }
       WallPapers.shared.imageFileDownload(image: image)
