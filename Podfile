@@ -12,7 +12,20 @@ target 'IoraWallPaper' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   
-  # Pods for IoraWallPaper
+  # RxSwift: Main Framework
+  pod 'RxSwift'
+  pod 'RxCocoa'
   
+  # RxSwift: Etc
+  pod 'NSObject+Rx'
+  pod 'RxSwiftExt'
+  pod 'Action'
+  pod 'RxDataSources'
+  pod "RxGesture"
+  pod 'RxReachability'
+  pod 'RxKeyboard'
+  
+  # Networking
+  pod 'RxAlamofire'
 
 end

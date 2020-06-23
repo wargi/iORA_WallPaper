@@ -84,6 +84,21 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8E5D0DB124A27B38003A25C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8E5D0DB224A27B49003A25C6 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				8E888034248DF71300E7E620 /* SceneDelegate.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
 		8E888026248DF71300E7E620 = {
 			isa = PBXGroup;
 			children = (
@@ -107,8 +122,10 @@
 			children = (
 				8E1BE51E24A188EC00317984 /* iORA.entitlements */,
 				8E1BE51D24A188DA00317984 /* iORADebug.entitlements */,
-				8E888047248DF72200E7E620 /* App&Scene */,
+				8E888047248DF72200E7E620 /* AppDelegate */,
 				8E922AC72490CBAF00424D10 /* Model */,
+				8E5D0DB224A27B49003A25C6 /* Scene */,
+				8E5D0DB124A27B38003A25C6 /* ViewModel */,
 				8E888048248DF73900E7E620 /* VC */,
 				8E888049248DF73E00E7E620 /* View */,
 				8E888046248DF71B00E7E620 /* Resource */,
@@ -129,13 +146,12 @@
 			path = Resource;
 			sourceTree = "<group>";
 		};
-		8E888047248DF72200E7E620 /* App&Scene */ = {
+		8E888047248DF72200E7E620 /* AppDelegate */ = {
 			isa = PBXGroup;
 			children = (
 				8E888032248DF71300E7E620 /* AppDelegate.swift */,
-				8E888034248DF71300E7E620 /* SceneDelegate.swift */,
 			);
-			path = "App&Scene";
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		8E888048248DF73900E7E620 /* VC */ = {
