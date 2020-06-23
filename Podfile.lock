@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (5.2.1)
   - Firebase/Analytics (6.27.0):
     - Firebase/Core
   - Firebase/Core (6.27.0):
@@ -95,16 +96,32 @@ PODS:
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.9)
   - Protobuf (3.12.0)
+  - RxAlamofire (5.5.0):
+    - RxAlamofire/Core (= 5.5.0)
+  - RxAlamofire/Core (5.5.0):
+    - Alamofire (~> 5.1)
+    - RxSwift (~> 5.1)
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
 
 DEPENDENCIES:
+  - Alamofire
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Database
   - Firebase/Messaging
   - Firebase/Storage
+  - RxAlamofire
+  - RxCocoa
+  - RxSwift
 
 SPEC REPOS:
   trunk:
+    - Alamofire
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
@@ -123,8 +140,13 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Protobuf
+    - RxAlamofire
+    - RxCocoa
+    - RxRelay
+    - RxSwift
 
 SPEC CHECKSUMS:
+  Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
   Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
   FirebaseAnalytics: 0ea640473474f036cabbc2576e20c2d63671c92f
   FirebaseCore: feda061cb1ee6d8ad4824f4a4a8ffbcfe284f595
@@ -143,7 +165,11 @@ SPEC CHECKSUMS:
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
+  RxAlamofire: 22287c710761466d0123504c566a8381520d4d63
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: a7af381b0d622b7e31eb26fc955ad5ace5c9b793
+PODFILE CHECKSUM: ca1f0d2ccfbeacab0e843f5df87bf4846b32fca0
 
 COCOAPODS: 1.9.3

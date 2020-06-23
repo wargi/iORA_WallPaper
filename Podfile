@@ -11,6 +11,10 @@ target 'IoraWallPaper' do
   pod 'Firebase/Database'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
+  pod 'Alamofire'
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxAlamofire'
   
   # Pods for IoraWallPaper
   
