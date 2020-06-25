@@ -43,6 +43,12 @@ class DetailImageViewController: UIViewController {
    // 앱 기본 설정
    func configure() {
       pageControl.numberOfPages = datas.count
+      let scale: CGFloat = 1
+      pageControl.transform = CGAffineTransform(scaleX: scale, y: scale)
+      
+      for dot in pageControl.subviews {
+         dot.transform = CGAffineTransform(scaleX: scale, y: scale)
+      }
       
       datas.forEach { info in
          if info.image == nil {

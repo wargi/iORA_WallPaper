@@ -26,5 +26,6 @@ class DetailCollectionViewCell: UICollectionViewCell {
    
    override func prepareForReuse() {
       wallPaperImageView.image = nil
+      tagView.isHidden = false
    }
 }

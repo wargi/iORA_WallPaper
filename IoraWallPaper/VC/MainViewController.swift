@@ -117,7 +117,7 @@ extension MainViewController: UICollectionViewDataSource {
       
       cell.layer.cornerRadius = 5
       cell.layer.borderWidth = 0.1
-      cell.layer.borderColor = UIColor.gray.cgColor
+      cell.layer.borderColor = UIColor.lightGray.cgColor
       
       if let image = WallPapers.shared.datas[index].image {
          cell.wallpaperImageView.image = image
