@@ -26,7 +26,6 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
       configure()
       setImageAndColor(brightness: datas[0].wallpaper.brightness)
    }

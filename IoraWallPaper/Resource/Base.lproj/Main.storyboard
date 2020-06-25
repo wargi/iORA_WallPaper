@@ -217,7 +217,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController modalTransitionStyle="partialCurl" id="BYZ-38-t0r" customClass="MainViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" modalTransitionStyle="partialCurl" id="BYZ-38-t0r" customClass="MainViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -563,10 +563,10 @@ Check your connection</string>
             </objects>
             <point key="canvasLocation" x="1831.8840579710147" y="118.52678571428571"/>
         </scene>
-        <!--CalendarViewController-->
+        <!--CalendarVC-->
         <scene sceneID="u16-GI-6Lu">
             <objects>
-                <viewController storyboardIdentifier="CalendarVC" title="CalendarViewController" modalPresentationStyle="fullScreen" id="TuU-La-Pew" customClass="CalendarViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarVC" title="CalendarVC" modalPresentationStyle="fullScreen" id="TuU-La-Pew" customClass="CalendarViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9UP-MW-GRS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -716,10 +716,10 @@ Check your connection</string>
             </objects>
             <point key="canvasLocation" x="1831.8840579710147" y="795.53571428571422"/>
         </scene>
-        <!--ShowPreViewController-->
+        <!--ShowPreVC-->
         <scene sceneID="YP0-YM-elm">
             <objects>
-                <viewController storyboardIdentifier="ShowPreVC" title="ShowPreViewController" modalPresentationStyle="fullScreen" id="hjq-DW-yC7" customClass="ShowPreViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowPreVC" title="ShowPreVC" modalPresentationStyle="fullScreen" id="hjq-DW-yC7" customClass="ShowPreViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xNd-i1-xtq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

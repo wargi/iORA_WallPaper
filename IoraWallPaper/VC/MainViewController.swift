@@ -73,9 +73,9 @@ class MainViewController: UIViewController, ViewModelBindableType {
          
          if WallPapers.shared.datas.count - index > 9 {
             let end = index + 9
-            detailImgVC.datas = Array(WallPapers.shared.datas[index...end])
+            detailImgVC.datas = Array(WallPapers.shared.randomDatas[index...end])
          } else {
-            detailImgVC.datas = Array(WallPapers.shared.datas[index...])
+            detailImgVC.datas = Array(WallPapers.shared.randomDatas[index...])
          }
       }
    }
@@ -125,10 +125,10 @@ extension MainViewController: UICollectionViewDataSource {
       cell.layer.borderWidth = 0.1
       cell.layer.borderColor = UIColor.lightGray.cgColor
       
-      if let image = WallPapers.shared.datas[index].image {
+      if let image = WallPapers.shared.randomDatas[index].image {
          cell.wallpaperImageView.image = image
       } else {
-         cell.configure(info: WallPapers.shared.datas[index])
+         cell.configure(info: WallPapers.shared.randomDatas[index])
       }
       
       return cell

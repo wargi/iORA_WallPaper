@@ -52,6 +52,7 @@ class WallPapers {
    private var displayType: DisplayType?
    var lastUpdateDate: Date?
    var datas: [MyWallPaper] = []
+   var randomDatas: [MyWallPaper] = []
    var tags: [String] = []
    
    // 데이터 다운로드

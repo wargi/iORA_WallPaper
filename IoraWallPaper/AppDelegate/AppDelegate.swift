@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let set: Set<String> = Set(WallPapers.shared.tags)
             WallPapers.shared.tags = Array(set)
             WallPapers.shared.tags.sort()
+            WallPapers.shared.randomDatas = WallPapers.shared.datas.shuffled()
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didFinishLaunchingWithOptions"),
                                             object: nil)
