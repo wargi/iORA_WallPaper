@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailImageViewController: UIViewController {
+class DetailImageViewController: UIViewController, ViewModelBindableType {
    // 상단 버튼
    @IBOutlet private weak var backButton: UIButton!
    @IBOutlet private weak var calendarButton: UIButton!
@@ -22,12 +22,17 @@ class DetailImageViewController: UIViewController {
    private var fromTap = false
    // 페이지 데이터 목록
    public var datas: [MyWallPaper] = []
+   var viewModeel: DetailImageViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
       
       configure()
       setImageAndColor(brightness: datas[0].wallpaper.brightness)
+   }
+   
+   func bindViewModel() {
+      
    }
    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -8,11 +8,12 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var searchBar: UISearchBar!
    @IBOutlet private weak var tableView: UITableView!
    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
    var filtered: [String] = []
+   var viewModeel: SearchViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -22,6 +23,10 @@ class SearchViewController: UIViewController {
                                              selector: #selector(self.configure),
                                              name: NSNotification.Name(rawValue: "didFinishLaunchingWithOptions"),
                                              object: nil)
+      
+   }
+   
+   func bindViewModel() {
       
    }
    

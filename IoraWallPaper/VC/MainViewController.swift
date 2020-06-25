@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, ViewModelBindableType {
    // 이미지 리스트 컬렉션 뷰
    @IBOutlet private weak var collectionView: UICollectionView!
    // 상단 UI
@@ -16,10 +16,16 @@ class MainViewController: UIViewController {
    @IBOutlet private weak var notConnectView: UIView!
    private var reachability: Reachability?
    
+   var viewModeel: MainViewModel!
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       
       configure()
+   }
+   
+   func bindViewModel() {
+      
    }
    
    // 기본 설정

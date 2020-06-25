@@ -26,7 +26,7 @@
         <!--SearchViewController-->
         <scene sceneID="AUi-M6-tbw">
             <objects>
-                <viewController title="SearchViewController" id="klj-nG-AVz" customClass="SearchViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchVC" title="SearchViewController" id="klj-nG-AVz" customClass="SearchViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XUD-Wf-5d5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -114,7 +114,7 @@
         <!--SearchResultViewController-->
         <scene sceneID="hnU-O7-WbT">
             <objects>
-                <viewController storyboardIdentifier="SearchResultViewController" title="SearchResultViewController" id="TrM-fv-R4H" customClass="SearchResultViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResultVC" title="SearchResultViewController" id="TrM-fv-R4H" customClass="SearchResultViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cxP-Gr-f6T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -375,7 +375,7 @@ Check your connection</string>
         <!--Detail Image View Controller-->
         <scene sceneID="9YV-hE-Qj7">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="tu2-80-rfH" customClass="DetailImageViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailImageVC" modalPresentationStyle="fullScreen" id="tu2-80-rfH" customClass="DetailImageViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xv6-eb-mAU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -566,7 +566,7 @@ Check your connection</string>
         <!--CalendarViewController-->
         <scene sceneID="u16-GI-6Lu">
             <objects>
-                <viewController storyboardIdentifier="CalendarViewController" title="CalendarViewController" modalPresentationStyle="fullScreen" id="TuU-La-Pew" customClass="CalendarViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarVC" title="CalendarViewController" modalPresentationStyle="fullScreen" id="TuU-La-Pew" customClass="CalendarViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9UP-MW-GRS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -719,7 +719,7 @@ Check your connection</string>
         <!--ShowPreViewController-->
         <scene sceneID="YP0-YM-elm">
             <objects>
-                <viewController storyboardIdentifier="ShowPreViewController" title="ShowPreViewController" modalPresentationStyle="fullScreen" id="hjq-DW-yC7" customClass="ShowPreViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowPreVC" title="ShowPreViewController" modalPresentationStyle="fullScreen" id="hjq-DW-yC7" customClass="ShowPreViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xNd-i1-xtq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -792,7 +792,7 @@ Check your connection</string>
         <!--Navigation Controller-->
         <scene sceneID="CBw-Yb-3pd">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fZd-Bb-I4I" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNav" automaticallyAdjustsScrollViewInsets="NO" id="fZd-Bb-I4I" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="8jh-O8-PuI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

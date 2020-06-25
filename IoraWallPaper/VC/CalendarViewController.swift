@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: UIViewController, ViewModelBindableType {
    // 배경화면 관련
    public var info: MyWallPaper?
    @IBOutlet private weak var imageView: UIImageView!
@@ -37,6 +37,7 @@ class CalendarViewController: UIViewController {
    
    // 컬러 관련
    public lazy var color = WallPapers.shared.getColor(brightness: info?.wallpaper.brightness)
+   var viewModeel: CalendarViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -44,6 +45,10 @@ class CalendarViewController: UIViewController {
       configure()
       setImageAndColor()
       calendarCreate(year: year, month: month)
+   }
+   
+   func bindViewModel() {
+      
    }
    
    // 기본 설정

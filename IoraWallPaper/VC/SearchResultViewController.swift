@@ -8,17 +8,22 @@
 
 import UIKit
 
-class SearchResultViewController: UIViewController {
+class SearchResultViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var titleLabel: UILabel!
    @IBOutlet private weak var collectionView: UICollectionView!
    
    var resultWallPapers = [MyWallPaper]()
    var titleString: String?
+   var viewModeel: SearchResultViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
       
       configure()
+   }
+   
+   func bindViewModel() {
+      
    }
    
    func configure() {

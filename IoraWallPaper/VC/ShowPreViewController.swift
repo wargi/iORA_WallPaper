@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShowPreViewController: UIViewController {
+class ShowPreViewController: UIViewController, ViewModelBindableType {
    // 배경 화면 관련
    public var info: MyWallPaper?
    @IBOutlet private weak var imageView: UIImageView!
@@ -23,10 +23,16 @@ class ShowPreViewController: UIViewController {
       return brightness == 0 ? .white : .black
    }()
    
+   var viewModeel: ShowPreViewModel!
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       
       setImageAndColor()
+   }
+   
+   func bindViewModel() {
+      
    }
    
    // 이미지 설정 및 버튼 컬러 설정
