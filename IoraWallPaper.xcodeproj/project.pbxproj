@@ -14,6 +14,8 @@
 		8E242FDD24A119640087A41F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E242FDC24A119640087A41F /* SearchViewController.swift */; };
 		8E242FDF24A119C40087A41F /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E242FDE24A119C40087A41F /* SearchResultViewController.swift */; };
 		8E45512724922AD200CD9F7C /* ShowPreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E45512624922AD200CD9F7C /* ShowPreViewController.swift */; };
+		8E5D395324A82554009E4D22 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5D395224A82554009E4D22 /* InitialViewController.swift */; };
+		8E5D395524A8263D009E4D22 /* InitialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5D395424A8263D009E4D22 /* InitialCollectionViewCell.swift */; };
 		8E67596D24A50C0500C5DDB6 /* TransitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E67596C24A50C0500C5DDB6 /* TransitionModel.swift */; };
 		8E67596F24A50CDC00C5DDB6 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E67596E24A50CDC00C5DDB6 /* SceneCoordinator.swift */; };
 		8E888033248DF71300E7E620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E888032248DF71300E7E620 /* AppDelegate.swift */; };
@@ -53,6 +55,8 @@
 		8E242FDC24A119640087A41F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8E242FDE24A119C40087A41F /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		8E45512624922AD200CD9F7C /* ShowPreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPreViewController.swift; sourceTree = "<group>"; };
+		8E5D395224A82554009E4D22 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		8E5D395424A8263D009E4D22 /* InitialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E67596C24A50C0500C5DDB6 /* TransitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionModel.swift; sourceTree = "<group>"; };
 		8E67596E24A50CDC00C5DDB6 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		8E88802F248DF71300E7E620 /* iORA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iORA.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -190,6 +194,7 @@
 		8E888048248DF73900E7E620 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				8E5D395224A82554009E4D22 /* InitialViewController.swift */,
 				8E888036248DF71300E7E620 /* MainViewController.swift */,
 				8E95A9E62490839600F55F82 /* DetailImageViewController.swift */,
 				8E45512624922AD200CD9F7C /* ShowPreViewController.swift */,
@@ -203,6 +208,7 @@
 		8E888049248DF73E00E7E620 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8E5D395424A8263D009E4D22 /* InitialCollectionViewCell.swift */,
 				8E88804A248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift */,
 				8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */,
 				8E8B4A732494C6930072620A /* DayCollectionViewCell.swift */,
@@ -369,6 +375,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E8B4A722494C5200072620A /* CalendarViewController.swift in Sources */,
+				8E5D395324A82554009E4D22 /* InitialViewController.swift in Sources */,
 				8E8B4A742494C6930072620A /* DayCollectionViewCell.swift in Sources */,
 				8E922AC92490CBC400424D10 /* WallPaper.swift in Sources */,
 				8EBD4CD824A4BC98005EC9A2 /* SearchResultViewModel.swift in Sources */,
@@ -376,6 +383,7 @@
 				8E8B4A762497282F0072620A /* PHPhotoLibrary+PhotoSave.swift in Sources */,
 				8E67596F24A50CDC00C5DDB6 /* SceneCoordinator.swift in Sources */,
 				8EBD4CD524A4BC64005EC9A2 /* SearchViewModel.swift in Sources */,
+				8E5D395524A8263D009E4D22 /* InitialCollectionViewCell.swift in Sources */,
 				8E888037248DF71300E7E620 /* MainViewController.swift in Sources */,
 				8E1DE52C24A5053500DE8FED /* SceneCoordinatorType.swift in Sources */,
 				8EBD4CCD24A4BC28005EC9A2 /* MainViewModel.swift in Sources */,
@@ -540,7 +548,7 @@
 				CODE_SIGN_ENTITLEMENTS = IoraWallPaper/iORADebug.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3ZS2532XM8;
 				INFOPLIST_FILE = IoraWallPaper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -565,7 +573,7 @@
 				CODE_SIGN_ENTITLEMENTS = IoraWallPaper/iORA.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 3ZS2532XM8;
 				INFOPLIST_FILE = IoraWallPaper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

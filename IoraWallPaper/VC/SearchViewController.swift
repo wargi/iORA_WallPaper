@@ -93,7 +93,7 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UISearchBarDelegate {
    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-      filtered = searchText.isEmpty ? WallPapers.shared.tags : WallPapers.shared.tags.filter({ tag -> Bool in
+      filtered = searchText.lowercased().isEmpty ? WallPapers.shared.tags : WallPapers.shared.tags.filter({ tag -> Bool in
          let tmp: NSString = tag as NSString
          let range = tmp.range(of: searchText, options: .caseInsensitive)
          return range.location != NSNotFound

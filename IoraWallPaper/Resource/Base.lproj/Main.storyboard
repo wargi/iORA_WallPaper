@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fZd-Bb-I4I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V8x-83-FKp">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -23,6 +23,67 @@
         </array>
     </customFonts>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="exm-rh-5R3">
+            <objects>
+                <viewController id="V8x-83-FKp" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ncP-E2-IZb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MMf-kJ-Oot">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uFX-jm-cxn">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="InitialCollectionViewCell" reuseIdentifier="InitialCollectionViewCell" id="xeO-P1-f88" customClass="InitialCollectionViewCell" customModule="iORA" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Rzz-7W-f8x">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cs9-DQ-7vX">
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="cs9-DQ-7vX" secondAttribute="bottom" id="Iqm-2R-Pkf"/>
+                                                <constraint firstItem="cs9-DQ-7vX" firstAttribute="leading" secondItem="Rzz-7W-f8x" secondAttribute="leading" id="Yp9-Eo-4Io"/>
+                                                <constraint firstItem="cs9-DQ-7vX" firstAttribute="top" secondItem="Rzz-7W-f8x" secondAttribute="top" id="bRq-M6-kYz"/>
+                                                <constraint firstAttribute="trailing" secondItem="cs9-DQ-7vX" secondAttribute="trailing" id="qbG-eT-qRD"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="imageView" destination="cs9-DQ-7vX" id="A4Z-xx-tNF"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="V8x-83-FKp" id="LNl-YK-AaP"/>
+                                    <outlet property="delegate" destination="V8x-83-FKp" id="N9T-69-yuo"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="MMf-kJ-Oot" secondAttribute="bottom" id="6rC-w0-AWu"/>
+                            <constraint firstItem="TwN-pK-OCb" firstAttribute="trailing" secondItem="MMf-kJ-Oot" secondAttribute="trailing" id="DHC-ms-LJg"/>
+                            <constraint firstItem="MMf-kJ-Oot" firstAttribute="leading" secondItem="TwN-pK-OCb" secondAttribute="leading" id="R11-US-wTF"/>
+                            <constraint firstItem="MMf-kJ-Oot" firstAttribute="top" secondItem="ncP-E2-IZb" secondAttribute="top" id="boo-Cd-CLg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TwN-pK-OCb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsJ-VJ-HAF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="335" y="-536"/>
+        </scene>
         <!--SearchViewController-->
         <scene sceneID="AUi-M6-tbw">
             <objects>
@@ -787,7 +848,7 @@ Check your connection</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jca-iw-BnD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2600" y="118.52678571428571"/>
+            <point key="canvasLocation" x="2598.5507246376815" y="118.52678571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CBw-Yb-3pd">

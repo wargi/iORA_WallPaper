@@ -54,6 +54,7 @@ class WallPapers {
    var datas: [MyWallPaper] = []
    var randomDatas: [MyWallPaper] = []
    var tags: [String] = []
+   var firstExecution = false
    
    // 데이터 다운로드
    func dataDownload(completion: (() -> ())? = nil) {
