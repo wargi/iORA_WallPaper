@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49A370F9930181A69515B738 /* Pods_IoraWallPaper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABB0D29F9DDC3A2A1D02674 /* Pods_IoraWallPaper.framework */; };
+		8E06667D24AA90ED00FB5B92 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */; };
 		8E1BE51C24A1536B00317984 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */; };
 		8E1DE52C24A5053500DE8FED /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DE52B24A5053500DE8FED /* SceneCoordinatorType.swift */; };
 		8E1DE52E24A505B000DE8FED /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DE52D24A505B000DE8FED /* Scene.swift */; };
@@ -41,12 +42,14 @@
 		8ECD80382490C6E800DA4B5E /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80342490C6E700DA4B5E /* NanumSquareRoundL.ttf */; };
 		8ECD80392490C6E800DA4B5E /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80352490C6E700DA4B5E /* NanumSquareRoundEB.ttf */; };
 		8ECD803A2490C6E800DA4B5E /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80362490C6E700DA4B5E /* NanumSquareRoundB.ttf */; };
+		8ED9C1FC24AA3CB5008F41FC /* HeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9C1FB24AA3CB5008F41FC /* HeaderCollectionReusableView.swift */; };
 		8EDCBF73249BADF900022E19 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8EDCBF72249BADF900022E19 /* GoogleService-Info.plist */; };
 		8EDCBF75249BB53400022E19 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDCBF74249BB53400022E19 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3485C558D3B708322FB9F7F4 /* Pods-IoraWallPaper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoraWallPaper.release.xcconfig"; path = "Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper.release.xcconfig"; sourceTree = "<group>"; };
+		8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E1BE51D24A188DA00317984 /* iORADebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iORADebug.entitlements; sourceTree = "<group>"; };
 		8E1BE51E24A188EC00317984 /* iORA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iORA.entitlements; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 		8ECD80342490C6E700DA4B5E /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
 		8ECD80352490C6E700DA4B5E /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundEB.ttf; sourceTree = "<group>"; };
 		8ECD80362490C6E700DA4B5E /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
+		8ED9C1FB24AA3CB5008F41FC /* HeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		8EDCBF72249BADF900022E19 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8EDCBF74249BB53400022E19 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		AC5DAF1AAEC8A387DB304794 /* Pods-IoraWallPaper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoraWallPaper.debug.xcconfig"; path = "Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper.debug.xcconfig"; sourceTree = "<group>"; };
@@ -176,8 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				8ECD80322490C6D900DA4B5E /* Font */,
-				8E888038248DF71300E7E620 /* Main.storyboard */,
 				8E88803D248DF71400E7E620 /* LaunchScreen.storyboard */,
+				8E888038248DF71300E7E620 /* Main.storyboard */,
 				8E88803B248DF71400E7E620 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -212,6 +216,8 @@
 				8E88804A248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift */,
 				8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */,
 				8E8B4A732494C6930072620A /* DayCollectionViewCell.swift */,
+				8ED9C1FB24AA3CB5008F41FC /* HeaderCollectionReusableView.swift */,
+				8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -392,6 +398,8 @@
 				8E45512724922AD200CD9F7C /* ShowPreViewController.swift in Sources */,
 				8EBD4CCF24A4BC35005EC9A2 /* DetailImageViewModel.swift in Sources */,
 				8E242FDD24A119640087A41F /* SearchViewController.swift in Sources */,
+				8ED9C1FC24AA3CB5008F41FC /* HeaderCollectionReusableView.swift in Sources */,
+				8E06667D24AA90ED00FB5B92 /* BannerCollectionViewCell.swift in Sources */,
 				8E1BE51C24A1536B00317984 /* DetailCollectionViewCell.swift in Sources */,
 				8E88804B248DFD0100E7E620 /* WallPapeerCollectionViewCell.swift in Sources */,
 				8EDCBF75249BB53400022E19 /* Reachability.swift in Sources */,

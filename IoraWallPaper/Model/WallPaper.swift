@@ -45,6 +45,11 @@ enum DisplayType: Int {
    case superRetina = 1
 }
 
+struct Tag {
+   let tag: String
+   let result: [MyWallPaper]
+}
+
 // 데이터 다운로드 및 싱글톤 객체
 class WallPapers {
    static let shared = WallPapers()
@@ -53,12 +58,13 @@ class WallPapers {
    var lastUpdateDate: Date?
    var datas: [MyWallPaper] = []
    var randomDatas: [MyWallPaper] = []
-   var tags: [String] = []
+   var tags: [Tag] = []
    var firstExecution = false
    
    // 데이터 다운로드
-   func dataDownload(completion: (() -> ())? = nil) {
+   func dataDownload(completion: (([String]) -> ())? = nil) {
       datas.removeAll()
+      var strArr = [String]()
       self.ref.child("list").observe(.value) { (snapshot) in
          DispatchQueue.global().async {
             for value in snapshot.children.reversed() {
@@ -67,15 +73,14 @@ class WallPapers {
                   let data = try JSONSerialization.data(withJSONObject: dic, options: .prettyPrinted)
                   let wallpaper = try JSONDecoder().decode(WallPaper.self, from: data)
                   self.datas.append(MyWallPaper(wallpaper: wallpaper))
-                  WallPapers.shared.tags.append(contentsOf:  wallpaper.tag.split(separator: " ").map {
+                  strArr.append(contentsOf: wallpaper.tag.split(separator: " ").map {
                      String($0)
                   })
-                  
                } catch {
                   print(error.localizedDescription)
                }
             }
-            completion?()
+            completion?(strArr)
          }
       }
    }

@@ -13,6 +13,9 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
    static let identifier = "WallPapeerCollectionViewCell"
    @IBOutlet weak var wallpaperImageView: UIImageView!
    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+   @IBOutlet weak var dimmingView: UIView!
+   @IBOutlet weak var titleLabel: UILabel!
+   @IBOutlet weak var contentLabel: UILabel!
 
    func configure(info: MyWallPaper) {
       isUserInteractionEnabled = false
@@ -27,7 +30,16 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
       }
    }
    
+   func tagConfigure(title: String?, isHidden: Bool) {
+      titleLabel.text = title
+//      contentLabel.text =
+      dimmingView.isHidden = isHidden
+   }
+   
    override func prepareForReuse() {
       wallpaperImageView.image = nil
+      titleLabel.text = nil
+//      contentLabel.text = nil
+      dimmingView.isHidden = true
    }   
 }

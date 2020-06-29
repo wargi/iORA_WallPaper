@@ -27,7 +27,6 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    override func viewDidLoad() {
       super.viewDidLoad()
       configure()
-      setImageAndColor(brightness: datas[0].wallpaper.brightness)
    }
    
    func bindViewModel() {
@@ -63,29 +62,6 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       }
    }
    
-   // 이미지 설정 및 버튼 컬러 설정
-   func setImageAndColor(brightness: Int) {
-      let color = WallPapers.shared.getColor(brightness: brightness)
-      
-      let backImage = UIImage(named: "back")?.withRenderingMode(.alwaysTemplate)
-      let calendarImage = UIImage(named: "calendar")?.withRenderingMode(.alwaysTemplate)
-      let previewImage = UIImage(named: "preview")?.withRenderingMode(.alwaysTemplate)
-      let downloadImage = UIImage(named: "download")?.withRenderingMode(.alwaysTemplate)
-      let shareImage = UIImage(named: "share")?.withRenderingMode(.alwaysTemplate)
-      
-      backButton.imageView?.tintColor = color
-      calendarButton.imageView?.tintColor = color
-      previewButton.imageView?.tintColor = color
-      saveButton.imageView?.tintColor = color
-      shareButton.imageView?.tintColor = color
-      
-      backButton.setImage(backImage, for: .normal)
-      calendarButton.setImage(calendarImage, for: .normal)
-      previewButton.setImage(previewImage, for: .normal)
-      saveButton.setImage(downloadImage, for: .normal)
-      shareButton.setImage(shareImage, for: .normal)
-   }
-   
    //MARK: Button Action
    // 파일 다운로드
    @IBAction private func downlaodAction(_ sender: UIButton) {
@@ -112,7 +88,6 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       
       let indexPath = IndexPath(item: sender.currentPage, section: 0)
       collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-      setImageAndColor(brightness: datas[sender.currentPage].wallpaper.brightness)
    }
    
    
@@ -138,7 +113,6 @@ extension DetailImageViewController: UIScrollViewDelegate {
       
       if pageControl.currentPage != newPage {
          pageControl.currentPage = newPage
-         setImageAndColor(brightness: datas[newPage].wallpaper.brightness)
       }
    }
 }
@@ -161,6 +135,6 @@ extension DetailImageViewController: UICollectionViewDataSource {
 
 extension DetailImageViewController: UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      return CGSize(width: collectionView.bounds.size.width, height: collectionView.bounds.size.height - 0.1)
+      return CGSize(width: collectionView.bounds.size.width - 20, height: collectionView.bounds.size.height - 20)
    }
 }

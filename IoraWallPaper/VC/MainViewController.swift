@@ -9,12 +9,14 @@
 import UIKit
 
 class MainViewController: UIViewController, ViewModelBindableType {
-   // 이미지 리스트 컬렉션 뷰
    @IBOutlet private weak var collectionView: UICollectionView!
+   
    // 상단 UI
    @IBOutlet private weak var navigationView: UIView!
    @IBOutlet private weak var notConnectView: UIView!
+   @IBOutlet private weak var presentingButton: UIButton!
    private var reachability: Reachability?
+   var isPresenting = true
    
    var viewModeel: MainViewModel!
    
@@ -22,6 +24,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
       super.viewDidLoad()
       
       configure()
+      dataLoad()
    }
    
    func bindViewModel() {
@@ -51,6 +54,14 @@ class MainViewController: UIViewController, ViewModelBindableType {
          self.collectionView.isHidden = true
       }
       
+      presentingButton.layer.cornerRadius = 30
+      presentingButton.clipsToBounds = false
+      presentingButton.layer.shadowColor = UIColor.black.cgColor
+      presentingButton.layer.shadowOpacity = 0.5
+      presentingButton.layer.shadowOffset = CGSize(width: 1, height: 1)
+      presentingButton.layer.shadowRadius = 2
+      
+      
       let tap = UITapGestureRecognizer(target: self, action: #selector(self.dataLoad))
       notConnectView.addGestureRecognizer(tap)
       
@@ -61,23 +72,8 @@ class MainViewController: UIViewController, ViewModelBindableType {
    
    // 데이타 로드
    @objc func dataLoad() {
-      self.collectionView.refreshControl?.endRefreshing()
-      self.collectionView.reloadData()
-   }
-   
-   // 화면 전환 전 데이터 전달
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let detailImgVC = segue.destination as? DetailImageViewController,
-         let cell = sender as? WallPapeerCollectionViewCell,
-         let index = collectionView.indexPath(for: cell)?.item {
-         
-         if WallPapers.shared.datas.count - index > 9 {
-            let end = index + 9
-            detailImgVC.datas = Array(WallPapers.shared.randomDatas[index...end])
-         } else {
-            detailImgVC.datas = Array(WallPapers.shared.randomDatas[index...])
-         }
-      }
+      collectionView.refreshControl?.endRefreshing()
+      collectionView.reloadData()
    }
    
    //MARK: Button Action
@@ -101,6 +97,12 @@ class MainViewController: UIViewController, ViewModelBindableType {
       }
    }
    
+   @IBAction func presentingView(_ sender: UIButton) {
+      isPresenting = !isPresenting
+      
+      collectionView.reloadData()
+   }
+   
    // 네트워크 추적 해제
    deinit {
       reachability?.stopNotifier()
@@ -108,48 +110,80 @@ class MainViewController: UIViewController, ViewModelBindableType {
    }
 }
 
-//MARK: UICollectionView DataSource & Delegate
 extension MainViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return WallPapers.shared.datas.count
+      return isPresenting ? WallPapers.shared.datas.count : WallPapers.shared.tags.count
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPapeerCollectionViewCell.identifier, for: indexPath) as? WallPapeerCollectionViewCell else {
-         fatalError("Not Found Cell")
-      }
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPapeerCollectionViewCell.identifier, for: indexPath) as? WallPapeerCollectionViewCell else { fatalError() }
+      let target = isPresenting ? WallPapers.shared.datas[indexPath.row] : WallPapers.shared.tags[indexPath.row].result[0]
       
-      let index = indexPath.item
+      cell.layer.cornerRadius = 15
       
-      cell.layer.cornerRadius = 5
-      cell.layer.borderWidth = 0.1
-      cell.layer.borderColor = UIColor.lightGray.cgColor
-      
-      if let image = WallPapers.shared.randomDatas[index].image {
+      if let image = target.image {
          cell.wallpaperImageView.image = image
       } else {
-         cell.configure(info: WallPapers.shared.randomDatas[index])
+         cell.configure(info: target)
       }
       
+      cell.tagConfigure(title: WallPapers.shared.tags[indexPath.row].tag, isHidden: isPresenting)
+      
       return cell
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+      if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                withReuseIdentifier: HeaderCollectionReusableView.identifier,
+                                                for: indexPath) as? HeaderCollectionReusableView {
+         
+         header.configure()
+         
+         return header
+      }
+      fatalError()
+   }
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      var width: CGFloat
+      
+      if isPresenting {
+         width = (collectionView.bounds.width - 30) / 2
+         return CGSize(width: width, height: width * 2)
+      } else {
+         width = (collectionView.bounds.width - 30) * 0.95
+         return CGSize(width: width, height: width * 1.6)
+      }
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+      if isPresenting {
+         return 10
+      } else {
+         return 20
+      }
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+      if isPresenting {
+         return 10
+      } else {
+         return 25
+      }
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+      let width = collectionView.bounds.width
+      if isPresenting {
+         return CGSize(width: width, height: 300)
+      } else {
+         return CGSize(width: width, height: 0)
+      }
    }
 }
 
 extension MainViewController: UICollectionViewDelegate {
-}
-
-extension MainViewController: UICollectionViewDelegateFlowLayout {   
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      let width = (collectionView.bounds.size.width - 15) / 2
-      
-      return CGSize(width: width, height: width * 2)
-   }
    
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-      return 5
-   }
-   
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-      return 5
-   }
 }

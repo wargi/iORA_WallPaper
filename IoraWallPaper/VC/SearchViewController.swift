@@ -13,6 +13,7 @@ class SearchViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var tableView: UITableView!
    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
    var filtered: [String] = []
+   var list: [String] = []
    var viewModeel: SearchViewModel!
    
    override func viewDidLoad() {
@@ -31,7 +32,8 @@ class SearchViewController: UIViewController, ViewModelBindableType {
    }
    
    @objc func configure() {
-      filtered = WallPapers.shared.tags
+      WallPapers.shared.tags.forEach { list.append($0.tag) }
+      filtered = list
       
       tableView.reloadData()
    }
@@ -93,7 +95,7 @@ extension SearchViewController: UITableViewDataSource {
 
 extension SearchViewController: UISearchBarDelegate {
    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-      filtered = searchText.lowercased().isEmpty ? WallPapers.shared.tags : WallPapers.shared.tags.filter({ tag -> Bool in
+      filtered = searchText.lowercased().isEmpty ? list : list.filter({ tag -> Bool in
          let tmp: NSString = tag as NSString
          let range = tmp.range(of: searchText, options: .caseInsensitive)
          return range.location != NSNotFound

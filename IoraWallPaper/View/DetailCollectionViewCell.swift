@@ -11,21 +11,29 @@ import UIKit
 class DetailCollectionViewCell: UICollectionViewCell {
    static let identifier = "DetailCollectionViewCell"
    @IBOutlet weak var wallPaperImageView: UIImageView!
-   @IBOutlet private weak var tagView: UIView!
-   @IBOutlet private weak var tagLabel: UILabel!
-   
-   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-      super.touchesEnded(touches, with: event)
-      tagView.isHidden = !tagView.isHidden
-   }
    
    func configure(info: MyWallPaper) {
-      tagLabel.text = info.wallpaper.tag
       wallPaperImageView.image = info.image
+
+      self.layer.masksToBounds = false
+      self.layer.shadowColor = UIColor.black.cgColor
+      self.layer.shadowOpacity = 0.4
+      self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+      self.layer.shadowRadius = 6
+      self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds,
+                                           cornerRadius: 30).cgPath
+      
+      wallPaperImageView.layer.cornerRadius = 30
+      
+      wallPaperImageView.layer.masksToBounds = true
+
+      
+
+      
+
    }
    
    override func prepareForReuse() {
       wallPaperImageView.image = nil
-      tagView.isHidden = false
    }
 }

@@ -25,11 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       application.registerForRemoteNotifications()
       
       WallPapers.shared.getDeviceScreenSize()
-      WallPapers.shared.dataDownload {
+      WallPapers.shared.dataDownload { strArr in
          DispatchQueue.main.async {
-            let set: Set<String> = Set(WallPapers.shared.tags)
-            WallPapers.shared.tags = Array(set)
-            WallPapers.shared.tags.sort()
+            let set: Set<String> = Set(strArr)
+            let strArr = Array(set).sorted()
+            strArr.forEach { tag in
+               let wallpapers = WallPapers.shared.datas.filter { $0.wallpaper.tag.contains(tag) }
+               WallPapers.shared.tags.append(Tag(tag: tag, result: wallpapers))
+            }
             WallPapers.shared.randomDatas = WallPapers.shared.datas.shuffled()
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didFinishLaunchingWithOptions"),
