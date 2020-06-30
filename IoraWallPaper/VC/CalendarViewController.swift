@@ -15,9 +15,13 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
    
    // 상단 버튼
    @IBOutlet private weak var paletteButton: UIButton!
+   @IBOutlet private weak var paletteView: UIView!
    @IBOutlet private weak var calendarButton: UIButton!
+   @IBOutlet private weak var calendarView: UIView!
    @IBOutlet private weak var downloadButton: UIButton!
+   @IBOutlet private weak var downloadView: UIView!
    @IBOutlet private weak var closeButton: UIButton!
+   @IBOutlet private weak var closeView: UIView!
    
    // 달력 관련
    @IBOutlet private weak var collectionView: UICollectionView!
@@ -61,24 +65,15 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
    func setImageAndColor() {
       guard let image = info?.image else { return }
       imageView.image = image
-      
-      let closeImage = UIImage(named: "close")?.withRenderingMode(.alwaysTemplate)
-      let paletteImage = UIImage(named: "palette")?.withRenderingMode(.alwaysTemplate)
-      let calendarImage = UIImage(named: "calendar")?.withRenderingMode(.alwaysTemplate)
-      let downImage = UIImage(named: "pDownload")?.withRenderingMode(.alwaysTemplate)
-      
+
       yearLabel.textColor = color
       monthLabel.textColor = color
       lineView.backgroundColor = color
-      closeButton.imageView?.tintColor = color
-      paletteButton.imageView?.tintColor = color
-      calendarButton.imageView?.tintColor = color
-      downloadButton.imageView?.tintColor = color
-      
-      closeButton.setImage(closeImage, for: .normal)
-      paletteButton.setImage(paletteImage, for: .normal)
-      calendarButton.setImage(calendarImage, for: .normal)
-      downloadButton.setImage(downImage, for: .normal)
+
+      closeView.layer.cornerRadius = 17.5
+      downloadView.layer.cornerRadius = 17.5
+      calendarView.layer.cornerRadius = 17.5
+      paletteView.layer.cornerRadius = 17.5
    }
    
    // 달력 이동 관련 팬 제스쳐
@@ -131,12 +126,22 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
    //MARK: Button Action
    // Calendar 색깔 변경
    @IBAction private func paletteAction(_ sender: UIButton) {
-      let calendarColor: UIColor = color == UIColor.black ? .white : .black
+      guard let currentColor = yearLabel.textColor else { return }
+      var nextColor: UIColor
       
-      yearLabel.textColor = calendarColor
-      monthLabel.textColor = calendarColor
-      lineView.backgroundColor = calendarColor
-      color = calendarColor
+      switch currentColor {
+      case .white:
+         nextColor = .black
+      case .black:
+         nextColor = .gray
+      default:
+         nextColor = .white
+      }
+      
+      yearLabel.textColor = nextColor
+      monthLabel.textColor = nextColor
+      lineView.backgroundColor = nextColor
+      color = nextColor
       collectionView.reloadData()
    }
    

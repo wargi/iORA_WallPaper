@@ -11,26 +11,26 @@ import UIKit
 class DetailCollectionViewCell: UICollectionViewCell {
    static let identifier = "DetailCollectionViewCell"
    @IBOutlet weak var wallPaperImageView: UIImageView!
+   @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+   
+   override init(frame: CGRect) {
+      super.init(frame: frame)
+   }
+   
+   required init?(coder: NSCoder) {
+      super.init(coder: coder)
+   }
    
    func configure(info: MyWallPaper) {
       wallPaperImageView.image = info.image
-
-      self.layer.masksToBounds = false
-      self.layer.shadowColor = UIColor.black.cgColor
-      self.layer.shadowOpacity = 0.4
-      self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-      self.layer.shadowRadius = 6
-      self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds,
-                                           cornerRadius: 30).cgPath
+      self.activityIndicator.startAnimating()
       
-      wallPaperImageView.layer.cornerRadius = 30
-      
-      wallPaperImageView.layer.masksToBounds = true
-
-      
-
-      
-
+      WallPapers.shared.imageDownload(info: info) { image in
+         DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+            self.wallPaperImageView.image = image
+         }
+      }
    }
    
    override func prepareForReuse() {

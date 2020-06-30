@@ -16,9 +16,13 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var saveButton: UIButton!
    @IBOutlet private weak var shareButton: UIButton!
    // 페이지 컨트롤
-   @IBOutlet private weak var pageControl: UIPageControl!
+   @IBOutlet weak var pageControl: UIPageControl!
    // 디테일 컬렉션 뷰
    @IBOutlet private weak var collectionView: UICollectionView!
+   
+   private var startingScrollingOffset = CGPoint.zero
+   
+   
    private var fromTap = false
    // 페이지 데이터 목록
    public var datas: [MyWallPaper] = []
@@ -27,6 +31,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    override func viewDidLoad() {
       super.viewDidLoad()
       configure()
+      collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
    }
    
    func bindViewModel() {
@@ -62,6 +67,12 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       }
    }
    
+   func snapToCenter() {
+      let centerPoint = view.convert(view.center, to: collectionView)
+      guard let centerIndexPath = collectionView.indexPathForItem(at: centerPoint) else { return }
+      collectionView.scrollToItem(at: centerIndexPath, at: .centeredHorizontally, animated: true)
+   }
+   
    //MARK: Button Action
    // 파일 다운로드
    @IBAction private func downlaodAction(_ sender: UIButton) {
@@ -91,6 +102,8 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    }
    
    
+   
+   
    // Close Action
    @IBAction func popAction() {
       navigationController?.popViewController(animated: true)
@@ -102,13 +115,14 @@ extension DetailImageViewController: UIScrollViewDelegate {
    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
       fromTap = false
       pageControl.updateCurrentPageDisplay()
+      
    }
    
    func scrollViewDidScroll(_ scrollView: UIScrollView) {
       guard !fromTap else { return }
       
-      let width = scrollView.bounds.size.width
-      let x = scrollView.contentOffset.x + (width / 2.0)
+      let width = collectionView.bounds.size.width
+      let x = collectionView.contentOffset.x + (width / 2.0)
       let newPage = Int(x / width)
       
       if pageControl.currentPage != newPage {
@@ -127,7 +141,24 @@ extension DetailImageViewController: UICollectionViewDataSource {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.identifier, for: indexPath) as? DetailCollectionViewCell else { fatalError("Invalid Cell") }
       
       let target = datas[indexPath.row]
-      cell.configure(info: target)
+      
+      cell.wallPaperImageView.layer.cornerRadius = 30
+      cell.wallPaperImageView.layer.masksToBounds = true
+      
+      cell.layer.masksToBounds = false
+      cell.layer.shadowColor = UIColor.black.cgColor
+      cell.layer.shadowOpacity = 0.4
+      cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+      cell.layer.shadowRadius = 6
+      cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds,
+                                           cornerRadius: 30).cgPath
+      
+      if let image = target.image {
+         cell.wallPaperImageView.image = image
+      } else {
+         cell.configure(info: target)
+      }
+      
       
       return cell
    }
@@ -135,6 +166,23 @@ extension DetailImageViewController: UICollectionViewDataSource {
 
 extension DetailImageViewController: UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      return CGSize(width: collectionView.bounds.size.width - 20, height: collectionView.bounds.size.height - 20)
+      return CGSize(width: collectionView.bounds.size.width * 0.70, height: collectionView.bounds.size.height - 20)
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+      return UIEdgeInsets(top: 10,
+                          left: collectionView.bounds.width * 0.15,
+                          bottom: 10,
+                          right: collectionView.bounds.width * 0.15)
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+      let width = collectionView.bounds.size.width
+      return width * 0.1
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+      let width = collectionView.bounds.size.width
+      return width * 0.1
    }
 }

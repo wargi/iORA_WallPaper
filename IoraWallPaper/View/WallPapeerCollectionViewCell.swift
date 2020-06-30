@@ -37,9 +37,27 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
    }
    
    override func prepareForReuse() {
+      self.layer.cornerRadius = 15
+      
       wallpaperImageView.image = nil
       titleLabel.text = nil
 //      contentLabel.text = nil
       dimmingView.isHidden = true
-   }   
+   }
+   
+   override init(frame: CGRect) {
+      super.init(frame: frame)
+      
+      self.layer.cornerRadius = 15
+      self.layer.borderWidth = 0.1
+      self.layer.borderColor = UIColor.lightGray.cgColor
+   }
+   
+   required init?(coder: NSCoder) {
+      super.init(coder: coder)
+      
+      self.layer.cornerRadius = 15
+      self.layer.borderWidth = 0.1
+      self.layer.borderColor = UIColor.lightGray.cgColor
+   }
 }

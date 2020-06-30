@@ -57,7 +57,6 @@ class WallPapers {
    private var displayType: DisplayType?
    var lastUpdateDate: Date?
    var datas: [MyWallPaper] = []
-   var randomDatas: [MyWallPaper] = []
    var tags: [Tag] = []
    var firstExecution = false
    

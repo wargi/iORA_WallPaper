@@ -33,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                let wallpapers = WallPapers.shared.datas.filter { $0.wallpaper.tag.contains(tag) }
                WallPapers.shared.tags.append(Tag(tag: tag, result: wallpapers))
             }
-            WallPapers.shared.randomDatas = WallPapers.shared.datas.shuffled()
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didFinishLaunchingWithOptions"),
                                             object: nil)

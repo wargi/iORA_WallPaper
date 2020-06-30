@@ -14,7 +14,9 @@ class ShowPreViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var imageView: UIImageView!
    // 상단 버튼
    @IBOutlet private weak var closeButton: UIButton!
+   @IBOutlet private weak var closeView: UIView!
    @IBOutlet private weak var downloadButton: UIButton!
+   @IBOutlet private weak var downloadView: UIView!
    @IBOutlet private weak var displayTimeLabel: UILabel!
    @IBOutlet private weak var displayDateLabel: UILabel!
    // 버튼 컬러 설정
@@ -40,16 +42,11 @@ class ShowPreViewController: UIViewController, ViewModelBindableType {
       guard let image = info?.image else { return }
       imageView.image = image
       
-      let closeImage = UIImage(named: "close")?.withRenderingMode(.alwaysTemplate)
-      let downImage = UIImage(named: "pDownload")?.withRenderingMode(.alwaysTemplate)
+      closeView.layer.cornerRadius = 17.5
+      downloadView.layer.cornerRadius = 17.5
       
-      closeButton.imageView?.tintColor = color
-      downloadButton.imageView?.tintColor = color
       displayTimeLabel.textColor = color
       displayDateLabel.textColor = color
-      
-      closeButton.setImage(closeImage, for: .normal)
-      downloadButton.setImage(downImage, for: .normal)
    }
    
    //MARK: Button Action

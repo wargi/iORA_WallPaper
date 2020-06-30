@@ -61,7 +61,6 @@ class MainViewController: UIViewController, ViewModelBindableType {
       presentingButton.layer.shadowOffset = CGSize(width: 1, height: 1)
       presentingButton.layer.shadowRadius = 2
       
-      
       let tap = UITapGestureRecognizer(target: self, action: #selector(self.dataLoad))
       notConnectView.addGestureRecognizer(tap)
       
@@ -77,30 +76,36 @@ class MainViewController: UIViewController, ViewModelBindableType {
    }
    
    //MARK: Button Action
-   // 인스타그램으로 이동
-   @IBAction private func goInsta(_ sender: UIButton) {
-      guard let url = URL(string: "https://instagram.com/iora_studio?igshid=1erlpx3rebg7b") else { fatalError("Invalid URL") }
-      if UIApplication.shared.canOpenURL(url) {
-         UIApplication.shared.open(url,
-                                   options: [:],
-                                   completionHandler: nil)
-      }
-   }
    
-   // 블로그로 이동
-   @IBAction private func goBlog(_ sender: UIButton) {
-      guard let url = URL(string: "https://blog.naver.com/iorastudio") else { fatalError("Invalid URL") }
-      if UIApplication.shared.canOpenURL(url) {
-         UIApplication.shared.open(url,
-                                   options: [:],
-                                   completionHandler: nil)
-      }
+   @IBAction private func filteringAction(_ sender: UIButton) {
+      WallPapers.shared.datas.reverse()
+      
+      collectionView.reloadData()
    }
    
    @IBAction func presentingView(_ sender: UIButton) {
       isPresenting = !isPresenting
       
       collectionView.reloadData()
+   }
+   
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      guard let cell = sender as? UICollectionViewCell,
+         let selectIndex = collectionView.indexPath(for: cell) else { return }
+      let itemAt = selectIndex.item
+      guard let vc = segue.destination as? DetailImageViewController else { return }
+      
+      if isPresenting {
+         let datas = WallPapers.shared.datas
+         let count = datas.count
+         let start = itemAt + 9 < count ? itemAt : count - 10
+         let end = itemAt + 9 < count ? start + 10 : count
+         let current = itemAt + 9 < count ? 0 : 10 - (count - itemAt)
+         vc.datas = Array(datas[start ..< end])
+      } else {
+         let datas = WallPapers.shared.tags[itemAt]
+         vc.datas = datas.result
+      }
    }
    
    // 네트워크 추적 해제
@@ -117,9 +122,15 @@ extension MainViewController: UICollectionViewDataSource {
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPapeerCollectionViewCell.identifier, for: indexPath) as? WallPapeerCollectionViewCell else { fatalError() }
-      let target = isPresenting ? WallPapers.shared.datas[indexPath.row] : WallPapers.shared.tags[indexPath.row].result[0]
+      var target: MyWallPaper
       
-      cell.layer.cornerRadius = 15
+      if isPresenting {
+         target = WallPapers.shared.datas[indexPath.row]
+         cell.tagConfigure(title: nil, isHidden: isPresenting)
+      } else {
+         target = WallPapers.shared.tags[indexPath.row].result[0]
+         cell.tagConfigure(title: WallPapers.shared.tags[indexPath.row].tag, isHidden: isPresenting)
+      }
       
       if let image = target.image {
          cell.wallpaperImageView.image = image
@@ -127,15 +138,15 @@ extension MainViewController: UICollectionViewDataSource {
          cell.configure(info: target)
       }
       
-      cell.tagConfigure(title: WallPapers.shared.tags[indexPath.row].tag, isHidden: isPresenting)
+      
       
       return cell
    }
    
    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
       if let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                                                withReuseIdentifier: HeaderCollectionReusableView.identifier,
-                                                for: indexPath) as? HeaderCollectionReusableView {
+                                                                      withReuseIdentifier: HeaderCollectionReusableView.identifier,
+                                                                      for: indexPath) as? HeaderCollectionReusableView {
          
          header.configure()
          
@@ -153,8 +164,8 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
          width = (collectionView.bounds.width - 30) / 2
          return CGSize(width: width, height: width * 2)
       } else {
-         width = (collectionView.bounds.width - 30) * 0.95
-         return CGSize(width: width, height: width * 1.6)
+         width = (collectionView.bounds.width - 30) * 0.9
+         return CGSize(width: width, height: width * 1.7)
       }
    }
    
@@ -185,5 +196,4 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension MainViewController: UICollectionViewDelegate {
-   
 }
