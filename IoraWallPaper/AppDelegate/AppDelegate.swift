@@ -24,16 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          completionHandler: {_, _ in })
       application.registerForRemoteNotifications()
       
-      WallPapers.shared.getDeviceScreenSize()
-      WallPapers.shared.dataDownload { strArr in
+      PrepareForSetUp.shared.getDeviceScreenSize()
+      WallPapers.shared.firebaseDataSetUp() {
          DispatchQueue.main.async {
-            let set: Set<String> = Set(strArr)
-            let strArr = Array(set).sorted()
-            strArr.forEach { tag in
-               let wallpapers = WallPapers.shared.datas.filter { $0.wallpaper.tag.contains(tag) }
-               WallPapers.shared.tags.append(Tag(tag: tag, result: wallpapers))
-            }
-            
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didFinishLaunchingWithOptions"),
                                             object: nil)
          }

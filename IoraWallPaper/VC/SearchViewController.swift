@@ -32,7 +32,7 @@ class SearchViewController: UIViewController, ViewModelBindableType {
    }
    
    @objc func configure() {
-      WallPapers.shared.tags.forEach { list.append($0.tag) }
+      WallPapers.shared.tags.forEach { list.append($0.info.name) }
       filtered = list
       
       tableView.reloadData()
@@ -62,7 +62,7 @@ class SearchViewController: UIViewController, ViewModelBindableType {
       
       let tag = filtered[index]
       
-      let wallpapers = WallPapers.shared.datas.filter { $0.wallpaper.tag.contains(tag) }
+      let wallpapers = WallPapers.shared.myWallPapers.filter { $0.wallpaper.tag.contains(tag) }
       
       resultVC.resultWallPapers = wallpapers
       resultVC.titleString = tag

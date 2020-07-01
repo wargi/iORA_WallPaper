@@ -21,7 +21,7 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
       isUserInteractionEnabled = false
       self.activityIndicator.startAnimating()
       
-      WallPapers.shared.imageDownload(info: info) { image in
+      PrepareForSetUp.shared.imageDownload(info: info) { image in
          DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.wallpaperImageView.image = image
@@ -30,9 +30,9 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
       }
    }
    
-   func tagConfigure(title: String?, isHidden: Bool) {
-      titleLabel.text = title
-//      contentLabel.text =
+   func tagConfigure(info: TagInfo?, isHidden: Bool) {
+      titleLabel.text = info?.name
+      contentLabel.text = info?.desc
       dimmingView.isHidden = isHidden
    }
    
@@ -41,7 +41,7 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
       
       wallpaperImageView.image = nil
       titleLabel.text = nil
-//      contentLabel.text = nil
+      contentLabel.text = nil
       dimmingView.isHidden = true
    }
    

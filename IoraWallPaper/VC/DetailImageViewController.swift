@@ -51,7 +51,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    // 앱 기본 설정
    func configure() {
       pageControl.numberOfPages = datas.count
-      let scale: CGFloat = 1
+      let scale: CGFloat = 0.75
       pageControl.transform = CGAffineTransform(scaleX: scale, y: scale)
       
       for dot in pageControl.subviews {
@@ -60,7 +60,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       
       datas.forEach { info in
          if info.image == nil {
-            WallPapers.shared.imageDownload(info: info) { (image) in
+            PrepareForSetUp.shared.imageDownload(info: info) { (image) in
                info.image = image
             }
          }
@@ -77,8 +77,8 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    // 파일 다운로드
    @IBAction private func downlaodAction(_ sender: UIButton) {
       guard let image = datas[pageControl.currentPage].image else { return }
-      WallPapers.shared.imageFileDownload(image: image)
-      present(WallPapers.shared.downloadAlert(), animated: true) {
+      PrepareForSetUp.shared.imageFileDownload(image: image)
+      present(PrepareForSetUp.shared.completedAlert(), animated: true) {
          self.dismiss(animated: true, completion: nil)
       }
    }

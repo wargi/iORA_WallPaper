@@ -78,7 +78,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
    //MARK: Button Action
    
    @IBAction private func filteringAction(_ sender: UIButton) {
-      WallPapers.shared.datas.reverse()
+      WallPapers.shared.myWallPapers.reverse()
       
       collectionView.reloadData()
    }
@@ -96,7 +96,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
       guard let vc = segue.destination as? DetailImageViewController else { return }
       
       if isPresenting {
-         let datas = WallPapers.shared.datas
+         let datas = WallPapers.shared.myWallPapers
          let count = datas.count
          let start = itemAt + 9 < count ? itemAt : count - 10
          let end = itemAt + 9 < count ? start + 10 : count
@@ -117,7 +117,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
 
 extension MainViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return isPresenting ? WallPapers.shared.datas.count : WallPapers.shared.tags.count
+      return isPresenting ? WallPapers.shared.myWallPapers.count : WallPapers.shared.tags.count
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -125,11 +125,11 @@ extension MainViewController: UICollectionViewDataSource {
       var target: MyWallPaper
       
       if isPresenting {
-         target = WallPapers.shared.datas[indexPath.row]
-         cell.tagConfigure(title: nil, isHidden: isPresenting)
+         target = WallPapers.shared.myWallPapers[indexPath.row]
+         cell.tagConfigure(info: nil, isHidden: isPresenting)
       } else {
          target = WallPapers.shared.tags[indexPath.row].result[0]
-         cell.tagConfigure(title: WallPapers.shared.tags[indexPath.row].tag, isHidden: isPresenting)
+         cell.tagConfigure(info: WallPapers.shared.tags[indexPath.row].info, isHidden: isPresenting)
       }
       
       if let image = target.image {

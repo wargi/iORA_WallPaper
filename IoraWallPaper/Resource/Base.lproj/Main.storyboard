@@ -41,7 +41,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="InitialCollectionViewCell" reuseIdentifier="InitialCollectionViewCell" id="xeO-P1-f88" customClass="InitialCollectionViewCell" customModule="iORA" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="InitialCollectionViewCell" reuseIdentifier="InitialCollectionViewCell" id="xeO-P1-f88" customClass="InitialCollectionViewCell" customModule="IORA" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Rzz-7W-f8x">
@@ -87,7 +87,7 @@
         <!--SearchViewController-->
         <scene sceneID="AUi-M6-tbw">
             <objects>
-                <viewController storyboardIdentifier="SearchVC" title="SearchViewController" id="klj-nG-AVz" customClass="SearchViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchVC" title="SearchViewController" id="klj-nG-AVz" customClass="SearchViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XUD-Wf-5d5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -175,7 +175,7 @@
         <!--SearchResultViewController-->
         <scene sceneID="hnU-O7-WbT">
             <objects>
-                <viewController storyboardIdentifier="SearchResultVC" title="SearchResultViewController" id="TrM-fv-R4H" customClass="SearchResultViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SearchResultVC" title="SearchResultViewController" id="TrM-fv-R4H" customClass="SearchResultViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cxP-Gr-f6T">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,7 +190,7 @@
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WallPapeerCollectionViewCell" id="MF9-Pn-ciU" customClass="WallPapeerCollectionViewCell" customModule="iORA" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="WallPapeerCollectionViewCell" id="MF9-Pn-ciU" customClass="WallPapeerCollectionViewCell" customModule="IORA" customModuleProvider="target">
                                         <rect key="frame" x="10" y="10" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bxe-I8-cL5">
@@ -308,7 +308,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="MainVC" modalTransitionStyle="partialCurl" id="BYZ-38-t0r" customClass="MainViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainVC" modalTransitionStyle="partialCurl" id="BYZ-38-t0r" customClass="MainViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -343,8 +343,8 @@ Check your connection</string>
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IORA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQj-Zr-pL0">
-                                        <rect key="frame" x="16.000000000000004" y="13.666666666666673" width="47.333333333333343" height="22.666666666666671"/>
-                                        <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="20"/>
+                                        <rect key="frame" x="19" y="12.999999999999998" width="52" height="24.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -370,9 +370,10 @@ Check your connection</string>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="hQj-Zr-pL0" firstAttribute="leading" secondItem="fgb-yh-tAm" secondAttribute="leading" constant="16" id="H8c-fE-chh"/>
+                                    <constraint firstItem="hQj-Zr-pL0" firstAttribute="leading" secondItem="fgb-yh-tAm" secondAttribute="leading" constant="19" id="H8c-fE-chh"/>
                                     <constraint firstAttribute="height" constant="50" id="KZ8-Ms-tQg"/>
                                     <constraint firstItem="0Er-e3-Inq" firstAttribute="centerY" secondItem="hQj-Zr-pL0" secondAttribute="centerY" id="V2a-CA-jwr"/>
+                                    <constraint firstItem="h71-lJ-zQI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hQj-Zr-pL0" secondAttribute="trailing" constant="8" id="XRO-yQ-tje"/>
                                     <constraint firstItem="hQj-Zr-pL0" firstAttribute="centerY" secondItem="fgb-yh-tAm" secondAttribute="centerY" id="grz-3f-gQA"/>
                                     <constraint firstItem="0Er-e3-Inq" firstAttribute="leading" secondItem="h71-lJ-zQI" secondAttribute="trailing" constant="8" id="o2e-ht-vnz"/>
                                     <constraint firstItem="h71-lJ-zQI" firstAttribute="centerY" secondItem="0Er-e3-Inq" secondAttribute="centerY" id="tN0-2w-gde"/>
@@ -389,7 +390,7 @@ Check your connection</string>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="WallPapeerCollectionViewCell" reuseIdentifier="WallPapeerCollectionViewCell" id="6eg-Z2-agT" customClass="WallPapeerCollectionViewCell" customModule="iORA" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="WallPapeerCollectionViewCell" reuseIdentifier="WallPapeerCollectionViewCell" id="6eg-Z2-agT" customClass="WallPapeerCollectionViewCell" customModule="IORA" customModuleProvider="target">
                                         <rect key="frame" x="84.666666666666671" y="310" width="245" height="259"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WNP-U8-gjZ">
@@ -410,7 +411,7 @@ Check your connection</string>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Nature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="znF-10-XDt">
-                                                            <rect key="frame" x="30" y="30" width="195" height="27.666666666666671"/>
+                                                            <rect key="frame" x="30.000000000000007" y="30" width="99.666666666666686" height="27.666666666666671"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="27.670000000000002" id="xNf-qP-8vM"/>
                                                             </constraints>
@@ -419,7 +420,7 @@ Check your connection</string>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'좋아요'를 부르는 사진 찍기 기술 5" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Swu-fd-WWd">
-                                                            <rect key="frame" x="30" y="65.666666666666671" width="199" height="33.333333333333329"/>
+                                                            <rect key="frame" x="30" y="64.666666666666671" width="185.66666666666666" height="33.333333333333329"/>
                                                             <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -427,11 +428,11 @@ Check your connection</string>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="znF-10-XDt" secondAttribute="trailing" constant="20" id="5Fe-KD-o5O"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="znF-10-XDt" secondAttribute="trailing" constant="20" id="5Fe-KD-o5O"/>
                                                         <constraint firstItem="IRe-Je-fba" firstAttribute="top" secondItem="kCv-IA-T7U" secondAttribute="top" id="69j-Nf-XvJ"/>
                                                         <constraint firstItem="IRe-Je-fba" firstAttribute="leading" secondItem="kCv-IA-T7U" secondAttribute="leading" id="B2w-Le-OtE"/>
-                                                        <constraint firstItem="Swu-fd-WWd" firstAttribute="top" secondItem="znF-10-XDt" secondAttribute="bottom" constant="8" id="Fj6-33-7Qf"/>
-                                                        <constraint firstAttribute="trailing" secondItem="Swu-fd-WWd" secondAttribute="trailing" constant="16" id="Qqq-zO-hSq"/>
+                                                        <constraint firstItem="Swu-fd-WWd" firstAttribute="top" secondItem="znF-10-XDt" secondAttribute="bottom" constant="7" id="Fj6-33-7Qf"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Swu-fd-WWd" secondAttribute="trailing" constant="16" id="Qqq-zO-hSq"/>
                                                         <constraint firstItem="znF-10-XDt" firstAttribute="leading" secondItem="kCv-IA-T7U" secondAttribute="leading" constant="30" id="TRx-KD-HfZ"/>
                                                         <constraint firstItem="Swu-fd-WWd" firstAttribute="leading" secondItem="kCv-IA-T7U" secondAttribute="leading" constant="30" id="cVD-yJ-tLz"/>
                                                         <constraint firstAttribute="bottom" secondItem="IRe-Je-fba" secondAttribute="bottom" id="e7e-iT-mYD"/>
@@ -456,6 +457,7 @@ Check your connection</string>
                                         <size key="customSize" width="245" height="259"/>
                                         <connections>
                                             <outlet property="activityIndicator" destination="D4s-sb-hfX" id="zQR-4Q-z7o"/>
+                                            <outlet property="contentLabel" destination="Swu-fd-WWd" id="jyT-ic-MML"/>
                                             <outlet property="dimmingView" destination="kCv-IA-T7U" id="LD6-ai-jla"/>
                                             <outlet property="titleLabel" destination="znF-10-XDt" id="UgL-0Q-Rlg"/>
                                             <outlet property="wallpaperImageView" destination="jHI-an-w9B" id="gqF-BW-98g"/>
@@ -463,7 +465,7 @@ Check your connection</string>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="HeaderCollectionReusableView" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="HeaderCollectionReusableView" id="y22-bl-qP1" customClass="HeaderCollectionReusableView" customModule="iORA" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="HeaderCollectionReusableView" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="HeaderCollectionReusableView" id="y22-bl-qP1" customClass="HeaderCollectionReusableView" customModule="IORA" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="300"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -477,7 +479,7 @@ Check your connection</string>
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BannerCollectionViewCell" id="aic-fx-I4I" customClass="BannerCollectionViewCell" customModule="iORA" customModuleProvider="target">
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BannerCollectionViewCell" id="aic-fx-I4I" customClass="BannerCollectionViewCell" customModule="IORA" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2KD-vE-Nl8">
@@ -526,14 +528,14 @@ Check your connection</string>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="cfB-Oo-4HE"/>
                                 </connections>
                             </collectionView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncy-uh-sfu">
-                                <rect key="frame" x="324" y="684" width="60" height="60"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncy-uh-sfu">
+                                <rect key="frame" x="333" y="688" width="60" height="60"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="w5v-h4-8bo"/>
                                     <constraint firstAttribute="height" constant="60" id="yu4-9H-ZeV"/>
                                 </constraints>
-                                <state key="normal" title="전환"/>
+                                <state key="normal" image="hashtag"/>
                                 <connections>
                                     <action selector="presentingView:" destination="BYZ-38-t0r" eventType="touchUpInside" id="un1-Q5-TPd"/>
                                 </connections>
@@ -544,9 +546,9 @@ Check your connection</string>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fgb-yh-tAm" secondAttribute="trailing" id="FT8-0Z-skv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OOO-ep-nXg" secondAttribute="trailing" id="Gts-9k-U8D"/>
                             <constraint firstAttribute="bottom" secondItem="oM9-bg-3UY" secondAttribute="bottom" id="HBa-Te-t2Q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ncy-uh-sfu" secondAttribute="trailing" constant="30" id="IrD-kD-V9B"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ncy-uh-sfu" secondAttribute="trailing" constant="21" id="IrD-kD-V9B"/>
                             <constraint firstItem="vBh-Bb-uCz" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="NKr-Sv-Xn6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ncy-uh-sfu" secondAttribute="bottom" constant="30" id="QLC-vE-KLA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ncy-uh-sfu" secondAttribute="bottom" constant="26" id="QLC-vE-KLA"/>
                             <constraint firstItem="fgb-yh-tAm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="X7k-MU-ZwM"/>
                             <constraint firstItem="OOO-ep-nXg" firstAttribute="top" secondItem="fgb-yh-tAm" secondAttribute="bottom" id="dJi-AP-KHR"/>
                             <constraint firstAttribute="bottom" secondItem="OOO-ep-nXg" secondAttribute="bottom" id="e6I-KO-hgo"/>
@@ -573,13 +575,13 @@ Check your connection</string>
         <!--Detail Image View Controller-->
         <scene sceneID="9YV-hE-Qj7">
             <objects>
-                <viewController storyboardIdentifier="DetailImageVC" modalPresentationStyle="fullScreen" id="tu2-80-rfH" customClass="DetailImageViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailImageVC" modalPresentationStyle="fullScreen" id="tu2-80-rfH" customClass="DetailImageViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xv6-eb-mAU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rvM-9y-eX0">
-                                <rect key="frame" x="0.0" y="62" width="414" height="655"/>
+                                <rect key="frame" x="0.0" y="57" width="414" height="660"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="jMS-Vf-zgx">
                                     <size key="itemSize" width="50" height="50"/>
@@ -588,7 +590,7 @@ Check your connection</string>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="DetailCollectionViewCell" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DetailCollectionViewCell" id="yyf-Wy-AQk" customClass="DetailCollectionViewCell" customModule="iORA" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="DetailCollectionViewCell" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DetailCollectionViewCell" id="yyf-Wy-AQk" customClass="DetailCollectionViewCell" customModule="IORA" customModuleProvider="target">
                                         <rect key="frame" x="10" y="10" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="XFi-fm-mmp">
@@ -624,18 +626,17 @@ Check your connection</string>
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eBg-qs-HDP">
-                                <rect key="frame" x="214" y="12" width="190" height="40"/>
+                                <rect key="frame" x="234" y="12" width="170" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mew-W7-nvh">
-                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
-                                        <inset key="imageEdgeInsets" minX="7" minY="5" maxX="7" maxY="7.5"/>
-                                        <state key="normal" image="calendar"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
+                                        <state key="normal" image="Bcalendar"/>
                                         <connections>
                                             <segue destination="TuU-La-Pew" kind="presentation" id="5jV-7r-S1u"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6O-vY-bk0">
-                                        <rect key="frame" x="50" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="45" y="0.0" width="35" height="35"/>
                                         <color key="tintColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="preview">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -645,7 +646,7 @@ Check your connection</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdW-qK-58k">
-                                        <rect key="frame" x="100" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="90" y="0.0" width="35" height="35"/>
                                         <color key="tintColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="download">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -655,7 +656,7 @@ Check your connection</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8r-uv-tqC">
-                                        <rect key="frame" x="150" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="135" y="0.0" width="35" height="35"/>
                                         <color key="tintColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" image="share">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -666,15 +667,15 @@ Check your connection</string>
                                     </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="190" id="JNE-E6-Dqh"/>
-                                    <constraint firstAttribute="height" constant="40" id="dWf-UI-JPb"/>
+                                    <constraint firstAttribute="width" constant="170" id="JNE-E6-Dqh"/>
+                                    <constraint firstAttribute="height" constant="35" id="dWf-UI-JPb"/>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yl1-2v-ant">
-                                <rect key="frame" x="18" y="12" width="40" height="40"/>
+                                <rect key="frame" x="16" y="12" width="35" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="I8g-BN-cny"/>
-                                    <constraint firstAttribute="height" constant="40" id="QVZ-ng-c1S"/>
+                                    <constraint firstAttribute="width" constant="35" id="I8g-BN-cny"/>
+                                    <constraint firstAttribute="height" constant="35" id="QVZ-ng-c1S"/>
                                 </constraints>
                                 <color key="tintColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="back">
@@ -698,7 +699,7 @@ Check your connection</string>
                             <constraint firstItem="rvM-9y-eX0" firstAttribute="centerX" secondItem="Xv6-eb-mAU" secondAttribute="centerX" id="0T6-ef-hcy"/>
                             <constraint firstItem="Yl1-2v-ant" firstAttribute="centerY" secondItem="eBg-qs-HDP" secondAttribute="centerY" id="1tn-Uv-NBg"/>
                             <constraint firstItem="WnZ-zq-QwQ" firstAttribute="trailing" secondItem="rvM-9y-eX0" secondAttribute="trailing" id="2hb-8e-TLC"/>
-                            <constraint firstItem="Yl1-2v-ant" firstAttribute="leading" secondItem="WnZ-zq-QwQ" secondAttribute="leading" constant="18" id="ACa-gx-ILG"/>
+                            <constraint firstItem="Yl1-2v-ant" firstAttribute="leading" secondItem="WnZ-zq-QwQ" secondAttribute="leading" constant="16" id="ACa-gx-ILG"/>
                             <constraint firstAttribute="trailing" secondItem="eBg-qs-HDP" secondAttribute="trailing" constant="10" id="Wu6-AL-nmJ"/>
                             <constraint firstItem="eBg-qs-HDP" firstAttribute="top" secondItem="WnZ-zq-QwQ" secondAttribute="top" constant="12" id="axn-U1-vel"/>
                             <constraint firstItem="rvM-9y-eX0" firstAttribute="leading" secondItem="WnZ-zq-QwQ" secondAttribute="leading" id="dG8-1J-6qr"/>
@@ -729,7 +730,7 @@ Check your connection</string>
         <!--CalendarVC-->
         <scene sceneID="u16-GI-6Lu">
             <objects>
-                <viewController storyboardIdentifier="CalendarVC" title="CalendarVC" modalPresentationStyle="fullScreen" id="TuU-La-Pew" customClass="CalendarViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CalendarVC" title="CalendarVC" modalPresentationStyle="fullScreen" id="TuU-La-Pew" customClass="CalendarViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9UP-MW-GRS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -770,7 +771,7 @@ Check your connection</string>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="DayCollectionViewCell" reuseIdentifier="DayCollectionViewCell" id="AmL-Yx-HFU" customClass="DayCollectionViewCell" customModule="iORA" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="DayCollectionViewCell" reuseIdentifier="DayCollectionViewCell" id="AmL-Yx-HFU" customClass="DayCollectionViewCell" customModule="IORA" customModuleProvider="target">
                                                 <rect key="frame" x="36" y="0.0" width="128" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pQy-T2-bPO">
@@ -966,7 +967,7 @@ Check your connection</string>
         <!--ShowPreVC-->
         <scene sceneID="YP0-YM-elm">
             <objects>
-                <viewController storyboardIdentifier="ShowPreVC" title="ShowPreVC" modalPresentationStyle="fullScreen" id="hjq-DW-yC7" customClass="ShowPreViewController" customModule="iORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowPreVC" title="ShowPreVC" modalPresentationStyle="fullScreen" id="hjq-DW-yC7" customClass="ShowPreViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xNd-i1-xtq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1101,18 +1102,19 @@ Check your connection</string>
         <segue reference="eE9-J1-dNB"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="Bcalendar" width="33" height="33"/>
         <image name="ColorPalette" width="375" height="812"/>
-        <image name="back" width="25" height="25"/>
-        <image name="calendar" width="33" height="33"/>
-        <image name="download" width="25" height="25"/>
+        <image name="back" width="33" height="33"/>
+        <image name="download" width="33" height="33"/>
         <image name="filter" width="33" height="33"/>
+        <image name="hashtag" width="37.666667938232422" height="37.666667938232422"/>
         <image name="pCalendar" width="33" height="33"/>
         <image name="pClose" width="33" height="33"/>
         <image name="pDownload" width="33" height="33"/>
         <image name="pPalette" width="33" height="33"/>
-        <image name="preview" width="25" height="25"/>
+        <image name="preview" width="33" height="33"/>
         <image name="search" width="33" height="33"/>
         <image name="search_back" width="23.333333969116211" height="23.333333969116211"/>
-        <image name="share" width="25" height="25"/>
+        <image name="share" width="33" height="33"/>
     </resources>
 </document>

@@ -40,7 +40,7 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
    private lazy var month = calendar.component(.month, from: currentDate)
    
    // 컬러 관련
-   public lazy var color = WallPapers.shared.getColor(brightness: info?.wallpaper.brightness)
+   public lazy var color = PrepareForSetUp.shared.getColor(brightness: info?.wallpaper.brightness)
    var viewModeel: CalendarViewModel!
    
    override func viewDidLoad() {
@@ -180,10 +180,10 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
    // 다운로드 액션
    @IBAction private func downloadAction(_ sender: UIButton) {
       isHiddenDisplayUI(isHidden: true)
-      WallPapers.shared.screenImageDownload()
+      PrepareForSetUp.shared.screenImageDownload()
       isHiddenDisplayUI(isHidden: false)
       
-      present(WallPapers.shared.downloadAlert(handler: { (_) in
+      present(PrepareForSetUp.shared.completedAlert(handler: { (_) in
          self.dismiss(animated: true, completion: nil)
       }), animated: true, completion: nil)
    }

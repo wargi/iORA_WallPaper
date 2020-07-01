@@ -53,9 +53,9 @@ class ShowPreViewController: UIViewController, ViewModelBindableType {
    // 파일 다운로드 Action
    @IBAction private func downloadAction(_ sender: UIButton) {
       guard let image = info?.image else { return }
-      WallPapers.shared.imageFileDownload(image: image)
+      PrepareForSetUp.shared.imageFileDownload(image: image)
       
-      present(WallPapers.shared.downloadAlert(handler: { (_) in
+      present(PrepareForSetUp.shared.completedAlert(handler: { (_) in
          self.dismiss(animated: true, completion: nil)
       }), animated: true, completion: nil)
    }

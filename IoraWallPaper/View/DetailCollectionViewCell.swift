@@ -25,7 +25,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
       wallPaperImageView.image = info.image
       self.activityIndicator.startAnimating()
       
-      WallPapers.shared.imageDownload(info: info) { image in
+      PrepareForSetUp.shared.imageDownload(info: info) { image in
          DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.wallPaperImageView.image = image
