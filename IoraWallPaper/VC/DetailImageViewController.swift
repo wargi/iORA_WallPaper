@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import NSObject_Rx
 
 class DetailImageViewController: UIViewController, ViewModelBindableType {
    // 상단 버튼
@@ -35,18 +38,34 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    }
    
    func bindViewModel() {
+      let currentPageOb = Observable.just(pageControl.currentPage)
       
+      //MARK: Button Action
+      Observable.zip(previewButton.rx.tap, currentPageOb)
+         .map { $0.1 }
+         .bind(to: viewModel.showPreViewAction.inputs)
+         .disposed(by: rx.disposeBag)
+      
+      // 파일 다운로드
+      Observable.zip(saveButton.rx.tap, currentPageOb)
+         .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+         .map { $0.1 }
+         .subscribe(onNext: {
+            self.viewModel.downloadAction.inputs.onNext($0)
+            self.present(PrepareForSetUp.shared.completedAlert(), animated: true, completion: nil)
+         })
+         .disposed(by: rx.disposeBag)
+      
+      // 파일 공유
+      Observable.zip(shareButton.rx.tap, currentPageOb)
+         .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+         .map { $0.1 }
+         .map { self.viewModel.shareAction(currentIndex: $0) }
+         .subscribe(onNext: { self.present($0, animated: true, completion: nil) })
+         .disposed(by: rx.disposeBag)
+      
+      backButton.rx.action = viewModel.popAction
    }
-   
-//   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//      let info = datas[pageControl.currentPage]
-//      
-//      if let showVC = segue.destination as? ShowPreViewController  {
-//         showVC.info = info
-//      } else if let calVC = segue.destination as? CalendarViewController {
-//         calVC.info = info
-//      }
-//   }
    
    // 앱 기본 설정
    func configure() {
@@ -67,46 +86,12 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       }
    }
    
-   func snapToCenter() {
-      let centerPoint = view.convert(view.center, to: collectionView)
-      guard let centerIndexPath = collectionView.indexPathForItem(at: centerPoint) else { return }
-      collectionView.scrollToItem(at: centerIndexPath, at: .centeredHorizontally, animated: true)
-   }
-   
-   //MARK: Button Action
-   // 파일 다운로드
-   @IBAction private func downlaodAction(_ sender: UIButton) {
-      guard let image = datas[pageControl.currentPage].image else { return }
-      PrepareForSetUp.shared.imageFileDownload(image: image)
-      present(PrepareForSetUp.shared.completedAlert(), animated: true) {
-         self.dismiss(animated: true, completion: nil)
-      }
-   }
-   
-   // Share Action
-   @IBAction private func shareAction(_ sender: UIButton) {
-      guard let image = datas[pageControl.currentPage].image else { return }
-      
-      let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-      print(activityVC)
-      
-      present(activityVC, animated: true, completion: nil)
-   }
-   
    // Page Change Action
    @IBAction func pageChange(_ sender: UIPageControl) {
       fromTap = true
       
       let indexPath = IndexPath(item: sender.currentPage, section: 0)
       collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-   }
-   
-   
-   
-   
-   // Close Action
-   @IBAction func popAction() {
-      navigationController?.popViewController(animated: true)
    }
 }
 

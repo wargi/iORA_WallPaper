@@ -28,7 +28,7 @@ extension Scene {
          
          mainVC.bind(viewModel: viewModel)
          
-         return mainVC
+         return nav
       case .detailImage(let viewModel):
          guard var detailImageVC = nav.viewControllers.filter({ $0 is DetailImageViewController }).first as? DetailImageViewController else { fatalError("invalid detailImageVC") }
          
@@ -48,13 +48,13 @@ extension Scene {
          
          return calendarVC
       case .search(let viewModel):
-         guard var searchVC = nav.viewControllers.filter({ $0 is SearchViewController }).first as? SearchViewController else { fatalError("invalid searchVC") }
+         guard var searchVC = storyboard.instantiateViewController(withIdentifier: "searchVC") as? SearchViewController else { fatalError("invalid searchVC") }
          
          searchVC.bind(viewModel: viewModel)
          
          return searchVC
       case .searchResult(let viewModel):
-         guard var searchResultVC = nav.viewControllers.filter({ $0 is SearchResultViewController }).first as? SearchResultViewController else { fatalError("invalid searchResultVC") }
+         guard var searchResultVC = storyboard.instantiateViewController(withIdentifier: "searchResultVC") as? SearchResultViewController else { fatalError("invalid searchResultVC") }
          
          searchResultVC.bind(viewModel: viewModel)
          

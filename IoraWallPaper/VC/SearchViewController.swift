@@ -8,6 +8,9 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import NSObject_Rx
+import Action
 
 class SearchViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var searchBar: UISearchBar!
@@ -21,13 +24,31 @@ class SearchViewController: UIViewController, ViewModelBindableType {
    }
    
    func bindViewModel() {
+      WallPapers.shared.tags
+         .map { $0 }
+         .subscribe(onNext: {
+            self.viewModel.tags = $0
+            self.viewModel.list = $0.list.map { $0.info.name }
+            self.viewModel.filterd.onNext(self.viewModel.list)
+         })
+         .disposed(by: self.rx.disposeBag)
+      
+      
       backButton.rx.action = viewModel.popAction
       
       viewModel.filterd
-         .bind(to: tableView.rx.items(cellIdentifier: "tagCell")) { row, tag, cell in
-            cell.textLabel?.text = tag
+         .bind(to: tableView.rx.items(cellIdentifier: "tagCell")) { row, tagStr, cell in
+            cell.textLabel?.text = tagStr
       }
       .disposed(by: rx.disposeBag)
+      
+      Observable.zip(tableView.rx.modelSelected(String.self), tableView.rx.itemSelected)
+         .do(onNext: { [unowned self] (_, indexPath) in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+         })
+         .map { $0.0 }
+         .bind(to: viewModel.searchResultAction.inputs)
+         .disposed(by: rx.disposeBag)
    }
    
    override func viewWillAppear(_ animated: Bool) {

@@ -19,6 +19,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var notConnectView: UIView!
    @IBOutlet private weak var presentingButton: UIButton!
    @IBOutlet private weak var filterButton: UIButton!
+   @IBOutlet private weak var searchButton: UIButton!
    private var reachability: Reachability?
    
    var isPresenting = BehaviorSubject<Bool>(value: true)
@@ -62,6 +63,8 @@ class MainViewController: UIViewController, ViewModelBindableType {
             .disposed(by: rx.disposeBag)
       
       presentingButton.rx.action = viewModel.presentingAction()
+      
+      searchButton.rx.action = viewModel.searchAction
       }
       
       // 기본 설정
@@ -133,7 +136,6 @@ class MainViewController: UIViewController, ViewModelBindableType {
          if let header = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader,
                                                           at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
             header.configure()
-            print("Launch")
          }
       }
       

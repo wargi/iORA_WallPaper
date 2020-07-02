@@ -158,6 +158,7 @@ class PrepareForSetUp {
    }
    
    // 알럿 설정
+   @discardableResult
    func completedAlert(handler: ((UIAlertAction) -> ())? = nil) -> UIAlertController {
       let alert = UIAlertController(title: "Save Success :)", message: nil, preferredStyle: .alert)
       if let handler = handler {
