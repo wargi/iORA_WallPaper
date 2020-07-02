@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import RxSwift
 
 class WallPapeerCollectionViewCell: UICollectionViewCell {
    static let identifier = "WallPapeerCollectionViewCell"
@@ -16,6 +17,7 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
    @IBOutlet weak var dimmingView: UIView!
    @IBOutlet weak var titleLabel: UILabel!
    @IBOutlet weak var contentLabel: UILabel!
+   var bag = DisposeBag()
 
    func configure(info: MyWallPaper) {
       isUserInteractionEnabled = false
@@ -43,6 +45,8 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
       titleLabel.text = nil
       contentLabel.text = nil
       dimmingView.isHidden = true
+      
+      bag = DisposeBag()
    }
    
    override init(frame: CGRect) {

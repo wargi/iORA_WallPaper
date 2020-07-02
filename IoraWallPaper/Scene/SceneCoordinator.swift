@@ -20,6 +20,7 @@ class SceneCoordinator: SceneCoordinatorType {
       currentVC = window.rootViewController!
    }
    
+   @discardableResult
    func transition(to scene: Scene, using style: TransitionStyle, animated: Bool) -> Completable {
       let subject = PublishSubject<Void>()
       let target = scene.instantiate()

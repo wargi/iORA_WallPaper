@@ -8,6 +8,6 @@
 
 import Foundation
 
-class CalendarViewModel {
+class CalendarViewModel: CommonViewModel {
    
 }

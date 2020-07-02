@@ -7,35 +7,27 @@
 //
 
 import UIKit
+import RxSwift
 
 class SearchViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var searchBar: UISearchBar!
    @IBOutlet private weak var tableView: UITableView!
    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
-   var filtered: [String] = []
-   var list: [String] = []
-   var viewModeel: SearchViewModel!
+   @IBOutlet private weak var backButton: UIButton!
+   var viewModel: SearchViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
-      configure()
-      NotificationCenter.default.addObserver(self,
-                                             selector: #selector(self.configure),
-                                             name: NSNotification.Name(rawValue: "didFinishLaunchingWithOptions"),
-                                             object: nil)
-      
    }
    
    func bindViewModel() {
+      backButton.rx.action = viewModel.popAction
       
-   }
-   
-   @objc func configure() {
-      WallPapers.shared.tags.forEach { list.append($0.info.name) }
-      filtered = list
-      
-      tableView.reloadData()
+      viewModel.filterd
+         .bind(to: tableView.rx.items(cellIdentifier: "tagCell")) { row, tag, cell in
+            cell.textLabel?.text = tag
+      }
+      .disposed(by: rx.disposeBag)
    }
    
    override func viewWillAppear(_ animated: Bool) {
@@ -55,23 +47,6 @@ class SearchViewController: UIViewController, ViewModelBindableType {
       searchBar.resignFirstResponder()
    }
    
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      guard let resultVC = segue.destination as? SearchResultViewController,
-         let cell = sender as? UITableViewCell,
-         let index = tableView.indexPath(for: cell)?.row else { return }
-      
-      let tag = filtered[index]
-      
-      let wallpapers = WallPapers.shared.myWallPapers.filter { $0.wallpaper.tag.contains(tag) }
-      
-      resultVC.resultWallPapers = wallpapers
-      resultVC.titleString = tag
-   }
-   
-   @IBAction private func popAction(_ sender: UIButton) {
-      navigationController?.popViewController(animated: true)
-   }
-   
    @objc func keyWillShow(noti: Notification) {
       guard let keyboardHeight = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else { return }
       
@@ -79,28 +54,16 @@ class SearchViewController: UIViewController, ViewModelBindableType {
    }
 }
 
-extension SearchViewController: UITableViewDataSource {
-   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return filtered.count
-   }
-   
-   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      let cell = tableView.dequeueReusableCell(withIdentifier: "tagCell", for: indexPath)
-      
-      cell.textLabel?.text = filtered[indexPath.row]
-      
-      return cell
-   }
-}
-
 extension SearchViewController: UISearchBarDelegate {
    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-      filtered = searchText.lowercased().isEmpty ? list : list.filter({ tag -> Bool in
-         let tmp: NSString = tag as NSString
-         let range = tmp.range(of: searchText, options: .caseInsensitive)
-         return range.location != NSNotFound
-      })
-      
-      tableView.reloadData()
+      if searchText.lowercased().isEmpty {
+         viewModel.filterd.onNext(viewModel.list)
+      } else {
+         viewModel.filterd.onNext(viewModel.list.filter({ tag -> Bool in
+            let tmp: NSString = tag as NSString
+            let range = tmp.range(of: searchText, options: .caseInsensitive)
+            return range.location != NSNotFound
+         }))
+      }
    }
 }

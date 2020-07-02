@@ -63,7 +63,7 @@ class PrepareForSetUp {
    
    //MARK: FIREBASE DATA DOWNLOAD
    func firebaseDataDownload(completion: (([MyWallPaper]) -> ())? = nil) {
-      var myWallPapers = [MyWallPaper]()
+      var myWallPapers: [MyWallPaper] = []
       
       self.ref.child("list").observe(.value) { (snapshot) in
          DispatchQueue.global().async {

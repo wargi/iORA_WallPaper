@@ -11,8 +11,8 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+   
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-      
       FirebaseApp.configure()
       
       Messaging.messaging().delegate = self
@@ -25,12 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       application.registerForRemoteNotifications()
       
       PrepareForSetUp.shared.getDeviceScreenSize()
-      WallPapers.shared.firebaseDataSetUp() {
-         DispatchQueue.main.async {
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "didFinishLaunchingWithOptions"),
-                                            object: nil)
-         }
-      }
+      WallPapers.shared.firebaseDataSetUp()
       
       return true
    }

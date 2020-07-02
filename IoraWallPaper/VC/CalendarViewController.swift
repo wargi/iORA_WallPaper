@@ -41,7 +41,7 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
    
    // 컬러 관련
    public lazy var color = PrepareForSetUp.shared.getColor(brightness: info?.wallpaper.brightness)
-   var viewModeel: CalendarViewModel!
+   var viewModel: CalendarViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()

@@ -7,7 +7,26 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import Action
 
-class SearchViewModel {
+class SearchViewModel: CommonViewModel {
+   var list: [String]
+   var filterd: BehaviorSubject<[String]>
+   let popAction: CocoaAction
    
+   init(list: [String], filterd: BehaviorSubject<[String]>, sceneCoordinator: SceneCoordinatorType, popAction: CocoaAction? = nil) {
+      self.list = list
+      self.filterd = BehaviorSubject<[String]>(value: list)
+      self.popAction = CocoaAction {
+         if let action = popAction {
+            action.execute(())
+         }
+         
+         return sceneCoordinator.close(animated: true).asObservable().map { _ in }
+      }
+      
+      super.init(sceneCoordinator: sceneCoordinator)
+   }
 }

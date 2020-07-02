@@ -20,7 +20,7 @@ enum Scene {
 extension Scene {
    func instantiate(from stroyboard: String = "Main") -> UIViewController {
       let storyboard = UIStoryboard(name: stroyboard, bundle: nil)
-      guard let nav = storyboard.instantiateViewController(withIdentifier: "mainNav") as? UINavigationController else { fatalError("invalid nav") }
+      guard let nav = storyboard.instantiateViewController(withIdentifier: "MainNav") as? UINavigationController else { fatalError("invalid nav") }
       
       switch self {
       case .main(let viewModel):

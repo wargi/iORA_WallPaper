@@ -14,7 +14,7 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
    
    var resultWallPapers = [MyWallPaper]()
    var titleString: String?
-   var viewModeel: SearchResultViewModel!
+   var viewModel: SearchResultViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()

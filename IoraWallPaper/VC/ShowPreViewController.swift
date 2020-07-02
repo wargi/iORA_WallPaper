@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import NSObject_Rx
 
 class ShowPreViewController: UIViewController, ViewModelBindableType {
-   // 배경 화면 관련
-   public var info: MyWallPaper?
    @IBOutlet private weak var imageView: UIImageView!
    // 상단 버튼
    @IBOutlet private weak var closeButton: UIButton!
@@ -19,49 +20,37 @@ class ShowPreViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var downloadView: UIView!
    @IBOutlet private weak var displayTimeLabel: UILabel!
    @IBOutlet private weak var displayDateLabel: UILabel!
-   // 버튼 컬러 설정
-   public lazy var color: UIColor = {
-      guard let brightness = info?.wallpaper.brightness else { return .black }
-      return brightness == 0 ? .white : .black
-   }()
    
-   var viewModeel: ShowPreViewModel!
+   var viewModel: ShowPreViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
-      setImageAndColor()
    }
    
    func bindViewModel() {
+      viewModel.info
+         .map { $0.image }
+         .bind(to: imageView.rx.image)
+         .disposed(by: rx.disposeBag)
       
-   }
-   
-   // 이미지 설정 및 버튼 컬러 설정
-   func setImageAndColor() {
-      guard let image = info?.image else { return }
-      imageView.image = image
+      viewModel.info
+         .map { $0.wallpaper.brightness }
+         .map { $0 == 0 ? UIColor.white : UIColor.black }
+         .subscribe(onNext: {
+            // 이미지 설정 및 버튼 컬러 설정
+            self.closeView.layer.cornerRadius = 17.5
+            self.downloadView.layer.cornerRadius = 17.5
+            
+            self.displayTimeLabel.textColor = $0
+            self.displayDateLabel.textColor = $0
+         })
+         .disposed(by: rx.disposeBag)
       
-      closeView.layer.cornerRadius = 17.5
-      downloadView.layer.cornerRadius = 17.5
+      Observable.zip(downloadButton.rx.tap, viewModel.info)
+         .map { $0.1.image }
+         .bind(to: viewModel.saveAction.inputs)
+         .disposed(by: rx.disposeBag)
       
-      displayTimeLabel.textColor = color
-      displayDateLabel.textColor = color
-   }
-   
-   //MARK: Button Action
-   // 파일 다운로드 Action
-   @IBAction private func downloadAction(_ sender: UIButton) {
-      guard let image = info?.image else { return }
-      PrepareForSetUp.shared.imageFileDownload(image: image)
-      
-      present(PrepareForSetUp.shared.completedAlert(handler: { (_) in
-         self.dismiss(animated: true, completion: nil)
-      }), animated: true, completion: nil)
-   }
-   
-   // Close Action
-   @IBAction private func closeAction(_ sender: UIButton) {
-      dismiss(animated: true, completion: nil)
+      closeButton.rx.action = viewModel.closeAction
    }
 }

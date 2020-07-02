@@ -8,6 +8,6 @@
 
 import Foundation
 
-class DetailImageViewModel {
+class DetailImageViewModel: CommonViewModel {
    
 }

@@ -26,7 +26,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    private var fromTap = false
    // 페이지 데이터 목록
    public var datas: [MyWallPaper] = []
-   var viewModeel: DetailImageViewModel!
+   var viewModel: DetailImageViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -38,15 +38,15 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       
    }
    
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      let info = datas[pageControl.currentPage]
-      
-      if let showVC = segue.destination as? ShowPreViewController  {
-         showVC.info = info
-      } else if let calVC = segue.destination as? CalendarViewController {
-         calVC.info = info
-      }
-   }
+//   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//      let info = datas[pageControl.currentPage]
+//      
+//      if let showVC = segue.destination as? ShowPreViewController  {
+//         showVC.info = info
+//      } else if let calVC = segue.destination as? CalendarViewController {
+//         calVC.info = info
+//      }
+//   }
    
    // 앱 기본 설정
    func configure() {

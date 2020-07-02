@@ -8,6 +8,6 @@
 
 import Foundation
 
-class SearchResultViewModel {
+class SearchResultViewModel: CommonViewModel {
    
 }
