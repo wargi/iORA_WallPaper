@@ -27,8 +27,6 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    
    
    private var fromTap = false
-   // 페이지 데이터 목록
-   public var datas: [MyWallPaper] = []
    var viewModel: DetailImageViewModel!
    
    override func viewDidLoad() {
@@ -38,51 +36,70 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    }
    
    func bindViewModel() {
-      let currentPageOb = Observable.just(pageControl.currentPage)
-      
-      //MARK: Button Action
-      Observable.zip(previewButton.rx.tap, currentPageOb)
-         .map { $0.1 }
-         .bind(to: viewModel.showPreViewAction.inputs)
+      viewModel.wallpapersSubject
+         .map { $0.count }
+         .bind(to: pageControl.rx.numberOfPages)
          .disposed(by: rx.disposeBag)
       
+      //MARK: Button Action
+      previewButton.rx.tap
+         .map { self.pageControl.currentPage }
+         .bind(to: viewModel.showPreViewAction.inputs)
+         .disposed(by: rx.disposeBag)
+         
+      
       // 파일 다운로드
-      Observable.zip(saveButton.rx.tap, currentPageOb)
+      saveButton.rx.tap
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-         .map { $0.1 }
+         .map { self.pageControl.currentPage }
          .subscribe(onNext: {
+            self.present(PrepareForSetUp.shared.completedAlert(), animated: true) {
+               self.dismiss(animated: true, completion: nil)
+            }
             self.viewModel.downloadAction.inputs.onNext($0)
-            self.present(PrepareForSetUp.shared.completedAlert(), animated: true, completion: nil)
          })
          .disposed(by: rx.disposeBag)
       
       // 파일 공유
-      Observable.zip(shareButton.rx.tap, currentPageOb)
+      shareButton.rx.tap
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-         .map { $0.1 }
+         .map { self.pageControl.currentPage }
          .map { self.viewModel.shareAction(currentIndex: $0) }
          .subscribe(onNext: { self.present($0, animated: true, completion: nil) })
          .disposed(by: rx.disposeBag)
+      
+      viewModel.wallpapersSubject
+         .bind(to: collectionView.rx.items(cellIdentifier: DetailCollectionViewCell.identifier,
+                                           cellType: DetailCollectionViewCell.self)) { item, wallpaper, cell in
+         cell.wallPaperImageView.layer.cornerRadius = 30
+         cell.wallPaperImageView.layer.masksToBounds = true
+         
+         cell.layer.masksToBounds = false
+         cell.layer.shadowColor = UIColor.black.cgColor
+         cell.layer.shadowOpacity = 0.4
+         cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+         cell.layer.shadowRadius = 6
+         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds,
+                                              cornerRadius: 30).cgPath
+         
+         if let image = wallpaper.image {
+            cell.wallPaperImageView.image = image
+         } else {
+            cell.configure(info: wallpaper)
+         }
+      }
+      .disposed(by: rx.disposeBag)
       
       backButton.rx.action = viewModel.popAction
    }
    
    // 앱 기본 설정
    func configure() {
-      pageControl.numberOfPages = datas.count
       let scale: CGFloat = 0.75
       pageControl.transform = CGAffineTransform(scaleX: scale, y: scale)
       
       for dot in pageControl.subviews {
          dot.transform = CGAffineTransform(scaleX: scale, y: scale)
-      }
-      
-      datas.forEach { info in
-         if info.image == nil {
-            PrepareForSetUp.shared.imageDownload(info: info) { (image) in
-               info.image = image
-            }
-         }
       }
    }
    
@@ -116,39 +133,7 @@ extension DetailImageViewController: UIScrollViewDelegate {
    }
 }
 
-//MARK: UICollectionView DataSource & Delegate
-extension DetailImageViewController: UICollectionViewDataSource {
-   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return datas.count
-   }
-   
-   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailCollectionViewCell.identifier, for: indexPath) as? DetailCollectionViewCell else { fatalError("Invalid Cell") }
-      
-      let target = datas[indexPath.row]
-      
-      cell.wallPaperImageView.layer.cornerRadius = 30
-      cell.wallPaperImageView.layer.masksToBounds = true
-      
-      cell.layer.masksToBounds = false
-      cell.layer.shadowColor = UIColor.black.cgColor
-      cell.layer.shadowOpacity = 0.4
-      cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-      cell.layer.shadowRadius = 6
-      cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds,
-                                           cornerRadius: 30).cgPath
-      
-      if let image = target.image {
-         cell.wallPaperImageView.image = image
-      } else {
-         cell.configure(info: target)
-      }
-      
-      
-      return cell
-   }
-}
-
+//MARK: UICollectionView Delegate
 extension DetailImageViewController: UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       return CGSize(width: collectionView.bounds.size.width * 0.70, height: collectionView.bounds.size.height - 20)

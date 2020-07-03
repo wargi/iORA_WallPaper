@@ -13,7 +13,7 @@ import NSObject_Rx
 import Action
 
 class DetailImageViewModel: CommonViewModel {
-   var wallpapers: [MyWallPaper]
+   var wallpapers: [MyWallPaper] // 페이지 데이터 목록
    let wallpapersSubject: BehaviorSubject<[MyWallPaper]>
    let showPreViewAction: Action<Int, Void>
    let downloadAction: Action<Int, Void>
@@ -35,13 +35,13 @@ class DetailImageViewModel: CommonViewModel {
          if let action = showPreViewAction {
             action.execute(index)
          }
-         
+         print("Tap")
          let wallpaper = wallpapers[index]
-         let viewModel = ShowPreViewModel(info: BehaviorSubject<MyWallPaper>(value: wallpaper),
+         let viewModel = ShowPreViewModel(wallpaper: wallpaper,
                                           sceneCoordinator: sceneCoordinator)
          let scene = Scene.showPre(viewModel)
          
-         return sceneCoordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+         return sceneCoordinator.transition(to: scene, using: .modal, animated: true).asObservable().map { _ in }
       }
       
       self.downloadAction = Action<Int, Void> { index in

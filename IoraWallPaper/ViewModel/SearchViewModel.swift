@@ -37,8 +37,7 @@ class SearchViewModel: CommonViewModel {
             action.execute(tagName)
          }
          
-         guard let tags = try? WallPapers.shared.tags.value(),
-            let tag = tags.list.first(where: { $0.info.name == tagName }) else { fatalError() }
+         guard let tag = WallPapers.shared.tags.list.first(where: { $0.info.name == tagName }) else { fatalError() }
          
          let viewModel = SearchResultViewModel(tag: tag, sceneCoordinator: sceneCoordinator)
          let scene = Scene.searchResult(viewModel)

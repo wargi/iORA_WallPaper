@@ -13,27 +13,15 @@ import Action
 
 class ShowPreViewModel: CommonViewModel {
    // 배경 화면 관련
+   let wallpaper: MyWallPaper
    public var info: BehaviorSubject<MyWallPaper>
    
    //MARK: Button Action
-   // 파일 다운로드 Action
-   var saveAction: Action<UIImage?, Void>
    var closeAction: CocoaAction
    
-   init(info: BehaviorSubject<MyWallPaper>, sceneCoordinator: SceneCoordinatorType, saveAction: Action<UIImage?, Void>? = nil, closeAction: CocoaAction? = nil) {
-      self.info = info
-      
-      self.saveAction = Action<UIImage?, Void> { image in
-         if let action = saveAction {
-            action.execute(image)
-         }
-         
-         PrepareForSetUp.shared.imageFileDownload(image: image)
-         PrepareForSetUp.shared.completedAlert { (_) in
-            sceneCoordinator.close(animated: true)
-         }
-         return Observable.just(())
-      }
+   init(wallpaper: MyWallPaper, sceneCoordinator: SceneCoordinatorType, closeAction: CocoaAction? = nil) {
+      self.wallpaper = wallpaper
+      self.info = BehaviorSubject<MyWallPaper>(value: wallpaper)
       
       self.closeAction = CocoaAction {
          if let action = closeAction {

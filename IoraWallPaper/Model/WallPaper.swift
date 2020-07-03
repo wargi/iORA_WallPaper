@@ -32,29 +32,26 @@ class MyWallPaper {
 
 class WallPapers {
    static let shared = WallPapers()
-   var myWallPapers = BehaviorSubject<[MyWallPaper]>(value: [])
-   var tags = BehaviorSubject<Tags>(value: Tags(list: [], representImage: []))
+   var myWallPapers = [MyWallPaper]()
+   var tags = Tags(list: [], representImage: [])
+   let wallpaperSubject = BehaviorSubject<[MyWallPaper]>(value: [])
+   let tagSubject = BehaviorSubject<Tags>(value: Tags(list: [], representImage: []))
    let bag = DisposeBag()
    
    // 데이터 다운로드
    func firebaseDataSetUp(completion: (() -> ())? = nil) {
       PrepareForSetUp.shared.firebaseDataDownload { (datas) in
-         self.myWallPapers.onNext(datas)
+         self.myWallPapers = datas
+         self.wallpaperSubject.onNext(datas)
          PrepareForSetUp.shared.firebaseTagDataDownload { (tags) in
-            var resultTags = Tags(list: [], representImage: [])
             tags.forEach { tag in
                let result = datas.filter { $0.wallpaper.tag == tag.info.name }
                let info = Tag(info: tag.info, result: result)
-               resultTags.list.append(info)
-               resultTags.representImage.append(result[0])
+               self.tags.list.append(info)
+               self.tags.representImage.append(result[0])
             }
-            self.tags.onNext(resultTags)
-            completion?()
+            self.tagSubject.onNext(self.tags)
          }
       }
-   }
-   
-   func wallpaperList() -> Observable<[MyWallPaper]> {
-      return myWallPapers
    }
 }

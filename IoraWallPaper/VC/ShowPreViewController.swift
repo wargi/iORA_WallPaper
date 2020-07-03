@@ -45,10 +45,19 @@ class ShowPreViewController: UIViewController, ViewModelBindableType {
             self.displayDateLabel.textColor = $0
          })
          .disposed(by: rx.disposeBag)
-      
-      Observable.zip(downloadButton.rx.tap, viewModel.info)
-         .map { $0.1.image }
-         .bind(to: viewModel.saveAction.inputs)
+
+      // 파일 다운로드 Action
+      downloadButton.rx.tap
+         .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
+         .subscribe(onNext: { empty in
+            let alert = PrepareForSetUp.shared.completedAlert(handler: { _ in
+               PrepareForSetUp.shared.imageFileDownload(image: self.viewModel.wallpaper.image)
+               self.viewModel.closeAction.inputs.onNext(empty)
+            })
+            self.present(alert, animated: true, completion: nil)
+            
+            return empty
+         })
          .disposed(by: rx.disposeBag)
       
       closeButton.rx.action = viewModel.closeAction

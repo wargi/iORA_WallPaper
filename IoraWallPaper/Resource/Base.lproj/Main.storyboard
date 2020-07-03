@@ -238,7 +238,6 @@
                                             <outlet property="dimmingView" destination="hx3-uA-20s" id="FDC-LN-4K2"/>
                                             <outlet property="titleLabel" destination="DWf-Ay-Mve" id="FZM-Uj-3ng"/>
                                             <outlet property="wallpaperImageView" destination="He0-vO-li5" id="cOR-2K-bRb"/>
-                                            <segue destination="tu2-80-rfH" kind="show" id="dhe-y0-aBO"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -443,7 +442,6 @@ Check your connection</string>
                                             <outlet property="dimmingView" destination="kCv-IA-T7U" id="LD6-ai-jla"/>
                                             <outlet property="titleLabel" destination="znF-10-XDt" id="UgL-0Q-Rlg"/>
                                             <outlet property="wallpaperImageView" destination="jHI-an-w9B" id="gqF-BW-98g"/>
-                                            <segue destination="tu2-80-rfH" kind="show" id="eE9-J1-dNB"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -552,10 +550,10 @@ Check your connection</string>
             </objects>
             <point key="canvasLocation" x="1087" y="141"/>
         </scene>
-        <!--Detail Image View Controller-->
+        <!--detailImageVC-->
         <scene sceneID="9YV-hE-Qj7">
             <objects>
-                <viewController storyboardIdentifier="DetailImageVC" modalPresentationStyle="fullScreen" id="tu2-80-rfH" customClass="DetailImageViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detailImageVC" title="detailImageVC" modalPresentationStyle="fullScreen" id="tu2-80-rfH" customClass="DetailImageViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xv6-eb-mAU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -601,7 +599,6 @@ Check your connection</string>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="tu2-80-rfH" id="meq-0J-ZeT"/>
                                     <outlet property="delegate" destination="tu2-80-rfH" id="cxI-AH-MrH"/>
                                 </connections>
                             </collectionView>
@@ -621,9 +618,6 @@ Check your connection</string>
                                         <state key="normal" image="preview">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="hjq-DW-yC7" kind="presentation" id="Vbq-Oa-pLK"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdW-qK-58k">
                                         <rect key="frame" x="90" y="0.0" width="35" height="35"/>
@@ -631,9 +625,6 @@ Check your connection</string>
                                         <state key="normal" image="download">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
-                                        <connections>
-                                            <action selector="downlaodAction:" destination="tu2-80-rfH" eventType="touchUpInside" id="NP5-vZ-8ro"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U8r-uv-tqC">
                                         <rect key="frame" x="135" y="0.0" width="35" height="35"/>
@@ -1045,10 +1036,10 @@ Check your connection</string>
             </objects>
             <point key="canvasLocation" x="2586" y="141"/>
         </scene>
-        <!--z-->
+        <!--MainNav-->
         <scene sceneID="CBw-Yb-3pd">
             <objects>
-                <navigationController storyboardIdentifier="MainNav" title="z" automaticallyAdjustsScrollViewInsets="NO" id="fZd-Bb-I4I" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNav" title="MainNav" automaticallyAdjustsScrollViewInsets="NO" id="fZd-Bb-I4I" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="8jh-O8-PuI">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -1066,9 +1057,6 @@ Check your connection</string>
             <point key="canvasLocation" x="335" y="141"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="dhe-y0-aBO"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="Bcalendar" width="33" height="33"/>
         <image name="ColorPalette" width="375" height="812"/>

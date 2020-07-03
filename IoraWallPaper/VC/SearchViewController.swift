@@ -24,7 +24,7 @@ class SearchViewController: UIViewController, ViewModelBindableType {
    }
    
    func bindViewModel() {
-      WallPapers.shared.tags
+      WallPapers.shared.tagSubject
          .map { $0 }
          .subscribe(onNext: {
             self.viewModel.tags = $0
@@ -32,7 +32,6 @@ class SearchViewController: UIViewController, ViewModelBindableType {
             self.viewModel.filterd.onNext(self.viewModel.list)
          })
          .disposed(by: self.rx.disposeBag)
-      
       
       backButton.rx.action = viewModel.popAction
       

@@ -10,49 +10,72 @@ import Foundation
 import RxSwift
 import RxCocoa
 import Action
+import NSObject_Rx
 
 class MainViewModel: CommonViewModel {
-   var flag = true
+   var wallpapers: [MyWallPaper]
+   var presentWallpapers: BehaviorSubject<[MyWallPaper]>
+   var isPresenting: BehaviorSubject<Bool>
+   
+   var isPresent = true
+   var reverse = false
    let searchAction: CocoaAction
-   lazy var wallpapers = BehaviorSubject<[MyWallPaper]>(value: [])
+   let selectedAction: Action<[MyWallPaper], Void>
    
-   func filteringAction() -> CocoaAction {
-      return Action {
-         if let wallpapers = try? WallPapers.shared.myWallPapers.value() {
-            self.wallpapers.onNext(wallpapers.reversed())
-         }
-         
-         return Observable.just(())
+   func presentAction() {
+      isPresent = !isPresent
+      
+      if isPresent {
+         let wallpaper = reverse ? WallPapers.shared.myWallPapers.reversed() : WallPapers.shared.myWallPapers
+         presentWallpapers.onNext(wallpaper)
+         wallpapers = wallpaper
+      } else {
+         presentWallpapers.onNext(WallPapers.shared.tags.representImage)
       }
+      
+      isPresenting.onNext(isPresent)
    }
    
-   func presentingAction() -> CocoaAction {
-      return Action {
-         self.flag = !self.flag
-         if self.flag, let wallpapers = try? WallPapers.shared.myWallPapers.value() {
-            self.wallpapers.onNext(wallpapers)
-         } else {
-            if let value = try? WallPapers.shared.tags.value() {
-               self.wallpapers.onNext(value.representImage)
-            }
-         }
-         return Observable.just(())
-      }
+   func setData() {
+      Observable.zip(WallPapers.shared.wallpaperSubject, WallPapers.shared.tagSubject)
+         .take(2)
+         .map { $0.0 }
+         .subscribe(onNext: {
+            self.wallpapers = $0
+            self.presentWallpapers.onNext($0)
+         })
+         .disposed(by: rx.disposeBag)
    }
    
-   init(sceneCoordinator: SceneCoordinatorType, searchAction: CocoaAction? = nil) {
+   init(sceneCoordinator: SceneCoordinatorType, filteringAction: CocoaAction? = nil, searchAction: CocoaAction? = nil, selectedAction: Action<[MyWallPaper], Void>? = nil) {
+      self.wallpapers = []
+      self.presentWallpapers = BehaviorSubject<[MyWallPaper]>(value: wallpapers)
+      self.isPresenting = BehaviorSubject<Bool>(value: true)
+      
       self.searchAction = CocoaAction { tagList in
-         guard let tags = try? WallPapers.shared.tags.value() else { fatalError() }
          if let action = searchAction {
             action.execute(tagList)
          }
          
-         let searchViewModel = SearchViewModel(tags: tags, sceneCoordinator: sceneCoordinator)
+         let searchViewModel = SearchViewModel(tags: WallPapers.shared.tags, sceneCoordinator: sceneCoordinator)
          let scene = Scene.search(searchViewModel)
          
          return sceneCoordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
       }
       
+      self.selectedAction = Action<[MyWallPaper], Void> { wallpapers in
+         if let action = selectedAction {
+            action.execute(wallpapers)
+         }
+         
+         let viewModel = DetailImageViewModel(wallpapers: wallpapers, sceneCoordinator: sceneCoordinator)
+         let scene = Scene.detailImage(viewModel)
+         
+         return sceneCoordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
+      }
+      
       super.init(sceneCoordinator: sceneCoordinator)
+      
+      self.setData()
    }
 }

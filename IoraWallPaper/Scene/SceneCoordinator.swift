@@ -30,7 +30,7 @@ class SceneCoordinator: SceneCoordinatorType {
    func transition(to scene: Scene, using style: TransitionStyle, animated: Bool) -> Completable {
       let subject = PublishSubject<Void>()
       let target = scene.instantiate()
-      
+      print(currentVC)
       switch style {
       case .root:
          currentVC = target.sceneViewController
@@ -57,7 +57,9 @@ class SceneCoordinator: SceneCoordinatorType {
    
    func close(animated: Bool) -> Completable {
       Completable.create { [unowned self] completable in
+         print("CLOSE")
          if let presentingVC = self.currentVC.presentingViewController {
+            print("Presenting VC: ", presentingVC)
             self.currentVC.dismiss(animated: animated) {
                self.currentVC = presentingVC.sceneViewController
                completable(.completed)
@@ -67,6 +69,7 @@ class SceneCoordinator: SceneCoordinatorType {
                completable(.error(TransitionError.cannotPop))
                return Disposables.create()
             }
+            print("Nav VC: ", nav)
             self.currentVC = nav.viewControllers.last!
             completable(.completed)
          } else {

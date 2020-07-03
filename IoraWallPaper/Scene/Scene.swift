@@ -30,7 +30,7 @@ extension Scene {
          
          return nav
       case .detailImage(let viewModel):
-         guard var detailImageVC = nav.viewControllers.filter({ $0 is DetailImageViewController }).first as? DetailImageViewController else { fatalError("invalid detailImageVC") }
+         guard var detailImageVC = storyboard.instantiateViewController(withIdentifier: "detailImageVC") as? DetailImageViewController else { fatalError("invalid detailImageVC") }
          
          detailImageVC.bind(viewModel: viewModel)
          

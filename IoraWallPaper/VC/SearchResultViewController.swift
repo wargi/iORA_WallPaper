@@ -48,21 +48,15 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
       }
       .disposed(by: rx.disposeBag)
       
-      
+      // 화면 전환 전 데이터 전달
+      Observable.zip(collectionView.rx.modelSelected(MyWallPaper.self), collectionView.rx.itemSelected)
+         .do(onNext: { self.collectionView.deselectItem(at: $0.1, animated: true) })
+         .map { $0.0 }
+         .bind(to: viewModel.showDetailAction.inputs)
+         .disposed(by: rx.disposeBag)
       
       backButton.rx.action = viewModel.popAction
    }
-   
-   // 화면 전환 전 데이터 전달
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-      if let detailImgVC = segue.destination as? DetailImageViewController,
-         let cell = sender as? WallPapeerCollectionViewCell,
-         let indexPath = collectionView.indexPath(for: cell) {
-         
-         detailImgVC.datas = [resultWallPapers[indexPath.item]]
-      }
-   }
-
 }
 
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {   
