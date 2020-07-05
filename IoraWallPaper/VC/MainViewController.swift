@@ -31,6 +31,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
    }
    
    func bindViewModel() {
+      // 컬렉션뷰 데이터 소스
       viewModel.presentWallpapers
          .bind(to: collectionView.rx.items(cellIdentifier: WallPapeerCollectionViewCell.identifier,
                                            cellType: WallPapeerCollectionViewCell.self)) { item, wallpaper, cell in
@@ -48,12 +49,16 @@ class MainViewController: UIViewController, ViewModelBindableType {
       }
       .disposed(by: rx.disposeBag)
       
+      // 컬렉션 전환 액션
       presentingButton.rx.tap
          .subscribe {
-            self.viewModel.presentAction()
+            if let _ = $0.element {
+               self.viewModel.presentAction()
+            }
          }
          .disposed(by: rx.disposeBag)
       
+      // 메인리스트 정렬 액션
       filterButton.rx.tap
          .map { try self.viewModel.isPresenting.value() }
          .subscribe(onNext: {
@@ -65,6 +70,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
          })
          .disposed(by: rx.disposeBag)
       
+      // MainViewVC => SearchVC
       searchButton.rx.action = viewModel.searchAction
       
       collectionView.rx.itemSelected
@@ -138,8 +144,16 @@ class MainViewController: UIViewController, ViewModelBindableType {
                layout.minimumLineSpacing = 10
             } else {
                layout.headerReferenceSize = CGSize(width: self.collectionView.bounds.width, height: 0)
-               let width = (self.collectionView.bounds.width - 30) * 0.9
-               layout.itemSize = CGSize(width: width, height: width * 1.7)
+               var width: CGFloat = 0
+               var height: CGFloat = 0
+               
+               if let displayType = PrepareForSetUp.shared.displayType {
+                  let collectionWidth = self.collectionView.bounds.width - 30
+                  width = displayType == .retina ? collectionWidth * 0.8 : collectionWidth * 0.88
+                  height = displayType == .retina ? width * 2 : width * 2.2
+               }
+               
+               layout.itemSize = CGSize(width: width, height: height)
                layout.minimumInteritemSpacing = 25
                layout.minimumLineSpacing = 20
             }

@@ -42,7 +42,7 @@ extension Scene {
          
          return showPreVC
       case .calendar(let viewModel):
-         guard var calendarVC = storyboard.instantiateViewController(withIdentifier: "CalendarVC") as? CalendarViewController else { fatalError("invalid calendar") }
+         guard var calendarVC = storyboard.instantiateViewController(withIdentifier: "calendarVC") as? CalendarViewController else { fatalError("invalid calendar") }
          
          calendarVC.bind(viewModel: viewModel)
          

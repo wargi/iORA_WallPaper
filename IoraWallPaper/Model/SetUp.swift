@@ -33,7 +33,7 @@ class PrepareForSetUp {
    
    private init() {}
    private let ref = Database.database().reference()
-   private var displayType: DisplayType?
+   var displayType: DisplayType?
    
    //MARK: COLOR SETTING
    // 디바이스 사이즈 계산

@@ -15,6 +15,7 @@ import Action
 class DetailImageViewModel: CommonViewModel {
    var wallpapers: [MyWallPaper] // 페이지 데이터 목록
    let wallpapersSubject: BehaviorSubject<[MyWallPaper]>
+   let showCalendarAction: Action<Int, Void>
    let showPreViewAction: Action<Int, Void>
    let downloadAction: Action<Int, Void>
    let popAction: CocoaAction
@@ -27,15 +28,25 @@ class DetailImageViewModel: CommonViewModel {
       return activity
    }
    
-   init(wallpapers: [MyWallPaper], sceneCoordinator: SceneCoordinatorType, showPreViewAction: Action<Int, Void>? = nil, downloadAction: Action<Int, Void>? = nil, popAction: CocoaAction? = nil) {
+   init(wallpapers: [MyWallPaper], sceneCoordinator: SceneCoordinatorType, showCalendarAction: Action<Int, Void>? = nil, showPreViewAction: Action<Int, Void>? = nil, downloadAction: Action<Int, Void>? = nil, popAction: CocoaAction? = nil) {
       self.wallpapers = wallpapers
       self.wallpapersSubject = BehaviorSubject<[MyWallPaper]>(value: wallpapers)
+      
+      self.showCalendarAction = Action<Int, Void> { index in
+         if let action = showCalendarAction {
+            action.execute(index)
+         }
+         let wallpaper = wallpapers[index]
+         let viewModel = CalendarViewModel(info: wallpaper, sceneCoordinator: sceneCoordinator)
+         let scene = Scene.calendar(viewModel)
+         
+         return sceneCoordinator.transition(to: scene, using: .modal, animated: true).asObservable().map { _ in }
+      }
       
       self.showPreViewAction = Action<Int, Void> { index in
          if let action = showPreViewAction {
             action.execute(index)
          }
-         print("Tap")
          let wallpaper = wallpapers[index]
          let viewModel = ShowPreViewModel(wallpaper: wallpaper,
                                           sceneCoordinator: sceneCoordinator)

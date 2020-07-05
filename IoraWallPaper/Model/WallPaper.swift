@@ -50,6 +50,15 @@ class WallPapers {
                self.tags.list.append(info)
                self.tags.representImage.append(result[0])
             }
+            self.tags.list.sort { lhs, rhs in
+               lhs.info.name < rhs.info.name
+            }
+            var result = [MyWallPaper]()
+            for index in 0 ..< self.tags.list.count {
+               result.append(self.tags.representImage[index])
+            }
+            
+            self.tags.representImage = result
             self.tagSubject.onNext(self.tags)
          }
       }

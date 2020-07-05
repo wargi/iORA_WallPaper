@@ -32,7 +32,6 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    override func viewDidLoad() {
       super.viewDidLoad()
       configure()
-      collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
    }
    
    func bindViewModel() {
@@ -42,6 +41,11 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
          .disposed(by: rx.disposeBag)
       
       //MARK: Button Action
+      calendarButton.rx.tap
+         .map { self.pageControl.currentPage }
+         .bind(to: viewModel.showCalendarAction.inputs)
+         .disposed(by: rx.disposeBag)
+      
       previewButton.rx.tap
          .map { self.pageControl.currentPage }
          .bind(to: viewModel.showPreViewAction.inputs)

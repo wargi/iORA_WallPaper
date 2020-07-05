@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="V8x-83-FKp">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -28,54 +28,19 @@
             <objects>
                 <viewController id="V8x-83-FKp" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ncP-E2-IZb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MMf-kJ-Oot">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uFX-jm-cxn">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="InitialCollectionViewCell" reuseIdentifier="InitialCollectionViewCell" id="xeO-P1-f88" customClass="InitialCollectionViewCell" customModule="IORA" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Rzz-7W-f8x">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cs9-DQ-7vX">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="cs9-DQ-7vX" secondAttribute="bottom" id="Iqm-2R-Pkf"/>
-                                                <constraint firstItem="cs9-DQ-7vX" firstAttribute="leading" secondItem="Rzz-7W-f8x" secondAttribute="leading" id="Yp9-Eo-4Io"/>
-                                                <constraint firstItem="cs9-DQ-7vX" firstAttribute="top" secondItem="Rzz-7W-f8x" secondAttribute="top" id="bRq-M6-kYz"/>
-                                                <constraint firstAttribute="trailing" secondItem="cs9-DQ-7vX" secondAttribute="trailing" id="qbG-eT-qRD"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="imageView" destination="cs9-DQ-7vX" id="A4Z-xx-tNF"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="V8x-83-FKp" id="LNl-YK-AaP"/>
-                                    <outlet property="delegate" destination="V8x-83-FKp" id="N9T-69-yuo"/>
-                                </connections>
-                            </collectionView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="landingPage" translatesAutoresizingMaskIntoConstraints="NO" id="4zN-rY-gQv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="MMf-kJ-Oot" secondAttribute="bottom" id="6rC-w0-AWu"/>
-                            <constraint firstItem="TwN-pK-OCb" firstAttribute="trailing" secondItem="MMf-kJ-Oot" secondAttribute="trailing" id="DHC-ms-LJg"/>
-                            <constraint firstItem="MMf-kJ-Oot" firstAttribute="leading" secondItem="TwN-pK-OCb" secondAttribute="leading" id="R11-US-wTF"/>
-                            <constraint firstItem="MMf-kJ-Oot" firstAttribute="top" secondItem="ncP-E2-IZb" secondAttribute="top" id="boo-Cd-CLg"/>
+                            <constraint firstItem="4zN-rY-gQv" firstAttribute="leading" secondItem="TwN-pK-OCb" secondAttribute="leading" id="0A3-X9-h9i"/>
+                            <constraint firstItem="TwN-pK-OCb" firstAttribute="trailing" secondItem="4zN-rY-gQv" secondAttribute="trailing" id="I3h-Se-GCJ"/>
+                            <constraint firstAttribute="bottom" secondItem="4zN-rY-gQv" secondAttribute="bottom" id="fUC-c1-XrW"/>
+                            <constraint firstItem="4zN-rY-gQv" firstAttribute="top" secondItem="ncP-E2-IZb" secondAttribute="top" id="sVH-bv-Exf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TwN-pK-OCb"/>
                     </view>
@@ -89,11 +54,11 @@
             <objects>
                 <viewController storyboardIdentifier="searchVC" title="searchVC" id="klj-nG-AVz" customClass="SearchViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XUD-Wf-5d5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="7xa-Ve-tVm">
-                                <rect key="frame" x="8" y="44" width="406" height="56"/>
+                                <rect key="frame" x="8" y="0.0" width="406" height="56"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qjb-Gg-TIU">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="56"/>
@@ -116,7 +81,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ODG-y7-ZhH">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="680"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="tagCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="tagCell" textLabel="5ML-uD-kIq" style="IBUITableViewCellStyleDefault" id="MJk-DC-VDy">
@@ -168,11 +133,11 @@
             <objects>
                 <viewController storyboardIdentifier="searchResultVC" title="SearchResultViewController" id="TrM-fv-R4H" customClass="SearchResultViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cxP-Gr-f6T">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="LAc-3s-DGq">
-                                <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="686"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uPC-7b-ywU">
                                     <size key="itemSize" width="128" height="128"/>
@@ -246,7 +211,7 @@
                                 </connections>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R3p-IV-fLM">
-                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IORA STUDIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ER9-I4-TTA">
                                         <rect key="frame" x="146.66666666666666" y="13.666666666666666" width="120.99999999999997" height="22.666666666666671"/>
@@ -297,14 +262,14 @@
             <objects>
                 <viewController storyboardIdentifier="MainVC" modalTransitionStyle="partialCurl" id="BYZ-38-t0r" customClass="MainViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="692"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oM9-bg-3UY" userLabel="Not Connect View">
-                                <rect key="frame" x="0.0" y="50" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="642"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBh-Bb-uCz">
-                                        <rect key="frame" x="125.33333333333333" y="320.33333333333331" width="163.66666666666669" height="33.333333333333314"/>
+                                        <rect key="frame" x="125.33333333333333" y="279.33333333333331" width="163.66666666666669" height="33.333333333333314"/>
                                         <string key="text">You're offline.
 Check your connection</string>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="15"/>
@@ -312,7 +277,7 @@ Check your connection</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect to the Internet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkJ-f1-G33">
-                                        <rect key="frame" x="10" y="292" width="394" height="23.333333333333314"/>
+                                        <rect key="frame" x="10" y="252.00000000000003" width="394" height="22.333333333333343"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -336,7 +301,7 @@ Check your connection</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Er-e3-Inq">
-                                        <rect key="frame" x="363" y="7.6666666666666714" width="35" height="35"/>
+                                        <rect key="frame" x="363" y="7.6666666666666643" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="RAD-4N-Amm"/>
                                             <constraint firstAttribute="height" constant="35" id="dvp-Na-sCI"/>
@@ -345,7 +310,7 @@ Check your connection</string>
                                         <state key="normal" image="search"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h71-lJ-zQI">
-                                        <rect key="frame" x="322" y="8.6666666666666714" width="33" height="33"/>
+                                        <rect key="frame" x="322" y="8.6666666666666643" width="33" height="33"/>
                                         <state key="normal" image="filter"/>
                                     </button>
                                 </subviews>
@@ -362,7 +327,7 @@ Check your connection</string>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OOO-ep-nXg">
-                                <rect key="frame" x="0.0" y="50" width="414" height="758"/>
+                                <rect key="frame" x="0.0" y="50" width="414" height="642"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YZq-Vk-SGS">
                                     <size key="itemSize" width="245" height="259"/>
@@ -508,7 +473,7 @@ Check your connection</string>
                                 </connections>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ncy-uh-sfu">
-                                <rect key="frame" x="333" y="688" width="60" height="60"/>
+                                <rect key="frame" x="324" y="604" width="60" height="60"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="w5v-h4-8bo"/>
@@ -522,9 +487,9 @@ Check your connection</string>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fgb-yh-tAm" secondAttribute="trailing" id="FT8-0Z-skv"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OOO-ep-nXg" secondAttribute="trailing" id="Gts-9k-U8D"/>
                             <constraint firstAttribute="bottom" secondItem="oM9-bg-3UY" secondAttribute="bottom" id="HBa-Te-t2Q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ncy-uh-sfu" secondAttribute="trailing" constant="21" id="IrD-kD-V9B"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ncy-uh-sfu" secondAttribute="trailing" constant="30" id="IrD-kD-V9B"/>
                             <constraint firstItem="vBh-Bb-uCz" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="NKr-Sv-Xn6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ncy-uh-sfu" secondAttribute="bottom" constant="26" id="QLC-vE-KLA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ncy-uh-sfu" secondAttribute="bottom" constant="28" id="QLC-vE-KLA"/>
                             <constraint firstItem="fgb-yh-tAm" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="X7k-MU-ZwM"/>
                             <constraint firstItem="OOO-ep-nXg" firstAttribute="top" secondItem="fgb-yh-tAm" secondAttribute="bottom" id="dJi-AP-KHR"/>
                             <constraint firstAttribute="bottom" secondItem="OOO-ep-nXg" secondAttribute="bottom" id="e6I-KO-hgo"/>
@@ -555,11 +520,11 @@ Check your connection</string>
             <objects>
                 <viewController storyboardIdentifier="detailImageVC" title="detailImageVC" modalPresentationStyle="fullScreen" id="tu2-80-rfH" customClass="DetailImageViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xv6-eb-mAU">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rvM-9y-eX0">
-                                <rect key="frame" x="0.0" y="101" width="414" height="704"/>
+                                <rect key="frame" x="0.0" y="57" width="414" height="622"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="30" minimumInteritemSpacing="0.0" id="jMS-Vf-zgx">
                                     <size key="itemSize" width="50" height="50"/>
@@ -603,14 +568,11 @@ Check your connection</string>
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="eBg-qs-HDP">
-                                <rect key="frame" x="234" y="56" width="170" height="35"/>
+                                <rect key="frame" x="234" y="12" width="170" height="35"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mew-W7-nvh">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                         <state key="normal" image="Bcalendar"/>
-                                        <connections>
-                                            <segue destination="TuU-La-Pew" kind="presentation" id="5jV-7r-S1u"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6O-vY-bk0">
                                         <rect key="frame" x="45" y="0.0" width="35" height="35"/>
@@ -640,7 +602,7 @@ Check your connection</string>
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yl1-2v-ant">
-                                <rect key="frame" x="16" y="56" width="35" height="35"/>
+                                <rect key="frame" x="16" y="12" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="I8g-BN-cny"/>
                                     <constraint firstAttribute="height" constant="35" id="QVZ-ng-c1S"/>
@@ -651,7 +613,7 @@ Check your connection</string>
                                 </state>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" defersCurrentPageDisplay="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="1PF-MA-LKu">
-                                <rect key="frame" x="187.66666666666666" y="815" width="39" height="37"/>
+                                <rect key="frame" x="187.66666666666666" y="689" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -692,19 +654,19 @@ Check your connection</string>
             </objects>
             <point key="canvasLocation" x="1832" y="141"/>
         </scene>
-        <!--CalendarVC-->
+        <!--calendarVC-->
         <scene sceneID="u16-GI-6Lu">
             <objects>
-                <viewController storyboardIdentifier="CalendarVC" title="CalendarVC" modalPresentationStyle="fullScreen" id="TuU-La-Pew" customClass="CalendarViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="calendarVC" title="calendarVC" modalPresentationStyle="fullScreen" id="TuU-La-Pew" customClass="CalendarViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9UP-MW-GRS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorPalette" translatesAutoresizingMaskIntoConstraints="NO" id="7mE-Ob-DY4">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-wE-PEB">
-                                <rect key="frame" x="107" y="322.66666666666669" width="200" height="261.00000000000006"/>
+                                <rect key="frame" x="107" y="237.66666666666663" width="200" height="261"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSA-Sf-97P">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="16.666666666666668"/>
@@ -720,14 +682,14 @@ Check your connection</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3v-3M-N0W" userLabel="LineView">
-                                        <rect key="frame" x="0.0" y="54.333333333333314" width="200" height="1"/>
+                                        <rect key="frame" x="0.0" y="54.333333333333343" width="200" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="KLv-Pt-Mie"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SER-Eh-flq">
-                                        <rect key="frame" x="0.0" y="60.3333333333333" width="200" height="200.66666666666663"/>
+                                        <rect key="frame" x="0.0" y="60.333333333333357" width="200" height="200.66666666666663"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="e9w-XM-XJI">
                                             <size key="itemSize" width="128" height="128"/>
@@ -761,7 +723,6 @@ Check your connection</string>
                                             </collectionViewCell>
                                         </cells>
                                         <connections>
-                                            <outlet property="dataSource" destination="TuU-La-Pew" id="oy5-6a-4Q6"/>
                                             <outlet property="delegate" destination="TuU-La-Pew" id="ra9-0G-ggs"/>
                                         </connections>
                                     </collectionView>
@@ -772,7 +733,7 @@ Check your connection</string>
                                 </constraints>
                             </stackView>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ONY-aJ-kxB">
-                                <rect key="frame" x="18" y="56" width="35" height="35"/>
+                                <rect key="frame" x="18" y="12" width="35" height="35"/>
                                 <subviews>
                                     <view clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="boi-0W-Z4Y">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -781,9 +742,6 @@ Check your connection</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B7U-cM-Nsp">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                         <state key="normal" image="pClose"/>
-                                        <connections>
-                                            <action selector="closeAction:" destination="TuU-La-Pew" eventType="touchUpInside" id="nRI-ZP-lvA"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -801,7 +759,7 @@ Check your connection</string>
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fd1-H7-iFq">
-                                <rect key="frame" x="356" y="54.666666666666657" width="35" height="35"/>
+                                <rect key="frame" x="356" y="10.666666666666664" width="35" height="35"/>
                                 <subviews>
                                     <view clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cCP-DS-Vzr">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -810,9 +768,6 @@ Check your connection</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KY4-5t-dbl">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                         <state key="normal" image="pDownload"/>
-                                        <connections>
-                                            <action selector="downloadAction:" destination="TuU-La-Pew" eventType="touchUpInside" id="PlP-Rr-303"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -830,7 +785,7 @@ Check your connection</string>
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i1i-Ky-4wp">
-                                <rect key="frame" x="301" y="54.666666666666657" width="35" height="35"/>
+                                <rect key="frame" x="301" y="10.666666666666664" width="35" height="35"/>
                                 <subviews>
                                     <view clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TbJ-sH-bVV">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -839,9 +794,6 @@ Check your connection</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvN-nx-xfc">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                         <state key="normal" image="pCalendar"/>
-                                        <connections>
-                                            <action selector="showAlertCalendarList:" destination="TuU-La-Pew" eventType="touchUpInside" id="J6G-zT-Osf"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -859,7 +811,7 @@ Check your connection</string>
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1b7-ov-8U2">
-                                <rect key="frame" x="246" y="54.666666666666657" width="35" height="35"/>
+                                <rect key="frame" x="246" y="10.666666666666664" width="35" height="35"/>
                                 <subviews>
                                     <view clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cxu-xY-hdd">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -869,9 +821,6 @@ Check your connection</string>
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="3" maxX="0.0" maxY="0.0"/>
                                         <state key="normal" image="pPalette"/>
-                                        <connections>
-                                            <action selector="paletteAction:" destination="TuU-La-Pew" eventType="touchUpInside" id="kD9-yn-BfH"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -934,26 +883,26 @@ Check your connection</string>
             <objects>
                 <viewController storyboardIdentifier="ShowPreVC" title="ShowPreVC" modalPresentationStyle="fullScreen" id="hjq-DW-yC7" customClass="ShowPreViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xNd-i1-xtq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorPalette" translatesAutoresizingMaskIntoConstraints="NO" id="jrv-Qg-Tmb">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:34" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XT2-rD-svC">
-                                <rect key="frame" x="120.66666666666669" y="102.33333333333331" width="173" height="94"/>
+                                <rect key="frame" x="120.66666666666669" y="75.666666666666671" width="173" height="94.000000000000014"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundL" family="NanumSquareRound" pointSize="85"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, December 25" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvn-XL-3Ll">
-                                <rect key="frame" x="111.33333333333333" y="198.33333333333334" width="191.33333333333337" height="22.666666666666657"/>
+                                <rect key="frame" x="111.33333333333333" y="171.66666666666666" width="191.33333333333337" height="22.666666666666657"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFe-P6-Lie">
-                                <rect key="frame" x="356" y="54.666666666666657" width="35" height="35"/>
+                                <rect key="frame" x="356" y="10.666666666666664" width="35" height="35"/>
                                 <subviews>
                                     <view clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdc-2e-Vyx">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -979,7 +928,7 @@ Check your connection</string>
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0tg-Sw-nMl">
-                                <rect key="frame" x="18" y="56" width="35" height="35"/>
+                                <rect key="frame" x="18" y="12" width="35" height="35"/>
                                 <subviews>
                                     <view clipsSubviews="YES" alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jge-Xv-CCL">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -1042,7 +991,7 @@ Check your connection</string>
                 <navigationController storyboardIdentifier="MainNav" title="MainNav" automaticallyAdjustsScrollViewInsets="NO" id="fZd-Bb-I4I" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="8jh-O8-PuI">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1063,7 +1012,8 @@ Check your connection</string>
         <image name="back" width="33" height="33"/>
         <image name="download" width="33" height="33"/>
         <image name="filter" width="33" height="33"/>
-        <image name="hashtag" width="37.666667938232422" height="37.666667938232422"/>
+        <image name="hashtag" width="33" height="33"/>
+        <image name="landingPage" width="414" height="736"/>
         <image name="pCalendar" width="33" height="33"/>
         <image name="pClose" width="33" height="33"/>
         <image name="pDownload" width="33" height="33"/>

@@ -12,9 +12,8 @@ class DayCollectionViewCell: UICollectionViewCell {
    static let identifier = "DayCollectionViewCell"
    @IBOutlet weak var dayLabel: UILabel!
    
-   func configure(_ text: String, _ textColor: UIColor) {
+   func configure(_ text: String) {
       dayLabel.text = text
-      dayLabel.textColor = textColor
       dayLabel.font = UIFont(name: "NanumSquareRoundB", size: 15)
    }
    

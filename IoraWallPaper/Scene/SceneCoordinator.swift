@@ -47,10 +47,13 @@ class SceneCoordinator: SceneCoordinatorType {
          
          subject.onCompleted()
       case .modal:
+         print(target)
          currentVC.present(target, animated: animated) {
+            print("===COMPLETE")
             subject.onCompleted()
          }
          currentVC = target.sceneViewController
+         print(currentVC)
       }
       return subject.ignoreElements()
    }

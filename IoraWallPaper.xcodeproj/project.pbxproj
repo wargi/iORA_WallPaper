@@ -60,6 +60,7 @@
 		8E1DE52D24A505B000DE8FED /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		8E242FDC24A119640087A41F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8E242FDE24A119C40087A41F /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
+		8E403F3624AFD24D0026B5FE /* sample.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = sample.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		8E45512624922AD200CD9F7C /* ShowPreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPreViewController.swift; sourceTree = "<group>"; };
 		8E4DA1C824AD334E00B69CFE /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 		8E4DA1CB24AD3DC200B69CFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,9 +127,9 @@
 				8EBD4CD924A4BD31005EC9A2 /* ViewModelBindableType.swift */,
 				8E4DA1C824AD334E00B69CFE /* CommonViewModel.swift */,
 				8EBD4CCC24A4BC28005EC9A2 /* MainViewModel.swift */,
-				8EBD4CCE24A4BC35005EC9A2 /* DetailImageViewModel.swift */,
 				8EBD4CD424A4BC64005EC9A2 /* SearchViewModel.swift */,
 				8EBD4CD724A4BC98005EC9A2 /* SearchResultViewModel.swift */,
+				8EBD4CCE24A4BC35005EC9A2 /* DetailImageViewModel.swift */,
 				8EBD4CD024A4BC42005EC9A2 /* ShowPreViewModel.swift */,
 				8EBD4CD224A4BC59005EC9A2 /* CalendarViewModel.swift */,
 			);
@@ -167,6 +168,7 @@
 		8E888031248DF71300E7E620 /* IoraWallPaper */ = {
 			isa = PBXGroup;
 			children = (
+				8E403F3624AFD24D0026B5FE /* sample.playground */,
 				8E1BE51E24A188EC00317984 /* iORA.entitlements */,
 				8E1BE51D24A188DA00317984 /* iORADebug.entitlements */,
 				8E888047248DF72200E7E620 /* AppDelegate */,
