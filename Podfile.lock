@@ -3,6 +3,7 @@ PODS:
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
   - Alamofire (5.2.1)
+  - CenteredCollectionView (2.2.2)
   - Differentiator (4.0.1)
   - Firebase/Analytics (6.27.0):
     - Firebase/Core
@@ -139,6 +140,7 @@ PODS:
 
 DEPENDENCIES:
   - Action
+  - CenteredCollectionView
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Database
@@ -158,6 +160,7 @@ SPEC REPOS:
   trunk:
     - Action
     - Alamofire
+    - CenteredCollectionView
     - Differentiator
     - Firebase
     - FirebaseAnalytics
@@ -192,6 +195,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Action: 79e6c5dc91e13eea045ab6744b3e5609086671aa
   Alamofire: e911732990610fe89af59ac0077f923d72dc3dfd
+  CenteredCollectionView: a9217908a698c386cbb98af11b596da48900b908
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Firebase: fc4cbf6f1592636431821ef9a3c557e4dfd9f268
   FirebaseAnalytics: 0ea640473474f036cabbc2576e20c2d63671c92f
@@ -223,6 +227,6 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
 
-PODFILE CHECKSUM: f7404a5e29b3b89fbfe54aa8d745af78f7d24067
+PODFILE CHECKSUM: 25289161b8477f498f9ec6e2e0b2919d5d0fc9c7
 
 COCOAPODS: 1.9.3

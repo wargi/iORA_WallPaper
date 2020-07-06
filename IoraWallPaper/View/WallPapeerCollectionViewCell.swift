@@ -45,6 +45,7 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
       titleLabel.text = nil
       contentLabel.text = nil
       dimmingView.isHidden = true
+      self.isHidden = false
       
       bag = DisposeBag()
    }

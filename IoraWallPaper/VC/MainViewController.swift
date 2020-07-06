@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
+import RxDataSources
 
 class MainViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var collectionView: UICollectionView!
@@ -31,23 +32,36 @@ class MainViewController: UIViewController, ViewModelBindableType {
    }
    
    func bindViewModel() {
-      // 컬렉션뷰 데이터 소스
-      viewModel.presentWallpapers
-         .bind(to: collectionView.rx.items(cellIdentifier: WallPapeerCollectionViewCell.identifier,
-                                           cellType: WallPapeerCollectionViewCell.self)) { item, wallpaper, cell in
-         if let image = wallpaper.image {
-            cell.wallpaperImageView.image = image
-         } else {
-            cell.configure(info: wallpaper)
+      //컬렉션뷰 데이터 소스
+      Observable.combineLatest(viewModel.headerSubject, viewModel.presentWallpapers)
+         .map { $0.1 }
+         .bind(to: collectionView.rx.items) { collection, index, wallpaper in
+            if index == 0 && self.viewModel.isPresent {
+               guard let cell = collection.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.identifier, for: IndexPath(item: 0, section: 0)) as? HeaderCollectionViewCell else { fatalError() }
+               
+               cell.configure()
+               
+               return cell
+            }
+            
+            guard let cell = collection.dequeueReusableCell(withReuseIdentifier: WallPapeerCollectionViewCell.identifier,
+                                                     for: IndexPath(item: index, section: 0)) as? WallPapeerCollectionViewCell else { fatalError() }
+
+            cell.tagConfigure(info: nil, isHidden: true)
+            if !self.viewModel.isPresent {
+               cell.tagConfigure(info: WallPapers.shared.tags.list[index].info,
+                                 isHidden: false)
+            }
+            
+            if let image = wallpaper.image {
+               cell.wallpaperImageView.image = image
+            } else {
+               cell.configure(info: wallpaper)
+            }
+            
+            return cell
          }
-         
-         cell.tagConfigure(info: nil, isHidden: true)
-         let tags = WallPapers.shared.tags.list
-         if !self.viewModel.isPresent, item < tags.count {
-            cell.tagConfigure(info: tags[item].info, isHidden: false)
-         }
-      }
-      .disposed(by: rx.disposeBag)
+         .disposed(by: rx.disposeBag)
       
       // 컬렉션 전환 액션
       presentingButton.rx.tap
@@ -55,8 +69,8 @@ class MainViewController: UIViewController, ViewModelBindableType {
             if let _ = $0.element {
                self.viewModel.presentAction()
             }
-         }
-         .disposed(by: rx.disposeBag)
+      }
+      .disposed(by: rx.disposeBag)
       
       // 메인리스트 정렬 액션
       filterButton.rx.tap
@@ -65,7 +79,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
             if $0 {
                self.viewModel.reverse = !self.viewModel.reverse
                self.viewModel.wallpapers.reverse()
-               self.viewModel.presentWallpapers.onNext(self.viewModel.wallpapers)
+//               self.viewModel.presentWallpapers.onNext(self.viewModel.wallpapers)
             }
          })
          .disposed(by: rx.disposeBag)
@@ -86,9 +100,9 @@ class MainViewController: UIViewController, ViewModelBindableType {
                result = WallPapers.shared.tags.list[index].result
             }
             return result
-         }
-         .bind(to: viewModel.selectedAction.inputs)
-         .disposed(by: rx.disposeBag)
+      }
+      .bind(to: viewModel.selectedAction.inputs)
+      .disposed(by: rx.disposeBag)
    }
    
    // 기본 설정
@@ -137,36 +151,14 @@ class MainViewController: UIViewController, ViewModelBindableType {
       if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
          viewModel.isPresenting.subscribe(onNext: {
             if $0 {
-               layout.headerReferenceSize = CGSize(width: self.collectionView.bounds.width, height: 300)
-               let width = (self.collectionView.bounds.width - 30) / 2
-               layout.itemSize = CGSize(width: width, height: width * 2)
                layout.minimumInteritemSpacing = 10
                layout.minimumLineSpacing = 10
             } else {
-               layout.headerReferenceSize = CGSize(width: self.collectionView.bounds.width, height: 0)
-               var width: CGFloat = 0
-               var height: CGFloat = 0
-               
-               if let displayType = PrepareForSetUp.shared.displayType {
-                  let collectionWidth = self.collectionView.bounds.width - 30
-                  width = displayType == .retina ? collectionWidth * 0.8 : collectionWidth * 0.88
-                  height = displayType == .retina ? width * 2 : width * 2.2
-               }
-               
-               layout.itemSize = CGSize(width: width, height: height)
                layout.minimumInteritemSpacing = 25
                layout.minimumLineSpacing = 20
             }
          })
             .disposed(by: rx.disposeBag)
-      }
-      
-      collectionView.register(HeaderCollectionReusableView.self,
-                              forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                              withReuseIdentifier: HeaderCollectionReusableView.identifier)
-      if let header = collectionView.supplementaryView(forElementKind: UICollectionView.elementKindSectionHeader,
-                                                       at: IndexPath(item: 0, section: 0)) as? HeaderCollectionReusableView {
-         header.configure()
       }
    }
    
@@ -178,4 +170,33 @@ class MainViewController: UIViewController, ViewModelBindableType {
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      var size: CGSize = CGSize(width: 0, height: 0)
+      viewModel.isPresenting
+         .subscribe(onNext: {
+            let collectionWidth = self.collectionView.bounds.width - 30
+            var width: CGFloat = 0
+            var height: CGFloat = 0
+            
+            if $0 {
+               if indexPath.item == 0 {
+                  width = collectionWidth + 10
+                  height = 300
+               } else {
+                  width = collectionWidth / 2
+                  height = width * 2
+               }
+               
+               size = CGSize(width: width, height: height)
+            } else {
+               if let displayType = PrepareForSetUp.shared.displayType {
+                  width = displayType == .retina ? collectionWidth * 0.8 : collectionWidth * 0.88
+                  height = displayType == .retina ? width * 2 : width * 2.2
+               }
+               size = CGSize(width: width, height: height)
+            }
+         })
+         .disposed(by: rx.disposeBag)
+      return size
+   }
 }

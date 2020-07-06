@@ -11,10 +11,12 @@ import RxSwift
 import RxCocoa
 import Action
 import NSObject_Rx
+import RxDataSources
 
 class MainViewModel: CommonViewModel {
    var wallpapers: [MyWallPaper]
    var presentWallpapers: BehaviorSubject<[MyWallPaper]>
+   var headerSubject: BehaviorSubject<[MyWallPaper]>
    var isPresenting: BehaviorSubject<Bool>
    
    var isPresent = true
@@ -39,16 +41,25 @@ class MainViewModel: CommonViewModel {
    func setData() {
       Observable.zip(WallPapers.shared.wallpaperSubject, WallPapers.shared.tagSubject)
          .take(2)
-         .map { $0.0 }
          .subscribe(onNext: {
-            self.wallpapers = $0
-            self.presentWallpapers.onNext($0)
+            if self.isPresent {
+               self.wallpapers = $0.0
+               self.presentWallpapers.onNext($0.0)
+            } else {
+               self.wallpapers = $0.1.representImage
+               self.presentWallpapers.onNext($0.1.representImage)
+            }
          })
          .disposed(by: rx.disposeBag)
    }
    
    init(sceneCoordinator: SceneCoordinatorType, filteringAction: CocoaAction? = nil, searchAction: CocoaAction? = nil, selectedAction: Action<[MyWallPaper], Void>? = nil) {
       self.wallpapers = []
+      let temp = MyWallPaper(info: ImageInfo(brightness: 0,
+                                             imageName: "",
+                                             imageType: ImageType(superRetinaDeviceImageURL: nil,
+                                                                  retinaDeviceImageURL: nil), tag: ""))
+      self.headerSubject = BehaviorSubject<[MyWallPaper]>(value: [temp])
       self.presentWallpapers = BehaviorSubject<[MyWallPaper]>(value: wallpapers)
       self.isPresenting = BehaviorSubject<Bool>(value: true)
       

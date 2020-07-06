@@ -48,17 +48,15 @@ class WallPapers {
                let result = datas.filter { $0.wallpaper.tag == tag.info.name }
                let info = Tag(info: tag.info, result: result)
                self.tags.list.append(info)
-               self.tags.representImage.append(result[0])
             }
             self.tags.list.sort { lhs, rhs in
                lhs.info.name < rhs.info.name
             }
-            var result = [MyWallPaper]()
+            
             for index in 0 ..< self.tags.list.count {
-               result.append(self.tags.representImage[index])
+               self.tags.representImage.append(self.tags.list[index].result[0])
             }
             
-            self.tags.representImage = result
             self.tagSubject.onNext(self.tags)
          }
       }

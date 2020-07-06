@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
+import CenteredCollectionView
 
 class DetailImageViewController: UIViewController, ViewModelBindableType {
    // 상단 버튼
@@ -22,9 +23,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    @IBOutlet weak var pageControl: UIPageControl!
    // 디테일 컬렉션 뷰
    @IBOutlet private weak var collectionView: UICollectionView!
-   
-   private var startingScrollingOffset = CGPoint.zero
-   
+   var centeredCollectionViewFlowLayout: CenteredCollectionViewFlowLayout!
    
    private var fromTap = false
    var viewModel: DetailImageViewModel!
@@ -32,6 +31,17 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    override func viewDidLoad() {
       super.viewDidLoad()
       configure()
+      
+      if let centeredCollectionViewFlowLayout = collectionView.collectionViewLayout as? CenteredCollectionViewFlowLayout {
+         print("SUCCESS")
+         centeredCollectionViewFlowLayout.itemSize = CGSize(width: view.bounds.width * 0.7,
+                                                            height: view.bounds.width * 0.7 * 2)
+         
+      }
+      
+
+         
+      
    }
    
    func bindViewModel() {
@@ -50,7 +60,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
          .map { self.pageControl.currentPage }
          .bind(to: viewModel.showPreViewAction.inputs)
          .disposed(by: rx.disposeBag)
-         
+      
       
       // 파일 다운로드
       saveButton.rx.tap
@@ -75,22 +85,21 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       viewModel.wallpapersSubject
          .bind(to: collectionView.rx.items(cellIdentifier: DetailCollectionViewCell.identifier,
                                            cellType: DetailCollectionViewCell.self)) { item, wallpaper, cell in
-         cell.wallPaperImageView.layer.cornerRadius = 30
-         cell.wallPaperImageView.layer.masksToBounds = true
-         
-         cell.layer.masksToBounds = false
-         cell.layer.shadowColor = UIColor.black.cgColor
-         cell.layer.shadowOpacity = 0.4
-         cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-         cell.layer.shadowRadius = 6
-         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds,
-                                              cornerRadius: 30).cgPath
-         
-         if let image = wallpaper.image {
-            cell.wallPaperImageView.image = image
-         } else {
-            cell.configure(info: wallpaper)
-         }
+                                             cell.wallPaperImageView.layer.cornerRadius = 30
+                                             
+                                             cell.layer.masksToBounds = false
+                                             cell.layer.shadowColor = UIColor.black.cgColor
+                                             cell.layer.shadowOpacity = 0.4
+                                             cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
+                                             cell.layer.shadowRadius = 6
+                                             cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds,
+                                                                                  cornerRadius: 30).cgPath
+                                             
+                                             if let image = wallpaper.image {
+                                                cell.wallPaperImageView.image = image
+                                             } else {
+                                                cell.configure(info: wallpaper)
+                                             }
       }
       .disposed(by: rx.disposeBag)
       
@@ -119,44 +128,26 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
 //MARK: Page Control / ScrollView Delegate
 extension DetailImageViewController: UIScrollViewDelegate {
    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-      fromTap = false
-      pageControl.updateCurrentPageDisplay()
+//      fromTap = false
+//      pageControl.updateCurrentPageDisplay()
       
    }
    
    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-      guard !fromTap else { return }
-      
-      let width = collectionView.bounds.size.width
-      let x = collectionView.contentOffset.x + (width / 2.0)
-      let newPage = Int(x / width)
-      
-      if pageControl.currentPage != newPage {
-         pageControl.currentPage = newPage
-      }
+//      guard !fromTap else { return }
+//      let width = collectionView.bounds.size.width
+//      let x = collectionView.contentOffset.x + (width / 2.0)
+//      let newPage = Int(x / width)
+//      
+//      if pageControl.currentPage != newPage {
+//         pageControl.currentPage = newPage
+//      }
    }
 }
 
 //MARK: UICollectionView Delegate
 extension DetailImageViewController: UICollectionViewDelegateFlowLayout {
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      return CGSize(width: collectionView.bounds.size.width * 0.70, height: collectionView.bounds.size.height - 20)
-   }
-   
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-      return UIEdgeInsets(top: 10,
-                          left: collectionView.bounds.width * 0.15,
-                          bottom: 10,
-                          right: collectionView.bounds.width * 0.15)
-   }
-   
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-      let width = collectionView.bounds.size.width
-      return width * 0.1
-   }
-   
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-      let width = collectionView.bounds.size.width
-      return width * 0.1
-   }
+}
+
+extension DetailImageViewController: UICollectionViewDelegate {
 }

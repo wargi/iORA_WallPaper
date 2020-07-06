@@ -1,5 +1,5 @@
 //
-//  HeaderCollectionReusableView.swift
+//  HeaderCollectionViewCell.swift
 //  IoraWallPaper
 //
 //  Created by 박상욱 on 2020/06/30.
@@ -7,19 +7,12 @@
 //
 
 import UIKit
+import RxDataSources
 
-class HeaderCollectionReusableView: UICollectionReusableView {
-   static let identifier = "HeaderCollectionReusableView"
+class HeaderCollectionViewCell: UICollectionViewCell {
+   static let identifier = "HeaderCollectionViewCell"
    @IBOutlet private weak var collectionView: UICollectionView!
    @IBOutlet private weak var pageControl: UIPageControl!
-   
-   required init?(coder: NSCoder) {
-      super.init(coder: coder)
-   }
-   
-   override init(frame: CGRect) {
-      super.init(frame: frame)
-   }
    
    func configure() {
       collectionView.delegate = self
@@ -37,7 +30,7 @@ class HeaderCollectionReusableView: UICollectionReusableView {
    }
 }
 
-extension HeaderCollectionReusableView: UICollectionViewDataSource {
+extension HeaderCollectionViewCell: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       return 2
    }
@@ -53,13 +46,13 @@ extension HeaderCollectionReusableView: UICollectionViewDataSource {
    }
 }
 
-extension HeaderCollectionReusableView: UICollectionViewDelegateFlowLayout {
+extension HeaderCollectionViewCell: UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       return collectionView.bounds.size
    }
 }
 
-extension HeaderCollectionReusableView: UICollectionViewDelegate {
+extension HeaderCollectionViewCell: UICollectionViewDelegate {
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       // 인스타그램으로 이동
       if indexPath.row == 0, let url = URL(string: "https://instagram.com/iora_studio?igshid=1erlpx3rebg7b") {
@@ -78,7 +71,7 @@ extension HeaderCollectionReusableView: UICollectionViewDelegate {
    }
 }
 
-extension HeaderCollectionReusableView: UIScrollViewDelegate {
+extension HeaderCollectionViewCell: UIScrollViewDelegate {
    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
       pageControl.updateCurrentPageDisplay()
    }
