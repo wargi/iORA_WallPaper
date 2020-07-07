@@ -34,7 +34,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
    func bindViewModel() {
       //컬렉션뷰 데이터 소스
       Observable.combineLatest(viewModel.headerSubject, viewModel.presentWallpapers)
-         .map { $0.1 }
+         .map { $0.0 + $0.1 }
          .bind(to: collectionView.rx.items) { collection, index, wallpaper in
             if index == 0 && self.viewModel.isPresent {
                guard let cell = collection.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.identifier, for: IndexPath(item: 0, section: 0)) as? HeaderCollectionViewCell else { fatalError() }
@@ -49,6 +49,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
 
             cell.tagConfigure(info: nil, isHidden: true)
             if !self.viewModel.isPresent {
+               print(index)
                cell.tagConfigure(info: WallPapers.shared.tags.list[index].info,
                                  isHidden: false)
             }

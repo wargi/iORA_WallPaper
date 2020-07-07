@@ -620,8 +620,8 @@ Check your connection</string>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="rvM-9y-eX0" firstAttribute="centerX" secondItem="Xv6-eb-mAU" secondAttribute="centerX" id="0T6-ef-hcy"/>
                             <constraint firstItem="Yl1-2v-ant" firstAttribute="centerY" secondItem="eBg-qs-HDP" secondAttribute="centerY" id="1tn-Uv-NBg"/>
+                            <constraint firstItem="rvM-9y-eX0" firstAttribute="trailing" secondItem="WnZ-zq-QwQ" secondAttribute="trailing" id="4zE-Dx-Ehs"/>
                             <constraint firstItem="Yl1-2v-ant" firstAttribute="leading" secondItem="WnZ-zq-QwQ" secondAttribute="leading" constant="16" id="ACa-gx-ILG"/>
                             <constraint firstAttribute="trailing" secondItem="eBg-qs-HDP" secondAttribute="trailing" constant="10" id="Wu6-AL-nmJ"/>
                             <constraint firstItem="eBg-qs-HDP" firstAttribute="top" secondItem="WnZ-zq-QwQ" secondAttribute="top" constant="12" id="axn-U1-vel"/>

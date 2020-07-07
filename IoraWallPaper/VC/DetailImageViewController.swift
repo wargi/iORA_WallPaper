@@ -38,10 +38,6 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
                                                             height: view.bounds.width * 0.7 * 2)
          
       }
-      
-
-         
-      
    }
    
    func bindViewModel() {
@@ -87,7 +83,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
                                            cellType: DetailCollectionViewCell.self)) { item, wallpaper, cell in
                                              cell.wallPaperImageView.layer.cornerRadius = 30
                                              
-                                             cell.layer.masksToBounds = false
+                                             cell.layer.masksToBounds = true
                                              cell.layer.shadowColor = UIColor.black.cgColor
                                              cell.layer.shadowOpacity = 0.4
                                              cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
@@ -128,20 +124,20 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
 //MARK: Page Control / ScrollView Delegate
 extension DetailImageViewController: UIScrollViewDelegate {
    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-//      fromTap = false
-//      pageControl.updateCurrentPageDisplay()
+      fromTap = false
+      pageControl.updateCurrentPageDisplay()
       
    }
    
    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//      guard !fromTap else { return }
-//      let width = collectionView.bounds.size.width
-//      let x = collectionView.contentOffset.x + (width / 2.0)
-//      let newPage = Int(x / width)
-//      
-//      if pageControl.currentPage != newPage {
-//         pageControl.currentPage = newPage
-//      }
+      guard !fromTap else { return }
+      let width = collectionView.bounds.size.width
+      let x = collectionView.contentOffset.x + (width / 2.0)
+      let newPage = Int(x / width)
+      
+      if pageControl.currentPage != newPage {
+         pageControl.currentPage = newPage
+      }
    }
 }
 
