@@ -33,7 +33,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
       }
    }
    
-//   override func prepareForReuse() {
-//      wallPaperImageView.image = nil
-//   }
+   override func prepareForReuse() {
+      wallPaperImageView.image = nil
+   }
 }

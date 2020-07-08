@@ -32,12 +32,13 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       super.viewDidLoad()
       configure()
       
-      if let centeredCollectionViewFlowLayout = collectionView.collectionViewLayout as? CenteredCollectionViewFlowLayout {
-         print("SUCCESS")
-         centeredCollectionViewFlowLayout.itemSize = CGSize(width: view.bounds.width * 0.7,
-                                                            height: view.bounds.width * 0.7 * 2)
-         
-      }
+      centeredCollectionViewFlowLayout = (collectionView.collectionViewLayout as! CenteredCollectionViewFlowLayout)
+      collectionView.decelerationRate  = UIScrollView.DecelerationRate.fast
+      
+      centeredCollectionViewFlowLayout.itemSize = CGSize(width: view.bounds.width * 0.7,
+                                                         height: view.bounds.width * 0.7 * 2)
+      
+      centeredCollectionViewFlowLayout.minimumLineSpacing = 20
    }
    
    func bindViewModel() {
@@ -83,7 +84,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
                                            cellType: DetailCollectionViewCell.self)) { item, wallpaper, cell in
                                              cell.wallPaperImageView.layer.cornerRadius = 30
                                              
-                                             cell.layer.masksToBounds = true
+                                             cell.layer.masksToBounds = false
                                              cell.layer.shadowColor = UIColor.black.cgColor
                                              cell.layer.shadowOpacity = 0.4
                                              cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
@@ -131,7 +132,7 @@ extension DetailImageViewController: UIScrollViewDelegate {
    
    func scrollViewDidScroll(_ scrollView: UIScrollView) {
       guard !fromTap else { return }
-      let width = collectionView.bounds.size.width
+      let width = collectionView.bounds.size.width * 0.7
       let x = collectionView.contentOffset.x + (width / 2.0)
       let newPage = Int(x / width)
       
@@ -146,4 +147,11 @@ extension DetailImageViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension DetailImageViewController: UICollectionViewDelegate {
+   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+     let currentCenteredPage = centeredCollectionViewFlowLayout.currentCenteredPage
+      
+     if currentCenteredPage != indexPath.item {
+       centeredCollectionViewFlowLayout.scrollToPage(index: indexPath.item, animated: true)
+     }
+   }
 }
