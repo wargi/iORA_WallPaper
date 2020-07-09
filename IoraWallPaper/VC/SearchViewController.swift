@@ -21,6 +21,7 @@ class SearchViewController: UIViewController, ViewModelBindableType {
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      setSearchBarPlaceholder()
    }
    
    func bindViewModel() {
@@ -71,6 +72,23 @@ class SearchViewController: UIViewController, ViewModelBindableType {
       guard let keyboardHeight = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height else { return }
       
       tableViewBottomConstraint.constant = keyboardHeight
+   }
+   
+   func setSearchBarPlaceholder() {
+      // SearchBar text
+      let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
+      
+      // SearchBar placeholder
+      let labelInsideUISearchBar = textFieldInsideUISearchBar!.value(forKey: "placeholderLabel") as? UILabel
+      
+      switch UIScreen.main.bounds.width {
+      case let width where width < 375:
+         labelInsideUISearchBar?.font = UIFont(name: "NanumSquareRoundR", size: 10)
+      case let width where width == 375:
+         labelInsideUISearchBar?.font = UIFont(name: "NanumSquareRoundR", size: 12)
+      default:
+         labelInsideUISearchBar?.font = UIFont(name: "NanumSquareRoundR", size: 14)
+      }
    }
 }
 

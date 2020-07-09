@@ -9,8 +9,8 @@
 import UIKit
 import RxDataSources
 
-class HeaderCollectionViewCell: UICollectionViewCell {
-   static let identifier = "HeaderCollectionViewCell"
+class HeaderCollectionReusableView: UICollectionReusableView {
+   static let identifier = "HeaderCollectionReusableView"
    @IBOutlet private weak var collectionView: UICollectionView!
    @IBOutlet private weak var pageControl: UIPageControl!
    
@@ -30,7 +30,7 @@ class HeaderCollectionViewCell: UICollectionViewCell {
    }
 }
 
-extension HeaderCollectionViewCell: UICollectionViewDataSource {
+extension HeaderCollectionReusableView: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       return 2
    }
@@ -46,13 +46,13 @@ extension HeaderCollectionViewCell: UICollectionViewDataSource {
    }
 }
 
-extension HeaderCollectionViewCell: UICollectionViewDelegateFlowLayout {
+extension HeaderCollectionReusableView: UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       return collectionView.bounds.size
    }
 }
 
-extension HeaderCollectionViewCell: UICollectionViewDelegate {
+extension HeaderCollectionReusableView: UICollectionViewDelegate {
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       // 인스타그램으로 이동
       if indexPath.row == 0, let url = URL(string: "https://instagram.com/iora_studio?igshid=1erlpx3rebg7b") {
@@ -71,7 +71,7 @@ extension HeaderCollectionViewCell: UICollectionViewDelegate {
    }
 }
 
-extension HeaderCollectionViewCell: UIScrollViewDelegate {
+extension HeaderCollectionReusableView: UIScrollViewDelegate {
    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
       pageControl.updateCurrentPageDisplay()
    }

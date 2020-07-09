@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
       PrepareForSetUp.shared.getDeviceScreenSize()
       WallPapers.shared.firebaseDataSetUp()
-      
+
       return true
    }
    

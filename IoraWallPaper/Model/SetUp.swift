@@ -84,7 +84,7 @@ class PrepareForSetUp {
    
    func firebaseTagDataDownload(completion: (([Tag]) -> ())? = nil) {
       var tags = [Tag]()
-
+      
       self.ref.child("tagList").observe(.value) { (snapshot) in
          DispatchQueue.global().async {
             for value in snapshot.children.reversed() {
@@ -105,20 +105,21 @@ class PrepareForSetUp {
    //MARK: IMAGE DOWNLOAD
    // 이미지 다운로드
    func imageDownload(info: MyWallPaper, completion: @escaping (UIImage?) -> ()) {
-      guard let deviceType = displayType else { fatalError("Invalid Display Size") }
-      var urlString: String?
-      if deviceType == .superRetina {
-         urlString = info.wallpaper.imageType.superRetinaDeviceImageURL
-      } else {
-         urlString = info.wallpaper.imageType.retinaDeviceImageURL
-      }
-      guard let urlStr = urlString, let url = URL(string: urlStr) else {
-         fatalError("Invalid URL")
-      }
-      
-      let session = URLSession.shared
-      
       DispatchQueue.global().async {
+         guard let deviceType = self.displayType else { fatalError("Invalid Display Size") }
+         var urlString: String?
+         if deviceType == .superRetina {
+            urlString = info.wallpaper.imageType.superRetinaDeviceImageURL
+         } else {
+            urlString = info.wallpaper.imageType.retinaDeviceImageURL
+         }
+         guard let urlStr = urlString, let url = URL(string: urlStr) else {
+            fatalError("Invalid URL")
+         }
+         
+         let session = URLSession.shared
+         
+         
          let take = session.dataTask(with: url) { (data, resp, err) in
             if let err = err {
                print(err.localizedDescription)

@@ -35,8 +35,12 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       centeredCollectionViewFlowLayout = (collectionView.collectionViewLayout as! CenteredCollectionViewFlowLayout)
       collectionView.decelerationRate  = UIScrollView.DecelerationRate.fast
       
-      centeredCollectionViewFlowLayout.itemSize = CGSize(width: view.bounds.width * 0.7,
-                                                         height: view.bounds.width * 0.7 * 2)
+      if let displayType = PrepareForSetUp.shared.displayType {
+         let width = collectionView.bounds.width * 0.7
+         let height = displayType == .retina ? width * 1.77 : width * 2.16
+         centeredCollectionViewFlowLayout.itemSize = CGSize(width: width, height: height)
+      }
+
       
       centeredCollectionViewFlowLayout.minimumLineSpacing = 20
    }

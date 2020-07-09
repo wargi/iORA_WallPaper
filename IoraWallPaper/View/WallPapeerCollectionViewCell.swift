@@ -56,6 +56,11 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
       self.layer.cornerRadius = 15
       self.layer.borderWidth = 0.1
       self.layer.borderColor = UIColor.lightGray.cgColor
+      if #available(iOS 13.0, *) {
+         self.activityIndicator.style = .medium
+      } else {
+         self.activityIndicator.style = .gray
+      }
    }
    
    required init?(coder: NSCoder) {

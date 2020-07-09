@@ -26,7 +26,11 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
       if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
          let width = (collectionView.bounds.size.width - 30) / 2
          
-         layout.itemSize = CGSize(width: width, height: width * 2)
+         if let displayType = PrepareForSetUp.shared.displayType {
+            let height = displayType == .retina ? width * 1.77 : width * 2.16
+            layout.itemSize = CGSize(width: width, height: height)
+         }
+         
          layout.minimumLineSpacing = 10
          layout.minimumInteritemSpacing = 10
       }

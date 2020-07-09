@@ -16,7 +16,6 @@ import RxDataSources
 class MainViewModel: CommonViewModel {
    var wallpapers: [MyWallPaper]
    var presentWallpapers: BehaviorSubject<[MyWallPaper]>
-   var headerSubject: BehaviorSubject<[MyWallPaper]>
    var isPresenting: BehaviorSubject<Bool>
    
    var isPresent = true
@@ -55,11 +54,6 @@ class MainViewModel: CommonViewModel {
    
    init(sceneCoordinator: SceneCoordinatorType, filteringAction: CocoaAction? = nil, searchAction: CocoaAction? = nil, selectedAction: Action<[MyWallPaper], Void>? = nil) {
       self.wallpapers = []
-      let temp = MyWallPaper(info: ImageInfo(brightness: 0,
-                                             imageName: "",
-                                             imageType: ImageType(superRetinaDeviceImageURL: nil,
-                                                                  retinaDeviceImageURL: nil), tag: ""))
-      self.headerSubject = BehaviorSubject<[MyWallPaper]>(value: [temp])
       self.presentWallpapers = BehaviorSubject<[MyWallPaper]>(value: wallpapers)
       self.isPresenting = BehaviorSubject<Bool>(value: true)
       

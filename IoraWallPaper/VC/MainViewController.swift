@@ -22,6 +22,8 @@ class MainViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var filterButton: UIButton!
    @IBOutlet private weak var searchButton: UIButton!
    private var reachability: Reachability?
+   var loadingQueue = OperationQueue()
+   var loadingOperations: [IndexPath: DataLoadOperation] = [:]
    
    var viewModel: MainViewModel!
    
@@ -32,36 +34,12 @@ class MainViewController: UIViewController, ViewModelBindableType {
    }
    
    func bindViewModel() {
-      //컬렉션뷰 데이터 소스
-      Observable.combineLatest(viewModel.headerSubject, viewModel.presentWallpapers)
-         .map { $0.0 + $0.1 }
-         .bind(to: collectionView.rx.items) { collection, index, wallpaper in
-            if index == 0 && self.viewModel.isPresent {
-               guard let cell = collection.dequeueReusableCell(withReuseIdentifier: HeaderCollectionViewCell.identifier, for: IndexPath(item: 0, section: 0)) as? HeaderCollectionViewCell else { fatalError() }
-               
-               cell.configure()
-               
-               return cell
-            }
-            
-            guard let cell = collection.dequeueReusableCell(withReuseIdentifier: WallPapeerCollectionViewCell.identifier,
-                                                     for: IndexPath(item: index, section: 0)) as? WallPapeerCollectionViewCell else { fatalError() }
-
-            cell.tagConfigure(info: nil, isHidden: true)
-            if !self.viewModel.isPresent {
-               print(index)
-               cell.tagConfigure(info: WallPapers.shared.tags.list[index].info,
-                                 isHidden: false)
-            }
-            
-            if let image = wallpaper.image {
-               cell.wallpaperImageView.image = image
-            } else {
-               cell.configure(info: wallpaper)
-            }
-            
-            return cell
-         }
+      viewModel.presentWallpapers
+         .subscribe(onNext: {
+            print("presentWallpapers")
+            self.viewModel.wallpapers = $0
+            self.dataLoad()
+         })
          .disposed(by: rx.disposeBag)
       
       // 컬렉션 전환 액션
@@ -75,12 +53,13 @@ class MainViewController: UIViewController, ViewModelBindableType {
       
       // 메인리스트 정렬 액션
       filterButton.rx.tap
-         .map { try self.viewModel.isPresenting.value() }
+         .map { self.viewModel.isPresent }
          .subscribe(onNext: {
+            print("TAP", $0)
             if $0 {
+               print("TAP2")
                self.viewModel.reverse = !self.viewModel.reverse
-               self.viewModel.wallpapers.reverse()
-//               self.viewModel.presentWallpapers.onNext(self.viewModel.wallpapers)
+               self.viewModel.presentWallpapers.onNext(self.viewModel.wallpapers.reversed())
             }
          })
          .disposed(by: rx.disposeBag)
@@ -144,8 +123,11 @@ class MainViewController: UIViewController, ViewModelBindableType {
    
    // 데이타 로드
    @objc func dataLoad() {
-      collectionView.refreshControl?.endRefreshing()
-      collectionView.reloadData()
+      DispatchQueue.main.async {
+         print(#function)
+         self.collectionView.refreshControl?.endRefreshing()
+         self.collectionView.reloadData()
+      }
    }
    
    func collectionViewSetUp() {
@@ -170,34 +152,134 @@ class MainViewController: UIViewController, ViewModelBindableType {
    }
 }
 
+extension MainViewController: UICollectionViewDataSource {
+   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      return viewModel.isPresent ? viewModel.wallpapers.count : WallPapers.shared.tags.list.count
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPapeerCollectionViewCell.identifier, for: indexPath) as? WallPapeerCollectionViewCell else { fatalError("invalid mainCell") }
+      
+      let wallpaper = viewModel.isPresent ? viewModel.wallpapers[indexPath.item] : WallPapers.shared.tags.list[indexPath.item].result[0]
+      
+      
+      cell.tagConfigure(info: nil, isHidden: true)
+      if !self.viewModel.isPresent {
+         cell.tagConfigure(info: WallPapers.shared.tags.list[indexPath.item].info,
+                           isHidden: false)
+      }
+      
+      if let image = wallpaper.image {
+         cell.wallpaperImageView.image = image
+      } else {
+         cell.configure(info: wallpaper)
+      }
+      
+      return cell
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+      return viewModel.isPresent ? CGSize(width: collectionView.bounds.size.width - 20, height: 300) : CGSize.zero
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+      return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+      guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
+                                                                   withReuseIdentifier: HeaderCollectionReusableView.identifier,
+                                                                   for: indexPath) as? HeaderCollectionReusableView else { fatalError("invalid header") }
+      
+      header.configure()
+      
+      return header
+   }
+}
+
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       var size: CGSize = CGSize(width: 0, height: 0)
       viewModel.isPresenting
          .subscribe(onNext: {
+            self.filterButton.isHidden = !$0
             let collectionWidth = self.collectionView.bounds.width - 30
             var width: CGFloat = 0
             var height: CGFloat = 0
             
             if $0 {
-               if indexPath.item == 0 {
-                  width = collectionWidth + 10
-                  height = 300
-               } else {
-                  width = collectionWidth / 2
-                  height = width * 2
+               width = collectionWidth / 2
+               if let displayType = PrepareForSetUp.shared.displayType {
+                  height = displayType == .retina ? width * 1.77 : width * 2.16
                }
-               
                size = CGSize(width: width, height: height)
             } else {
                if let displayType = PrepareForSetUp.shared.displayType {
                   width = displayType == .retina ? collectionWidth * 0.8 : collectionWidth * 0.88
-                  height = displayType == .retina ? width * 2 : width * 2.2
+                  height = displayType == .retina ? width * 1.77 : width * 2.16
                }
                size = CGSize(width: width, height: height)
             }
          })
          .disposed(by: rx.disposeBag)
       return size
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      if let dataLoader = loadingOperations[indexPath] {
+         dataLoader.cancel()
+         loadingOperations.removeValue(forKey: indexPath)
+      }
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      guard let cell = cell as? WallPapeerCollectionViewCell else { return }
+      
+      let updatedCellClosure: (MyWallPaper?) -> () = { [weak self] wallpaper in
+         guard let self = self else { return }
+         
+         if let image = wallpaper?.image {
+            DispatchQueue.main.async {
+               cell.wallpaperImageView.image = image
+            }
+         }
+         self.loadingOperations.removeValue(forKey: indexPath)
+      }
+      
+      if let dataLoader = loadingOperations[indexPath] {
+         if let myWallpaper = dataLoader.wallpaper {
+            if let image = myWallpaper.image {
+               DispatchQueue.main.async {
+                  cell.wallpaperImageView.image = image
+               }
+            }
+            self.loadingOperations.removeValue(forKey: indexPath)
+         } else {
+            dataLoader.loadingCompleteHandler = updatedCellClosure
+         }
+         
+      } else {
+         if let dataLoader = DataSotre().loadMyWallpaper(at: indexPath.item) {
+            dataLoader.loadingCompleteHandler = updatedCellClosure
+            loadingQueue.addOperation(dataLoader)
+            loadingOperations[indexPath] = dataLoader
+         }
+      }
+   }
+}
+
+extension MainViewController: UICollectionViewDataSourcePrefetching {
+   func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+      for indexPath in indexPaths {
+         if let dataLoader = loadingOperations[indexPath] {
+            dataLoader.cancel()
+            loadingOperations.removeValue(forKey: indexPath)
+         }
+         let dataStore = DataSotre()
+         if let dataLoader = dataStore.loadMyWallpaper(at: indexPath.item) {
+            loadingQueue.addOperation(dataLoader)
+            loadingOperations[indexPath] = dataLoader
+         }
+      }
    }
 }

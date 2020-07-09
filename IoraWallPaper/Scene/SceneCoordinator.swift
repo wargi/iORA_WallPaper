@@ -49,32 +49,27 @@ class SceneCoordinator: SceneCoordinatorType {
       case .modal:
          print(target)
          currentVC.present(target, animated: animated) {
-            print("===COMPLETE")
             subject.onCompleted()
          }
          currentVC = target.sceneViewController
-         print(currentVC)
       }
       return subject.ignoreElements()
    }
    
    func close(animated: Bool) -> Completable {
       Completable.create { [unowned self] completable in
-         print("CLOSE")
-         if let presentingVC = self.currentVC.presentingViewController {
-            print("Presenting VC: ", presentingVC)
-            self.currentVC.dismiss(animated: animated) {
-               self.currentVC = presentingVC.sceneViewController
-               completable(.completed)
-            }
-         } else if let nav = self.currentVC.navigationController {
+         if let nav = self.currentVC.navigationController {
             guard nav.popViewController(animated: animated) != nil else {
                completable(.error(TransitionError.cannotPop))
                return Disposables.create()
             }
-            print("Nav VC: ", nav)
             self.currentVC = nav.viewControllers.last!
             completable(.completed)
+         } else if let presentingVC = self.currentVC.presentingViewController {
+            self.currentVC.dismiss(animated: animated) {
+               self.currentVC = presentingVC.sceneViewController
+               completable(.completed)
+            }
          } else {
             completable(.error(TransitionError.unknown))
          }

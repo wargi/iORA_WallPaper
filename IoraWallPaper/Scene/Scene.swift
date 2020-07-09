@@ -9,6 +9,7 @@
 import UIKit
 
 enum Scene {
+   case initialLaunch(InitialLaunchViewModel)
    case main(MainViewModel)
    case detailImage(DetailImageViewModel)
    case showPre(ShowPreViewModel)
@@ -23,6 +24,12 @@ extension Scene {
       guard let nav = storyboard.instantiateViewController(withIdentifier: "MainNav") as? UINavigationController else { fatalError("invalid nav") }
       
       switch self {
+      case .initialLaunch(let viewModel):
+         guard var initialLaunchVC = storyboard.instantiateViewController(withIdentifier: "initialLaunchVC") as? InitialLaunchViewController else { fatalError("invalid initialLaunchVC") }
+         
+         initialLaunchVC.bind(viewModel: viewModel)
+         
+         return initialLaunchVC
       case .main(let viewModel):
          guard var mainVC = nav.viewControllers.first as? MainViewController else { fatalError("invalid mainVC") }
          

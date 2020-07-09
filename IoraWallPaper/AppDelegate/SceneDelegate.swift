@@ -17,10 +17,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       guard let _ = (scene as? UIWindowScene) else { return }
       
       let coordinator = SceneCoordinator(window: window!)
-      let mainListViewModel = MainViewModel(sceneCoordinator: coordinator)
-      let mainListScene = Scene.main(mainListViewModel)
+      var scene: Scene
       
-      coordinator.transition(to: mainListScene, using: .root, animated: true)
+      let isLaunch = UserDefaults.standard.object(forKey: "isLaunch") as? Bool ?? false
+      
+      if isLaunch {
+         let mainListViewModel = MainViewModel(sceneCoordinator: coordinator)
+         scene = Scene.main(mainListViewModel)
+      } else {
+         guard let displayType = PrepareForSetUp.shared.displayType else { return }
+         var images: [UIImage?]
+         if displayType == .retina {
+            images = [
+               UIImage(named: "rlanding_detail"),
+               UIImage(named: "rlanding_calendar"),
+               UIImage(named: "rlanding_watch")
+            ]
+         } else {
+            images = [
+               UIImage(named: "slanding_detail"),
+               UIImage(named: "slanding_calendar"),
+               UIImage(named: "slanding_watch")
+            ]
+         }
+         
+         let initialLaunchViewModel = InitialLaunchViewModel(images: images, sceneCoordinator: coordinator)
+         scene = Scene.initialLaunch(initialLaunchViewModel)
+      }
+      
+      coordinator.transition(to: scene, using: .root, animated: true)
    }
 
    @available(iOS 13.0, *)
