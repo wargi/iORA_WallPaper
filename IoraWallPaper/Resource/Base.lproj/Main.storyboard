@@ -286,7 +286,7 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IORA STUDIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ER9-I4-TTA">
-                                        <rect key="frame" x="124.66666666666669" y="13.666666666666664" width="126" height="23"/>
+                                        <rect key="frame" x="127" y="13.666666666666664" width="121" height="23"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -730,7 +730,7 @@ Check your connection</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorPalette" translatesAutoresizingMaskIntoConstraints="NO" id="7mE-Ob-DY4">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7mE-Ob-DY4">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-wE-PEB">
@@ -954,7 +954,7 @@ Check your connection</string>
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ColorPalette" translatesAutoresizingMaskIntoConstraints="NO" id="jrv-Qg-Tmb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jrv-Qg-Tmb">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:34" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XT2-rD-svC">
@@ -1076,7 +1076,6 @@ Check your connection</string>
     </scenes>
     <resources>
         <image name="Bcalendar" width="33" height="33"/>
-        <image name="ColorPalette" width="375" height="812"/>
         <image name="back" width="33" height="33"/>
         <image name="download" width="33" height="33"/>
         <image name="filter" width="33" height="33"/>
