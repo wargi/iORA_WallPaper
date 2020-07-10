@@ -36,7 +36,6 @@ class MainViewController: UIViewController, ViewModelBindableType {
    func bindViewModel() {
       viewModel.presentWallpapers
          .subscribe(onNext: {
-            print("presentWallpapers")
             self.viewModel.wallpapers = $0
             self.dataLoad()
          })
@@ -55,9 +54,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
       filterButton.rx.tap
          .map { self.viewModel.isPresent }
          .subscribe(onNext: {
-            print("TAP", $0)
             if $0 {
-               print("TAP2")
                self.viewModel.reverse = !self.viewModel.reverse
                self.viewModel.presentWallpapers.onNext(self.viewModel.wallpapers.reversed())
             }
@@ -124,7 +121,6 @@ class MainViewController: UIViewController, ViewModelBindableType {
    // 데이타 로드
    @objc func dataLoad() {
       DispatchQueue.main.async {
-         print(#function)
          self.collectionView.refreshControl?.endRefreshing()
          self.collectionView.reloadData()
       }
@@ -178,10 +174,6 @@ extension MainViewController: UICollectionViewDataSource {
       return cell
    }
    
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-      return viewModel.isPresent ? CGSize(width: collectionView.bounds.size.width - 20, height: 300) : CGSize.zero
-   }
-   
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
       return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
    }
@@ -198,6 +190,12 @@ extension MainViewController: UICollectionViewDataSource {
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+      let width = collectionView.bounds.size.width - 20
+      let height = width * 0.75
+      return viewModel.isPresent ? CGSize(width: width, height: height) : CGSize.zero
+   }
+   
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       var size: CGSize = CGSize(width: 0, height: 0)
       viewModel.isPresenting

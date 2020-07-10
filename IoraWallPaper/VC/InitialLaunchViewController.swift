@@ -81,7 +81,7 @@ class InitialLaunchViewController: UIViewController, ViewModelBindableType {
             let width = self.collectionView.bounds.width
             let currentPage = Int($0 / width)
             
-            if currentPage < 2 {
+            if currentPage < 4 {
                self.collectionView.scrollToItem(at: IndexPath(item: currentPage + 1, section: 0),
                                                 at: .centeredHorizontally,
                                                 animated: true)

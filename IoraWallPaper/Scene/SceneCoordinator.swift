@@ -30,7 +30,6 @@ class SceneCoordinator: SceneCoordinatorType {
    func transition(to scene: Scene, using style: TransitionStyle, animated: Bool) -> Completable {
       let subject = PublishSubject<Void>()
       let target = scene.instantiate()
-      print(currentVC)
       switch style {
       case .root:
          currentVC = target.sceneViewController
@@ -47,7 +46,6 @@ class SceneCoordinator: SceneCoordinatorType {
          
          subject.onCompleted()
       case .modal:
-         print(target)
          currentVC.present(target, animated: animated) {
             subject.onCompleted()
          }

@@ -59,8 +59,6 @@ class CalendarViewModel: CommonViewModel {
       let leaf = year % 4 == 0 ? year % 100 != 0 || year % 400 == 0 ? 29 : 28 : 28
       let lastDayArr = [31, leaf, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
       
-      print(calendar.component(.weekday, from: date))
-      
       for _ in 0 ..< calendar.component(.weekday, from: date) - 1 {
          emptyCell.append("")
       }

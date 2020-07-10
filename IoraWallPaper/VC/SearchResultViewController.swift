@@ -22,15 +22,7 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      
       if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-         let width = (collectionView.bounds.size.width - 30) / 2
-         
-         if let displayType = PrepareForSetUp.shared.displayType {
-            let height = displayType == .retina ? width * 1.77 : width * 2.16
-            layout.itemSize = CGSize(width: width, height: height)
-         }
-         
          layout.minimumLineSpacing = 10
          layout.minimumInteritemSpacing = 10
       }
@@ -63,5 +55,14 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
    }
 }
 
-extension SearchResultViewController: UICollectionViewDelegateFlowLayout {   
+extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+      let width = (collectionView.bounds.size.width - 30) / 2
+      
+      if let displayType = PrepareForSetUp.shared.displayType {
+         let height = displayType == .retina ? width * 1.77 : width * 2.16
+         return CGSize(width: width, height: height)
+      }
+      return CGSize.zero
+   }
 }

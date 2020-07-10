@@ -36,7 +36,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       collectionView.decelerationRate  = UIScrollView.DecelerationRate.fast
       
       if let displayType = PrepareForSetUp.shared.displayType {
-         let width = collectionView.bounds.width * 0.7
+         let width = displayType == .retina ? collectionView.bounds.width * 0.8 : collectionView.bounds.width * 0.75
          let height = displayType == .retina ? width * 1.77 : width * 2.16
          centeredCollectionViewFlowLayout.itemSize = CGSize(width: width, height: height)
       }
