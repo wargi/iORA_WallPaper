@@ -34,8 +34,8 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
          .disposed(by: rx.disposeBag)
       
       viewModel.wallpapers
-         .bind(to: collectionView.rx.items(cellIdentifier: WallPapeerCollectionViewCell.identifier,
-                                           cellType: WallPapeerCollectionViewCell.self)) { item, wallpaper, cell in
+         .bind(to: collectionView.rx.items(cellIdentifier: WallPaperCollectionViewCell.identifier,
+                                           cellType: WallPaperCollectionViewCell.self)) { item, wallpaper, cell in
          if let image = wallpaper.image {
             cell.wallpaperImageView.image = image
          } else {

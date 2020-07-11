@@ -50,6 +50,10 @@ class SceneCoordinator: SceneCoordinatorType {
             subject.onCompleted()
          }
          currentVC = target.sceneViewController
+      case .tap:
+         currentVC = target.sceneViewController
+         
+         subject.onCompleted()
       }
       return subject.ignoreElements()
    }

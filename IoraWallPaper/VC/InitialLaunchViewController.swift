@@ -13,13 +13,14 @@ import NSObject_Rx
 
 class InitialLaunchViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var collectionView: UICollectionView!
-   @IBOutlet private weak var prevButton: UIButton!
-   @IBOutlet private weak var nextButton: UIButton!
    @IBOutlet private weak var pageControl: UIPageControl!
+   @IBOutlet private weak var startButton: UIButton!
    var viewModel: InitialLaunchViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      
+      startButton.layer.cornerRadius = 27.5
    }
    
    func bindViewModel() {
@@ -38,22 +39,17 @@ class InitialLaunchViewController: UIViewController, ViewModelBindableType {
       
       collectionView.rx.contentOffset
          .do(onNext: {
-            let width = self.collectionView.bounds.width
-            let currentPage = Int($0.x / width)
-            if currentPage == 0 {
-               self.prevButton.setTitleColor(.lightGray, for: .normal)
-               self.prevButton.isEnabled = false
+            let _ = $0.x
+            if self.pageControl.currentPage == self.pageControl.numberOfPages - 1 {
+               self.startButton.isUserInteractionEnabled = true
+               UIView.animate(withDuration: 0.3) {
+                  self.startButton.alpha = 1.0
+               }
             } else {
-               self.prevButton.setTitleColor(.white, for: .normal)
-               self.prevButton.isEnabled = true
-            }
-            
-            if currentPage == self.pageControl.numberOfPages - 1 {
-               self.nextButton.setTitle("OK", for: .normal)
-            } else {
-               self.nextButton.setTitle("Next", for: .normal)
-               self.nextButton.setTitleColor(.white, for: .normal)
-               self.nextButton.isEnabled = true
+               self.startButton.isUserInteractionEnabled = false
+               UIView.animate(withDuration: 0.1) {
+                  self.startButton.alpha = 0
+               }
             }
          })
          .map { $0.x + (self.collectionView.bounds.width / 2.0) }
@@ -61,37 +57,7 @@ class InitialLaunchViewController: UIViewController, ViewModelBindableType {
          .bind(to: pageControl.rx.currentPage)
          .disposed(by: rx.disposeBag)
       
-      prevButton.rx.tap
-         .map { self.collectionView.contentOffset.x }
-         .subscribe(onNext: {
-            let width = self.collectionView.bounds.width
-            let currentPage = Int($0 / width)
-            
-            if currentPage > 0 {
-               self.collectionView.scrollToItem(at: IndexPath(item: currentPage - 1, section: 0),
-                                                at: .centeredHorizontally,
-                                                animated: true)
-            }
-         })
-         .disposed(by: rx.disposeBag)
-      
-      nextButton.rx.tap
-         .map { self.collectionView.contentOffset.x }
-         .subscribe(onNext: {
-            let width = self.collectionView.bounds.width
-            let currentPage = Int($0 / width)
-            
-            if currentPage < 4 {
-               self.collectionView.scrollToItem(at: IndexPath(item: currentPage + 1, section: 0),
-                                                at: .centeredHorizontally,
-                                                animated: true)
-            } else if currentPage == self.pageControl.numberOfPages - 1 {
-               UserDefaults.standard.setValue(true, forKey: "isLaunch")
-               self.viewModel.okAction()
-            }
-         })
-         .disposed(by: rx.disposeBag)
-      
+      startButton.rx.action = viewModel.okAction()
    }
 }
 

@@ -13,11 +13,15 @@ import Action
 
 class InitialLaunchViewModel: CommonViewModel {
    var imagesSubject: BehaviorSubject<[UIImage?]>
-   func okAction() -> Observable<Void> {
-      let mainViewModeel = MainViewModel(sceneCoordinator: sceneCoordinator)
-      let mainScene = Scene.main(mainViewModeel)
-      
-      return sceneCoordinator.transition(to: mainScene, using: .modal, animated: true).asObservable().map { _ in }
+   func okAction() -> CocoaAction {
+      return CocoaAction {
+         let mainViewModeel = MainViewModel(sceneCoordinator: self.sceneCoordinator)
+         let mainScene = Scene.main(mainViewModeel)
+         
+         UserDefaults.standard.set(true, forKey: "isLaunch")
+         
+         return self.sceneCoordinator.transition(to: mainScene, using: .modal, animated: true).asObservable().map { _ in }
+      }
    }
    
    init(images: [UIImage?], sceneCoordinator: SceneCoordinatorType) {

@@ -117,7 +117,9 @@ class PrepareForSetUp {
             fatalError("Invalid URL")
          }
          
-         let session = URLSession.shared
+         let config = URLSessionConfiguration.default
+         config.requestCachePolicy = .returnCacheDataElseLoad
+         let session = URLSession(configuration: config)
          
          
          let take = session.dataTask(with: url) { (data, resp, err) in

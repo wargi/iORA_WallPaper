@@ -31,7 +31,8 @@ extension Scene {
          
          return initialLaunchVC
       case .main(let viewModel):
-         guard var mainVC = nav.viewControllers.first as? MainViewController else { fatalError("invalid mainVC") }
+         guard let mainTabbar = nav.viewControllers.first as? UITabBarController,
+            var mainVC = mainTabbar.viewControllers?.first as? MainViewController else { fatalError("invalid mainVC") }
          
          mainVC.bind(viewModel: viewModel)
          

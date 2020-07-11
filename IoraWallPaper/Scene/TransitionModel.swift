@@ -12,6 +12,7 @@ enum TransitionStyle {
    case root
    case push
    case modal
+   case tap
 }
 
 enum TransitionError: Error {

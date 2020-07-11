@@ -10,13 +10,10 @@ import UIKit
 import Foundation
 import RxSwift
 
-class WallPapeerCollectionViewCell: UICollectionViewCell {
-   static let identifier = "WallPapeerCollectionViewCell"
+class WallPaperCollectionViewCell: UICollectionViewCell {
+   static let identifier = "WallPaperCollectionViewCell"
    @IBOutlet weak var wallpaperImageView: UIImageView!
    @IBOutlet var activityIndicator: UIActivityIndicatorView!
-   @IBOutlet weak var dimmingView: UIView!
-   @IBOutlet weak var titleLabel: UILabel!
-   @IBOutlet weak var contentLabel: UILabel!
    var bag = DisposeBag()
 
    func configure(info: MyWallPaper) {
@@ -32,19 +29,10 @@ class WallPapeerCollectionViewCell: UICollectionViewCell {
       }
    }
    
-   func tagConfigure(info: TagInfo?, isHidden: Bool) {
-      titleLabel.text = info?.name
-      contentLabel.text = info?.desc
-      dimmingView.isHidden = isHidden
-   }
-   
    override func prepareForReuse() {
       self.layer.cornerRadius = 15
       
       wallpaperImageView.image = nil
-      titleLabel.text = nil
-      contentLabel.text = nil
-      dimmingView.isHidden = true
       self.isHidden = false
       
       bag = DisposeBag()

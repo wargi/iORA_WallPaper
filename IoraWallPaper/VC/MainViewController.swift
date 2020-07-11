@@ -18,9 +18,10 @@ class MainViewController: UIViewController, ViewModelBindableType {
    // 상단 UI
    @IBOutlet private weak var navigationView: UIView!
    @IBOutlet private weak var notConnectView: UIView!
-   @IBOutlet private weak var presentingButton: UIButton!
    @IBOutlet private weak var filterButton: UIButton!
    @IBOutlet private weak var searchButton: UIButton!
+   @IBOutlet weak var topConstraint: NSLayoutConstraint!
+   
    private var reachability: Reachability?
    var loadingQueue = OperationQueue()
    var loadingOperations: [IndexPath: DataLoadOperation] = [:]
@@ -34,21 +35,23 @@ class MainViewController: UIViewController, ViewModelBindableType {
    }
    
    func bindViewModel() {
+//      let topConst = topConstraint.constant
+//      print(topConst)
+//      collectionView.rx.contentOffset
+//         .subscribe(onNext: {
+//            guard $0.y > 0.0 else { return }
+//
+//            self.topConstraint.constant = topConst - $0.y
+//
+//         })
+//         .disposed(by: rx.disposeBag)
+      
       viewModel.presentWallpapers
          .subscribe(onNext: {
             self.viewModel.wallpapers = $0
             self.dataLoad()
          })
          .disposed(by: rx.disposeBag)
-      
-      // 컬렉션 전환 액션
-      presentingButton.rx.tap
-         .subscribe {
-            if let _ = $0.element {
-               self.viewModel.presentAction()
-            }
-      }
-      .disposed(by: rx.disposeBag)
       
       // 메인리스트 정렬 액션
       filterButton.rx.tap
@@ -103,13 +106,6 @@ class MainViewController: UIViewController, ViewModelBindableType {
          self.collectionView.isHidden = true
       }
       
-      presentingButton.layer.cornerRadius = 30
-      presentingButton.clipsToBounds = false
-      presentingButton.layer.shadowColor = UIColor.black.cgColor
-      presentingButton.layer.shadowOpacity = 0.5
-      presentingButton.layer.shadowOffset = CGSize(width: 1, height: 1)
-      presentingButton.layer.shadowRadius = 2
-      
       let tap = UITapGestureRecognizer(target: self, action: #selector(self.dataLoad))
       notConnectView.addGestureRecognizer(tap)
       
@@ -154,16 +150,9 @@ extension MainViewController: UICollectionViewDataSource {
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPapeerCollectionViewCell.identifier, for: indexPath) as? WallPapeerCollectionViewCell else { fatalError("invalid mainCell") }
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPaperCollectionViewCell.identifier, for: indexPath) as? WallPaperCollectionViewCell else { fatalError("invalid mainCell") }
       
       let wallpaper = viewModel.isPresent ? viewModel.wallpapers[indexPath.item] : WallPapers.shared.tags.list[indexPath.item].result[0]
-      
-      
-      cell.tagConfigure(info: nil, isHidden: true)
-      if !self.viewModel.isPresent {
-         cell.tagConfigure(info: WallPapers.shared.tags.list[indexPath.item].info,
-                           isHidden: false)
-      }
       
       if let image = wallpaper.image {
          cell.wallpaperImageView.image = image
@@ -231,7 +220,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegate
    }
    
    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-      guard let cell = cell as? WallPapeerCollectionViewCell else { return }
+      guard let cell = cell as? WallPaperCollectionViewCell else { return }
       
       let updatedCellClosure: (MyWallPaper?) -> () = { [weak self] wallpaper in
          guard let self = self else { return }
