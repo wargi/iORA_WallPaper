@@ -8,11 +8,16 @@
 
 import UIKit
 
-class CategoryViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+class CategoryViewController: UIViewController, ViewModelBindableType {
+   var viewModel: CategoryViewModel!
+   
+   override func viewDidLoad() {
+      super.viewDidLoad()
+   }
+      
+   func bindViewModel() {
+      if let tabbarVC = self.tabBarController as? CustomTabbarController {
+         tabbarVC.coordinator = viewModel.sceneCoordinator
+      }
+   }
 }

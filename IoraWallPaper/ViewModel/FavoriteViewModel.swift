@@ -10,4 +10,7 @@ import Foundation
 
 class FavoriteViewModel: CommonViewModel {
    
+   override init(sceneCoordinator: SceneCoordinatorType) {
+      super.init(sceneCoordinator: sceneCoordinator)
+   }
 }

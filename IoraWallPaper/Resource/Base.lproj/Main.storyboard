@@ -109,10 +109,10 @@
             </objects>
             <point key="canvasLocation" x="334.78260869565219" y="818.97321428571422"/>
         </scene>
-        <!--Favorite-->
+        <!--favoriteVC-->
         <scene sceneID="Aap-j1-aO6">
             <objects>
-                <viewController storyboardIdentifier="FavoriteViewController" id="gwj-eN-71z" customClass="FavoriteViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="favoriteVC" title="favoriteVC" id="gwj-eN-71z" customClass="FavoriteViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k6B-LR-bWi">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -177,10 +177,10 @@
             </objects>
             <point key="canvasLocation" x="1085.5999999999999" y="818.7192118226601"/>
         </scene>
-        <!--Category-->
+        <!--categoryVC-->
         <scene sceneID="AIa-dO-XGX">
             <objects>
-                <viewController id="Wr4-kj-P0p" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="categoryVC" title="categoryVC" id="Wr4-kj-P0p" customClass="CategoryViewController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="icj-KK-hyY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1178,10 +1178,10 @@ Check your connection</string>
             </objects>
             <point key="canvasLocation" x="335" y="141"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--CustomTabbarController-->
         <scene sceneID="ytC-Oh-Ytu">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="LNp-er-vAh" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CustomTabbarController" title="CustomTabbarController" automaticallyAdjustsScrollViewInsets="NO" id="LNp-er-vAh" customClass="CustomTabbarController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lEH-ga-lhC"/>
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="InK-Lt-smC">
@@ -1190,6 +1190,7 @@ Check your connection</string>
                         <color key="selectedImageTintColor" name="mainColor"/>
                     </tabBar>
                     <connections>
+                        <outlet property="tabbar" destination="InK-Lt-smC" id="eJr-lF-CN2"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Shc-Dq-iEh"/>
                         <segue destination="gwj-eN-71z" kind="relationship" relationship="viewControllers" id="zHL-Xx-bqs"/>
                         <segue destination="Wr4-kj-P0p" kind="relationship" relationship="viewControllers" id="OIS-UI-gZS"/>

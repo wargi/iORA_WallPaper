@@ -34,6 +34,13 @@ class MainViewController: UIViewController, ViewModelBindableType {
       configure()
    }
    
+   override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      if let tabbarVC = self.tabBarController as? CustomTabbarController {
+         tabbarVC.coordinator = viewModel.sceneCoordinator
+      }
+   }
+   
    func bindViewModel() {
 //      let topConst = topConstraint.constant
 //      print(topConst)

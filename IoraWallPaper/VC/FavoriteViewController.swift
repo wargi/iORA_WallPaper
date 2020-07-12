@@ -10,16 +10,18 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class FavoriteViewController: UIViewController {
+class FavoriteViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var collectionView: UICollectionView!
-   
-   override func viewWillAppear(_ animated: Bool) {
-      
-   }
-   
+   var viewModel: FavoriteViewModel!
+
    override func viewDidLoad() {
       super.viewDidLoad()
-      
+   }
+   
+   func bindViewModel() {
+      if let tabbarVC = self.tabBarController as? CustomTabbarController {
+         tabbarVC.coordinator = viewModel.sceneCoordinator
+      }
    }
 }
 
@@ -28,6 +30,3 @@ extension FavoriteViewController: UICollectionViewDelegate {
 
 extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
 }
-
-
-extension FavoriteViewController: UITabBarControllerDelegate

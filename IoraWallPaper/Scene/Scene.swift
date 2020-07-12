@@ -11,6 +11,8 @@ import UIKit
 enum Scene {
    case initialLaunch(InitialLaunchViewModel)
    case main(MainViewModel)
+   case favorite(FavoriteViewModel)
+   case category(CategoryViewModel)
    case detailImage(DetailImageViewModel)
    case showPre(ShowPreViewModel)
    case calendar(CalendarViewModel)
@@ -31,12 +33,24 @@ extension Scene {
          
          return initialLaunchVC
       case .main(let viewModel):
-         guard let mainTabbar = nav.viewControllers.first as? UITabBarController,
+         guard let mainTabbar = nav.viewControllers.first as? CustomTabbarController,
             var mainVC = mainTabbar.viewControllers?.first as? MainViewController else { fatalError("invalid mainVC") }
          
          mainVC.bind(viewModel: viewModel)
          
          return nav
+      case .favorite(let viewModel):
+         guard var favoriteVC = storyboard.instantiateViewController(withIdentifier: "favoriteVC") as? FavoriteViewController else { fatalError("invalid favoriteVC") }
+         
+         favoriteVC.bind(viewModel: viewModel)
+         
+         return favoriteVC
+      case .category(let viewModel):
+         guard var categoryVC = storyboard.instantiateViewController(withIdentifier: "categoryVC") as? CategoryViewController else { fatalError("invalid categoryVC") }
+         
+         categoryVC.bind(viewModel: viewModel)
+         
+         return categoryVC
       case .detailImage(let viewModel):
          guard var detailImageVC = storyboard.instantiateViewController(withIdentifier: "detailImageVC") as? DetailImageViewController else { fatalError("invalid detailImageVC") }
          
