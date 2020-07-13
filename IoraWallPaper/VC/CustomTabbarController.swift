@@ -24,8 +24,6 @@ class CustomTabbarController: UITabBarController {
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      
-      
       self.delegate = self
       // Do any additional setup after loading the view.
    }
@@ -39,19 +37,19 @@ extension CustomTabbarController: UITabBarControllerDelegate {
       
       if viewController is MainViewController {
          let viewModel = MainViewModel(sceneCoordinator: coordinator)
-         scene = Scene.main(viewModel) 
+         scene = Scene.main(viewModel)
       } else if viewController is FavoriteViewController {
          let viewModel = FavoriteViewModel(sceneCoordinator: coordinator)
          scene = Scene.favorite(viewModel)
-      } else if viewController is CategoryViewController {
+      } else if let vc = viewController as? CategoryViewController {
          let viewModel = CategoryViewModel(sceneCoordinator: coordinator)
          scene = Scene.category(viewModel)
+         vc.viewModel = viewModel
       }
-
+      
       if let scene = scene {
          coordinator.transition(to: scene, using: .tap, animated: false)
       }
-      
       
       return true
    }

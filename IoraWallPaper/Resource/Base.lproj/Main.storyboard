@@ -185,17 +185,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tUJ-ry-htU">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tUJ-ry-htU">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="641"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vhU-DN-PE1">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vhU-DN-PE1">
                                     <size key="itemSize" width="338" height="342"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="AAN-al-Hxj">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="CategoryCollectionViewCell" reuseIdentifier="CategoryCollectionViewCell" id="AAN-al-Hxj" customClass="CategoryCollectionViewCell" customModule="IORA" customModuleProvider="target">
                                         <rect key="frame" x="18.666666666666668" y="0.0" width="338" height="342"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="R9y-04-4nb">
@@ -257,8 +257,17 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="338" height="342"/>
+                                        <connections>
+                                            <outlet property="activityIndicator" destination="FSB-c2-a2j" id="b2R-pS-cAH"/>
+                                            <outlet property="contentLabel" destination="0Py-mg-53d" id="4Cv-Pq-cEf"/>
+                                            <outlet property="imageView" destination="PWQ-EU-P5p" id="MhB-qK-9Az"/>
+                                            <outlet property="titleLabel" destination="fVP-4F-qiL" id="Cx4-wC-KMB"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="delegate" destination="Wr4-kj-P0p" id="7be-GM-Z4d"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -273,6 +282,9 @@
                     <tabBarItem key="tabBarItem" title="Category" image="share" selectedImage="share" id="D91-a4-3nj">
                         <color key="badgeColor" name="mainColor"/>
                     </tabBarItem>
+                    <connections>
+                        <outlet property="collectionView" destination="tUJ-ry-htU" id="2Y0-Wc-PJk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0zb-QN-n7q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1161,6 +1173,7 @@ Check your connection</string>
         <!--MainNav-->
         <scene sceneID="CBw-Yb-3pd">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4CX-XW-B7t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController storyboardIdentifier="MainNav" title="MainNav" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="fZd-Bb-I4I" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="8jh-O8-PuI">
@@ -1174,7 +1187,6 @@ Check your connection</string>
                         <segue destination="LNp-er-vAh" kind="relationship" relationship="rootViewController" id="oiT-8d-cLX"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4CX-XW-B7t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="335" y="141"/>
         </scene>

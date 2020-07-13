@@ -46,8 +46,8 @@ extension Scene {
          
          return favoriteVC
       case .category(let viewModel):
-         guard var categoryVC = storyboard.instantiateViewController(withIdentifier: "categoryVC") as? CategoryViewController else { fatalError("invalid categoryVC") }
-         
+         guard let mainTabbar = nav.viewControllers.first as? CustomTabbarController,
+            var categoryVC = mainTabbar.viewControllers?[2] as? CategoryViewController else { fatalError("invalid categoryVC") }
          categoryVC.bind(viewModel: viewModel)
          
          return categoryVC

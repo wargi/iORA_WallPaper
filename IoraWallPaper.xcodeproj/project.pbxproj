@@ -39,6 +39,7 @@
 		8EBADD6224BA032E0059C3C1 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBADD6124BA032E0059C3C1 /* FavoriteViewController.swift */; };
 		8EBADD6424BA03B80059C3C1 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBADD6324BA03B80059C3C1 /* CategoryViewController.swift */; };
 		8EBADD6624BA10200059C3C1 /* CustomTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBADD6524BA10200059C3C1 /* CustomTabbarController.swift */; };
+		8EBADD6824BC25410059C3C1 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBADD6724BC25410059C3C1 /* CategoryCollectionViewCell.swift */; };
 		8EBD4CCD24A4BC28005EC9A2 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD4CCC24A4BC28005EC9A2 /* MainViewModel.swift */; };
 		8EBD4CCF24A4BC35005EC9A2 /* DetailImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD4CCE24A4BC35005EC9A2 /* DetailImageViewModel.swift */; };
 		8EBD4CD124A4BC42005EC9A2 /* ShowPreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD4CD024A4BC42005EC9A2 /* ShowPreViewModel.swift */; };
@@ -94,6 +95,7 @@
 		8EBADD6124BA032E0059C3C1 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		8EBADD6324BA03B80059C3C1 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		8EBADD6524BA10200059C3C1 /* CustomTabbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabbarController.swift; sourceTree = "<group>"; };
+		8EBADD6724BC25410059C3C1 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8EBD4CCC24A4BC28005EC9A2 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		8EBD4CCE24A4BC35005EC9A2 /* DetailImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewModel.swift; sourceTree = "<group>"; };
 		8EBD4CD024A4BC42005EC9A2 /* ShowPreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPreViewModel.swift; sourceTree = "<group>"; };
@@ -225,8 +227,8 @@
 				8E5D395224A82554009E4D22 /* InitialLaunchViewController.swift */,
 				8EBADD6524BA10200059C3C1 /* CustomTabbarController.swift */,
 				8E888036248DF71300E7E620 /* MainViewController.swift */,
-				8EBADD6324BA03B80059C3C1 /* CategoryViewController.swift */,
 				8EBADD6124BA032E0059C3C1 /* FavoriteViewController.swift */,
+				8EBADD6324BA03B80059C3C1 /* CategoryViewController.swift */,
 				8E242FDC24A119640087A41F /* SearchViewController.swift */,
 				8E242FDE24A119C40087A41F /* SearchResultViewController.swift */,
 				8E95A9E62490839600F55F82 /* DetailImageViewController.swift */,
@@ -242,6 +244,7 @@
 				8E5D395424A8263D009E4D22 /* InitialCollectionViewCell.swift */,
 				8E88804A248DFD0100E7E620 /* WallPaperCollectionViewCell.swift */,
 				8ED9C1FB24AA3CB5008F41FC /* HeaderCollectionViewCell.swift */,
+				8EBADD6724BC25410059C3C1 /* CategoryCollectionViewCell.swift */,
 				8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */,
 				8E8B4A732494C6930072620A /* DayCollectionViewCell.swift */,
 				8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */,
@@ -426,6 +429,7 @@
 				8EBD4CD524A4BC64005EC9A2 /* SearchViewModel.swift in Sources */,
 				8E5D395524A8263D009E4D22 /* InitialCollectionViewCell.swift in Sources */,
 				8EBADD5E24BA02A00059C3C1 /* FavoriteViewModel.swift in Sources */,
+				8EBADD6824BC25410059C3C1 /* CategoryCollectionViewCell.swift in Sources */,
 				8EDCAA3124AD038B00231F6B /* SetUp.swift in Sources */,
 				8E888037248DF71300E7E620 /* MainViewController.swift in Sources */,
 				8EBADD6024BA02BD0059C3C1 /* CategoryViewModel.swift in Sources */,

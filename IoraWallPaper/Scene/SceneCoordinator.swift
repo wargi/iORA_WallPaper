@@ -32,18 +32,30 @@ class SceneCoordinator: SceneCoordinatorType {
       let target = scene.instantiate()
       switch style {
       case .root:
+         print(currentVC, target)
          currentVC = target.sceneViewController
          window.rootViewController = target
          subject.onCompleted()
       case .push:
-         guard let nav = currentVC.navigationController else {
+         print(currentVC, target)
+         if let nav = currentVC.navigationController {
+            print("nav")
+            nav.pushViewController(target, animated: animated)
+            currentVC = target.sceneViewController
+         } else if let tabbar = currentVC.tabBarController,
+            let nav = tabbar.navigationController {
+            print("tabbar")
+            nav.pushViewController(target, animated: animated)
+            currentVC = target.sceneViewController
+         } else if let nav = currentVC as? UINavigationController {
+            nav.pushViewController(target, animated: animated)
+            currentVC = target.sceneViewController
+         } else {
+            print("onError")
             subject.onError(TransitionError.navigationControllerMissing)
             break
          }
-         
-         nav.pushViewController(target, animated: animated)
-         currentVC = target.sceneViewController
-         
+
          subject.onCompleted()
       case .modal:
          currentVC.present(target, animated: animated) {
@@ -51,8 +63,13 @@ class SceneCoordinator: SceneCoordinatorType {
          }
          currentVC = target.sceneViewController
       case .tap:
-         currentVC = target.sceneViewController
+         if let navi = target as? UINavigationController {
+            currentVC = target
+         } else {
+            currentVC = target
+         }
          
+         print(target)
          subject.onCompleted()
       }
       return subject.ignoreElements()

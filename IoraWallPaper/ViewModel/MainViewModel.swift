@@ -16,38 +16,14 @@ import RxDataSources
 class MainViewModel: CommonViewModel {
    var wallpapers: [MyWallPaper]
    var presentWallpapers: BehaviorSubject<[MyWallPaper]>
-   var isPresenting: BehaviorSubject<Bool>
-   
-   var isPresent = true
    var reverse = false
    let searchAction: CocoaAction
    let selectedAction: Action<[MyWallPaper], Void>
    
-   func presentAction() {
-      isPresent = !isPresent
-      
-      if isPresent {
-         let wallpaper = reverse ? WallPapers.shared.myWallPapers.reversed() : WallPapers.shared.myWallPapers
-         presentWallpapers.onNext(wallpaper)
-         wallpapers = wallpaper
-      } else {
-         presentWallpapers.onNext(WallPapers.shared.tags.representImage)
-      }
-      
-      isPresenting.onNext(isPresent)
-   }
-   
-   func setData() {
-      Observable.zip(WallPapers.shared.wallpaperSubject, WallPapers.shared.tagSubject)
-         .take(2)
+   func setMyWallpaper() {
+      WallPapers.shared.wallpaperSubject
          .subscribe(onNext: {
-            if self.isPresent {
-               self.wallpapers = $0.0
-               self.presentWallpapers.onNext($0.0)
-            } else {
-               self.wallpapers = $0.1.representImage
-               self.presentWallpapers.onNext($0.1.representImage)
-            }
+            self.presentWallpapers.onNext($0)
          })
          .disposed(by: rx.disposeBag)
    }
@@ -55,7 +31,6 @@ class MainViewModel: CommonViewModel {
    init(sceneCoordinator: SceneCoordinatorType, filteringAction: CocoaAction? = nil, searchAction: CocoaAction? = nil, selectedAction: Action<[MyWallPaper], Void>? = nil) {
       self.wallpapers = []
       self.presentWallpapers = BehaviorSubject<[MyWallPaper]>(value: wallpapers)
-      self.isPresenting = BehaviorSubject<Bool>(value: true)
       
       self.searchAction = CocoaAction { tagList in
          if let action = searchAction {
@@ -81,6 +56,6 @@ class MainViewModel: CommonViewModel {
       
       super.init(sceneCoordinator: sceneCoordinator)
       
-      self.setData()
+      setMyWallpaper()
    }
 }

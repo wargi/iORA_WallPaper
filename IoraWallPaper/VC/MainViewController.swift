@@ -36,23 +36,12 @@ class MainViewController: UIViewController, ViewModelBindableType {
    
    override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      if let tabbarVC = self.tabBarController as? CustomTabbarController {
-         tabbarVC.coordinator = viewModel.sceneCoordinator
+      if let tabbar = self.tabBarController as? CustomTabbarController{
+         tabbar.coordinator = viewModel.sceneCoordinator
       }
    }
    
    func bindViewModel() {
-//      let topConst = topConstraint.constant
-//      print(topConst)
-//      collectionView.rx.contentOffset
-//         .subscribe(onNext: {
-//            guard $0.y > 0.0 else { return }
-//
-//            self.topConstraint.constant = topConst - $0.y
-//
-//         })
-//         .disposed(by: rx.disposeBag)
-      
       viewModel.presentWallpapers
          .subscribe(onNext: {
             self.viewModel.wallpapers = $0
@@ -62,12 +51,9 @@ class MainViewController: UIViewController, ViewModelBindableType {
       
       // 메인리스트 정렬 액션
       filterButton.rx.tap
-         .map { self.viewModel.isPresent }
          .subscribe(onNext: {
-            if $0 {
-               self.viewModel.reverse = !self.viewModel.reverse
-               self.viewModel.presentWallpapers.onNext(self.viewModel.wallpapers.reversed())
-            }
+            self.viewModel.reverse = !self.viewModel.reverse
+            self.viewModel.presentWallpapers.onNext(self.viewModel.wallpapers.reversed())
          })
          .disposed(by: rx.disposeBag)
       
@@ -79,13 +65,11 @@ class MainViewController: UIViewController, ViewModelBindableType {
          .map { index -> [MyWallPaper] in
             self.collectionView.deselectItem(at: IndexPath(item: index, section: 0), animated: true)
             var result: [MyWallPaper]
-            if self.viewModel.isPresent {
-               let wallpapers = self.viewModel.wallpapers
-               let temp = index + 9 < wallpapers.count ? wallpapers[index ... index+9] : wallpapers[index...]
-               result = Array(temp)
-            } else {
-               result = WallPapers.shared.tags.list[index].result
-            }
+            
+            let wallpapers = self.viewModel.wallpapers
+            let temp = index + 9 < wallpapers.count ? wallpapers[index ... index+9] : wallpapers[index...]
+            result = Array(temp)
+            
             return result
       }
       .bind(to: viewModel.selectedAction.inputs)
@@ -131,16 +115,8 @@ class MainViewController: UIViewController, ViewModelBindableType {
    
    func collectionViewSetUp() {
       if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-         viewModel.isPresenting.subscribe(onNext: {
-            if $0 {
-               layout.minimumInteritemSpacing = 10
-               layout.minimumLineSpacing = 10
-            } else {
-               layout.minimumInteritemSpacing = 25
-               layout.minimumLineSpacing = 20
-            }
-         })
-            .disposed(by: rx.disposeBag)
+         layout.minimumInteritemSpacing = 10
+         layout.minimumLineSpacing = 10
       }
    }
    
@@ -153,13 +129,13 @@ class MainViewController: UIViewController, ViewModelBindableType {
 
 extension MainViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return viewModel.isPresent ? viewModel.wallpapers.count : WallPapers.shared.tags.list.count
+      return viewModel.wallpapers.count
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPaperCollectionViewCell.identifier, for: indexPath) as? WallPaperCollectionViewCell else { fatalError("invalid mainCell") }
       
-      let wallpaper = viewModel.isPresent ? viewModel.wallpapers[indexPath.item] : WallPapers.shared.tags.list[indexPath.item].result[0]
+      let wallpaper = viewModel.wallpapers[indexPath.item]
       
       if let image = wallpaper.image {
          cell.wallpaperImageView.image = image
@@ -189,34 +165,20 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegate
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
       let width = collectionView.bounds.size.width - 20
       let height = width * 0.75
-      return viewModel.isPresent ? CGSize(width: width, height: height) : CGSize.zero
+      return CGSize(width: width, height: height)
    }
    
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      var size: CGSize = CGSize(width: 0, height: 0)
-      viewModel.isPresenting
-         .subscribe(onNext: {
-            self.filterButton.isHidden = !$0
-            let collectionWidth = self.collectionView.bounds.width - 30
-            var width: CGFloat = 0
-            var height: CGFloat = 0
-            
-            if $0 {
-               width = collectionWidth / 2
-               if let displayType = PrepareForSetUp.shared.displayType {
-                  height = displayType == .retina ? width * 1.77 : width * 2.16
-               }
-               size = CGSize(width: width, height: height)
-            } else {
-               if let displayType = PrepareForSetUp.shared.displayType {
-                  width = displayType == .retina ? collectionWidth * 0.8 : collectionWidth * 0.88
-                  height = displayType == .retina ? width * 1.77 : width * 2.16
-               }
-               size = CGSize(width: width, height: height)
-            }
-         })
-         .disposed(by: rx.disposeBag)
-      return size
+      let collectionWidth = self.collectionView.bounds.width - 30
+      var width: CGFloat = 0
+      var height: CGFloat = 0
+      
+      width = collectionWidth / 2
+      if let displayType = PrepareForSetUp.shared.displayType {
+         height = displayType == .retina ? width * 1.77 : width * 2.16
+      }
+      
+      return CGSize(width: width, height: height)
    }
    
    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
