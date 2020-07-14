@@ -19,9 +19,14 @@ class FavoriteViewController: UIViewController, ViewModelBindableType {
    }
    
    func bindViewModel() {
-      if let tabbarVC = self.tabBarController as? CustomTabbarController {
-         tabbarVC.coordinator = viewModel.sceneCoordinator
+      if let tabbar = self.tabBarController as? CustomTabbarController{
+         tabbar.coordinator = viewModel.sceneCoordinator
       }
+      WallPapers.shared.wallpaperSubject
+         .bind(to: collectionView.rx.items(cellIdentifier: WallPaperCollectionViewCell.identifier)) { index, wallpaper, cell in
+            print(index)
+      }
+      .disposed(by: rx.disposeBag)
    }
 }
 

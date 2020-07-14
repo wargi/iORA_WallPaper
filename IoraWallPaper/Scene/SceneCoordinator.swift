@@ -13,6 +13,10 @@ extension UIViewController {
    var sceneViewController: UIViewController {
       return self.children.first ?? self
    }
+   
+   var rootViewController: UIViewController {
+      return self.tabBarController ?? self
+   }
 }
 
 class SceneCoordinator: SceneCoordinatorType {
@@ -20,6 +24,7 @@ class SceneCoordinator: SceneCoordinatorType {
    
    private var window: UIWindow
    private var currentVC: UIViewController
+   private var lastMain: UIViewController?
    
    required init(window: UIWindow) {
       self.window = window
@@ -30,32 +35,25 @@ class SceneCoordinator: SceneCoordinatorType {
    func transition(to scene: Scene, using style: TransitionStyle, animated: Bool) -> Completable {
       let subject = PublishSubject<Void>()
       let target = scene.instantiate()
+      print(currentVC, target)
       switch style {
       case .root:
-         print(currentVC, target)
          currentVC = target.sceneViewController
-         window.rootViewController = target
+         window.rootViewController = target.rootViewController
          subject.onCompleted()
       case .push:
-         print(currentVC, target)
-         if let nav = currentVC.navigationController {
-            print("nav")
-            nav.pushViewController(target, animated: animated)
+         if currentVC is UINavigationController {
+            let nav = currentVC.sceneViewController.navigationController
+            nav?.pushViewController(target.sceneViewController, animated: animated)
             currentVC = target.sceneViewController
-         } else if let tabbar = currentVC.tabBarController,
-            let nav = tabbar.navigationController {
-            print("tabbar")
-            nav.pushViewController(target, animated: animated)
-            currentVC = target.sceneViewController
-         } else if let nav = currentVC as? UINavigationController {
+         } else if let nav = currentVC.navigationController {
             nav.pushViewController(target, animated: animated)
             currentVC = target.sceneViewController
          } else {
-            print("onError")
             subject.onError(TransitionError.navigationControllerMissing)
             break
          }
-
+         
          subject.onCompleted()
       case .modal:
          currentVC.present(target, animated: animated) {
@@ -63,13 +61,18 @@ class SceneCoordinator: SceneCoordinatorType {
          }
          currentVC = target.sceneViewController
       case .tap:
-         if let navi = target as? UINavigationController {
-            currentVC = target
+         
+         if currentVC.navigationController?.tabBarController?.view.tag == 0 {
+            if let vc = lastMain {
+               currentVC = vc
+            } else {
+               lastMain = currentVC
+            }
          } else {
-            currentVC = target
+            currentVC = target.sceneViewController
          }
          
-         print(target)
+         
          subject.onCompleted()
       }
       return subject.ignoreElements()
@@ -77,7 +80,16 @@ class SceneCoordinator: SceneCoordinatorType {
    
    func close(animated: Bool) -> Completable {
       Completable.create { [unowned self] completable in
-         if let nav = self.currentVC.navigationController {
+         if self.currentVC is UINavigationController {
+            let vc = self.currentVC.sceneViewController
+            guard let nav = vc.navigationController,
+               nav.popViewController(animated: animated) != nil else {
+                  completable(.error(TransitionError.cannotPop))
+                  return Disposables.create()
+            }
+            self.currentVC = nav.viewControllers.last!
+            completable(.completed)
+         } else if let nav = self.currentVC.navigationController {
             guard nav.popViewController(animated: animated) != nil else {
                completable(.error(TransitionError.cannotPop))
                return Disposables.create()

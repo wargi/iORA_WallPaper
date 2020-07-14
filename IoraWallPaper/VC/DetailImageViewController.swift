@@ -35,14 +35,29 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       centeredCollectionViewFlowLayout = (collectionView.collectionViewLayout as! CenteredCollectionViewFlowLayout)
       collectionView.decelerationRate  = UIScrollView.DecelerationRate.fast
       
+      centeredCollectionViewFlowLayout.minimumLineSpacing = 20
+      
       if let displayType = PrepareForSetUp.shared.displayType {
-         let width = displayType == .retina ? collectionView.bounds.width * 0.8 : collectionView.bounds.width * 0.75
+         var width: CGFloat = 0
+         let collectionWidth = collectionView.bounds.width
+
+         switch (UIScreen.main.bounds.size) {
+         case CGSize(width: 414.0, height: 896.0):
+            width = collectionWidth * 0.79
+         case CGSize(width: 414.0, height: 736.0):
+            width = collectionWidth * 0.80
+         case CGSize(width: 375.0, height: 812.0):
+            width = collectionWidth * 0.69
+         case CGSize(width: 375.0, height: 667.0):
+            width = collectionWidth * 0.70
+         default:
+            break
+         }
+         
          let height = displayType == .retina ? width * 1.77 : width * 2.16
+         
          centeredCollectionViewFlowLayout.itemSize = CGSize(width: width, height: height)
       }
-
-      
-      centeredCollectionViewFlowLayout.minimumLineSpacing = 20
    }
    
    func bindViewModel() {

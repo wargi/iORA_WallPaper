@@ -17,6 +17,7 @@ class CategoryViewController: UIViewController, ViewModelBindableType {
    let bag = DisposeBag()
    override func viewDidLoad() {
       super.viewDidLoad()
+      collectionView.dataSource = self
       
       if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
          guard let deviceSize = PrepareForSetUp.shared.displayType else { return }
@@ -35,19 +36,35 @@ class CategoryViewController: UIViewController, ViewModelBindableType {
       }
    }
       
-   
-   override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-      if let tabbar = self.tabBarController as? CustomTabbarController {
-         tabbar.coordinator = viewModel.sceneCoordinator
-      }
-   }
    func bindViewModel() {
-      viewModel.categorySubject.bind(to: collectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier,
-                                        cellType: CategoryCollectionViewCell.self)) { index, tag, cell in
-                                          
-      }.disposed(by: bag)
+      viewModel.categorySubject
+         .subscribe(onNext: {
+            print($0)
+            DispatchQueue.main.async {
+               self.collectionView.reloadData()
+            }
+            
+         })
+         .disposed(by: rx.disposeBag)
       
+   }
+}
+
+extension CategoryViewController: UICollectionViewDataSource {
+   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      print(viewModel.categories.list.count)
+      return viewModel.categories.list.count
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier,
+                                                          for: indexPath) as? CategoryCollectionViewCell else {
+         fatalError("invalid CategoryCollectionViewCell")
+      }
+      
+      cell.configure(category: viewModel.categories.list[indexPath.item])
+      
+      return cell
    }
 }
 

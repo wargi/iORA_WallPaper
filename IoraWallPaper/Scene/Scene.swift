@@ -23,7 +23,6 @@ enum Scene {
 extension Scene {
    func instantiate(from stroyboard: String = "Main") -> UIViewController {
       let storyboard = UIStoryboard(name: stroyboard, bundle: nil)
-      guard let nav = storyboard.instantiateViewController(withIdentifier: "MainNav") as? UINavigationController else { fatalError("invalid nav") }
       
       switch self {
       case .initialLaunch(let viewModel):
@@ -33,24 +32,32 @@ extension Scene {
          
          return initialLaunchVC
       case .main(let viewModel):
-         guard let mainTabbar = nav.viewControllers.first as? CustomTabbarController,
-            var mainVC = mainTabbar.viewControllers?.first as? MainViewController else { fatalError("invalid mainVC") }
+         guard let mainTabbar = storyboard.instantiateViewController(withIdentifier: "CustomTabbarController") as? CustomTabbarController,
+            let mainNav = mainTabbar.viewControllers?.first as? UINavigationController,
+            var mainVC = mainNav.viewControllers.first as? MainViewController else { fatalError("invalid mainVC") }
          
+         mainTabbar.view.tag = 0
          mainVC.bind(viewModel: viewModel)
          
-         return nav
+         return mainNav
       case .favorite(let viewModel):
-         guard var favoriteVC = storyboard.instantiateViewController(withIdentifier: "favoriteVC") as? FavoriteViewController else { fatalError("invalid favoriteVC") }
+         guard let mainTabbar = storyboard.instantiateViewController(withIdentifier: "CustomTabbarController") as? CustomTabbarController,
+            let favoriteNav = mainTabbar.viewControllers?[1] as? UINavigationController,
+            var favoriteVC = favoriteNav.viewControllers.first as? FavoriteViewController else { fatalError("invalid favoriteVC") }
          
+         mainTabbar.view.tag = 1
          favoriteVC.bind(viewModel: viewModel)
          
-         return favoriteVC
+         return favoriteNav
       case .category(let viewModel):
-         guard let mainTabbar = nav.viewControllers.first as? CustomTabbarController,
-            var categoryVC = mainTabbar.viewControllers?[2] as? CategoryViewController else { fatalError("invalid categoryVC") }
+         guard let mainTabbar = storyboard.instantiateViewController(withIdentifier: "CustomTabbarController") as? CustomTabbarController,
+            let categoryNav = mainTabbar.viewControllers?[2] as? UINavigationController,
+            var categoryVC = categoryNav.viewControllers.first as? CategoryViewController else { fatalError("invalid categoryVC") }
+         
+         mainTabbar.view.tag = 2
          categoryVC.bind(viewModel: viewModel)
          
-         return categoryVC
+         return categoryNav
       case .detailImage(let viewModel):
          guard var detailImageVC = storyboard.instantiateViewController(withIdentifier: "detailImageVC") as? DetailImageViewController else { fatalError("invalid detailImageVC") }
          

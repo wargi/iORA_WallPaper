@@ -30,18 +30,15 @@ class MainViewController: UIViewController, ViewModelBindableType {
    
    override func viewDidLoad() {
       super.viewDidLoad()
+
       collectionViewSetUp()
       configure()
    }
    
-   override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-      if let tabbar = self.tabBarController as? CustomTabbarController{
+   func bindViewModel() {
+      if let tabbar = self.tabBarController as? CustomTabbarController {
          tabbar.coordinator = viewModel.sceneCoordinator
       }
-   }
-   
-   func bindViewModel() {
       viewModel.presentWallpapers
          .subscribe(onNext: {
             self.viewModel.wallpapers = $0
