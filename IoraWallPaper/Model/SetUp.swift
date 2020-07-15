@@ -162,12 +162,26 @@ class PrepareForSetUp {
    
    // 알럿 설정
    @discardableResult
-   func completedAlert(handler: ((UIAlertAction) -> ())? = nil) -> UIAlertController {
-      let alert = UIAlertController(title: "Save Success :)", message: nil, preferredStyle: .alert)
-      if let handler = handler {
-         let action = UIAlertAction(title: "OK", style: .default, handler: handler)
-         alert.addAction(action)
+   func completedAlert(handler: ((UIAlertAction) -> ())? = nil) {
+      var title: String? = ""
+      
+      if PHPhotoLibrary.authorizationStatus() == .authorized {
+         title = "Save Success :)"
+      } else {
+         PHPhotoLibrary.requestAuthorization { (status) in
+            if status == .authorized {
+               title = "Save Success :)"
+            } else {
+               title = "Save Failed"
+               print(title)
+            }
+         }
       }
-      return alert
+//      let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+//      if let handler = handler {
+//         let action = UIAlertAction(title: "OK", style: .default, handler: handler)
+//         alert.addAction(action)
+//      }
+//      return alert
    }
 }

@@ -713,7 +713,6 @@ Check your connection</string>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="tu2-80-rfH" id="ncU-pd-1Z6"/>
                                     <outlet property="delegate" destination="tu2-80-rfH" id="cxI-AH-MrH"/>
                                     <outlet property="prefetchDataSource" destination="tu2-80-rfH" id="yRK-ie-xiA"/>
                                 </connections>
@@ -819,27 +818,27 @@ Check your connection</string>
                                 <rect key="frame" x="87.666666666666686" y="280.66666666666669" width="200" height="261.00000000000006"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSA-Sf-97P">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="17.666666666666668"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="16.666666666666668"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mzg-sh-cr1">
-                                        <rect key="frame" x="0.0" y="22.666666666666671" width="200" height="29.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="21.666666666666664" width="200" height="27.666666666666664"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3v-3M-N0W" userLabel="LineView">
-                                        <rect key="frame" x="0.0" y="57" width="200" height="1"/>
+                                        <rect key="frame" x="0.0" y="54.333333333333314" width="200" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="KLv-Pt-Mie"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SER-Eh-flq">
-                                        <rect key="frame" x="0.0" y="63" width="200" height="198"/>
+                                        <rect key="frame" x="0.0" y="60.3333333333333" width="200" height="200.66666666666663"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="e9w-XM-XJI">
                                             <size key="itemSize" width="128" height="128"/>
@@ -856,7 +855,7 @@ Check your connection</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xO-11-G0X">
-                                                            <rect key="frame" x="55.666666666666657" y="55.333333333333336" width="17" height="17.666666666666664"/>
+                                                            <rect key="frame" x="55.000000000000007" y="55.666666666666664" width="18.333333333333336" height="16.666666666666664"/>
                                                             <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -1040,13 +1039,13 @@ Check your connection</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:34" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XT2-rD-svC">
-                                <rect key="frame" x="104.66666666666667" y="85.666666666666686" width="165.66666666666663" height="99.333333333333314"/>
+                                <rect key="frame" x="101" y="88.333333333333314" width="173" height="94"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundL" family="NanumSquareRound" pointSize="85"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, December 25" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvn-XL-3Ll">
-                                <rect key="frame" x="95.000000000000014" y="187" width="185.33333333333337" height="22.666666666666657"/>
+                                <rect key="frame" x="92.000000000000014" y="184.33333333333334" width="191.33333333333337" height="22.666666666666657"/>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
