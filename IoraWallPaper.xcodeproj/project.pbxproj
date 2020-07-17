@@ -22,6 +22,7 @@
 		8E5D395524A8263D009E4D22 /* InitialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5D395424A8263D009E4D22 /* InitialCollectionViewCell.swift */; };
 		8E67596D24A50C0500C5DDB6 /* TransitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E67596C24A50C0500C5DDB6 /* TransitionModel.swift */; };
 		8E67596F24A50CDC00C5DDB6 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E67596E24A50CDC00C5DDB6 /* SceneCoordinator.swift */; };
+		8E6E32D724C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E32D624C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift */; };
 		8E888033248DF71300E7E620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E888032248DF71300E7E620 /* AppDelegate.swift */; };
 		8E888037248DF71300E7E620 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E888036248DF71300E7E620 /* MainViewController.swift */; };
 		8E88803A248DF71300E7E620 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E888038248DF71300E7E620 /* Main.storyboard */; };
@@ -76,6 +77,7 @@
 		8E5D395424A8263D009E4D22 /* InitialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E67596C24A50C0500C5DDB6 /* TransitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionModel.swift; sourceTree = "<group>"; };
 		8E67596E24A50CDC00C5DDB6 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
+		8E6E32D624C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteWallpaperCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E88802F248DF71300E7E620 /* IORA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IORA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E888032248DF71300E7E620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E888036248DF71300E7E620 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */,
 				8E8B4A732494C6930072620A /* DayCollectionViewCell.swift */,
 				8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */,
+				8E6E32D624C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				8EDCAA3124AD038B00231F6B /* SetUp.swift in Sources */,
 				8E888037248DF71300E7E620 /* MainViewController.swift in Sources */,
 				8EBADD6024BA02BD0059C3C1 /* CategoryViewModel.swift in Sources */,
+				8E6E32D724C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift in Sources */,
 				8E1DE52C24A5053500DE8FED /* SceneCoordinatorType.swift in Sources */,
 				8EBD4CCD24A4BC28005EC9A2 /* MainViewModel.swift in Sources */,
 				8EBD4CD324A4BC59005EC9A2 /* CalendarViewModel.swift in Sources */,

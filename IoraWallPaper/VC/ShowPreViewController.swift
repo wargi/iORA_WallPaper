@@ -54,7 +54,7 @@ class ShowPreViewController: UIViewController, ViewModelBindableType {
                PrepareForSetUp.shared.imageFileDownload(image: self.viewModel.wallpaper.image)
                self.viewModel.closeAction.inputs.onNext(empty)
             })
-            self.present(alert, animated: true, completion: nil)
+//            self.present(alert, animated: true, completion: nil)
             
             return empty
          })

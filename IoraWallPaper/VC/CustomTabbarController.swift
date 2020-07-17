@@ -12,8 +12,8 @@ import RxCocoa
 
 enum NavigationTitle: String {
    case mainNav = "mainNav"
-   case favoriteNav = "favoriteNav"
-   case categoryNav = "categoryNav"
+//   case favoriteNav = "favoriteNav"
+//   case categoryNav = "categoryNav"
 }
 
 enum TabbarVC {
@@ -41,27 +41,27 @@ extension CustomTabbarController: UITabBarControllerDelegate {
          let coordinator = coordinator,
          let title = nav.title else { return true }
       
-      var scene: Scene?
-      
-      switch NavigationTitle(rawValue: title) {
-      case .mainNav:
+      if viewController is MainViewController {
+         
          let viewModel = MainViewModel(sceneCoordinator: coordinator)
-         scene = Scene.main(viewModel)
-      case .favoriteNav:
-         let viewModel = FavoriteViewModel(sceneCoordinator: coordinator)
-         scene = Scene.favorite(viewModel)
-      case .categoryNav:
-         let viewModel = CategoryViewModel(sceneCoordinator: coordinator)
-         scene = Scene.category(viewModel)
-      default:
-         fatalError()
-      }
-      
-      if let scene = scene {
-         print(scene)
+         let scene = Scene.main(viewModel)
          
          coordinator.transition(to: scene, using: .tap, animated: false)
       }
+      
+//      switch NavigationTitle(rawValue: title) {
+//      case .mainNav:
+//         let viewModel = MainViewModel(sceneCoordinator: coordinator)
+//         scene = Scene.main(viewModel)
+//      case .favoriteNav:
+//         let viewModel = FavoriteViewModel(sceneCoordinator: coordinator)
+//         scene = Scene.favorite(viewModel)
+//      case .categoryNav:
+//         let viewModel = CategoryViewModel(sceneCoordinator: coordinator)
+//         scene = Scene.category(viewModel)
+//      default:
+//         fatalError()
+//      }
       
       return true
    }

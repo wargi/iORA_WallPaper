@@ -52,8 +52,8 @@ class CategoryViewController: UIViewController, ViewModelBindableType {
 
 extension CategoryViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      print(viewModel.categories.list.count)
-      return viewModel.categories.list.count
+      print(WallPapers.shared.tags.list.count)
+      return WallPapers.shared.tags.list.count
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -61,8 +61,8 @@ extension CategoryViewController: UICollectionViewDataSource {
                                                           for: indexPath) as? CategoryCollectionViewCell else {
          fatalError("invalid CategoryCollectionViewCell")
       }
-      
-      cell.configure(category: viewModel.categories.list[indexPath.item])
+      let target = WallPapers.shared.tags.list[indexPath.item]
+      cell.configure(category: target)
       
       return cell
    }

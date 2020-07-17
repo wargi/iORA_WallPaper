@@ -101,7 +101,7 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
                self.isHiddenDisplayUI(isHidden: false)
                self.viewModel.closeAction.inputs.onNext(empty)
             })
-            self.present(alert, animated: true, completion: nil)
+//            self.present(alert, animated: true, completion: nil)
             
             return empty
          })

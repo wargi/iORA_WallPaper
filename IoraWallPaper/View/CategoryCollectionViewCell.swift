@@ -17,6 +17,7 @@ class CategoryCollectionViewCell: UICollectionViewCell {
    @IBOutlet private weak var contentLabel: UILabel!
    
    func configure(category: Tag) {
+      self.layer.cornerRadius = 25
       titleLabel.text = category.info.name
       contentLabel.text = category.info.desc
       
@@ -33,5 +34,9 @@ class CategoryCollectionViewCell: UICollectionViewCell {
             }
          }
       }
+   }
+   
+   override func prepareForReuse() {
+      self.layer.cornerRadius = 25
    }
 }

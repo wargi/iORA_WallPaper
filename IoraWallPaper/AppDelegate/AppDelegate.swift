@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import RxSwift
+import NSObject_Rx
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,6 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
       PrepareForSetUp.shared.getDeviceScreenSize()
       WallPapers.shared.firebaseDataSetUp()
+      if let favArr = UserDefaults.standard.object(forKey: "favoriteArr") as? [String] {
+         print(favArr)
+         WallPapers.shared.favoriteArr = favArr
+         WallPapers.shared.favoriteSubject.onNext(favArr)
+      } else {
+         WallPapers.shared.favoriteArr = []
+         WallPapers.shared.favoriteSubject.onNext([])
+      }
 
       return true
    }

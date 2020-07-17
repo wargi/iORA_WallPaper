@@ -83,9 +83,9 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
          .map { self.pageControl.currentPage }
          .subscribe(onNext: {
-            self.present(PrepareForSetUp.shared.completedAlert(), animated: true) {
-               self.dismiss(animated: true, completion: nil)
-            }
+//            self.present(PrepareForSetUp.shared.completedAlert(), animated: true) {
+//               self.dismiss(animated: true, completion: nil)
+//            }
             self.viewModel.downloadAction.inputs.onNext($0)
          })
          .disposed(by: rx.disposeBag)
@@ -101,21 +101,8 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       viewModel.wallpapersSubject
          .bind(to: collectionView.rx.items(cellIdentifier: DetailCollectionViewCell.identifier,
                                            cellType: DetailCollectionViewCell.self)) { item, wallpaper, cell in
-                                             cell.wallPaperImageView.layer.cornerRadius = 30
                                              
-                                             cell.layer.masksToBounds = false
-                                             cell.layer.shadowColor = UIColor.black.cgColor
-                                             cell.layer.shadowOpacity = 0.4
-                                             cell.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-                                             cell.layer.shadowRadius = 6
-                                             cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds,
-                                                                                  cornerRadius: 30).cgPath
-                                             
-                                             if let image = wallpaper.image {
-                                                cell.wallPaperImageView.image = image
-                                             } else {
-                                                cell.configure(info: wallpaper)
-                                             }
+                                             cell.configure(info: wallpaper)
       }
       .disposed(by: rx.disposeBag)
       
