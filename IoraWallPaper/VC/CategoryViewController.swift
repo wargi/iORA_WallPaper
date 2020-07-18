@@ -20,13 +20,12 @@ class CategoryViewController: UIViewController, ViewModelBindableType {
       collectionView.dataSource = self
       
       if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-         guard let deviceSize = PrepareForSetUp.shared.displayType else { return }
          
          let collectionViewSize = collectionView.bounds.size
          layout.minimumLineSpacing = 30
          layout.minimumInteritemSpacing = 0
          
-         if deviceSize == .retina {
+         if PrepareForSetUp.shared.displayType == .retina {
             let width = collectionViewSize.width * 0.8
             layout.itemSize = CGSize(width: width, height: width * 1.77)
          } else {

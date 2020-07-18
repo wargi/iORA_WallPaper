@@ -30,30 +30,17 @@ struct ImageType: Codable {
 
 class PrepareForSetUp {
    static let shared = PrepareForSetUp()
-   
-   private init() {}
    private let ref = Database.database().reference()
-   var displayType: DisplayType?
-   
-   //MARK: COLOR SETTING
-   // 디바이스 사이즈 계산
-   func getDeviceScreenSize() {
-      // (414.0, 896.0) // 11 pro max
-      // (375.0, 812.0) // 11 pro
-      // (414.0, 896.0) // 11
-      // (414.0, 736.0) // 8 plus
-      // (375.0, 667.0) // se
-      // (375.0, 667.0) // 8
-      
-      switch UIScreen.main.bounds.size.height {
-      case 896, 812:
-         self.displayType = .superRetina
-      case 736, 667:
-         self.displayType = .retina
-      default:
-         break
+   var displayType: DisplayType {
+      let height = UIScreen.main.bounds.height
+      if height == 896 || height == 812 {
+         return .superRetina
+      } else {
+         return .retina
       }
    }
+   
+   private init() {}
    
    // 버튼 컬러 설정
    func getColor(brightness: Int?) -> UIColor {
@@ -106,13 +93,9 @@ class PrepareForSetUp {
    // 이미지 다운로드
    func imageDownload(info: MyWallPaper, completion: @escaping (UIImage?) -> ()) {
       DispatchQueue.global().async {
-         guard let deviceType = self.displayType else { fatalError("Invalid Display Size") }
          var urlString: String?
-         if deviceType == .superRetina {
-            urlString = info.wallpaper.imageType.superRetinaDeviceImageURL
-         } else {
-            urlString = info.wallpaper.imageType.retinaDeviceImageURL
-         }
+         let deviceeType = PrepareForSetUp.shared.displayType
+         
          guard let urlStr = urlString, let url = URL(string: urlStr) else {
             fatalError("Invalid URL")
          }

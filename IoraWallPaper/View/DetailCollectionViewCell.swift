@@ -29,8 +29,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
                                       cornerRadius: 30).cgPath
       wallPaperImageView.layer.cornerRadius = 30
       
-      guard let deviceType = PrepareForSetUp.shared.displayType,
-         let urlStr = deviceType == .retina ? info.wallpaper.imageType.retinaDeviceImageURL : info.wallpaper.imageType.superRetinaDeviceImageURL else {
+      guard let urlStr = PrepareForSetUp.shared.displayType == .retina ? info.wallpaper.imageType.retinaDeviceImageURL : info.wallpaper.imageType.superRetinaDeviceImageURL else {
             fatalError("invalid favoriteArr")
       }
       
@@ -58,8 +57,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
    
    @IBAction private func addFavoriteAction(_ sender: UIButton) {
       guard let wallpaper = info,
-         let displayType = PrepareForSetUp.shared.displayType,
-         let urlStr = displayType == .retina ? wallpaper.wallpaper.imageType.retinaDeviceImageURL : wallpaper.wallpaper.imageType.superRetinaDeviceImageURL else { return }
+         let urlStr = PrepareForSetUp.shared.displayType == .retina ? wallpaper.wallpaper.imageType.retinaDeviceImageURL : wallpaper.wallpaper.imageType.superRetinaDeviceImageURL else { return }
       
       var favArr = WallPapers.shared.favoriteArr
       

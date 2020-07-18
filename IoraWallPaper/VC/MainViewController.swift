@@ -167,13 +167,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegate
    
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       let collectionWidth = self.collectionView.bounds.width - 30
-      var width: CGFloat = 0
-      var height: CGFloat = 0
       
-      width = collectionWidth / 2
-      if let displayType = PrepareForSetUp.shared.displayType {
-         height = displayType == .retina ? width * 1.77 : width * 2.16
-      }
+      let width = collectionWidth / 2
+      let height = PrepareForSetUp.shared.displayType == .retina ? width * 1.77 : width * 2.16
       
       return CGSize(width: width, height: height)
    }

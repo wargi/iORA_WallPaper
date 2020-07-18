@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          completionHandler: {_, _ in })
       application.registerForRemoteNotifications()
       
-      PrepareForSetUp.shared.getDeviceScreenSize()
       WallPapers.shared.firebaseDataSetUp()
       if let favArr = UserDefaults.standard.object(forKey: "favoriteArr") as? [String] {
          print(favArr)

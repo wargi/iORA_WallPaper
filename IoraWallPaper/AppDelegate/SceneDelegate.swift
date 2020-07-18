@@ -25,9 +25,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
          let mainListViewModel = MainViewModel(sceneCoordinator: coordinator)
          scene = Scene.main(mainListViewModel)
       } else {
-         guard let displayType = PrepareForSetUp.shared.displayType else { return }
          var images: [UIImage?]
-         if displayType == .retina {
+         if PrepareForSetUp.shared.displayType == .retina {
             images = [
                UIImage(named: "rlanding_wallpapers"),
                UIImage(named: "rlanding_category"),

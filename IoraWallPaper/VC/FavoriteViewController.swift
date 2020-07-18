@@ -40,21 +40,35 @@ class FavoriteViewController: UIViewController, ViewModelBindableType {
 }
 
 extension FavoriteViewController: UICollectionViewDelegate {
+   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      self.collectionView.deselectItem(at: IndexPath(item: indexPath.item, section: 0), animated: true)
+      var result: [MyWallPaper]
+      let index = indexPath.item
+      
+      result = WallPapers.shared.myWallPapers.filter {
+         let displayType = PrepareForSetUp.shared.displayType
+         let target = $0.wallpaper.imageType
+         guard let urlStr = displayType == .retina ? target.retinaDeviceImageURL : target.superRetinaDeviceImageURL else {
+            return false
+         }
+         
+         return WallPapers.shared.favoriteArr.contains(urlStr)
+      }
+      
+      let temp = index + 9 < result.count ? result[index ... index + 9] : result[index...]
+      result = Array(temp)
+      
+   }
 }
 
 extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
       
       let collectionWidth = self.collectionView.bounds.width - 30
-      var width: CGFloat = 0
-      var height: CGFloat = 0
       
-      width = collectionWidth / 2
-      if let displayType = PrepareForSetUp.shared.displayType {
-         height = displayType == .retina ? width * 1.77 : width * 2.16
-      }
+      let width = collectionWidth / 2
+      let height = PrepareForSetUp.shared.displayType == .retina ? width * 1.77 : width * 2.16
       
-      print(width, height)
       return CGSize(width: width, height: height)
    }
    
