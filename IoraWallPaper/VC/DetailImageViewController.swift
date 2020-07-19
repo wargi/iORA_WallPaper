@@ -12,7 +12,8 @@ import RxCocoa
 import NSObject_Rx
 import CenteredCollectionView
 
-class DetailImageViewController: UIViewController {
+class DetailImageViewController: UIViewController, ViewModelBindableType {
+   static let identifier = "DetailImageViewController"
    // 상단 버튼
    @IBOutlet private weak var backButton: UIButton!
    @IBOutlet private weak var calendarButton: UIButton!
@@ -68,12 +69,18 @@ class DetailImageViewController: UIViewController {
       //MARK: Button Action
       calendarButton.rx.tap
          .map { self.pageControl.currentPage }
-         .bind(to: viewModel.showCalendarAction.inputs)
+         .map { self.viewModel.showCalendarVC(index: $0) }
+         .subscribe(onNext: {
+            self.navigationController?.tabBarController?.present($0, animated: true, completion: nil)
+         })
          .disposed(by: rx.disposeBag)
       
       previewButton.rx.tap
          .map { self.pageControl.currentPage }
-         .bind(to: viewModel.showPreViewAction.inputs)
+         .map { self.viewModel.showPreViewVC(index: $0) }
+         .subscribe(onNext: {
+            self.navigationController?.tabBarController?.present($0, animated: true, completion: nil)
+         })
          .disposed(by: rx.disposeBag)
       
       

@@ -28,7 +28,6 @@ class FavoriteWallpaperCollectionViewCell: UICollectionViewCell {
          return false
       }) {
          if let image = wallpaper.image {
-            print(image)
             self.wallpaperImageView.image = image
             self.activityIndicator.stopAnimating()
          } else {

@@ -11,17 +11,16 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
-class InitialLaunchViewController: UIViewController {
+class InitialLaunchViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var collectionView: UICollectionView!
    @IBOutlet private weak var pageControl: UIPageControl!
    @IBOutlet private weak var startButton: UIButton!
-   var viewModel = InitialLaunchViewModel()
+   var viewModel: InitialLaunchViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
       
       startButton.layer.cornerRadius = 27.5
-      bindViewModel()
    }
    
    func bindViewModel() {
@@ -56,6 +55,13 @@ class InitialLaunchViewController: UIViewController {
          .map { $0.x + (self.collectionView.bounds.width / 2.0) }
          .map { Int($0 / self.collectionView.bounds.width) }
          .bind(to: pageControl.rx.currentPage)
+         .disposed(by: rx.disposeBag)
+      
+      startButton.rx.tap
+         .map { self.viewModel.showMainVC() }
+         .subscribe(onNext: {
+            self.present($0, animated: true, completion: nil)
+         })
          .disposed(by: rx.disposeBag)
    }
 }

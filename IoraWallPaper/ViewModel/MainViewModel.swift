@@ -12,7 +12,7 @@ import RxCocoa
 import Action
 import NSObject_Rx
 
-class MainViewModel {
+class MainViewModel: CommonViewModel {
    let disposedBag = DisposeBag()
    
    var reachability: Reachability? = Reachability()
@@ -28,9 +28,28 @@ class MainViewModel {
          .disposed(by: disposedBag)
    }
    
-   init() {
+   func showSearchVC() -> SearchViewController {
+      guard var searchVC = storyboard.instantiateViewController(withIdentifier: SearchViewController.identifier) as? SearchViewController else { fatalError("invalid searchVC") }
+      
+      searchVC.bind(viewModel: SearchViewModel(tags: WallPapers.shared.tags))
+      
+      return searchVC
+   }
+   
+   func showDetailVC(wallpapers: [MyWallPaper]) -> DetailImageViewController {
+      guard var detailImageVC = storyboard.instantiateViewController(withIdentifier: DetailImageViewController.identifier) as? DetailImageViewController else { fatalError("Not Created ShowDetailVC") }
+      
+      let viewModel = DetailImageViewModel(wallpapers: wallpapers)
+      detailImageVC.bind(viewModel: viewModel)
+      
+      return detailImageVC
+   }
+   
+   override init() {
       self.wallpapers = []
       self.presentWallpapers = BehaviorSubject<[MyWallPaper]>(value: wallpapers)
+      
+      super.init()
       
       setMyWallpaper()
    }

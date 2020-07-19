@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49A370F9930181A69515B738 /* Pods_IoraWallPaper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABB0D29F9DDC3A2A1D02674 /* Pods_IoraWallPaper.framework */; };
+		8E028FE924C4ACD2002ECDD0 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E028FE824C4ACD2002ECDD0 /* CommonViewModel.swift */; };
 		8E06667D24AA90ED00FB5B92 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */; };
 		8E1BE51C24A1536B00317984 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */; };
 		8E242FDD24A119640087A41F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E242FDC24A119640087A41F /* SearchViewController.swift */; };
@@ -29,6 +30,7 @@
 		8E8B4A762497282F0072620A /* PHPhotoLibrary+PhotoSave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B4A752497282F0072620A /* PHPhotoLibrary+PhotoSave.swift */; };
 		8E922AC92490CBC400424D10 /* WallPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E922AC82490CBC400424D10 /* WallPaper.swift */; };
 		8E95A9E72490839600F55F82 /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E95A9E62490839600F55F82 /* DetailImageViewController.swift */; };
+		8EAD526C24C48B1B00B5E9D0 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EAD526B24C48B1B00B5E9D0 /* ViewModelBindableType.swift */; };
 		8EB984F824B6AC1500DFFDA1 /* InitialLaunchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB984F724B6AC1500DFFDA1 /* InitialLaunchViewModel.swift */; };
 		8EBADD5E24BA02A00059C3C1 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBADD5D24BA02A00059C3C1 /* FavoriteViewModel.swift */; };
 		8EBADD6024BA02BD0059C3C1 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBADD5F24BA02BD0059C3C1 /* CategoryViewModel.swift */; };
@@ -55,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		3485C558D3B708322FB9F7F4 /* Pods-IoraWallPaper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoraWallPaper.release.xcconfig"; path = "Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper.release.xcconfig"; sourceTree = "<group>"; };
+		8E028FE824C4ACD2002ECDD0 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 		8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E1BE51D24A188DA00317984 /* iORADebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iORADebug.entitlements; sourceTree = "<group>"; };
@@ -80,6 +83,7 @@
 		8E8B4A752497282F0072620A /* PHPhotoLibrary+PhotoSave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHPhotoLibrary+PhotoSave.swift"; sourceTree = "<group>"; };
 		8E922AC82490CBC400424D10 /* WallPaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallPaper.swift; sourceTree = "<group>"; };
 		8E95A9E62490839600F55F82 /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
+		8EAD526B24C48B1B00B5E9D0 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		8EB984F724B6AC1500DFFDA1 /* InitialLaunchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLaunchViewModel.swift; sourceTree = "<group>"; };
 		8EBADD5D24BA02A00059C3C1 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		8EBADD5F24BA02BD0059C3C1 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
@@ -200,6 +204,7 @@
 		8E888048248DF73900E7E620 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				8EAD526B24C48B1B00B5E9D0 /* ViewModelBindableType.swift */,
 				8E5D395224A82554009E4D22 /* InitialLaunchViewController.swift */,
 				8EBADD6524BA10200059C3C1 /* CustomTabbarController.swift */,
 				8E888036248DF71300E7E620 /* MainViewController.swift */,
@@ -225,6 +230,7 @@
 				8E8B4A732494C6930072620A /* DayCollectionViewCell.swift */,
 				8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */,
 				8E6E32D624C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift */,
+				8E028FE824C4ACD2002ECDD0 /* CommonViewModel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -403,7 +409,9 @@
 				8EBD4CD524A4BC64005EC9A2 /* SearchViewModel.swift in Sources */,
 				8E5D395524A8263D009E4D22 /* InitialCollectionViewCell.swift in Sources */,
 				8EBADD5E24BA02A00059C3C1 /* FavoriteViewModel.swift in Sources */,
+				8EAD526C24C48B1B00B5E9D0 /* ViewModelBindableType.swift in Sources */,
 				8EBADD6824BC25410059C3C1 /* CategoryCollectionViewCell.swift in Sources */,
+				8E028FE924C4ACD2002ECDD0 /* CommonViewModel.swift in Sources */,
 				8EDCAA3124AD038B00231F6B /* SetUp.swift in Sources */,
 				8E888037248DF71300E7E620 /* MainViewController.swift in Sources */,
 				8EBADD6024BA02BD0059C3C1 /* CategoryViewModel.swift in Sources */,

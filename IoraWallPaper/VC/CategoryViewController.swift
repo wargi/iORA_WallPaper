@@ -51,7 +51,6 @@ class CategoryViewController: UIViewController {
 
 extension CategoryViewController: UICollectionViewDataSource {
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      print(WallPapers.shared.tags.list.count)
       return WallPapers.shared.tags.list.count
    }
    

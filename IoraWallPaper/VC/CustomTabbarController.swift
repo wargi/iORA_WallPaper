@@ -12,8 +12,8 @@ import RxCocoa
 
 enum NavigationTitle: String {
    case mainNav = "mainNav"
-//   case favoriteNav = "favoriteNav"
-//   case categoryNav = "categoryNav"
+   //   case favoriteNav = "favoriteNav"
+   //   case categoryNav = "categoryNav"
 }
 
 enum TabbarVC {
@@ -27,10 +27,5 @@ class CustomTabbarController: UITabBarController {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
-      self.delegate = self
-      // Do any additional setup after loading the view.
    }
 }
-
-extension CustomTabbarController: UITabBarControllerDelegate {}

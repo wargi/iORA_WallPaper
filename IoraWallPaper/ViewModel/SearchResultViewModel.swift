@@ -9,18 +9,20 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import Action
 
-class SearchResultViewModel {
+class SearchResultViewModel: CommonViewModel {
    let tag: Tag
    var title: Driver<String>
    let wallpapers: BehaviorSubject<[MyWallPaper]>
-   var showDetailAction: Action<MyWallPaper, DetailImageViewModel> {
-      return Action<MyWallPaper, DetailImageViewModel> { wallpaper in
-         let viewModel = DetailImageViewModel(wallpapers: [wallpaper])
-         
-         return Observable.just(viewModel)
-      }
+   
+   func showDetailVC(wallpaper: MyWallPaper) -> DetailImageViewController {
+      guard var detailImageVC = storyboard.instantiateViewController(withIdentifier: DetailImageViewController.identifier) as? DetailImageViewController else { fatalError("Not Created ShowDetailVC") }
+      
+      let viewModel = DetailImageViewModel(wallpapers: [wallpaper])
+      detailImageVC.bind(viewModel: viewModel)
+      
+      return detailImageVC
+      
    }
    
    init(tag: Tag) {

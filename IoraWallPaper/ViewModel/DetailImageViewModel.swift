@@ -12,26 +12,26 @@ import RxCocoa
 import NSObject_Rx
 import Action
 
-class DetailImageViewModel {
+class DetailImageViewModel: CommonViewModel {
    var wallpapers: [MyWallPaper] // 페이지 데이터 목록
    let wallpapersSubject: BehaviorSubject<[MyWallPaper]>
    
-   var showCalendarAction: Action<Int, CalendarViewModel> {
-      return Action<Int, CalendarViewModel> { index in
-         let wallpaper = self.wallpapers[index]
-         let viewModel = CalendarViewModel(info: wallpaper)
-         
-         return Observable.just(viewModel)
-      }
+   func showCalendarVC(index: Int) -> CalendarViewController {
+      guard var calendarVC = storyboard.instantiateViewController(withIdentifier: CalendarViewController.identifier) as? CalendarViewController else { fatalError("Not Created CalendarVC") }
+      
+      let viewModel = CalendarViewModel(info: wallpapers[index])
+      calendarVC.bind(viewModel: viewModel)
+      
+      return calendarVC
    }
    
-   var showPreViewAction: Action<Int, ShowPreViewModel> {
-      return Action<Int, ShowPreViewModel> { index in
-         let wallpaper = self.wallpapers[index]
-         let viewModel = ShowPreViewModel(wallpaper: wallpaper)
-         
-         return Observable.just(viewModel)
-      }
+   func showPreViewVC(index: Int) -> ShowPreViewController {
+      guard var showPreViewVC = storyboard.instantiateViewController(withIdentifier: ShowPreViewController.identifier) as? ShowPreViewController else { fatalError("Not Created CalendarVC") }
+      
+      let viewModel = ShowPreViewModel(wallpaper: wallpapers[index])
+      showPreViewVC.bind(viewModel: viewModel)
+      
+      return showPreViewVC
    }
    
    let downloadAction: Action<Int, Void>

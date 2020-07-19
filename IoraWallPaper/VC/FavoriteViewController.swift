@@ -9,25 +9,28 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import NSObject_Rx
 
 class FavoriteViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
-   var viewModel: FavoriteViewModel!
-
+   var viewModel = FavoriteViewModel()
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       
-      setCollectionView()
-   }
-   
-   override func viewWillAppear(_ animated: Bool) {
-      super.viewWillAppear(animated)
-   }
-   
-   
-   
-   func setCollectionView() {
+      if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+         layout.minimumLineSpacing = 10
+         layout.minimumInteritemSpacing = 10
+         
+         let screenWidth = UIScreen.main.bounds.size.width - 30
+         let width = screenWidth / 2
+         let height = PrepareForSetUp.shared.displayType == .retina ? width * 1.77 : width * 2.16
+         
+         layout.itemSize = CGSize(width: width, height: height)
+      }
       
+      bindViewModel()
    }
    
    func bindViewModel() {
@@ -35,54 +38,47 @@ class FavoriteViewController: UIViewController {
          .bind(to: collectionView.rx.items(cellIdentifier: FavoriteWallpaperCollectionViewCell.identifier,
                                            cellType: FavoriteWallpaperCollectionViewCell.self)) { index, urlStr, cell in
                                              cell.configure(urlString: urlStr)
-                                             print(index)
       }
       .disposed(by: rx.disposeBag)
-      print("bind")
+      
+      Observable.zip(collectionView.rx.modelSelected(String.self), collectionView.rx.itemSelected)
+         .do(onNext: {
+            self.collectionView.deselectItem(at: $0.1, animated: false)
+         })
+         .map {
+            let displayType = PrepareForSetUp.shared.displayType
+            var result: [MyWallPaper]
+            let index = $0.1.item
+            
+            result = WallPapers.shared.favoriteArr.map { urlStr in
+               guard let wallpaper = WallPapers.shared.myWallPapers.first(where: {
+                  let target = $0.wallpaper.imageType
+                  guard let urlString = displayType == .retina ? target.retinaDeviceImageURL : target.superRetinaDeviceImageURL else {
+                     return false
+                  }
+                  return urlStr == urlString
+               }) else { fatalError() }
+               return wallpaper
+            }
+            let temp = index + 9 < result.count ? result[index ... index + 9] : result[index...]
+            return Array(temp)
+      }
+      .map { self.viewModel.showDetailVC(wallpapers: $0) }
+      .subscribe(onNext: {
+         self.navigationController?.pushViewController($0, animated: true)
+      })
+         .disposed(by: rx.disposeBag)
+      
    }
 }
 
 extension FavoriteViewController: UICollectionViewDelegate {
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       self.collectionView.deselectItem(at: IndexPath(item: indexPath.item, section: 0), animated: true)
-      var result: [MyWallPaper]
-      let index = indexPath.item
       
-      result = WallPapers.shared.myWallPapers.filter {
-         let displayType = PrepareForSetUp.shared.displayType
-         let target = $0.wallpaper.imageType
-         guard let urlStr = displayType == .retina ? target.retinaDeviceImageURL : target.superRetinaDeviceImageURL else {
-            return false
-         }
-         
-         return WallPapers.shared.favoriteArr.contains(urlStr)
-      }
-      
-      let temp = index + 9 < result.count ? result[index ... index + 9] : result[index...]
-      result = Array(temp)
    }
 }
 
 extension FavoriteViewController: UICollectionViewDelegateFlowLayout {
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-      
-      let collectionWidth = self.collectionView.bounds.width - 30
-      
-      let width = collectionWidth / 2
-      let height = PrepareForSetUp.shared.displayType == .retina ? width * 1.77 : width * 2.16
-      
-      return CGSize(width: width, height: height)
-   }
    
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-      return 10
-   }
-   
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-      return 10
-   }
-   
-   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-      return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-   }
 }

@@ -19,28 +19,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       let isLaunch = UserDefaults.standard.object(forKey: "isLaunch") as? Bool ?? false
       let storyboard = UIStoryboard(name: "Main", bundle: nil)
       if isLaunch {
-         window?.rootViewController = storyboard.instantiateViewController(withIdentifier: CustomTabbarController.identifier) as? CustomTabbarController
+         guard let tabbarVC = storyboard.instantiateViewController(withIdentifier: CustomTabbarController.identifier) as? CustomTabbarController,
+            let mainNav = tabbarVC.viewControllers?.first as? UINavigationController,
+            var mainVC = mainNav.viewControllers.first as? MainViewController else { return }
+         
+         mainVC.bind(viewModel: MainViewModel())
+         window?.rootViewController = tabbarVC
       } else {
-         window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "initialLaunchVC") as? InitialLaunchViewController
+         guard var initialVC = storyboard.instantiateViewController(withIdentifier: "initialLaunchVC") as? InitialLaunchViewController else { return }
+         initialVC.bind(viewModel: InitialLaunchViewModel())
+         window?.rootViewController = initialVC
       }
    }
-
+   
    @available(iOS 13.0, *)
    func sceneDidDisconnect(_ scene: UIScene) {
    }
-
+   
    @available(iOS 13.0, *)
    func sceneDidBecomeActive(_ scene: UIScene) {
    }
-
+   
    @available(iOS 13.0, *)
    func sceneWillResignActive(_ scene: UIScene) {
    }
-
+   
    @available(iOS 13.0, *)
    func sceneWillEnterForeground(_ scene: UIScene) {
    }
-
+   
    @available(iOS 13.0, *)
    func sceneDidEnterBackground(_ scene: UIScene) {
    }

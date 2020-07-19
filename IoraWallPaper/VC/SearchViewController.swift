@@ -12,7 +12,8 @@ import RxCocoa
 import NSObject_Rx
 import Action
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, ViewModelBindableType {
+   static let identifier = "SearchViewController"
    @IBOutlet private weak var searchBar: UISearchBar!
    @IBOutlet private weak var tableView: UITableView!
    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
@@ -51,7 +52,10 @@ class SearchViewController: UIViewController {
             self.tableView.deselectRow(at: indexPath, animated: true)
          })
          .map { $0.0 }
-         .bind(to: viewModel.searchResultAction.inputs)
+         .map { self.viewModel.showSearchResult(tagName: $0) }
+         .subscribe(onNext: {
+            self.navigationController?.pushViewController($0, animated: true)
+         })
          .disposed(by: rx.disposeBag)
    }
    

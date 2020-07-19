@@ -10,20 +10,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 import NSObject_Rx
-import Action
 
-class SearchViewModel {
+class SearchViewModel: CommonViewModel {
    var tags: Tags
    var list: [String]
    var filterd: BehaviorSubject<[String]>
-   var searchResultAction: Action<String, SearchResultViewModel> {
-      return Action<String, SearchResultViewModel> { tagName in
-         guard let tag = WallPapers.shared.tags.list.first(where: { $0.info.name == tagName }) else { fatalError() }
-         
-         let viewModel = SearchResultViewModel(tag: tag)
-         
-         return Observable.just(viewModel)
-      }
+   func showSearchResult(tagName: String) -> SearchResultViewController {
+      guard let tag = WallPapers.shared.tags.list.first(where: { $0.info.name == tagName }),
+         var searchResultVC = self.storyboard.instantiateViewController(withIdentifier: SearchResultViewController.identifier) as? SearchResultViewController else { fatalError() }
+      
+      let viewModel = SearchResultViewModel(tag: tag)
+      searchResultVC.bind(viewModel: viewModel)
+      
+      return searchResultVC
    }
    
    init(tags: Tags) {

@@ -10,10 +10,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
-import ReactorKit
 
-
-class ShowPreViewController: UIViewController {
+class ShowPreViewController: UIViewController, ViewModelBindableType {
+   static let identifier = "ShowPreViewController"
+   
    @IBOutlet private weak var imageView: UIImageView!
    // 상단 버튼
    @IBOutlet private weak var closeButton: UIButton!
@@ -24,12 +24,10 @@ class ShowPreViewController: UIViewController {
    @IBOutlet private weak var displayDateLabel: UILabel!
    var disposeBag = DisposeBag()
    
-   
    var viewModel: ShowPreViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
    }
    
    func bindViewModel() {

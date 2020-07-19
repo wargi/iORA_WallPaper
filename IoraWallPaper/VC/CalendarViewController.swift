@@ -11,9 +11,9 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
-class CalendarViewController: UIViewController {
+class CalendarViewController: UIViewController, ViewModelBindableType {
+   static let identifier = "CalendarViewController"
    // 배경화면 관련
-   public var info: MyWallPaper?
    @IBOutlet private weak var imageView: UIImageView!
    
    // 상단 버튼
@@ -35,8 +35,8 @@ class CalendarViewController: UIViewController {
 
    
    // 컬러 관련
-   public lazy var color = PrepareForSetUp.shared.getColor(brightness: info?.wallpaper.brightness)
    var viewModel: CalendarViewModel!
+   public lazy var color = PrepareForSetUp.shared.getColor(brightness: viewModel.info.wallpaper.brightness)
    
    override func viewDidLoad() {
       super.viewDidLoad()

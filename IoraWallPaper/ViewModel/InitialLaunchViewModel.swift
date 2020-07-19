@@ -11,10 +11,23 @@ import RxSwift
 import RxCocoa
 import Action
 
-class InitialLaunchViewModel {
+class InitialLaunchViewModel: CommonViewModel {
    var imagesSubject: BehaviorSubject<[UIImage?]>
    
-   init() {
+   func showMainVC() -> CustomTabbarController {
+      guard let tabbarVC = storyboard.instantiateViewController(withIdentifier: CustomTabbarController.identifier) as? CustomTabbarController,
+         let mainNav = tabbarVC.viewControllers?.first as? UINavigationController,
+         var mainVC = mainNav.viewControllers.first as? MainViewController else {
+            fatalError("Not Created TabbarVC or MainVC")
+      }
+      
+      mainVC.bind(viewModel: MainViewModel())
+      UserDefaults.standard.set(true, forKey: "isLaunch")
+      
+      return tabbarVC
+   }
+   
+   override init() {
       var images: [UIImage?]
       if PrepareForSetUp.shared.displayType == .retina {
          images = [
@@ -35,5 +48,6 @@ class InitialLaunchViewModel {
       }
       
       self.imagesSubject = BehaviorSubject<[UIImage?]>(value: images)
+      super.init()
    }
 }

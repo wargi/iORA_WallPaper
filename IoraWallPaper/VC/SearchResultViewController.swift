@@ -11,7 +11,8 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
-class SearchResultViewController: UIViewController {
+class SearchResultViewController: UIViewController, ViewModelBindableType {
+   static let identifier = "SearchResultViewController"
    @IBOutlet private weak var titleLabel: UILabel!
    @IBOutlet private weak var collectionView: UICollectionView!
    @IBOutlet private weak var backButton: UIButton!
@@ -48,7 +49,10 @@ class SearchResultViewController: UIViewController {
       Observable.zip(collectionView.rx.modelSelected(MyWallPaper.self), collectionView.rx.itemSelected)
          .do(onNext: { self.collectionView.deselectItem(at: $0.1, animated: true) })
          .map { $0.0 }
-         .bind(to: viewModel.showDetailAction.inputs)
+         .map { self.viewModel.showDetailVC(wallpaper: $0) }
+         .subscribe(onNext: {
+            self.navigationController?.pushViewController($0, animated: true)
+         })
          .disposed(by: rx.disposeBag)
       
       backButton.rx.tap
@@ -65,7 +69,5 @@ extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
       
       let height = PrepareForSetUp.shared.displayType == .retina ? width * 1.77 : width * 2.16
       return CGSize(width: width, height: height)
-         
-      return CGSize.zero
    }
 }
