@@ -12,10 +12,9 @@ import RxCocoa
 import Action
 import NSObject_Rx
 
-class CalendarViewModel: CommonViewModel {
+class CalendarViewModel {
    let info: MyWallPaper
    let infoSubject: BehaviorSubject<MyWallPaper>
-   let closeAction: CocoaAction
    
    var colorSub: BehaviorSubject<UIColor>
    
@@ -23,7 +22,7 @@ class CalendarViewModel: CommonViewModel {
    var monthSub = BehaviorSubject<String>(value: "")
    var daySub = BehaviorSubject<[String]>(value: [])
    
-   private let calendar = Calendar(identifier: .gregorian)
+   private let calendar = Calendar.autoupdatingCurrent
    private var currentDate = Date()
    
    func paletteAction() -> CocoaAction {
@@ -109,22 +108,11 @@ class CalendarViewModel: CommonViewModel {
       return Observable.just(alert)
    }
    
-   init(info: MyWallPaper, sceneCoordinator: SceneCoordinatorType, closeAction: CocoaAction? = nil) {
+   init(info: MyWallPaper) {
       self.info = info
       self.infoSubject = BehaviorSubject<MyWallPaper>(value: info)
       
-      // Close Action
-      self.closeAction = CocoaAction {
-         if let action = closeAction {
-            action.execute()
-         }
-         
-         return sceneCoordinator.close(animated: true).asObservable().map { _ in }
-      }
-      
       colorSub = BehaviorSubject(value: PrepareForSetUp.shared.getColor(brightness: self.info.wallpaper.brightness))
-      
-      super.init(sceneCoordinator: sceneCoordinator)
       
       calendarCreate(year: calendar.component(.year, from: currentDate),
                      month: calendar.component(.month, from: currentDate))

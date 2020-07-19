@@ -84,6 +84,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="18"/>
                                 <state key="normal" title="START !"/>
+                                <connections>
+                                    <segue destination="LNp-er-vAh" kind="show" id="sw6-G3-LSg"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -118,7 +121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lok-UB-N6n">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="AkW-YL-N9f">
                                     <size key="itemSize" width="197" height="224"/>
@@ -189,7 +192,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="tUJ-ry-htU">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vhU-DN-PE1">
                                     <size key="itemSize" width="338" height="342"/>
@@ -219,13 +222,13 @@
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Nature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVP-4F-qiL">
-                                                            <rect key="frame" x="30.000000000000007" y="30" width="88.666666666666686" height="29.333333333333329"/>
+                                                            <rect key="frame" x="30.000000000000007" y="30" width="99.666666666666686" height="27.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="25"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'좋아요'를 부르는 사진 찍기 기술 5" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Py-mg-53d">
-                                                            <rect key="frame" x="30.000000000000014" y="66.333333333333329" width="206.33333333333337" height="17.666666666666671"/>
+                                                            <rect key="frame" x="30.000000000000014" y="64.666666666666671" width="212.33333333333337" height="16.666666666666671"/>
                                                             <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -323,7 +326,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ODG-y7-ZhH">
-                                <rect key="frame" x="0.0" y="100" width="375" height="678"/>
+                                <rect key="frame" x="0.0" y="100" width="375" height="629"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="tagCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="tagCell" textLabel="5ML-uD-kIq" style="IBUITableViewCellStyleDefault" id="MJk-DC-VDy">
@@ -342,6 +345,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="TrM-fv-R4H" kind="show" trigger="accessoryAction" id="e0Y-2K-aJX"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -368,7 +374,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vPD-jF-3Rf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="334" y="-536"/>
+            <point key="canvasLocation" x="1841" y="-1213"/>
         </scene>
         <!--SearchResultViewController-->
         <scene sceneID="hnU-O7-WbT">
@@ -466,7 +472,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OmR-37-MgI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="334" y="-1213"/>
+            <point key="canvasLocation" x="2585" y="-1213"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -477,10 +483,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oM9-bg-3UY" userLabel="Not Connect View">
-                                <rect key="frame" x="0.0" y="138" width="375" height="674"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="718"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBh-Bb-uCz">
-                                        <rect key="frame" x="110.00000000000001" y="253" width="155.33333333333337" height="35"/>
+                                        <rect key="frame" x="105.66666666666667" y="276" width="163.66666666666663" height="33.333333333333314"/>
                                         <string key="text">You're offline.
 Check your connection</string>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="15"/>
@@ -488,7 +494,7 @@ Check your connection</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect to the Internet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AkJ-f1-G33">
-                                        <rect key="frame" x="10" y="225.66666666666669" width="355" height="22.333333333333343"/>
+                                        <rect key="frame" x="10" y="248.66666666666671" width="355" height="22.333333333333343"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="20"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -503,25 +509,28 @@ Check your connection</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fgb-yh-tAm">
-                                <rect key="frame" x="0.0" y="88" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IORA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQj-Zr-pL0">
-                                        <rect key="frame" x="19" y="12.666666666666673" width="52" height="24.666666666666671"/>
+                                        <rect key="frame" x="19" y="12.666666666666666" width="52" height="24.666666666666671"/>
                                         <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Er-e3-Inq">
-                                        <rect key="frame" x="324" y="7.6666666666666714" width="35" height="35"/>
+                                        <rect key="frame" x="324" y="7.6666666666666643" width="35" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="RAD-4N-Amm"/>
                                             <constraint firstAttribute="height" constant="35" id="dvp-Na-sCI"/>
                                         </constraints>
                                         <inset key="imageEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                         <state key="normal" image="search"/>
+                                        <connections>
+                                            <segue destination="klj-nG-AVz" kind="show" id="XYu-fV-V3O"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h71-lJ-zQI">
-                                        <rect key="frame" x="283" y="8.6666666666666714" width="33" height="33"/>
+                                        <rect key="frame" x="283" y="8.6666666666666643" width="33" height="33"/>
                                         <state key="normal" image="filter"/>
                                     </button>
                                 </subviews>
@@ -538,7 +547,7 @@ Check your connection</string>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OOO-ep-nXg">
-                                <rect key="frame" x="0.0" y="138" width="375" height="591"/>
+                                <rect key="frame" x="0.0" y="94" width="375" height="635"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="YZq-Vk-SGS">
                                     <size key="itemSize" width="245" height="259"/>
@@ -574,6 +583,7 @@ Check your connection</string>
                                         <connections>
                                             <outlet property="activityIndicator" destination="D4s-sb-hfX" id="zQR-4Q-z7o"/>
                                             <outlet property="wallpaperImageView" destination="jHI-an-w9B" id="gqF-BW-98g"/>
+                                            <segue destination="tu2-80-rfH" kind="show" id="Dao-se-l5U"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -681,7 +691,7 @@ Check your connection</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rvM-9y-eX0">
-                                <rect key="frame" x="0.0" y="101" width="375" height="620"/>
+                                <rect key="frame" x="0.0" y="101" width="375" height="571"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewLayout key="collectionViewLayout" id="kyU-4M-ah7" customClass="CenteredCollectionViewFlowLayout" customModule="CenteredCollectionView"/>
                                 <cells>
@@ -740,6 +750,9 @@ Check your connection</string>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mew-W7-nvh">
                                         <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
                                         <state key="normal" image="Bcalendar"/>
+                                        <connections>
+                                            <segue destination="TuU-La-Pew" kind="presentation" id="5kt-Pf-CrD"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6O-vY-bk0">
                                         <rect key="frame" x="45" y="0.0" width="35" height="35"/>
@@ -747,6 +760,9 @@ Check your connection</string>
                                         <state key="normal" image="preview">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="hjq-DW-yC7" kind="presentation" id="hwZ-d2-D6Y"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdW-qK-58k">
                                         <rect key="frame" x="90" y="0.0" width="35" height="35"/>
@@ -780,7 +796,7 @@ Check your connection</string>
                                 </state>
                             </button>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" defersCurrentPageDisplay="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="1PF-MA-LKu">
-                                <rect key="frame" x="168" y="731" width="39" height="37"/>
+                                <rect key="frame" x="168" y="682" width="39" height="37"/>
                                 <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -1154,7 +1170,7 @@ Check your connection</string>
         <!--CustomTabbarController-->
         <scene sceneID="ytC-Oh-Ytu">
             <objects>
-                <tabBarController storyboardIdentifier="CustomTabbarController" title="CustomTabbarController" automaticallyAdjustsScrollViewInsets="NO" id="LNp-er-vAh" customClass="CustomTabbarController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="CustomTabbarController" title="CustomTabbarController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="LNp-er-vAh" customClass="CustomTabbarController" customModule="IORA" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="lEH-ga-lhC"/>
                     <tabBar key="tabBar" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" id="InK-Lt-smC">
@@ -1164,7 +1180,6 @@ Check your connection</string>
                         <color key="selectedImageTintColor" name="mainColor"/>
                     </tabBar>
                     <connections>
-                        <outlet property="tabbar" destination="InK-Lt-smC" id="eJr-lF-CN2"/>
                         <segue destination="8tw-gG-953" kind="relationship" relationship="viewControllers" id="Shc-Dq-iEh"/>
                         <segue destination="M45-bV-G1m" kind="relationship" relationship="viewControllers" id="zHL-Xx-bqs"/>
                         <segue destination="Ifg-4u-rPv" kind="relationship" relationship="viewControllers" id="OIS-UI-gZS"/>
@@ -1177,13 +1192,13 @@ Check your connection</string>
         <!--mainNav-->
         <scene sceneID="GwC-x2-fTz">
             <objects>
-                <navigationController storyboardIdentifier="mainNav" title="mainNav" automaticallyAdjustsScrollViewInsets="NO" id="8tw-gG-953" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="mainNav" title="mainNav" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="8tw-gG-953" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" image="list" id="bTt-Qb-Az0">
                         <color key="badgeColor" name="mainColor"/>
                     </tabBarItem>
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2ca-Ej-zf6">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1198,11 +1213,11 @@ Check your connection</string>
         <!--favoriteNav-->
         <scene sceneID="7F0-dk-lF8">
             <objects>
-                <navigationController storyboardIdentifier="favoriteNav" title="favoriteNav" automaticallyAdjustsScrollViewInsets="NO" id="M45-bV-G1m" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="favoriteNav" title="favoriteNav" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="M45-bV-G1m" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorite" image="tab_star" id="hZm-GG-FcV"/>
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nKe-rz-sEj">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1217,13 +1232,13 @@ Check your connection</string>
         <!--categoryNav-->
         <scene sceneID="C1M-Ax-pcj">
             <objects>
-                <navigationController storyboardIdentifier="categoryNav" title="categoryNav" automaticallyAdjustsScrollViewInsets="NO" id="Ifg-4u-rPv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="categoryNav" title="categoryNav" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Ifg-4u-rPv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Category" image="category" id="D91-a4-3nj">
                         <color key="badgeColor" name="mainColor"/>
                     </tabBarItem>
                     <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tXC-Jv-vAh">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

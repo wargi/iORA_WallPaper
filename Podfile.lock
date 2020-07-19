@@ -104,6 +104,9 @@ PODS:
   - PromisesObjC (1.2.9)
   - Protobuf (3.12.0)
   - ReachabilitySwift (4.3.1)
+  - ReactorKit (2.1.0):
+    - RxSwift (~> 5.0)
+    - WeakMapTable (~> 1.1)
   - RxAlamofire (5.5.0):
     - RxAlamofire/Core (= 5.5.0)
   - RxAlamofire/Core (5.5.0):
@@ -137,6 +140,7 @@ PODS:
   - RxSwiftExt/RxCocoa (5.2.0):
     - RxCocoa (~> 5.0)
     - RxSwiftExt/Core
+  - WeakMapTable (1.1.0)
 
 DEPENDENCIES:
   - Action
@@ -147,6 +151,7 @@ DEPENDENCIES:
   - Firebase/Messaging
   - Firebase/Storage
   - "NSObject+Rx"
+  - ReactorKit
   - RxAlamofire
   - RxCocoa
   - RxDataSources
@@ -182,6 +187,7 @@ SPEC REPOS:
     - PromisesObjC
     - Protobuf
     - ReachabilitySwift
+    - ReactorKit
     - RxAlamofire
     - RxCocoa
     - RxDataSources
@@ -191,6 +197,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - RxSwiftExt
+    - WeakMapTable
 
 SPEC CHECKSUMS:
   Action: 79e6c5dc91e13eea045ab6744b3e5609086671aa
@@ -217,6 +224,7 @@ SPEC CHECKSUMS:
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
   ReachabilitySwift: 4032e2f59586e11e3b0ebe15b167abdd587a388b
+  ReactorKit: 12a93358c554bb3f167b16b14c40374fa9cd5acd
   RxAlamofire: 22287c710761466d0123504c566a8381520d4d63
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
@@ -226,7 +234,8 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
+  WeakMapTable: d0327eda092be6a8f7c532942ae98dc7948f5d32
 
-PODFILE CHECKSUM: 25289161b8477f498f9ec6e2e0b2919d5d0fc9c7
+PODFILE CHECKSUM: bd086e10c1169f66ee0a23c5007d466ea3931334
 
 COCOAPODS: 1.9.3

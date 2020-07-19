@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
-class SearchResultViewController: UIViewController, ViewModelBindableType {
+class SearchResultViewController: UIViewController {
    @IBOutlet private weak var titleLabel: UILabel!
    @IBOutlet private weak var collectionView: UICollectionView!
    @IBOutlet private weak var backButton: UIButton!
@@ -51,7 +51,11 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
          .bind(to: viewModel.showDetailAction.inputs)
          .disposed(by: rx.disposeBag)
       
-      backButton.rx.action = viewModel.popAction
+      backButton.rx.tap
+         .subscribe(onNext: { _ in
+            self.navigationController?.popViewController(animated: true)
+         })
+         .disposed(by: rx.disposeBag)
    }
 }
 

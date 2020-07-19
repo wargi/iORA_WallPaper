@@ -11,26 +11,13 @@ import RxSwift
 import RxCocoa
 import Action
 
-class ShowPreViewModel: CommonViewModel {
+class ShowPreViewModel {
    // 배경 화면 관련
    let wallpaper: MyWallPaper
    public var info: BehaviorSubject<MyWallPaper>
    
-   //MARK: Button Action
-   var closeAction: CocoaAction
-   
-   init(wallpaper: MyWallPaper, sceneCoordinator: SceneCoordinatorType, closeAction: CocoaAction? = nil) {
+   init(wallpaper: MyWallPaper) {
       self.wallpaper = wallpaper
       self.info = BehaviorSubject<MyWallPaper>(value: wallpaper)
-      
-      self.closeAction = CocoaAction {
-         if let action = closeAction {
-            action.execute(())
-         }
-         
-         return sceneCoordinator.close(animated: true).asObservable().map { _ in }
-      }
-      
-      super.init(sceneCoordinator: sceneCoordinator)
    }
 }

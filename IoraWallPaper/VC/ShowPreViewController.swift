@@ -10,8 +10,10 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
+import ReactorKit
 
-class ShowPreViewController: UIViewController, ViewModelBindableType {
+
+class ShowPreViewController: UIViewController {
    @IBOutlet private weak var imageView: UIImageView!
    // 상단 버튼
    @IBOutlet private weak var closeButton: UIButton!
@@ -20,11 +22,14 @@ class ShowPreViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var downloadView: UIView!
    @IBOutlet private weak var displayTimeLabel: UILabel!
    @IBOutlet private weak var displayDateLabel: UILabel!
+   var disposeBag = DisposeBag()
+   
    
    var viewModel: ShowPreViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      
    }
    
    func bindViewModel() {
@@ -50,16 +55,14 @@ class ShowPreViewController: UIViewController, ViewModelBindableType {
       downloadButton.rx.tap
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
          .subscribe(onNext: { empty in
-            let alert = PrepareForSetUp.shared.completedAlert(handler: { _ in
-               PrepareForSetUp.shared.imageFileDownload(image: self.viewModel.wallpaper.image)
-               self.viewModel.closeAction.inputs.onNext(empty)
-            })
-//            self.present(alert, animated: true, completion: nil)
-            
             return empty
          })
          .disposed(by: rx.disposeBag)
       
-      closeButton.rx.action = viewModel.closeAction
+      closeButton.rx.tap
+         .subscribe(onNext: { _ in
+            self.dismiss(animated: true, completion: nil)
+         })
+         .disposed(by: rx.disposeBag)
    }
 }

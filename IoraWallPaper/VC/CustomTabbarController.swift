@@ -24,8 +24,6 @@ enum TabbarVC {
 
 class CustomTabbarController: UITabBarController {
    static let identifier = "CustomTabbarController"
-   @IBOutlet private weak var tabbar: UITabBar!
-   var coordinator: SceneCoordinatorType?
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -35,34 +33,4 @@ class CustomTabbarController: UITabBarController {
    }
 }
 
-extension CustomTabbarController: UITabBarControllerDelegate {
-   func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
-      guard let nav = viewController as? UINavigationController,
-         let coordinator = coordinator,
-         let title = nav.title else { return true }
-      
-      if viewController is MainViewController {
-         
-         let viewModel = MainViewModel(sceneCoordinator: coordinator)
-         let scene = Scene.main(viewModel)
-         
-         coordinator.transition(to: scene, using: .tap, animated: false)
-      }
-      
-//      switch NavigationTitle(rawValue: title) {
-//      case .mainNav:
-//         let viewModel = MainViewModel(sceneCoordinator: coordinator)
-//         scene = Scene.main(viewModel)
-//      case .favoriteNav:
-//         let viewModel = FavoriteViewModel(sceneCoordinator: coordinator)
-//         scene = Scene.favorite(viewModel)
-//      case .categoryNav:
-//         let viewModel = CategoryViewModel(sceneCoordinator: coordinator)
-//         scene = Scene.category(viewModel)
-//      default:
-//         fatalError()
-//      }
-      
-      return true
-   }
-}
+extension CustomTabbarController: UITabBarControllerDelegate {}

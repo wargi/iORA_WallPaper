@@ -11,37 +11,21 @@ import RxSwift
 import RxCocoa
 import Action
 
-class SearchResultViewModel: CommonViewModel {
+class SearchResultViewModel {
    let tag: Tag
    var title: Driver<String>
    let wallpapers: BehaviorSubject<[MyWallPaper]>
-   let showDetailAction: Action<MyWallPaper, Void>
-   let popAction: CocoaAction
+   var showDetailAction: Action<MyWallPaper, DetailImageViewModel> {
+      return Action<MyWallPaper, DetailImageViewModel> { wallpaper in
+         let viewModel = DetailImageViewModel(wallpapers: [wallpaper])
+         
+         return Observable.just(viewModel)
+      }
+   }
    
-   init(tag: Tag, sceneCoordinator: SceneCoordinatorType, showDetailAction: Action<MyWallPaper, Void>? = nil, popAction: CocoaAction? = nil) {
+   init(tag: Tag) {
       self.tag = tag
       self.title = Observable.just(tag.info.name).asDriver(onErrorJustReturn: "")
       self.wallpapers = BehaviorSubject<[MyWallPaper]>(value: tag.result)
-      self.showDetailAction = Action<MyWallPaper, Void> { wallpaper in
-         if let action = showDetailAction {
-            action.execute(wallpaper)
-         }
-         
-         let viewModel = DetailImageViewModel(wallpapers: [wallpaper], sceneCoordinator: sceneCoordinator)
-         let scene = Scene.detailImage(viewModel)
-         
-         return sceneCoordinator.transition(to: scene, using: .push, animated: true).asObservable().map { _ in }
-      }
-      
-      self.popAction = CocoaAction {
-         if let action = popAction {
-            action.execute(())
-         }
-         
-         return sceneCoordinator.close(animated: true).asObservable().map { _ in }
-      }
-      
-      super.init(sceneCoordinator: sceneCoordinator)
    }
-   
 }

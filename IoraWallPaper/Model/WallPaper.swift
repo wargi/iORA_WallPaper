@@ -33,11 +33,14 @@ class MyWallPaper {
 class WallPapers {
    static let shared = WallPapers()
    var myWallPapers = [MyWallPaper]()
+   let wallpaperSubject = BehaviorSubject<[MyWallPaper]>(value: [])
+   
    var favoriteArr = [String]()
    var favoriteSubject = BehaviorSubject<[String]>(value: [])
+   
    var tags = Tags(list: [], representImage: [])
-   let wallpaperSubject = BehaviorSubject<[MyWallPaper]>(value: [])
    let tagSubject = BehaviorSubject<Tags>(value: Tags(list: [], representImage: []))
+   
    let bag = DisposeBag()
    
    // 데이터 다운로드

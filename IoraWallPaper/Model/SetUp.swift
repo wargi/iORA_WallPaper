@@ -93,8 +93,7 @@ class PrepareForSetUp {
    // 이미지 다운로드
    func imageDownload(info: MyWallPaper, completion: @escaping (UIImage?) -> ()) {
       DispatchQueue.global().async {
-         var urlString: String?
-         let deviceeType = PrepareForSetUp.shared.displayType
+         let urlString = PrepareForSetUp.shared.displayType == .retina ? info.wallpaper.imageType.retinaDeviceImageURL : info.wallpaper.imageType.superRetinaDeviceImageURL
          
          guard let urlStr = urlString, let url = URL(string: urlStr) else {
             fatalError("Invalid URL")

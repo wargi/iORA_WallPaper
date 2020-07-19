@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class FavoriteViewController: UIViewController, ViewModelBindableType {
+class FavoriteViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
    var viewModel: FavoriteViewModel!
 
@@ -20,22 +20,25 @@ class FavoriteViewController: UIViewController, ViewModelBindableType {
       setCollectionView()
    }
    
+   override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+   }
+   
    
    
    func setCollectionView() {
+      
+   }
+   
+   func bindViewModel() {
       WallPapers.shared.favoriteSubject
          .bind(to: collectionView.rx.items(cellIdentifier: FavoriteWallpaperCollectionViewCell.identifier,
                                            cellType: FavoriteWallpaperCollectionViewCell.self)) { index, urlStr, cell in
                                              cell.configure(urlString: urlStr)
+                                             print(index)
       }
       .disposed(by: rx.disposeBag)
-   }
-   
-   func bindViewModel() {
-      if let tabbar = self.tabBarController as? CustomTabbarController{
-         tabbar.coordinator = viewModel.sceneCoordinator
-      }
-
+      print("bind")
    }
 }
 
@@ -57,7 +60,6 @@ extension FavoriteViewController: UICollectionViewDelegate {
       
       let temp = index + 9 < result.count ? result[index ... index + 9] : result[index...]
       result = Array(temp)
-      
    }
 }
 

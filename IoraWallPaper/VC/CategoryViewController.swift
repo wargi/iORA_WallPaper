@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import Action
 
-class CategoryViewController: UIViewController, ViewModelBindableType {
+class CategoryViewController: UIViewController {
    var viewModel: CategoryViewModel!
    @IBOutlet private weak var collectionView: UICollectionView!
    let bag = DisposeBag()

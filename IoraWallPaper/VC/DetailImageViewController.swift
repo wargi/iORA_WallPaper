@@ -12,7 +12,7 @@ import RxCocoa
 import NSObject_Rx
 import CenteredCollectionView
 
-class DetailImageViewController: UIViewController, ViewModelBindableType {
+class DetailImageViewController: UIViewController {
    // 상단 버튼
    @IBOutlet private weak var backButton: UIButton!
    @IBOutlet private weak var calendarButton: UIButton!
@@ -105,7 +105,11 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       }
       .disposed(by: rx.disposeBag)
       
-      backButton.rx.action = viewModel.popAction
+      backButton.rx.tap
+         .subscribe(onNext: { _ in
+            self.navigationController?.popViewController(animated: true)
+         })
+         .disposed(by: rx.disposeBag)
    }
    
    // 앱 기본 설정

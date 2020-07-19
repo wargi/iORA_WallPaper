@@ -14,6 +14,9 @@ target 'IoraWallPaper' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   
+  # ReactorKit
+  pod 'ReactorKit'
+
   # RxSwift: Main Framework
   pod 'RxSwift'
   pod 'RxCocoa'

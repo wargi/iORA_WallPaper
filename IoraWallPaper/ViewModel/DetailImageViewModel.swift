@@ -12,13 +12,29 @@ import RxCocoa
 import NSObject_Rx
 import Action
 
-class DetailImageViewModel: CommonViewModel {
+class DetailImageViewModel {
    var wallpapers: [MyWallPaper] // 페이지 데이터 목록
    let wallpapersSubject: BehaviorSubject<[MyWallPaper]>
-   let showCalendarAction: Action<Int, Void>
-   let showPreViewAction: Action<Int, Void>
+   
+   var showCalendarAction: Action<Int, CalendarViewModel> {
+      return Action<Int, CalendarViewModel> { index in
+         let wallpaper = self.wallpapers[index]
+         let viewModel = CalendarViewModel(info: wallpaper)
+         
+         return Observable.just(viewModel)
+      }
+   }
+   
+   var showPreViewAction: Action<Int, ShowPreViewModel> {
+      return Action<Int, ShowPreViewModel> { index in
+         let wallpaper = self.wallpapers[index]
+         let viewModel = ShowPreViewModel(wallpaper: wallpaper)
+         
+         return Observable.just(viewModel)
+      }
+   }
+   
    let downloadAction: Action<Int, Void>
-   let popAction: CocoaAction
    
    // Share Action
    func shareAction(currentIndex: Int) -> UIActivityViewController {
@@ -28,32 +44,9 @@ class DetailImageViewModel: CommonViewModel {
       return activity
    }
    
-   init(wallpapers: [MyWallPaper], sceneCoordinator: SceneCoordinatorType, showCalendarAction: Action<Int, Void>? = nil, showPreViewAction: Action<Int, Void>? = nil, downloadAction: Action<Int, Void>? = nil, popAction: CocoaAction? = nil) {
+   init(wallpapers: [MyWallPaper], downloadAction: Action<Int, Void>? = nil) {
       self.wallpapers = wallpapers
       self.wallpapersSubject = BehaviorSubject<[MyWallPaper]>(value: wallpapers)
-      
-      self.showCalendarAction = Action<Int, Void> { index in
-         if let action = showCalendarAction {
-            action.execute(index)
-         }
-         let wallpaper = wallpapers[index]
-         let viewModel = CalendarViewModel(info: wallpaper, sceneCoordinator: sceneCoordinator)
-         let scene = Scene.calendar(viewModel)
-         
-         return sceneCoordinator.transition(to: scene, using: .modal, animated: true).asObservable().map { _ in }
-      }
-      
-      self.showPreViewAction = Action<Int, Void> { index in
-         if let action = showPreViewAction {
-            action.execute(index)
-         }
-         let wallpaper = wallpapers[index]
-         let viewModel = ShowPreViewModel(wallpaper: wallpaper,
-                                          sceneCoordinator: sceneCoordinator)
-         let scene = Scene.showPre(viewModel)
-         
-         return sceneCoordinator.transition(to: scene, using: .modal, animated: true).asObservable().map { _ in }
-      }
       
       self.downloadAction = Action<Int, Void> { index in
          if let action = downloadAction {
@@ -63,16 +56,7 @@ class DetailImageViewModel: CommonViewModel {
          let wallpaper = wallpapers[index]
          PrepareForSetUp.shared.imageFileDownload(image: wallpaper.image)
          
-         return sceneCoordinator.close(animated: true).asObservable().map { _ in }
+         return Observable.empty()
       }
-      
-      self.popAction = CocoaAction {
-         if let action = popAction {
-            action.execute(())
-         }
-         return sceneCoordinator.close(animated: true).asObservable().map { _ in }
-      }
-      
-      super.init(sceneCoordinator: sceneCoordinator)
    }
 }

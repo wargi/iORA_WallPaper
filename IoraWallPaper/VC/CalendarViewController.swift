@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import NSObject_Rx
 
-class CalendarViewController: UIViewController, ViewModelBindableType {
+class CalendarViewController: UIViewController {
    // 배경화면 관련
    public var info: MyWallPaper?
    @IBOutlet private weak var imageView: UIImageView!
@@ -95,19 +95,23 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
       downloadButton.rx.tap
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
          .subscribe(onNext: { empty in
-            let alert = PrepareForSetUp.shared.completedAlert(handler: { _ in
-               self.isHiddenDisplayUI(isHidden: true)
-               PrepareForSetUp.shared.screenImageDownload()
-               self.isHiddenDisplayUI(isHidden: false)
-               self.viewModel.closeAction.inputs.onNext(empty)
-            })
+//            let alert = PrepareForSetUp.shared.completedAlert(handler: { _ in
+//               self.isHiddenDisplayUI(isHidden: true)
+//               PrepareForSetUp.shared.screenImageDownload()
+//               self.isHiddenDisplayUI(isHidden: false)
+//               self.viewModel.closeAction.inputs.onNext(empty)
+//            })
 //            self.present(alert, animated: true, completion: nil)
             
             return empty
          })
          .disposed(by: rx.disposeBag)
       
-      closeButton.rx.action = viewModel.closeAction
+      closeButton.rx.tap
+         .subscribe(onNext: { _ in
+            self.dismiss(animated: true, completion: nil)
+         })
+         .disposed(by: rx.disposeBag)
    }
    
    // 기본 설정

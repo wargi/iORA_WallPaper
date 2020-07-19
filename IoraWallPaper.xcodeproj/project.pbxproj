@@ -10,18 +10,13 @@
 		49A370F9930181A69515B738 /* Pods_IoraWallPaper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABB0D29F9DDC3A2A1D02674 /* Pods_IoraWallPaper.framework */; };
 		8E06667D24AA90ED00FB5B92 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */; };
 		8E1BE51C24A1536B00317984 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */; };
-		8E1DE52C24A5053500DE8FED /* SceneCoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DE52B24A5053500DE8FED /* SceneCoordinatorType.swift */; };
-		8E1DE52E24A505B000DE8FED /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1DE52D24A505B000DE8FED /* Scene.swift */; };
 		8E242FDD24A119640087A41F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E242FDC24A119640087A41F /* SearchViewController.swift */; };
 		8E242FDF24A119C40087A41F /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E242FDE24A119C40087A41F /* SearchResultViewController.swift */; };
 		8E26E89524B75C63008D055B /* DataLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E26E89424B75C63008D055B /* DataLoadOperation.swift */; };
 		8E45512724922AD200CD9F7C /* ShowPreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E45512624922AD200CD9F7C /* ShowPreViewController.swift */; };
-		8E4DA1C924AD334E00B69CFE /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DA1C824AD334E00B69CFE /* CommonViewModel.swift */; };
 		8E4DA1CC24AD3DC200B69CFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DA1CB24AD3DC200B69CFE /* SceneDelegate.swift */; };
 		8E5D395324A82554009E4D22 /* InitialLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5D395224A82554009E4D22 /* InitialLaunchViewController.swift */; };
 		8E5D395524A8263D009E4D22 /* InitialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5D395424A8263D009E4D22 /* InitialCollectionViewCell.swift */; };
-		8E67596D24A50C0500C5DDB6 /* TransitionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E67596C24A50C0500C5DDB6 /* TransitionModel.swift */; };
-		8E67596F24A50CDC00C5DDB6 /* SceneCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E67596E24A50CDC00C5DDB6 /* SceneCoordinator.swift */; };
 		8E6E32D724C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E6E32D624C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift */; };
 		8E888033248DF71300E7E620 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E888032248DF71300E7E620 /* AppDelegate.swift */; };
 		8E888037248DF71300E7E620 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E888036248DF71300E7E620 /* MainViewController.swift */; };
@@ -47,7 +42,6 @@
 		8EBD4CD324A4BC59005EC9A2 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD4CD224A4BC59005EC9A2 /* CalendarViewModel.swift */; };
 		8EBD4CD524A4BC64005EC9A2 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD4CD424A4BC64005EC9A2 /* SearchViewModel.swift */; };
 		8EBD4CD824A4BC98005EC9A2 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD4CD724A4BC98005EC9A2 /* SearchResultViewModel.swift */; };
-		8EBD4CDA24A4BD31005EC9A2 /* ViewModelBindableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD4CD924A4BD31005EC9A2 /* ViewModelBindableType.swift */; };
 		8ECD80372490C6E800DA4B5E /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80332490C6E700DA4B5E /* NanumSquareRoundR.ttf */; };
 		8ECD80382490C6E800DA4B5E /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80342490C6E700DA4B5E /* NanumSquareRoundL.ttf */; };
 		8ECD80392490C6E800DA4B5E /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80352490C6E700DA4B5E /* NanumSquareRoundEB.ttf */; };
@@ -65,18 +59,13 @@
 		8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E1BE51D24A188DA00317984 /* iORADebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iORADebug.entitlements; sourceTree = "<group>"; };
 		8E1BE51E24A188EC00317984 /* iORA.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iORA.entitlements; sourceTree = "<group>"; };
-		8E1DE52B24A5053500DE8FED /* SceneCoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinatorType.swift; sourceTree = "<group>"; };
-		8E1DE52D24A505B000DE8FED /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		8E242FDC24A119640087A41F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8E242FDE24A119C40087A41F /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		8E26E89424B75C63008D055B /* DataLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadOperation.swift; sourceTree = "<group>"; };
 		8E45512624922AD200CD9F7C /* ShowPreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPreViewController.swift; sourceTree = "<group>"; };
-		8E4DA1C824AD334E00B69CFE /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 		8E4DA1CB24AD3DC200B69CFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8E5D395224A82554009E4D22 /* InitialLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLaunchViewController.swift; sourceTree = "<group>"; };
 		8E5D395424A8263D009E4D22 /* InitialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCollectionViewCell.swift; sourceTree = "<group>"; };
-		8E67596C24A50C0500C5DDB6 /* TransitionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionModel.swift; sourceTree = "<group>"; };
-		8E67596E24A50CDC00C5DDB6 /* SceneCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneCoordinator.swift; sourceTree = "<group>"; };
 		8E6E32D624C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteWallpaperCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E88802F248DF71300E7E620 /* IORA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IORA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E888032248DF71300E7E620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,7 +93,6 @@
 		8EBD4CD224A4BC59005EC9A2 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		8EBD4CD424A4BC64005EC9A2 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		8EBD4CD724A4BC98005EC9A2 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
-		8EBD4CD924A4BD31005EC9A2 /* ViewModelBindableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindableType.swift; sourceTree = "<group>"; };
 		8ECD80332490C6E700DA4B5E /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
 		8ECD80342490C6E700DA4B5E /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
 		8ECD80352490C6E700DA4B5E /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundEB.ttf; sourceTree = "<group>"; };
@@ -141,8 +129,6 @@
 		8E5D0DB124A27B38003A25C6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				8EBD4CD924A4BD31005EC9A2 /* ViewModelBindableType.swift */,
-				8E4DA1C824AD334E00B69CFE /* CommonViewModel.swift */,
 				8EB984F724B6AC1500DFFDA1 /* InitialLaunchViewModel.swift */,
 				8EBD4CCC24A4BC28005EC9A2 /* MainViewModel.swift */,
 				8EBADD5D24BA02A00059C3C1 /* FavoriteViewModel.swift */,
@@ -154,17 +140,6 @@
 				8EBD4CD224A4BC59005EC9A2 /* CalendarViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		8E5D0DB224A27B49003A25C6 /* Scene */ = {
-			isa = PBXGroup;
-			children = (
-				8E67596C24A50C0500C5DDB6 /* TransitionModel.swift */,
-				8E1DE52D24A505B000DE8FED /* Scene.swift */,
-				8E1DE52B24A5053500DE8FED /* SceneCoordinatorType.swift */,
-				8E67596E24A50CDC00C5DDB6 /* SceneCoordinator.swift */,
-			);
-			path = Scene;
 			sourceTree = "<group>";
 		};
 		8E888026248DF71300E7E620 = {
@@ -192,7 +167,6 @@
 				8E1BE51D24A188DA00317984 /* iORADebug.entitlements */,
 				8E888047248DF72200E7E620 /* AppDelegate */,
 				8E922AC72490CBAF00424D10 /* Model */,
-				8E5D0DB224A27B49003A25C6 /* Scene */,
 				8E5D0DB124A27B38003A25C6 /* ViewModel */,
 				8E888048248DF73900E7E620 /* VC */,
 				8E888049248DF73E00E7E620 /* View */,
@@ -422,12 +396,9 @@
 				8E8B4A742494C6930072620A /* DayCollectionViewCell.swift in Sources */,
 				8E922AC92490CBC400424D10 /* WallPaper.swift in Sources */,
 				8EBD4CD824A4BC98005EC9A2 /* SearchResultViewModel.swift in Sources */,
-				8E4DA1C924AD334E00B69CFE /* CommonViewModel.swift in Sources */,
-				8E67596D24A50C0500C5DDB6 /* TransitionModel.swift in Sources */,
 				8E8B4A762497282F0072620A /* PHPhotoLibrary+PhotoSave.swift in Sources */,
 				8EBADD6224BA032E0059C3C1 /* FavoriteViewController.swift in Sources */,
 				8EB984F824B6AC1500DFFDA1 /* InitialLaunchViewModel.swift in Sources */,
-				8E67596F24A50CDC00C5DDB6 /* SceneCoordinator.swift in Sources */,
 				8EDCAA2F24ACFD0900231F6B /* Tags.swift in Sources */,
 				8EBD4CD524A4BC64005EC9A2 /* SearchViewModel.swift in Sources */,
 				8E5D395524A8263D009E4D22 /* InitialCollectionViewCell.swift in Sources */,
@@ -437,10 +408,8 @@
 				8E888037248DF71300E7E620 /* MainViewController.swift in Sources */,
 				8EBADD6024BA02BD0059C3C1 /* CategoryViewModel.swift in Sources */,
 				8E6E32D724C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift in Sources */,
-				8E1DE52C24A5053500DE8FED /* SceneCoordinatorType.swift in Sources */,
 				8EBD4CCD24A4BC28005EC9A2 /* MainViewModel.swift in Sources */,
 				8EBD4CD324A4BC59005EC9A2 /* CalendarViewModel.swift in Sources */,
-				8EBD4CDA24A4BD31005EC9A2 /* ViewModelBindableType.swift in Sources */,
 				8EBADD6424BA03B80059C3C1 /* CategoryViewController.swift in Sources */,
 				8E45512724922AD200CD9F7C /* ShowPreViewController.swift in Sources */,
 				8EBD4CCF24A4BC35005EC9A2 /* DetailImageViewModel.swift in Sources */,
@@ -455,7 +424,6 @@
 				8E26E89524B75C63008D055B /* DataLoadOperation.swift in Sources */,
 				8E888033248DF71300E7E620 /* AppDelegate.swift in Sources */,
 				8E242FDF24A119C40087A41F /* SearchResultViewController.swift in Sources */,
-				8E1DE52E24A505B000DE8FED /* Scene.swift in Sources */,
 				8EBD4CD124A4BC42005EC9A2 /* ShowPreViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

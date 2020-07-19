@@ -12,7 +12,7 @@ import RxCocoa
 import NSObject_Rx
 import Action
 
-class SearchViewController: UIViewController, ViewModelBindableType {
+class SearchViewController: UIViewController {
    @IBOutlet private weak var searchBar: UISearchBar!
    @IBOutlet private weak var tableView: UITableView!
    @IBOutlet weak var tableViewBottomConstraint: NSLayoutConstraint!
@@ -34,7 +34,11 @@ class SearchViewController: UIViewController, ViewModelBindableType {
          })
          .disposed(by: self.rx.disposeBag)
       
-      backButton.rx.action = viewModel.popAction
+      backButton.rx.tap
+         .subscribe(onNext: { _ in
+            self.navigationController?.popViewController(animated: true)
+         })
+         .disposed(by: rx.disposeBag)
       
       viewModel.filterd
          .bind(to: tableView.rx.items(cellIdentifier: "tagCell")) { row, tagStr, cell in

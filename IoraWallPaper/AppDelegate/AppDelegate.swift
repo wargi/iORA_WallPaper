@@ -36,7 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          WallPapers.shared.favoriteArr = []
          WallPapers.shared.favoriteSubject.onNext([])
       }
-
       return true
    }
    

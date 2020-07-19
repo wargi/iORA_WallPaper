@@ -9,10 +9,10 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import NSObject_Rx
 import Action
 
-class CategoryViewModel: CommonViewModel {
+class CategoryViewModel {
+   let disposedBag = DisposeBag()
    var categories: Tags
    var categorySubject: BehaviorSubject<[Tag]>
    var selectAction: CocoaAction
@@ -23,11 +23,11 @@ class CategoryViewModel: CommonViewModel {
             self.categories = $0
             self.categorySubject.onNext($0.list)
          })
-         .disposed(by: rx.disposeBag)
+         .disposed(by: disposedBag)
       
    }
    
-   init(selectAction: CocoaAction? = nil, sceneCoordinator: SceneCoordinatorType) {
+   init(selectAction: CocoaAction? = nil) {
       self.selectAction = CocoaAction { empty in
          if let selectAction = selectAction {
             selectAction.execute()
@@ -37,7 +37,6 @@ class CategoryViewModel: CommonViewModel {
       }
       self.categories = WallPapers.shared.tags
       self.categorySubject = BehaviorSubject<[Tag]>(value: [])
-      super.init(sceneCoordinator: sceneCoordinator)
       
       setCategory()
    }

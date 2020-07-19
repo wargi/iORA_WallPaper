@@ -16,39 +16,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
       guard let _ = (scene as? UIWindowScene) else { return }
       
-      let coordinator = SceneCoordinator(window: window!)
-      var scene: Scene
-      
       let isLaunch = UserDefaults.standard.object(forKey: "isLaunch") as? Bool ?? false
-      
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
       if isLaunch {
-         let mainListViewModel = MainViewModel(sceneCoordinator: coordinator)
-         scene = Scene.main(mainListViewModel)
+         window?.rootViewController = storyboard.instantiateViewController(withIdentifier: CustomTabbarController.identifier) as? CustomTabbarController
       } else {
-         var images: [UIImage?]
-         if PrepareForSetUp.shared.displayType == .retina {
-            images = [
-               UIImage(named: "rlanding_wallpapers"),
-               UIImage(named: "rlanding_category"),
-               UIImage(named: "rlanding_detail"),
-               UIImage(named: "rlanding_calendar"),
-               UIImage(named: "rlanding_watch")
-            ]
-         } else {
-            images = [
-               UIImage(named: "slanding_wallpapers"),
-               UIImage(named: "slanding_category"),
-               UIImage(named: "slanding_detail"),
-               UIImage(named: "slanding_calendar"),
-               UIImage(named: "slanding_watch")
-            ]
-         }
-         
-         let initialLaunchViewModel = InitialLaunchViewModel(images: images, sceneCoordinator: coordinator)
-         scene = Scene.initialLaunch(initialLaunchViewModel)
+         window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "initialLaunchVC") as? InitialLaunchViewController
       }
-      
-      coordinator.transition(to: scene, using: .root, animated: true)
    }
 
    @available(iOS 13.0, *)
