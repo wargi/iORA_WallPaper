@@ -6,7 +6,7 @@
 //  Copyright © 2020 sangwook park. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
@@ -26,7 +26,7 @@ class DetailImageViewModel: CommonViewModel {
    }
    
    func showPreViewVC(index: Int) -> ShowPreViewController {
-      guard var showPreViewVC = storyboard.instantiateViewController(withIdentifier: ShowPreViewController.identifier) as? ShowPreViewController else { fatalError("Not Created CalendarVC") }
+      guard var showPreViewVC = storyboard.instantiateViewController(withIdentifier: ShowPreViewController.identifier) as? ShowPreViewController else { fatalError("Not Created PreViewVC") }
       
       let viewModel = ShowPreViewModel(wallpaper: wallpapers[index])
       showPreViewVC.bind(viewModel: viewModel)
@@ -34,7 +34,15 @@ class DetailImageViewModel: CommonViewModel {
       return showPreViewVC
    }
    
-   let downloadAction: Action<Int, Void>
+   func downloadAction(index: Int) -> UIAlertController {
+      let wallpaper = wallpapers[index]
+      
+      guard let alert = PrepareForSetUp.shared.imageFileDownload(image: wallpaper.image) else {
+         fatalError()
+      }
+      
+      return alert
+   }
    
    // Share Action
    func shareAction(currentIndex: Int) -> UIActivityViewController {
@@ -44,19 +52,8 @@ class DetailImageViewModel: CommonViewModel {
       return activity
    }
    
-   init(wallpapers: [MyWallPaper], downloadAction: Action<Int, Void>? = nil) {
+   init(wallpapers: [MyWallPaper]) {
       self.wallpapers = wallpapers
       self.wallpapersSubject = BehaviorSubject<[MyWallPaper]>(value: wallpapers)
-      
-      self.downloadAction = Action<Int, Void> { index in
-         if let action = downloadAction {
-            action.execute(index)
-         }
-         
-         let wallpaper = wallpapers[index]
-         PrepareForSetUp.shared.imageFileDownload(image: wallpaper.image)
-         
-         return Observable.empty()
-      }
    }
 }

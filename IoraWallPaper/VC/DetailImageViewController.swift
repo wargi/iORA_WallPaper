@@ -89,10 +89,10 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
          .map { self.pageControl.currentPage }
          .subscribe(onNext: {
-//            self.present(PrepareForSetUp.shared.completedAlert(), animated: true) {
-//               self.dismiss(animated: true, completion: nil)
-//            }
-            self.viewModel.downloadAction.inputs.onNext($0)
+            let alert = self.viewModel.downloadAction(index: $0)
+            self.present(alert, animated: true) {
+               alert.dismiss(animated: true, completion: nil)
+            }
          })
          .disposed(by: rx.disposeBag)
       
@@ -148,12 +148,10 @@ extension DetailImageViewController: UIScrollViewDelegate {
    
    func scrollViewDidScroll(_ scrollView: UIScrollView) {
       guard !fromTap else { return }
-      let width = collectionView.bounds.size.width * 0.7
-      let x = collectionView.contentOffset.x + (width / 2.0)
-      let newPage = Int(x / width)
-      
-      if pageControl.currentPage != newPage {
-         pageControl.currentPage = newPage
+      if let currentCenteredPage = centeredCollectionViewFlowLayout.currentCenteredPage {
+         if pageControl.currentPage != currentCenteredPage {
+            pageControl.currentPage = currentCenteredPage
+         }
       }
    }
 }

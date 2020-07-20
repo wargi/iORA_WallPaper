@@ -120,50 +120,31 @@ class PrepareForSetUp {
    }
    
    // 달력 이미지 파일 다운로드
-   func screenImageDownload() {
-      guard let layer = UIApplication.shared.keyWindow?.layer else { return }
+   func screenImageDownload() -> UIAlertController? {
+      guard let layer = UIApplication.shared.keyWindow?.layer else { return nil }
       var screenImage: UIImage?
       let scale = UIScreen.main.scale
       UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, scale)
-      guard let context = UIGraphicsGetCurrentContext() else { return }
+      guard let context = UIGraphicsGetCurrentContext() else { return nil }
       layer.render(in: context)
       screenImage = UIGraphicsGetImageFromCurrentImageContext()
       UIGraphicsEndImageContext()
       
-      guard let image = screenImage else { return }
+      guard let image = screenImage else { return nil }
       
-      PHPhotoLibrary.shared().savePhoto(image: image, albumName: "IORA")
+      return PHPhotoLibrary.shared().savePhoto(image: image, albumName: "IORA")
    }
    
    // Photo Library +++ ADD FILE
-   func imageFileDownload(image: UIImage?) {
-      guard let image = image else { return }
+   func imageFileDownload(image: UIImage?) -> UIAlertController? {
+      guard let image = image else { return nil }
       
-      PHPhotoLibrary.shared().savePhoto(image: image, albumName: "IORA")
+      return PHPhotoLibrary.shared().savePhoto(image: image, albumName: "IORA")
    }
-   
-   // 알럿 설정
-   @discardableResult
-   func completedAlert(handler: ((UIAlertAction) -> ())? = nil) {
-      var title: String? = ""
-      
-      if PHPhotoLibrary.authorizationStatus() == .authorized {
-         title = "Save Success :)"
-      } else {
-         PHPhotoLibrary.requestAuthorization { (status) in
-            if status == .authorized {
-               title = "Save Success :)"
-            } else {
-               title = "Save Failed"
-               print(title)
-            }
-         }
-      }
 //      let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
 //      if let handler = handler {
 //         let action = UIAlertAction(title: "OK", style: .default, handler: handler)
 //         alert.addAction(action)
 //      }
 //      return alert
-   }
 }
