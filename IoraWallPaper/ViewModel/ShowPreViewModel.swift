@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 import Action
 
-class ShowPreViewModel {
+final class ShowPreViewModel {
    // 배경 화면 관련
    let wallpaper: MyWallPaper
    public var info: BehaviorSubject<MyWallPaper>

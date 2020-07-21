@@ -9,18 +9,15 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import Action
+import NSObject_Rx
 
 class CategoryViewController: UIViewController {
-   var viewModel: CategoryViewModel!
+   var viewModel = CategoryViewModel()
    @IBOutlet private weak var collectionView: UICollectionView!
-   let bag = DisposeBag()
    override func viewDidLoad() {
       super.viewDidLoad()
-      collectionView.dataSource = self
       
       if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-         
          let collectionViewSize = collectionView.bounds.size
          layout.minimumLineSpacing = 30
          layout.minimumInteritemSpacing = 0
@@ -33,36 +30,27 @@ class CategoryViewController: UIViewController {
             layout.itemSize = CGSize(width: width, height: width * 2.16)
          }
       }
+      
+      bindViewModel()
    }
       
    func bindViewModel() {
       viewModel.categorySubject
-         .subscribe(onNext: {
-            print($0)
-            DispatchQueue.main.async {
-               self.collectionView.reloadData()
-            }
-            
-         })
+         .bind(to: collectionView.rx.items(cellIdentifier: CategoryCollectionViewCell.identifier,
+                                           cellType: CategoryCollectionViewCell.self)) { item, tag, cell in
+                                             cell.configure(category: tag)
+         }
          .disposed(by: rx.disposeBag)
       
-   }
-}
-
-extension CategoryViewController: UICollectionViewDataSource {
-   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return WallPapers.shared.tags.list.count
-   }
-   
-   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier,
-                                                          for: indexPath) as? CategoryCollectionViewCell else {
-         fatalError("invalid CategoryCollectionViewCell")
-      }
-      let target = WallPapers.shared.tags.list[indexPath.item]
-      cell.configure(category: target)
-      
-      return cell
+      collectionView.rx.itemSelected
+         .do(onNext: {
+            self.collectionView.deselectItem(at: $0, animated: false)
+         })
+         .map { self.viewModel.showDetailVC(item: $0.item) }
+         .subscribe(onNext: {
+            self.navigationController?.pushViewController($0, animated: true)
+         })
+         .disposed(by: rx.disposeBag)
    }
 }
 

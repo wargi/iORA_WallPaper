@@ -30,7 +30,7 @@ class SearchViewController: UIViewController, ViewModelBindableType {
          .map { $0 }
          .subscribe(onNext: {
             self.viewModel.tags = $0
-            self.viewModel.list = $0.list.map { $0.info.name }
+            self.viewModel.list = $0.map { $0.info.name }
             self.viewModel.filterd.onNext(self.viewModel.list)
          })
          .disposed(by: self.rx.disposeBag)

@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct Tags {
-   var list: [Tag]
-   var representImage: [MyWallPaper]
-}
-
 struct Tag {
    var info: TagInfo
    var result: [MyWallPaper]

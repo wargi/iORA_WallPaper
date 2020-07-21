@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class SearchResultViewModel: CommonViewModel {
+final class SearchResultViewModel: CommonViewModel {
    let tag: Tag
    var title: Driver<String>
    let wallpapers: BehaviorSubject<[MyWallPaper]>

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class FavoriteViewModel: CommonViewModel {
+final class FavoriteViewModel: CommonViewModel {
    func showDetailVC(wallpapers: [MyWallPaper]) -> DetailImageViewController {
       guard var detailImageVC = storyboard.instantiateViewController(withIdentifier: DetailImageViewController.identifier) as? DetailImageViewController else { fatalError("Not Created ShowDetailVC") }
       

@@ -141,10 +141,4 @@ class PrepareForSetUp {
       
       return PHPhotoLibrary.shared().savePhoto(image: image, albumName: "IORA")
    }
-//      let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
-//      if let handler = handler {
-//         let action = UIAlertAction(title: "OK", style: .default, handler: handler)
-//         alert.addAction(action)
-//      }
-//      return alert
 }

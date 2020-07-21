@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		49A370F9930181A69515B738 /* Pods_IoraWallPaper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BABB0D29F9DDC3A2A1D02674 /* Pods_IoraWallPaper.framework */; };
 		8E028FE924C4ACD2002ECDD0 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E028FE824C4ACD2002ECDD0 /* CommonViewModel.swift */; };
+		8E028FEB24C5B408002ECDD0 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E028FEA24C5B408002ECDD0 /* SettingTableViewController.swift */; };
 		8E06667D24AA90ED00FB5B92 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */; };
 		8E1BE51C24A1536B00317984 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */; };
 		8E242FDD24A119640087A41F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E242FDC24A119640087A41F /* SearchViewController.swift */; };
@@ -58,6 +59,7 @@
 /* Begin PBXFileReference section */
 		3485C558D3B708322FB9F7F4 /* Pods-IoraWallPaper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoraWallPaper.release.xcconfig"; path = "Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper.release.xcconfig"; sourceTree = "<group>"; };
 		8E028FE824C4ACD2002ECDD0 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
+		8E028FEA24C5B408002ECDD0 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E1BE51B24A1536B00317984 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E1BE51D24A188DA00317984 /* iORADebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iORADebug.entitlements; sourceTree = "<group>"; };
@@ -70,7 +72,7 @@
 		8E5D395224A82554009E4D22 /* InitialLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLaunchViewController.swift; sourceTree = "<group>"; };
 		8E5D395424A8263D009E4D22 /* InitialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialCollectionViewCell.swift; sourceTree = "<group>"; };
 		8E6E32D624C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteWallpaperCollectionViewCell.swift; sourceTree = "<group>"; };
-		8E88802F248DF71300E7E620 /* IORA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IORA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E88802F248DF71300E7E620 /* iORA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iORA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E888032248DF71300E7E620 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E888036248DF71300E7E620 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8E888039248DF71300E7E620 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -159,7 +161,7 @@
 		8E888030248DF71300E7E620 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8E88802F248DF71300E7E620 /* IORA.app */,
+				8E88802F248DF71300E7E620 /* iORA.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,6 +217,7 @@
 				8E95A9E62490839600F55F82 /* DetailImageViewController.swift */,
 				8E45512624922AD200CD9F7C /* ShowPreViewController.swift */,
 				8E8B4A712494C5200072620A /* CalendarViewController.swift */,
+				8E028FEA24C5B408002ECDD0 /* SettingTableViewController.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -295,7 +298,7 @@
 			);
 			name = IoraWallPaper;
 			productName = IoraWallPaper;
-			productReference = 8E88802F248DF71300E7E620 /* IORA.app */;
+			productReference = 8E88802F248DF71300E7E620 /* iORA.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -431,6 +434,7 @@
 				8E95A9E72490839600F55F82 /* DetailImageViewController.swift in Sources */,
 				8E26E89524B75C63008D055B /* DataLoadOperation.swift in Sources */,
 				8E888033248DF71300E7E620 /* AppDelegate.swift in Sources */,
+				8E028FEB24C5B408002ECDD0 /* SettingTableViewController.swift in Sources */,
 				8E242FDF24A119C40087A41F /* SearchResultViewController.swift in Sources */,
 				8EBD4CD124A4BC42005EC9A2 /* ShowPreViewModel.swift in Sources */,
 			);
@@ -590,7 +594,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wargi.IoraWallPaper;
-				PRODUCT_NAME = IORA;
+				PRODUCT_NAME = iORA;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -615,7 +619,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wargi.IoraWallPaper;
-				PRODUCT_NAME = IORA;
+				PRODUCT_NAME = iORA;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -12,7 +12,7 @@ import RxCocoa
 import Action
 import NSObject_Rx
 
-class MainViewModel: CommonViewModel {
+final class MainViewModel: CommonViewModel {
    let disposedBag = DisposeBag()
    
    var reachability: Reachability? = Reachability()

@@ -12,7 +12,7 @@ import RxCocoa
 import NSObject_Rx
 import Action
 
-class DetailImageViewModel: CommonViewModel {
+final class DetailImageViewModel: CommonViewModel {
    var wallpapers: [MyWallPaper] // 페이지 데이터 목록
    let wallpapersSubject: BehaviorSubject<[MyWallPaper]>
    

@@ -12,7 +12,7 @@ import RxCocoa
 import Action
 import NSObject_Rx
 
-class CalendarViewModel {
+final class CalendarViewModel {
    let info: MyWallPaper
    let infoSubject: BehaviorSubject<MyWallPaper>
    

@@ -38,8 +38,8 @@ class WallPapers {
    var favoriteArr = [String]()
    var favoriteSubject = BehaviorSubject<[String]>(value: [])
    
-   var tags = Tags(list: [], representImage: [])
-   let tagSubject = BehaviorSubject<Tags>(value: Tags(list: [], representImage: []))
+   var tags = [Tag]()
+   let tagSubject = BehaviorSubject<[Tag]>(value: [])
    
    let bag = DisposeBag()
    
@@ -52,16 +52,10 @@ class WallPapers {
             tags.forEach { tag in
                let result = datas.filter { $0.wallpaper.tag == tag.info.name }
                let info = Tag(info: tag.info, result: result)
-               self.tags.list.append(info)
-            }
-            self.tags.list.sort { lhs, rhs in
-               lhs.info.name < rhs.info.name
+               self.tags.append(info)
             }
             
-            for index in 0 ..< self.tags.list.count {
-               self.tags.representImage.append(self.tags.list[index].result[0])
-            }
-            
+            self.tags.reverse()
             self.tagSubject.onNext(self.tags)
          }
       }
