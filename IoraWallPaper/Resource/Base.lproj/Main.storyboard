@@ -10,17 +10,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="GmarketSansBold.otf">
+            <string>GmarketSansBold</string>
+        </array>
+        <array key="NanumGothic.ttf">
+            <string>NanumGothic</string>
+        </array>
+        <array key="NanumGothicBold.ttf">
+            <string>NanumGothicBold</string>
+        </array>
+        <array key="NanumGothicExtraBold.ttf">
+            <string>NanumGothicExtraBold</string>
+        </array>
         <array key="NanumSquareRoundB.ttf">
             <string>NanumSquareRoundB</string>
         </array>
         <array key="NanumSquareRoundEB.ttf">
             <string>NanumSquareRoundEB</string>
-        </array>
-        <array key="NanumSquareRoundL.ttf">
-            <string>NanumSquareRoundL</string>
-        </array>
-        <array key="NanumSquareRoundR.ttf">
-            <string>NanumSquareRoundR</string>
         </array>
     </customFonts>
     <scenes>
@@ -219,14 +225,14 @@
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#Nature" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVP-4F-qiL">
-                                                            <rect key="frame" x="30.000000000000007" y="30" width="88.666666666666686" height="29.333333333333329"/>
-                                                            <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="25"/>
+                                                            <rect key="frame" x="30.000000000000007" y="30" width="88.666666666666686" height="29"/>
+                                                            <fontDescription key="fontDescription" name="NanumGothicExtraBold" family="NanumGothic" pointSize="25"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'좋아요'를 부르는 사진 찍기 기술 5" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Py-mg-53d">
-                                                            <rect key="frame" x="30.000000000000014" y="66.333333333333329" width="206.33333333333337" height="17.666666666666671"/>
-                                                            <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="15"/>
+                                                            <rect key="frame" x="30" y="66" width="292" height="17.666666666666671"/>
+                                                            <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -236,10 +242,11 @@
                                                         <constraint firstAttribute="trailing" secondItem="aGv-SP-pjt" secondAttribute="trailing" id="2KB-PH-GTg"/>
                                                         <constraint firstItem="aGv-SP-pjt" firstAttribute="top" secondItem="aPt-q3-T9H" secondAttribute="top" id="36K-zT-fwT"/>
                                                         <constraint firstItem="0Py-mg-53d" firstAttribute="leading" secondItem="fVP-4F-qiL" secondAttribute="leading" id="7F3-vU-5Cf"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0Py-mg-53d" secondAttribute="bottom" constant="5" id="A9W-Y4-S71"/>
                                                         <constraint firstItem="fVP-4F-qiL" firstAttribute="top" secondItem="aPt-q3-T9H" secondAttribute="top" constant="30" id="Bxr-0S-8P5"/>
                                                         <constraint firstItem="fVP-4F-qiL" firstAttribute="leading" secondItem="aPt-q3-T9H" secondAttribute="leading" constant="30" id="Fnu-eY-ZSW"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fVP-4F-qiL" secondAttribute="trailing" constant="20" id="GE9-Jt-IcE"/>
-                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0Py-mg-53d" secondAttribute="trailing" constant="16" id="ake-Ou-hRH"/>
+                                                        <constraint firstAttribute="trailing" secondItem="0Py-mg-53d" secondAttribute="trailing" constant="16" id="ake-Ou-hRH"/>
                                                         <constraint firstItem="aGv-SP-pjt" firstAttribute="leading" secondItem="aPt-q3-T9H" secondAttribute="leading" id="j7Z-Uk-0hD"/>
                                                         <constraint firstAttribute="bottom" secondItem="aGv-SP-pjt" secondAttribute="bottom" id="oT4-6V-BdO"/>
                                                         <constraint firstItem="0Py-mg-53d" firstAttribute="top" secondItem="fVP-4F-qiL" secondAttribute="bottom" constant="7" id="vOo-Ze-tYl"/>
@@ -336,7 +343,7 @@
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="# STAYWRAM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5ML-uD-kIq">
                                                     <rect key="frame" x="15" y="0.0" width="345" height="45.666667938232422"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareRoundL" family="NanumSquareRound" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -428,8 +435,8 @@
                                 <rect key="frame" x="0.0" y="44" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IORA STUDIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ER9-I4-TTA">
-                                        <rect key="frame" x="127" y="13.666666666666664" width="121" height="23"/>
-                                        <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="20"/>
+                                        <rect key="frame" x="131.33333333333334" y="14.666666666666664" width="112.33333333333334" height="21"/>
+                                        <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -521,30 +528,20 @@ Check your connection</string>
                                         <rect key="frame" x="283" y="8.6666666666666643" width="33" height="33"/>
                                         <state key="normal" image="filter"/>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="6Li-yK-lnz">
-                                        <rect key="frame" x="16" y="7.6666666666666643" width="35" height="35"/>
-                                        <color key="tintColor" name="mainColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="UEJ-Fx-CRD"/>
-                                            <constraint firstAttribute="width" constant="35" id="cxJ-r7-GGs"/>
-                                        </constraints>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iORA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQj-Zr-pL0">
-                                        <rect key="frame" x="52" y="14.666666666666664" width="42" height="21"/>
-                                        <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="18"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iORA STUDIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQj-Zr-pL0">
+                                        <rect key="frame" x="16" y="17" width="87.666666666666671" height="16.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="GmarketSansBold" family="Gmarket Sans" pointSize="14"/>
+                                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="KZ8-Ms-tQg"/>
-                                    <constraint firstItem="hQj-Zr-pL0" firstAttribute="leading" secondItem="6Li-yK-lnz" secondAttribute="trailing" constant="1" id="RjY-VZ-Qe0"/>
+                                    <constraint firstItem="hQj-Zr-pL0" firstAttribute="leading" secondItem="fgb-yh-tAm" secondAttribute="leading" constant="16" id="MsU-Q0-d8T"/>
                                     <constraint firstItem="0Er-e3-Inq" firstAttribute="centerY" secondItem="hQj-Zr-pL0" secondAttribute="centerY" id="V2a-CA-jwr"/>
                                     <constraint firstItem="h71-lJ-zQI" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hQj-Zr-pL0" secondAttribute="trailing" constant="8" id="XRO-yQ-tje"/>
-                                    <constraint firstItem="6Li-yK-lnz" firstAttribute="leading" secondItem="fgb-yh-tAm" secondAttribute="leading" constant="16" id="cs2-o9-JOr"/>
                                     <constraint firstItem="hQj-Zr-pL0" firstAttribute="centerY" secondItem="fgb-yh-tAm" secondAttribute="centerY" id="grz-3f-gQA"/>
-                                    <constraint firstItem="6Li-yK-lnz" firstAttribute="centerY" secondItem="hQj-Zr-pL0" secondAttribute="centerY" id="m2v-Kx-Lcw"/>
                                     <constraint firstItem="0Er-e3-Inq" firstAttribute="leading" secondItem="h71-lJ-zQI" secondAttribute="trailing" constant="8" id="o2e-ht-vnz"/>
                                     <constraint firstItem="h71-lJ-zQI" firstAttribute="centerY" secondItem="0Er-e3-Inq" secondAttribute="centerY" id="tN0-2w-gde"/>
                                     <constraint firstAttribute="trailing" secondItem="0Er-e3-Inq" secondAttribute="trailing" constant="16" id="wKj-4D-L84"/>
@@ -848,27 +845,27 @@ Check your connection</string>
                                 <rect key="frame" x="87.666666666666686" y="280.66666666666669" width="200" height="261.00000000000006"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kSA-Sf-97P">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="17.666666666666668"/>
-                                        <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="15"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="17.333333333333332"/>
+                                        <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="December" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Mzg-sh-cr1">
-                                        <rect key="frame" x="0.0" y="22.666666666666671" width="200" height="29.333333333333329"/>
+                                        <rect key="frame" x="0.0" y="22.333333333333329" width="200" height="29"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="NanumSquareRoundEB" family="NanumSquareRound" pointSize="25"/>
+                                        <fontDescription key="fontDescription" name="NanumGothicExtraBold" family="NanumGothic" pointSize="25"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3v-3M-N0W" userLabel="LineView">
-                                        <rect key="frame" x="0.0" y="57" width="200" height="1"/>
+                                        <rect key="frame" x="0.0" y="56.333333333333314" width="200" height="1"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="KLv-Pt-Mie"/>
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SER-Eh-flq">
-                                        <rect key="frame" x="0.0" y="63" width="200" height="198"/>
+                                        <rect key="frame" x="0.0" y="62.3333333333333" width="200" height="198.66666666666663"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="5" minimumInteritemSpacing="5" id="e9w-XM-XJI">
                                             <size key="itemSize" width="128" height="128"/>
@@ -885,8 +882,8 @@ Check your connection</string>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xO-11-G0X">
-                                                            <rect key="frame" x="55.666666666666657" y="55.333333333333336" width="17" height="17.666666666666664"/>
-                                                            <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="15"/>
+                                                            <rect key="frame" x="55.000000000000007" y="55.333333333333336" width="18.333333333333336" height="17.333333333333336"/>
+                                                            <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="15"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -1069,14 +1066,14 @@ Check your connection</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6:34" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XT2-rD-svC">
-                                <rect key="frame" x="104.66666666666667" y="85.666666666666686" width="165.66666666666663" height="99.333333333333314"/>
-                                <fontDescription key="fontDescription" name="NanumSquareRoundL" family="NanumSquareRound" pointSize="85"/>
+                                <rect key="frame" x="97.333333333333329" y="86.333333333333314" width="180.33333333333337" height="98"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="85"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday, December 25" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kvn-XL-3Ll">
-                                <rect key="frame" x="95.000000000000014" y="187" width="185.33333333333337" height="22.666666666666657"/>
-                                <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="20"/>
+                                <rect key="frame" x="92.333333333333329" y="186.33333333333334" width="190.66666666666669" height="22.666666666666657"/>
+                                <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1174,7 +1171,13 @@ Check your connection</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="selectedImageTintColor" name="mainColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="8tw-gG-953" kind="relationship" relationship="viewControllers" id="Shc-Dq-iEh"/>
@@ -1191,9 +1194,7 @@ Check your connection</string>
         <scene sceneID="GwC-x2-fTz">
             <objects>
                 <navigationController storyboardIdentifier="mainNav" title="mainNav" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="8tw-gG-953" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" image="list" id="bTt-Qb-Az0">
-                        <color key="badgeColor" name="mainColor"/>
-                    </tabBarItem>
+                    <tabBarItem key="tabBarItem" title="List" image="list" id="bTt-Qb-Az0"/>
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2ca-Ej-zf6">
@@ -1232,7 +1233,7 @@ Check your connection</string>
             <objects>
                 <navigationController storyboardIdentifier="categoryNav" title="categoryNav" automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Ifg-4u-rPv" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Category" image="category" id="D91-a4-3nj">
-                        <color key="badgeColor" name="mainColor"/>
+                        <color key="badgeColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <nil key="simulatedTopBarMetrics"/>
@@ -1269,7 +1270,7 @@ Check your connection</string>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="About iORA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1vW-Sy-1j9">
                                                     <rect key="frame" x="16" y="0.0" width="324" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1290,7 +1291,7 @@ Check your connection</string>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="iORA Blog" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ycJ-Aw-k6g">
                                                     <rect key="frame" x="16" y="0.0" width="324" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1307,7 +1308,7 @@ Check your connection</string>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="iORA Instagram" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wVf-yM-aN8">
                                                     <rect key="frame" x="16" y="0.0" width="324" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1328,7 +1329,7 @@ Check your connection</string>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="App Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mKx-dF-aup">
                                                     <rect key="frame" x="16" y="0.0" width="324" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1345,7 +1346,7 @@ Check your connection</string>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="App Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8u1-TH-Y1w">
                                                     <rect key="frame" x="16" y="0.0" width="324" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1360,16 +1361,16 @@ Check your connection</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Version" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vfh-9o-INC">
-                                                    <rect key="frame" x="16" y="12" width="56" height="20"/>
+                                                    <rect key="frame" x="16.000000000000004" y="14.000000000000002" width="49.333333333333336" height="17.666666666666668"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ApZ-fm-wDF">
-                                                    <rect key="frame" x="321" y="12" width="38" height="20"/>
+                                                    <rect key="frame" x="325.33333333333331" y="14.000000000000002" width="33.666666666666664" height="17.666666666666668"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" name="NanumSquareRoundR" family="NanumSquareRound" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1400,7 +1401,7 @@ Check your connection</string>
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" name="NanumSquareRoundB" family="NanumSquareRound" pointSize="20"/>
+                            <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="18"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1420,7 +1421,6 @@ Check your connection</string>
         <image name="download" width="33" height="33"/>
         <image name="filter" width="33" height="33"/>
         <image name="list" width="28.333333969116211" height="28.333333969116211"/>
-        <image name="loading" width="113.33333587646484" height="113.33333587646484"/>
         <image name="pCalendar" width="33" height="33"/>
         <image name="pClose" width="33" height="33"/>
         <image name="pDownload" width="33" height="33"/>

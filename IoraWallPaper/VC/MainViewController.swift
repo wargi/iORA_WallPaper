@@ -95,6 +95,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
    
    // 기본 설정
    func configure() {
+      
       let tap = UITapGestureRecognizer(target: self, action: #selector(self.dataLoad))
       notConnectView.addGestureRecognizer(tap)
       

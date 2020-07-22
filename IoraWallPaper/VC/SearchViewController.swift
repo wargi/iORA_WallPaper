@@ -91,11 +91,11 @@ class SearchViewController: UIViewController, ViewModelBindableType {
       
       switch UIScreen.main.bounds.width {
       case let width where width < 375:
-         labelInsideUISearchBar?.font = UIFont(name: "NanumSquareRoundR", size: 10)
+         labelInsideUISearchBar?.font = UIFont(name: "NanumGothic", size: 10)
       case let width where width == 375:
-         labelInsideUISearchBar?.font = UIFont(name: "NanumSquareRoundR", size: 12)
+         labelInsideUISearchBar?.font = UIFont(name: "NanumGothic", size: 12)
       default:
-         labelInsideUISearchBar?.font = UIFont(name: "NanumSquareRoundR", size: 14)
+         labelInsideUISearchBar?.font = UIFont(name: "NanumGothic", size: 14)
       }
    }
 }

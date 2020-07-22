@@ -15,6 +15,10 @@
 		8E242FDD24A119640087A41F /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E242FDC24A119640087A41F /* SearchViewController.swift */; };
 		8E242FDF24A119C40087A41F /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E242FDE24A119C40087A41F /* SearchResultViewController.swift */; };
 		8E26E89524B75C63008D055B /* DataLoadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E26E89424B75C63008D055B /* DataLoadOperation.swift */; };
+		8E2FB71124C7D44800B15A83 /* NanumGothic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E2FB70E24C7D44700B15A83 /* NanumGothic.ttf */; };
+		8E2FB71224C7D44800B15A83 /* NanumGothicBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E2FB70F24C7D44800B15A83 /* NanumGothicBold.ttf */; };
+		8E2FB71324C7D44800B15A83 /* NanumGothicExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8E2FB71024C7D44800B15A83 /* NanumGothicExtraBold.ttf */; };
+		8E34C71A24C7E1AB002267F0 /* GmarketSansBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8E34C71924C7E1AB002267F0 /* GmarketSansBold.otf */; };
 		8E45512724922AD200CD9F7C /* ShowPreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E45512624922AD200CD9F7C /* ShowPreViewController.swift */; };
 		8E4DA1CC24AD3DC200B69CFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4DA1CB24AD3DC200B69CFE /* SceneDelegate.swift */; };
 		8E5D395324A82554009E4D22 /* InitialLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5D395224A82554009E4D22 /* InitialLaunchViewController.swift */; };
@@ -45,10 +49,6 @@
 		8EBD4CD324A4BC59005EC9A2 /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD4CD224A4BC59005EC9A2 /* CalendarViewModel.swift */; };
 		8EBD4CD524A4BC64005EC9A2 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD4CD424A4BC64005EC9A2 /* SearchViewModel.swift */; };
 		8EBD4CD824A4BC98005EC9A2 /* SearchResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EBD4CD724A4BC98005EC9A2 /* SearchResultViewModel.swift */; };
-		8ECD80372490C6E800DA4B5E /* NanumSquareRoundR.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80332490C6E700DA4B5E /* NanumSquareRoundR.ttf */; };
-		8ECD80382490C6E800DA4B5E /* NanumSquareRoundL.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80342490C6E700DA4B5E /* NanumSquareRoundL.ttf */; };
-		8ECD80392490C6E800DA4B5E /* NanumSquareRoundEB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80352490C6E700DA4B5E /* NanumSquareRoundEB.ttf */; };
-		8ECD803A2490C6E800DA4B5E /* NanumSquareRoundB.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8ECD80362490C6E700DA4B5E /* NanumSquareRoundB.ttf */; };
 		8ED9C1FC24AA3CB5008F41FC /* HeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED9C1FB24AA3CB5008F41FC /* HeaderCollectionViewCell.swift */; };
 		8EDCAA2F24ACFD0900231F6B /* Tags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDCAA2E24ACFD0900231F6B /* Tags.swift */; };
 		8EDCAA3124AD038B00231F6B /* SetUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDCAA3024AD038B00231F6B /* SetUp.swift */; };
@@ -67,6 +67,10 @@
 		8E242FDC24A119640087A41F /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		8E242FDE24A119C40087A41F /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		8E26E89424B75C63008D055B /* DataLoadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoadOperation.swift; sourceTree = "<group>"; };
+		8E2FB70E24C7D44700B15A83 /* NanumGothic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothic.ttf; sourceTree = "<group>"; };
+		8E2FB70F24C7D44800B15A83 /* NanumGothicBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothicBold.ttf; sourceTree = "<group>"; };
+		8E2FB71024C7D44800B15A83 /* NanumGothicExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumGothicExtraBold.ttf; sourceTree = "<group>"; };
+		8E34C71924C7E1AB002267F0 /* GmarketSansBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GmarketSansBold.otf; sourceTree = "<group>"; };
 		8E45512624922AD200CD9F7C /* ShowPreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowPreViewController.swift; sourceTree = "<group>"; };
 		8E4DA1CB24AD3DC200B69CFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8E5D395224A82554009E4D22 /* InitialLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialLaunchViewController.swift; sourceTree = "<group>"; };
@@ -99,10 +103,6 @@
 		8EBD4CD224A4BC59005EC9A2 /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
 		8EBD4CD424A4BC64005EC9A2 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		8EBD4CD724A4BC98005EC9A2 /* SearchResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewModel.swift; sourceTree = "<group>"; };
-		8ECD80332490C6E700DA4B5E /* NanumSquareRoundR.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundR.ttf; sourceTree = "<group>"; };
-		8ECD80342490C6E700DA4B5E /* NanumSquareRoundL.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundL.ttf; sourceTree = "<group>"; };
-		8ECD80352490C6E700DA4B5E /* NanumSquareRoundEB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundEB.ttf; sourceTree = "<group>"; };
-		8ECD80362490C6E700DA4B5E /* NanumSquareRoundB.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NanumSquareRoundB.ttf; sourceTree = "<group>"; };
 		8ED9C1FB24AA3CB5008F41FC /* HeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 		8EDCAA2E24ACFD0900231F6B /* Tags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tags.swift; sourceTree = "<group>"; };
 		8EDCAA3024AD038B00231F6B /* SetUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUp.swift; sourceTree = "<group>"; };
@@ -130,6 +130,24 @@
 				BABB0D29F9DDC3A2A1D02674 /* Pods_IoraWallPaper.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8E2FB70D24C7D43C00B15A83 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				8E2FB70E24C7D44700B15A83 /* NanumGothic.ttf */,
+				8E2FB70F24C7D44800B15A83 /* NanumGothicBold.ttf */,
+				8E2FB71024C7D44800B15A83 /* NanumGothicExtraBold.ttf */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		8E2FB71424C7D58100B15A83 /* GMarket */ = {
+			isa = PBXGroup;
+			children = (
+				8E34C71924C7E1AB002267F0 /* GmarketSansBold.otf */,
+			);
+			path = GMarket;
 			sourceTree = "<group>";
 		};
 		8E5D0DB124A27B38003A25C6 /* ViewModel */ = {
@@ -252,10 +270,8 @@
 		8ECD80322490C6D900DA4B5E /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				8ECD80362490C6E700DA4B5E /* NanumSquareRoundB.ttf */,
-				8ECD80352490C6E700DA4B5E /* NanumSquareRoundEB.ttf */,
-				8ECD80342490C6E700DA4B5E /* NanumSquareRoundL.ttf */,
-				8ECD80332490C6E700DA4B5E /* NanumSquareRoundR.ttf */,
+				8E2FB71424C7D58100B15A83 /* GMarket */,
+				8E2FB70D24C7D43C00B15A83 /* New Group */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -339,14 +355,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8E2FB71324C7D44800B15A83 /* NanumGothicExtraBold.ttf in Resources */,
 				8E88803F248DF71400E7E620 /* LaunchScreen.storyboard in Resources */,
 				8EDCBF73249BADF900022E19 /* GoogleService-Info.plist in Resources */,
-				8ECD80392490C6E800DA4B5E /* NanumSquareRoundEB.ttf in Resources */,
-				8ECD803A2490C6E800DA4B5E /* NanumSquareRoundB.ttf in Resources */,
-				8ECD80372490C6E800DA4B5E /* NanumSquareRoundR.ttf in Resources */,
+				8E2FB71224C7D44800B15A83 /* NanumGothicBold.ttf in Resources */,
+				8E34C71A24C7E1AB002267F0 /* GmarketSansBold.otf in Resources */,
 				8E88803C248DF71400E7E620 /* Assets.xcassets in Resources */,
+				8E2FB71124C7D44800B15A83 /* NanumGothic.ttf in Resources */,
 				8E88803A248DF71300E7E620 /* Main.storyboard in Resources */,
-				8ECD80382490C6E800DA4B5E /* NanumSquareRoundL.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

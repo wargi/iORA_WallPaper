@@ -91,7 +91,9 @@ class SettingTableViewController: UITableViewController, MFMailComposeViewContro
    
    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
       switch result {
-      case .sent, .cancelled:
+      case .sent, .cancelled, .saved:
+         controller.dismiss(animated: true, completion: nil)
+      case .failed:
          controller.dismiss(animated: true, completion: nil)
       default:
          break
