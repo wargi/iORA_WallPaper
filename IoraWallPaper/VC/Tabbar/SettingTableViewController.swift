@@ -2,7 +2,7 @@
 //  SettingViewController.swift
 //  IoraWallPaper
 //
-//  Created by 박소정 on 2020/07/20.
+//  Created by 박상욱 on 2020/07/20.
 //  Copyright © 2020 sangwook park. All rights reserved.
 //
 
@@ -48,7 +48,10 @@ class SettingTableViewController: UITableViewController, MFMailComposeViewContro
       let cellStyle = CellStyle.get(indexPath: indexPath)
       switch cellStyle {
       case .about:
-         print("About iORA")
+         if let aboutVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: AboutSettingViewController.identifier) as? AboutSettingViewController {
+            self.navigationController?.pushViewController(aboutVC, animated: true)
+         }
+         
       case .goBlog:
          if let url = URL(string: "https://blog.naver.com/iorastudio") {
             if UIApplication.shared.canOpenURL(url) {
