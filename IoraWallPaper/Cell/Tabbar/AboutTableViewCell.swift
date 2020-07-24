@@ -13,6 +13,7 @@ class AboutTableViewCell: UITableViewCell {
    @IBOutlet weak var titleLabel: UILabel!
    @IBOutlet weak var nameLabel: UILabel!
    @IBOutlet weak var linkLabel: UILabel!
+   @IBOutlet weak var thumnailImageView: UIImageView!
    
     override func awakeFromNib() {
         super.awakeFromNib()

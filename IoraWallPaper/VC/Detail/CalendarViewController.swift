@@ -32,7 +32,7 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var yearLabel: UILabel!
    @IBOutlet private weak var monthLabel: UILabel!
    @IBOutlet private weak var lineView: UIView!
-
+   
    
    // 컬러 관련
    var viewModel: CalendarViewModel!
@@ -71,14 +71,14 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
          .bind(to: collectionView.rx.items(cellIdentifier: DayCollectionViewCell.identifier,
                                            cellType: DayCollectionViewCell.self)) { row, str, cell in
                                              
-         self.viewModel.colorSub
-            .subscribe(onNext: { cell.dayLabel.textColor = $0 })
-            .disposed(by: self.rx.disposeBag)
+                                             self.viewModel.colorSub
+                                                .subscribe(onNext: { cell.dayLabel.textColor = $0 })
+                                                .disposed(by: self.rx.disposeBag)
                                              
-         cell.configure(str)
-         if row < 7 { cell.dayLabel.font = UIFont(name: "NanumSquareRoundEB", size: 15) }
-         }
-         .disposed(by: rx.disposeBag)
+                                             cell.configure(str)
+                                             if row < 7 { cell.dayLabel.font = UIFont(name: "NanumSquareRoundEB", size: 15) }
+      }
+      .disposed(by: rx.disposeBag)
       
       //MARK: Button Action
       // Calendar 색깔 변경
@@ -94,16 +94,17 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
       // 파일 다운로드 Action
       downloadButton.rx.tap
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-         .subscribe(onNext: { empty in
-//            let alert = PrepareForSetUp.shared.completedAlert(handler: { _ in
-//               self.isHiddenDisplayUI(isHidden: true)
-//               PrepareForSetUp.shared.screenImageDownload()
-//               self.isHiddenDisplayUI(isHidden: false)
-//               self.viewModel.closeAction.inputs.onNext(empty)
-//            })
-//            self.present(alert, animated: true, completion: nil)
-            
-            return empty
+         .subscribe(onNext: { _ in
+            if let alert = PrepareForSetUp.shared.screenImageDownload() {
+               if alert.title == "Save Success :)" {
+                  let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+                     self.dismiss(animated: true, completion: nil)
+                  }
+                  alert.addAction(okAction)
+               }
+               
+               self.present(alert, animated: true, completion: nil)
+            }
          })
          .disposed(by: rx.disposeBag)
       

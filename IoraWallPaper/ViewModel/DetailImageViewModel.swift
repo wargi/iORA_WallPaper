@@ -44,14 +44,6 @@ final class DetailImageViewModel: CommonViewModel {
       return alert
    }
    
-   // Share Action
-   func shareAction(currentIndex: Int) -> UIActivityViewController {
-      guard let image = wallpapers[currentIndex].image else { fatalError("invalid Image") }
-      let activity = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-      
-      return activity
-   }
-   
    init(wallpapers: [MyWallPaper]) {
       self.wallpapers = wallpapers
       self.wallpapersSubject = BehaviorSubject<[MyWallPaper]>(value: wallpapers)

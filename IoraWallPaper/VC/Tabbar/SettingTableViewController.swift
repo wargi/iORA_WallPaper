@@ -53,18 +53,18 @@ class SettingTableViewController: UITableViewController, MFMailComposeViewContro
          }
          
       case .goBlog:
-         if let url = URL(string: "https://blog.naver.com/iorastudio") {
-            if UIApplication.shared.canOpenURL(url) {
-               UIApplication.shared.open(url,
+         if let blogURL = URL(string: "https://blog.naver.com/iorastudio") {
+            if UIApplication.shared.canOpenURL(blogURL) {
+               UIApplication.shared.open(blogURL,
                                          options: [:],
                                          completionHandler: nil)
             }
          }
       case .goInsta:
          // 인스타그램으로 이동
-         if let url = URL(string: "https://instagram.com/iora_studio?igshid=1erlpx3rebg7b") {
-            if UIApplication.shared.canOpenURL(url) {
-               UIApplication.shared.open(url,
+         if let instaURL = URL(string: "https://instagram.com/iora_studio?igshid=1erlpx3rebg7b") {
+            if UIApplication.shared.canOpenURL(instaURL) {
+               UIApplication.shared.open(instaURL,
                                          options: [:],
                                          completionHandler: nil)
             }
@@ -86,7 +86,15 @@ class SettingTableViewController: UITableViewController, MFMailComposeViewContro
          // Present the view controller modally.
          self.present(composeVC, animated: true, completion: nil)
       case .review:
-         print("Review My App")
+         let id = "1518747131"
+         if let reviewURL = URL(string: "itms-apps://itunes.apple.com/app/itunes-u/id\(id)?ls=1&mt=8&action=write-review"), UIApplication.shared.canOpenURL(reviewURL) {
+            // 유효한 URL인지 검사
+            if UIApplication.shared.canOpenURL(reviewURL) {
+               UIApplication.shared.open(reviewURL,
+                                         options: [:],
+                                         completionHandler: nil)
+            }
+         }
       case .none:
          break
       }

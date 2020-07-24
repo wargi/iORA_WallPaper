@@ -18,15 +18,15 @@ class CategoryViewController: UIViewController {
       super.viewDidLoad()
       
       if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-         let collectionViewSize = collectionView.bounds.size
+         let collectionViewSize = UIScreen.main.bounds
          layout.minimumLineSpacing = 30
          layout.minimumInteritemSpacing = 0
          
          if PrepareForSetUp.shared.displayType == .retina {
-            let width = collectionViewSize.width * 0.8
+            let width = collectionViewSize.width * 0.78
             layout.itemSize = CGSize(width: width, height: width * 1.77)
          } else {
-            let width = collectionViewSize.width * 0.88
+            let width = collectionViewSize.width * 0.78
             layout.itemSize = CGSize(width: width, height: width * 2.16)
          }
       }

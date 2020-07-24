@@ -13,11 +13,11 @@ import NSObject_Rx
 
 class FavoriteViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
+   @IBOutlet private weak var emptyView: UIView!
    var viewModel = FavoriteViewModel()
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      
       if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
          layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
          layout.minimumLineSpacing = 10
@@ -34,6 +34,13 @@ class FavoriteViewController: UIViewController {
    }
    
    func bindViewModel() {
+      WallPapers.shared.favoriteSubject
+         .map { return $0.count != 0 }
+         .subscribe(onNext: {
+            self.emptyView.isHidden = $0
+         })
+         .disposed(by: rx.disposeBag)
+      
       WallPapers.shared.favoriteSubject
          .bind(to: collectionView.rx.items(cellIdentifier: FavoriteWallpaperCollectionViewCell.identifier,
                                            cellType: FavoriteWallpaperCollectionViewCell.self)) { index, urlStr, cell in

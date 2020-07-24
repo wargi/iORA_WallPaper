@@ -32,6 +32,7 @@ class InitialLaunchViewModel: CommonViewModel {
       if PrepareForSetUp.shared.displayType == .retina {
          images = [
             UIImage(named: "rlanding_wallpapers"),
+            UIImage(named: "rlanding_favorite"),
             UIImage(named: "rlanding_category"),
             UIImage(named: "rlanding_detail"),
             UIImage(named: "rlanding_calendar"),
@@ -40,6 +41,7 @@ class InitialLaunchViewModel: CommonViewModel {
       } else {
          images = [
             UIImage(named: "slanding_wallpapers"),
+            UIImage(named: "slanding_favorite"),
             UIImage(named: "slanding_category"),
             UIImage(named: "slanding_detail"),
             UIImage(named: "slanding_calendar"),

@@ -19,7 +19,6 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var calendarButton: UIButton!
    @IBOutlet private weak var previewButton: UIButton!
    @IBOutlet private weak var saveButton: UIButton!
-   @IBOutlet private weak var shareButton: UIButton!
    // 페이지 컨트롤
    @IBOutlet weak var pageControl: UIPageControl!
    // 디테일 컬렉션 뷰
@@ -36,20 +35,20 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       centeredCollectionViewFlowLayout = (collectionView.collectionViewLayout as! CenteredCollectionViewFlowLayout)
       collectionView.decelerationRate  = UIScrollView.DecelerationRate.fast
       
-      centeredCollectionViewFlowLayout.minimumLineSpacing = 20
+      centeredCollectionViewFlowLayout.minimumLineSpacing = 25
       
       var width: CGFloat = 0
-      let collectionWidth = collectionView.bounds.width
-
+      let collectionWidth = UIScreen.main.bounds.size.width
+      print(UIScreen.main.bounds)
       switch (UIScreen.main.bounds.size) {
-      case CGSize(width: 414.0, height: 896.0):
-         width = collectionWidth * 0.79
-      case CGSize(width: 414.0, height: 736.0):
-         width = collectionWidth * 0.8
-      case CGSize(width: 375.0, height: 812.0):
-         width = collectionWidth * 0.69
-      case CGSize(width: 375.0, height: 667.0):
+      case CGSize(width: 414.0, height: 896.0): // 11 & pro max
          width = collectionWidth * 0.7
+      case CGSize(width: 414.0, height: 736.0):
+         width = collectionWidth * 0.7
+      case CGSize(width: 375.0, height: 812.0): // 11 pro
+         width = collectionWidth * 0.68
+      case CGSize(width: 375.0, height: 667.0): // se2 &
+         width = collectionWidth * 0.68
       default:
          width = collectionWidth * 0.6
       }
@@ -91,17 +90,11 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
          .subscribe(onNext: {
             let alert = self.viewModel.downloadAction(index: $0)
             self.present(alert, animated: true) {
-               alert.dismiss(animated: true, completion: nil)
+               if alert.title != "Save Fail" {
+                  alert.dismiss(animated: true, completion: nil)
+               }
             }
          })
-         .disposed(by: rx.disposeBag)
-      
-      // 파일 공유
-      shareButton.rx.tap
-         .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-         .map { self.pageControl.currentPage }
-         .map { self.viewModel.shareAction(currentIndex: $0) }
-         .subscribe(onNext: { self.present($0, animated: true, completion: nil) })
          .disposed(by: rx.disposeBag)
       
       viewModel.wallpapersSubject
@@ -121,7 +114,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    
    // 앱 기본 설정
    func configure() {
-      let scale: CGFloat = 0.75
+      let scale: CGFloat = 0.6
       pageControl.transform = CGAffineTransform(scaleX: scale, y: scale)
       
       for dot in pageControl.subviews {
