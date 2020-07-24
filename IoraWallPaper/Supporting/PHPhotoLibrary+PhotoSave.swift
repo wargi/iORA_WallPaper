@@ -10,7 +10,7 @@ import UIKit
 import Photos
 
 extension PHPhotoLibrary {
-   func savePhoto(image: UIImage, albumName: String, completion:((PHAsset?) -> ())? = nil) {
+   func savePhoto(image: UIImage, albumName: String, completion:((PHAsset?) -> ())? = nil) -> UIAlertController {
       func save() {
          if let album = PHPhotoLibrary.shared().findAlbum(albumName: albumName) {
             PHPhotoLibrary.shared().saveImage(image: image, album: album, completion: completion)
@@ -25,8 +25,11 @@ extension PHPhotoLibrary {
          }
       }
       
+      let alert = UIAlertController(title: "Save Success :)", message: nil, preferredStyle: .alert)
+
       if PHPhotoLibrary.authorizationStatus() == .authorized {
          save()
+         return alert
       } else {
          PHPhotoLibrary.requestAuthorization { (status) in
             if status == .authorized {
@@ -34,6 +37,17 @@ extension PHPhotoLibrary {
             }
          }
       }
+      
+      alert.title = "Save Fail"
+      alert.message = "IORA needs access to your photos to save photos"
+      let toSetting = UIAlertAction(title: "Go Setting", style: .default) { _ in
+         if let appSetting = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(appSetting, options: [:], completionHandler: nil)
+         }
+      }
+      
+      alert.addAction(toSetting)
+      return alert
    }
    
    

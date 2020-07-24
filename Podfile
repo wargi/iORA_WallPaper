@@ -5,6 +5,8 @@ target 'IoraWallPaper' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   
+  pod 'CenteredCollectionView'
+
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
   pod 'Firebase/Storage'
@@ -16,7 +18,23 @@ target 'IoraWallPaper' do
   pod 'RxCocoa'
   pod 'RxAlamofire'
   
-  # Pods for IoraWallPaper
+  # ReactorKit
+  pod 'ReactorKit'
+
+  # RxSwift: Main Framework
+  pod 'RxSwift'
+  pod 'RxCocoa'
   
+  # RxSwift: Etc
+  pod 'NSObject+Rx'
+  pod 'RxSwiftExt'
+  pod 'Action'
+  pod 'RxDataSources'
+  pod "RxGesture"
+  pod 'RxReachability'
+  pod 'RxKeyboard'
+  
+  # Networking
+  pod 'RxAlamofire'
 
 end

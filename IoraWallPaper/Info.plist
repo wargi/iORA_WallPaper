@@ -24,6 +24,8 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>IORA needs access to your photos to save photos</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>IORA needs access to your photos to save photos</string>
 	<key>UIApplicationSceneManifest</key>
