@@ -33,7 +33,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       configure()
       
       centeredCollectionViewFlowLayout = (collectionView.collectionViewLayout as! CenteredCollectionViewFlowLayout)
-      collectionView.decelerationRate  = UIScrollView.DecelerationRate.fast
+      collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
       
       centeredCollectionViewFlowLayout.minimumLineSpacing = 25
       

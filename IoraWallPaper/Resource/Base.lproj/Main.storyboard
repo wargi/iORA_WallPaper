@@ -560,7 +560,7 @@ Check your connection</string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iORA STUDIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQj-Zr-pL0">
                                         <rect key="frame" x="16" y="17" width="88" height="16.5"/>
                                         <fontDescription key="fontDescription" name="GmarketSansBold" family="Gmarket Sans" pointSize="14"/>
-                                        <color key="textColor" red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" name="DefaultColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1192,7 +1192,7 @@ Check your connection</string>
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="DefaultColor"/>
                         <color key="selectedImageTintColor" name="mainColor"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
@@ -1392,7 +1392,7 @@ Check your connection</string>
                                                     <rect key="frame" x="360.5" y="14" width="33.5" height="17.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="textColor" name="DefaultColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -1443,7 +1443,7 @@ Check your connection</string>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iorastudio@naver.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKg-fM-VAQ">
                                                             <rect key="frame" x="0.0" y="29" width="374" height="21"/>
                                                             <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="18"/>
-                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="textColor" name="DefaultColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1485,7 +1485,7 @@ Check your connection</string>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sophie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RtH-Tg-phH">
                                                                     <rect key="frame" x="0.0" y="0.0" width="374" height="20"/>
                                                                     <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="17"/>
-                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="textColor" name="DefaultColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="6bs-ng-bvz">
@@ -1493,7 +1493,7 @@ Check your connection</string>
                                                                     <subviews>
                                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading" translatesAutoresizingMaskIntoConstraints="NO" id="9ci-lB-whq">
                                                                             <rect key="frame" x="0.0" y="0.0" width="22.5" height="22.5"/>
-                                                                            <color key="tintColor" name="mainColor"/>
+                                                                            <color key="tintColor" name="DefaultColor"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="width" constant="22.5" id="KkY-kc-shv"/>
                                                                                 <constraint firstAttribute="height" constant="22.5" id="tYv-r8-zzQ"/>
@@ -1502,7 +1502,7 @@ Check your connection</string>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_hi_sophie_" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I30-wF-YL0">
                                                                             <rect key="frame" x="25.5" y="2" width="348.5" height="19"/>
                                                                             <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="16"/>
-                                                                            <nil key="textColor"/>
+                                                                            <color key="textColor" name="DefaultColor"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                     </subviews>
@@ -1593,6 +1593,9 @@ Check your connection</string>
         <image name="setings" width="28.333333969116211" height="28.333333969116211"/>
         <image name="star" width="37.666667938232422" height="37.666667938232422"/>
         <image name="tab_star" width="28.333333969116211" height="28.333333969116211"/>
+        <namedColor name="DefaultColor">
+            <color red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="mainColor">
             <color red="0.63137254901960782" green="0.80392156862745101" blue="0.73725490196078436" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>

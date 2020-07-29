@@ -33,9 +33,10 @@ class CustomTabbarController: UITabBarController {
    
    func setTabbarColor() {
       if #available(iOS 13, *) {
+         guard let targetColor = UIColor(named: "DefaultColor") else { return }
           let appearance = UITabBarAppearance()
-         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
-         appearance.stackedLayoutAppearance.normal.iconColor = .darkGray
+         appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: targetColor]
+         appearance.stackedLayoutAppearance.normal.iconColor = targetColor
           tabBar.standardAppearance = appearance
       }
    }
