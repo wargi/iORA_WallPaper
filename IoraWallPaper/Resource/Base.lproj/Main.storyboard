@@ -123,7 +123,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lok-UB-N6n">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="AkW-YL-N9f">
                                     <size key="itemSize" width="197" height="224"/>
@@ -167,16 +167,16 @@
                                 </connections>
                             </collectionView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JfH-YB-Ure">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Favorites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wHH-1E-6Tu">
-                                        <rect key="frame" x="136" y="331.5" width="142" height="29"/>
+                                        <rect key="frame" x="136" y="312" width="142" height="29"/>
                                         <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="25"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please add a favorite." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUA-VY-ir7">
-                                        <rect key="frame" x="10" y="370.5" width="394" height="23.5"/>
+                                        <rect key="frame" x="10" y="351" width="394" height="23.5"/>
                                         <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="20"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -205,7 +205,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EDC-Sv-H5M"/>
                     </view>
-                    <navigationItem key="navigationItem" id="bXz-uU-QLG"/>
+                    <navigationItem key="navigationItem" title="Favorite" id="e8p-Bp-kUV"/>
                     <connections>
                         <outlet property="collectionView" destination="lok-UB-N6n" id="aYH-kV-tms"/>
                         <outlet property="emptyView" destination="JfH-YB-Ure" id="fB7-Qw-F7W"/>
@@ -373,7 +373,7 @@
                                                     <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
-                                                    <nil key="textColor"/>
+                                                    <color key="textColor" name="DefaultColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -464,9 +464,9 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IORA STUDIO" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ER9-I4-TTA">
-                                        <rect key="frame" x="151" y="14.5" width="112" height="21"/>
+                                        <rect key="frame" x="150.5" y="14.5" width="113.5" height="21"/>
                                         <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="18"/>
-                                        <nil key="textColor"/>
+                                        <color key="textColor" name="DefaultColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m02-ra-U3V">
@@ -1233,12 +1233,16 @@ Check your connection</string>
         <!--favoriteNav-->
         <scene sceneID="7F0-dk-lF8">
             <objects>
-                <navigationController storyboardIdentifier="favoriteNav" title="favoriteNav" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="M45-bV-G1m" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="favoriteNav" title="favoriteNav" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="M45-bV-G1m" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorite" image="tab_star" id="hZm-GG-FcV"/>
                     <toolbarItems/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nKe-rz-sEj">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nKe-rz-sEj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="18"/>
+                            <color key="textColor" name="DefaultColor"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

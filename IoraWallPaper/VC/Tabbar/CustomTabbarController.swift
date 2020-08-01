@@ -10,12 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-enum NavigationTitle: String {
-   case mainNav = "mainNav"
-   //   case favoriteNav = "favoriteNav"
-   //   case categoryNav = "categoryNav"
-}
-
 enum TabbarVC {
    case mainVC(MainViewController)
    case favoriteVC(FavoriteViewController)

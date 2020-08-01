@@ -91,32 +91,12 @@ class PrepareForSetUp {
    
    //MARK: IMAGE DOWNLOAD
    // 이미지 다운로드
-   func imageDownload(info: MyWallPaper, completion: @escaping (UIImage?) -> ()) {
-      DispatchQueue.global().async {
-         let urlString = PrepareForSetUp.shared.displayType == .retina ? info.wallpaper.imageType.retinaDeviceImageURL : info.wallpaper.imageType.superRetinaDeviceImageURL
-         
-         guard let urlStr = urlString, let url = URL(string: urlStr) else {
-            fatalError("Invalid URL")
-         }
-         
-         let config = URLSessionConfiguration.default
-         config.requestCachePolicy = .returnCacheDataElseLoad
-         let session = URLSession(configuration: config)
-         
-         
-         let take = session.dataTask(with: url) { (data, resp, err) in
-            if let err = err {
-               print(err.localizedDescription)
-            } else if let data = data {
-               let image = UIImage(data: data)
-               info.image = image
-               DispatchQueue.main.async {
-                  completion(image)
-               }
-            }
-         }
-         take.resume()
-      }
+   static func getImageURL(info: MyWallPaper) -> URL {
+      let urlString = PrepareForSetUp.shared.displayType == .retina ? info.wallpaper.imageType.retinaDeviceImageURL : info.wallpaper.imageType.superRetinaDeviceImageURL
+      
+      guard let urlStr = urlString, let url = URL(string: urlStr) else { fatalError("Invalid URL") }
+      
+      return url
    }
    
    // 달력 이미지 파일 다운로드

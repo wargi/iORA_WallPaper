@@ -15,18 +15,20 @@ class WallPaperCollectionViewCell: UICollectionViewCell {
    @IBOutlet weak var wallpaperImageView: UIImageView!
    @IBOutlet var activityIndicator: UIActivityIndicatorView!
    var bag = DisposeBag()
-
-   func configure(info: MyWallPaper) {
-      isUserInteractionEnabled = false
-      self.activityIndicator.startAnimating()
-      
-      PrepareForSetUp.shared.imageDownload(info: info) { image in
-         DispatchQueue.main.async {
-            self.activityIndicator.stopAnimating()
-            self.wallpaperImageView.image = image
-            self.isUserInteractionEnabled = true
+   
+   var isLoading: Bool {
+      get { return activityIndicator.isAnimating }
+      set {
+         if newValue {
+            activityIndicator.startAnimating()
+         } else {
+            activityIndicator.stopAnimating()
          }
       }
+   }
+
+   func display(image: UIImage?) {
+      wallpaperImageView.image = image
    }
    
    override func prepareForReuse() {
