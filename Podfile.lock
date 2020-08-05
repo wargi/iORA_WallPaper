@@ -5,6 +5,9 @@ PODS:
   - Alamofire (5.2.2)
   - CenteredCollectionView (2.2.2)
   - Differentiator (4.0.1)
+  - Firebase/AdMob (6.28.1):
+    - Firebase/CoreOnly
+    - Google-Mobile-Ads-SDK (~> 7.50)
   - Firebase/Analytics (6.28.1):
     - Firebase/Core
   - Firebase/Core (6.28.1):
@@ -63,6 +66,8 @@ PODS:
   - FirebaseStorage (3.8.0):
     - FirebaseCore (~> 6.8)
     - GTMSessionFetcher/Core (~> 1.1)
+  - Google-Mobile-Ads-SDK (7.62.0):
+    - GoogleAppMeasurement (~> 6.0)
   - GoogleAppMeasurement (6.6.2):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
@@ -139,6 +144,7 @@ PODS:
 DEPENDENCIES:
   - Action
   - CenteredCollectionView
+  - Firebase/AdMob
   - Firebase/Analytics
   - Firebase/Core
   - Firebase/Database
@@ -169,6 +175,7 @@ SPEC REPOS:
     - FirebaseInstanceID
     - FirebaseMessaging
     - FirebaseStorage
+    - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
@@ -203,6 +210,7 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 358d5cb393d2750a745569ede06827c35aea530b
   FirebaseMessaging: bdd4d573eab37ebee29bad4e7c4b0ef18fa1a952
   FirebaseStorage: 3ef81ca5fa7817f85451ca09d516a34d2c7542a7
+  Google-Mobile-Ads-SDK: c92c27666fbf684c964259785a6b3cdd3068e06f
   GoogleAppMeasurement: 8cd1f289d60e629cf16ab03363b9e89c776b9651
   GoogleDataTransport: 8a40cb194ad242b6f6dfe72c14fe40fc67c4dcd7
   GoogleUtilities: e121a3867449ce16b0e35ddf1797ea7a389ffdf2
@@ -223,6 +231,6 @@ SPEC CHECKSUMS:
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
   RxSwiftExt: 4ca80336f43c28f11a2825cdd2fc61dd6c044697
 
-PODFILE CHECKSUM: 5843f950a6033ea14fd29bec972dc6e35398d30f
+PODFILE CHECKSUM: 65b0f54e93ecb487d57f0039b7d475df87bdc28e
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0.beta.1

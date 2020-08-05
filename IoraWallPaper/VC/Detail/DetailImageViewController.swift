@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import NSObject_Rx
+import GoogleMobileAds
 import CenteredCollectionView
 
 class DetailImageViewController: UIViewController, ViewModelBindableType {
@@ -24,12 +25,16 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    // 디테일 컬렉션 뷰
    @IBOutlet private weak var collectionView: UICollectionView!
    var centeredCollectionViewFlowLayout: CenteredCollectionViewFlowLayout!
+   // 구글 광고
+   var rewardedAd: GADRewardedAd?
    
    private var fromTap = false
    var viewModel: DetailImageViewModel!
    
    override func viewDidLoad() {
       super.viewDidLoad()
+      rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+      
       configure()
       
       centeredCollectionViewFlowLayout = (collectionView.collectionViewLayout as! CenteredCollectionViewFlowLayout)
@@ -88,6 +93,14 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
          .map { self.pageControl.currentPage }
          .subscribe(onNext: {
+            self.rewardedAd?.load(GADRequest()) { error in
+//              self.adRequestInProgress = false
+              if let error = error {
+                print("Loading failed: \(error)")
+              } else {
+                print("Loading Succeeded")
+              }
+            }
             let alert = self.viewModel.downloadAction(index: $0)
             self.present(alert, animated: true) {
                if alert.title != "Save Fail" {
@@ -155,10 +168,29 @@ extension DetailImageViewController: UICollectionViewDelegateFlowLayout {
 
 extension DetailImageViewController: UICollectionViewDelegate {
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-     let currentCenteredPage = centeredCollectionViewFlowLayout.currentCenteredPage
+      let currentCenteredPage = centeredCollectionViewFlowLayout.currentCenteredPage
       
-     if currentCenteredPage != indexPath.item {
-       centeredCollectionViewFlowLayout.scrollToPage(index: indexPath.item, animated: true)
-     }
+      if currentCenteredPage != indexPath.item {
+         centeredCollectionViewFlowLayout.scrollToPage(index: indexPath.item, animated: true)
+      }
+   }
+}
+
+extension DetailImageViewController: GADRewardedAdDelegate {
+   /// Tells the delegate that the user earned a reward.
+   func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
+      print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+   }
+   /// Tells the delegate that the rewarded ad was presented.
+   func rewardedAdDidPresent(_ rewardedAd: GADRewardedAd) {
+      print("Rewarded ad presented.")
+   }
+   /// Tells the delegate that the rewarded ad was dismissed.
+   func rewardedAdDidDismiss(_ rewardedAd: GADRewardedAd) {
+      print("Rewarded ad dismissed.")
+   }
+   /// Tells the delegate that the rewarded ad failed to present.
+   func rewardedAd(_ rewardedAd: GADRewardedAd, didFailToPresentWithError error: Error) {
+      print("Rewarded ad failed to present.")
    }
 }

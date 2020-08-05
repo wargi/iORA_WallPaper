@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import RxSwift
+import GoogleMobileAds
 import NSObject_Rx
 
 @UIApplicationMain
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       FirebaseApp.configure()
+      GADMobileAds.sharedInstance().start(completionHandler: nil)
       Messaging.messaging().delegate = self
       UNUserNotificationCenter.current().delegate = self
       

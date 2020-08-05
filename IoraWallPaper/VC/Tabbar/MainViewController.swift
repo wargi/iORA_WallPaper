@@ -22,11 +22,6 @@ class MainViewController: UIViewController, ViewModelBindableType {
    @IBOutlet private weak var searchButton: UIButton!
    @IBOutlet weak var topConstraint: NSLayoutConstraint!
    
-   // 오퍼레이션큐생성
-   // 🎾 취소관리를 위한 indexPath및 오퍼레이션을 저장
-   private let queue = OperationQueue()
-   private var operations: [IndexPath: [Operation]] = [:]
-   
    var viewModel: MainViewModel!
    
    override func viewDidLoad() {
@@ -149,37 +144,6 @@ extension MainViewController: UICollectionViewDataSource {
       
       let wallpaper = viewModel.wallpapers[indexPath.item]
       
-      // 오퍼레이션 생성
-      let downloadOp = NetworkImageOperation(url: PrepareForSetUp.getImageURL(info: wallpaper))
-      let tiltShiftOp = TiltShiftOperation()
-      
-      // 오퍼레이션 의존성 설정
-      tiltShiftOp.addDependency(downloadOp)
-      
-      // 🎾 오퍼레이션에 콜백함수의 전달(TiltShilt가 끝나고 할일) (메인쓰레드에서 실행됨)
-      tiltShiftOp.onImageProcessed = { image in
-         // indexPath에 해당하는 셀찾아서
-         guard let cell = collectionView.cellForItem(at: indexPath) as? WallPaperCollectionViewCell else { return }
-         
-         // 액티비티 인디케이터 멈추고, 이미지표시
-         cell.isLoading = false
-         cell.display(image: image)
-      }
-      
-      // 오퍼레이션큐에 오퍼레이션 넣기
-      queue.addOperation(downloadOp)
-      queue.addOperation(tiltShiftOp)
-      
-      // indexPath에 기존 operation이 있으면 일단 취소시키기
-      if let existingOperations = operations[indexPath] {
-         for operation in existingOperations {
-            operation.cancel()
-         }
-      }
-      
-      // 🎾 향후, 오퍼레이션 취소를 위해 딕셔너리에 찾기쉽게 [indexPath:[오퍼레이션]]으로 저장
-      operations[indexPath] = [tiltShiftOp, downloadOp]
-      
       return cell
    }
    
@@ -195,14 +159,4 @@ extension MainViewController: UICollectionViewDataSource {
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout { 
-   // 🎾 컬렉션뷰의 셀이 지났갔을때, 취소를 위한 구현부분
-   func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-      
-      // 🎾 indexPath에 해당하는 Operation찾아서 취소
-      if let operations = operations[indexPath] {
-         for operation in operations {
-            operation.cancel()
-         }
-      }
-   }
 }
