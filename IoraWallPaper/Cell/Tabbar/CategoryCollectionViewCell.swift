@@ -16,27 +16,33 @@ class CategoryCollectionViewCell: UICollectionViewCell {
    @IBOutlet private weak var titleLabel: UILabel!
    @IBOutlet private weak var contentLabel: UILabel!
    
+   var isLoading: Bool {
+      get { return activityIndicator.isAnimating }
+      set {
+         if newValue {
+            activityIndicator.startAnimating()
+         } else {
+            activityIndicator.stopAnimating()
+         }
+      }
+   }
+   
+   override func awakeFromNib() {
+      super.awakeFromNib()
+      
+      layer.cornerRadius = 25
+   }
+   
+   func display(image: UIImage?) {
+      imageView.image = image
+   }
+   
    func configure(category: Tag) {
-      self.layer.cornerRadius = 25
       titleLabel.text = category.info.name
       contentLabel.text = category.info.desc
       
       if let image = category.result[0].image {
          imageView.image = image
-      } else {
-         isUserInteractionEnabled = false
-         self.activityIndicator.startAnimating()
-         PrepareForSetUp.shared.imageDownload(info: category.result[0]) { (image) in
-            DispatchQueue.main.async {
-               self.activityIndicator.stopAnimating()
-               self.imageView.image = image
-               self.isUserInteractionEnabled = true
-            }
-         }
       }
-   }
-   
-   override func prepareForReuse() {
-      self.layer.cornerRadius = 25
    }
 }

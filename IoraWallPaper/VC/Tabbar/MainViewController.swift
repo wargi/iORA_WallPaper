@@ -23,7 +23,7 @@ class MainViewController: UIViewController, ViewModelBindableType {
    @IBOutlet weak var topConstraint: NSLayoutConstraint!
    
    var viewModel: MainViewModel!
-   var imageOperations: [ImageLoadOpertaion] = []
+   var imageOperations: [IndexPath: ImageLoadOpertaion] = [:]
    var downloadQueue = OperationQueue()
    
    override func viewDidLoad() {
@@ -145,6 +145,7 @@ extension MainViewController: UICollectionViewDataSource {
       guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPaperCollectionViewCell.identifier, for: indexPath) as? WallPaperCollectionViewCell else { fatalError("invalid mainCell") }
       
       let wallpaper = viewModel.wallpapers[indexPath.item]
+      cell.wallpaper = wallpaper
       
       return cell
    }
@@ -162,10 +163,24 @@ extension MainViewController: UICollectionViewDataSource {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      guard let cell = cell as? WallPaperCollectionViewCell,
+         let target = cell.wallpaper,
+         cell.wallpaperImageView.image == nil else { return }
       
+      let imageOp = ImageLoadOpertaion(url: PrepareForSetUp.getImageURL(info: target)) { (image) in
+         DispatchQueue.main.async {
+            cell.display(image: image)
+         }
+      }
+      
+      downloadQueue.addOperation(imageOp)
+      imageOperations.updateValue(imageOp, forKey: indexPath)
    }
    
    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-      
+      if let op = imageOperations[indexPath] {
+         op.cancel()
+         imageOperations.removeValue(forKey: indexPath)
+      }
    }
 }

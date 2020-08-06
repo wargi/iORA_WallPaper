@@ -40,7 +40,7 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
          if let image = wallpaper.image {
             cell.wallpaperImageView.image = image
          } else {
-            cell.configure(info: wallpaper)
+//            cell.configure(info: wallpaper)
          }
       }
       .disposed(by: rx.disposeBag)

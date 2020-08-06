@@ -46,12 +46,12 @@ class DetailCollectionViewCell: UICollectionViewCell {
          wallPaperImageView.image = image
       } else {
          self.activityIndicator.startAnimating()
-         PrepareForSetUp.shared.imageDownload(info: info) { image in
-            DispatchQueue.main.async {
-               self.activityIndicator.stopAnimating()
-               self.wallPaperImageView.image = image
-            }
-         }
+//         PrepareForSetUp.shared.imageDownload(info: info) { image in
+//            DispatchQueue.main.async {
+//               self.activityIndicator.stopAnimating()
+//               self.wallPaperImageView.image = image
+//            }
+//         }
       }
    }
    

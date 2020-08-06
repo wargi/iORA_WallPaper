@@ -32,6 +32,7 @@ class MyWallPaper {
 
 class WallPapers {
    static let shared = WallPapers()
+   var cacheImage = [URL: UIImage?]()
    var myWallPapers = [MyWallPaper]()
    let wallpaperSubject = BehaviorSubject<[MyWallPaper]>(value: [])
    

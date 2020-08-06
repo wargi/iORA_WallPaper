@@ -23,8 +23,14 @@ class ImageLoadOpertaion: AsyncOperation {
    override func main() {
       if self.isCancelled { return }
       
-      let request = URLRequest(url: self.url)
+      if let image = WallPapers.shared.cacheImage[url] {
+         if self.isCancelled { return }
+         self.loadImage = image
+         self.completion?(image)
+         self.state = .Finished
+      }
       
+      let request = URLRequest(url: self.url)
       let task = URLSession.shared.dataTask(with: request) { data, _, err in
          if let err = err {
             print(err.localizedDescription)
@@ -37,6 +43,7 @@ class ImageLoadOpertaion: AsyncOperation {
             self.loadImage = image
             self.completion?(image)
             self.state = .Finished
+            WallPapers.shared.cacheImage.updateValue(image, forKey: self.url)
          } else {
             return
          }

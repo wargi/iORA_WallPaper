@@ -12,6 +12,7 @@ import RxSwift
 
 class WallPaperCollectionViewCell: UICollectionViewCell {
    static let identifier = "WallPaperCollectionViewCell"
+   var wallpaper: MyWallPaper?
    @IBOutlet weak var wallpaperImageView: UIImageView!
    @IBOutlet var activityIndicator: UIActivityIndicatorView!
    var bag = DisposeBag()
