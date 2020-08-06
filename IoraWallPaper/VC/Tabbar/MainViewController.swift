@@ -23,6 +23,8 @@ class MainViewController: UIViewController, ViewModelBindableType {
    @IBOutlet weak var topConstraint: NSLayoutConstraint!
    
    var viewModel: MainViewModel!
+   var imageOperations: [ImageLoadOpertaion] = []
+   var downloadQueue = OperationQueue()
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -158,5 +160,12 @@ extension MainViewController: UICollectionViewDataSource {
    }
 }
 
-extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout { 
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      
+   }
 }
