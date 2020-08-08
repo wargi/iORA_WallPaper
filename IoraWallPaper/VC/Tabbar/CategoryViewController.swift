@@ -14,6 +14,10 @@ import NSObject_Rx
 class CategoryViewController: UIViewController {
    var viewModel = CategoryViewModel()
    @IBOutlet private weak var collectionView: UICollectionView!
+   
+   var imageOperations: [IndexPath: ImageLoadOpertaion] = [:]
+   var downloadQueue = OperationQueue()
+   
    override func viewDidLoad() {
       super.viewDidLoad()
       
@@ -54,5 +58,26 @@ class CategoryViewController: UIViewController {
    }
 }
 
-extension CategoryViewController: UICollectionViewDelegate {
+extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      guard let cell = cell as? CategoryCollectionViewCell,
+         let target = cell.category,
+         cell.imageView.image == nil else { return }
+      
+      let imageOp = ImageLoadOpertaion(url: PrepareForSetUp.getImageURL(info: target.result[0])) { (image) in
+         DispatchQueue.main.async {
+            cell.display(image: image)
+         }
+      }
+      
+      downloadQueue.addOperation(imageOp)
+      imageOperations.updateValue(imageOp, forKey: indexPath)
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      if let op = imageOperations[indexPath] {
+         op.cancel()
+         imageOperations.removeValue(forKey: indexPath)
+      }
+   }
 }

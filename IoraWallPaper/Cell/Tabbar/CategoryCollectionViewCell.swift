@@ -11,10 +11,12 @@ import RxSwift
 
 class CategoryCollectionViewCell: UICollectionViewCell {
    static let identifier = "CategoryCollectionViewCell"
+   var category: Tag?
+   @IBOutlet weak var imageView: UIImageView!
    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
-   @IBOutlet private weak var imageView: UIImageView!
    @IBOutlet private weak var titleLabel: UILabel!
    @IBOutlet private weak var contentLabel: UILabel!
+   
    
    var isLoading: Bool {
       get { return activityIndicator.isAnimating }
@@ -38,11 +40,8 @@ class CategoryCollectionViewCell: UICollectionViewCell {
    }
    
    func configure(category: Tag) {
+      self.category = category
       titleLabel.text = category.info.name
       contentLabel.text = category.info.desc
-      
-      if let image = category.result[0].image {
-         imageView.image = image
-      }
    }
 }
