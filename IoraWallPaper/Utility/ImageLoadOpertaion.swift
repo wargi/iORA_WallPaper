@@ -28,6 +28,7 @@ class ImageLoadOpertaion: AsyncOperation {
          self.loadImage = image
          self.completion?(image)
          self.state = .Finished
+         return
       }
       
       let request = URLRequest(url: self.url)

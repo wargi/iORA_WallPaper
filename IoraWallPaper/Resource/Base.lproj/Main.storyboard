@@ -122,6 +122,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z6R-jd-A5w">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="88"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oAn-VG-3Kc">
+                                        <rect key="frame" x="12" y="55" width="390" height="21"/>
+                                        <fontDescription key="fontDescription" name="NanumGothicBold" family="NanumGothic" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="oAn-VG-3Kc" firstAttribute="leading" secondItem="z6R-jd-A5w" secondAttribute="leading" constant="12" id="COa-9l-JLJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="oAn-VG-3Kc" secondAttribute="bottom" constant="12" id="XCk-JO-7Pb"/>
+                                    <constraint firstAttribute="trailing" secondItem="oAn-VG-3Kc" secondAttribute="trailing" constant="12" id="iS4-qA-12p"/>
+                                    <constraint firstItem="oAn-VG-3Kc" firstAttribute="centerX" secondItem="z6R-jd-A5w" secondAttribute="centerX" id="qN6-cO-hAl"/>
+                                    <constraint firstAttribute="height" constant="88" id="qrU-rH-Zcj"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="lok-UB-N6n">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -194,18 +213,22 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="EDC-Sv-H5M" firstAttribute="trailing" secondItem="z6R-jd-A5w" secondAttribute="trailing" id="0fQ-J8-bE7"/>
                             <constraint firstItem="JfH-YB-Ure" firstAttribute="leading" secondItem="lok-UB-N6n" secondAttribute="leading" id="2Kv-Xd-MdA"/>
                             <constraint firstItem="lok-UB-N6n" firstAttribute="leading" secondItem="EDC-Sv-H5M" secondAttribute="leading" id="3ck-2A-90h"/>
+                            <constraint firstItem="JfH-YB-Ure" firstAttribute="top" secondItem="z6R-jd-A5w" secondAttribute="bottom" id="4CX-Aa-5mF"/>
+                            <constraint firstItem="lok-UB-N6n" firstAttribute="top" secondItem="z6R-jd-A5w" secondAttribute="bottom" id="Aei-Za-NdO"/>
                             <constraint firstItem="JfH-YB-Ure" firstAttribute="bottom" secondItem="lok-UB-N6n" secondAttribute="bottom" id="CVJ-oo-WFs"/>
                             <constraint firstItem="EDC-Sv-H5M" firstAttribute="trailing" secondItem="lok-UB-N6n" secondAttribute="trailing" id="EB2-Kp-Nfy"/>
                             <constraint firstItem="JfH-YB-Ure" firstAttribute="trailing" secondItem="lok-UB-N6n" secondAttribute="trailing" id="F9q-Df-7cJ"/>
-                            <constraint firstItem="JfH-YB-Ure" firstAttribute="top" secondItem="lok-UB-N6n" secondAttribute="top" id="Gru-iw-H3J"/>
                             <constraint firstItem="EDC-Sv-H5M" firstAttribute="bottom" secondItem="lok-UB-N6n" secondAttribute="bottom" id="IdQ-k4-gia"/>
-                            <constraint firstItem="lok-UB-N6n" firstAttribute="top" secondItem="EDC-Sv-H5M" secondAttribute="top" id="Skl-mT-Fbz"/>
+                            <constraint firstItem="z6R-jd-A5w" firstAttribute="top" secondItem="k6B-LR-bWi" secondAttribute="top" id="WQt-Mh-4ZG"/>
+                            <constraint firstItem="z6R-jd-A5w" firstAttribute="leading" secondItem="EDC-Sv-H5M" secondAttribute="leading" id="iCF-zY-COm"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EDC-Sv-H5M"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Favorite" id="e8p-Bp-kUV"/>
+                    <navigationItem key="navigationItem" title="Favorite" id="Vy0-hD-BHd"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="lok-UB-N6n" id="aYH-kV-tms"/>
                         <outlet property="emptyView" destination="JfH-YB-Ure" id="fB7-Qw-F7W"/>
@@ -213,7 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yQ7-AT-ESB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1841" y="165"/>
+            <point key="canvasLocation" x="1840.5797101449277" y="164.73214285714286"/>
         </scene>
         <!--categoryVC-->
         <scene sceneID="AIa-dO-XGX">
@@ -1236,7 +1259,7 @@ Check your connection</string>
                 <navigationController storyboardIdentifier="favoriteNav" title="favoriteNav" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="M45-bV-G1m" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Favorite" image="tab_star" id="hZm-GG-FcV"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nKe-rz-sEj">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nKe-rz-sEj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
@@ -1392,8 +1415,8 @@ Check your connection</string>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ApZ-fm-wDF">
-                                                    <rect key="frame" x="360.5" y="14" width="33.5" height="17.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="1.1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ApZ-fm-wDF">
+                                                    <rect key="frame" x="373" y="14" width="21" height="17.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" name="NanumGothic" family="NanumGothic" pointSize="15"/>
                                                     <color key="textColor" name="DefaultColor"/>

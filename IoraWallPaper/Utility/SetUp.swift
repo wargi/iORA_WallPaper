@@ -117,6 +117,7 @@ class PrepareForSetUp {
    
    // Photo Library +++ ADD FILE
    func imageFileDownload(image: UIImage?) -> UIAlertController? {
+      print(image?.size)
       guard let image = image else { return nil }
       
       return PHPhotoLibrary.shared().savePhoto(image: image, albumName: "IORA")

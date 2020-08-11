@@ -27,22 +27,9 @@ class WallPaperCollectionViewCell: UICollectionViewCell {
          }
       }
    }
-
-   func display(image: UIImage?) {
-      wallpaperImageView.image = image
-   }
    
-   override func prepareForReuse() {
-      self.layer.cornerRadius = 15
-      
-      wallpaperImageView.image = nil
-      self.isHidden = false
-      
-      bag = DisposeBag()
-   }
-   
-   override init(frame: CGRect) {
-      super.init(frame: frame)
+   override func awakeFromNib() {
+      super.awakeFromNib()
       
       self.layer.cornerRadius = 15
       self.layer.borderWidth = 0.1
@@ -53,12 +40,13 @@ class WallPaperCollectionViewCell: UICollectionViewCell {
          self.activityIndicator.style = .gray
       }
    }
+
+   func display(image: UIImage?) {
+      wallpaperImageView.image = image
+   }
    
-   required init?(coder: NSCoder) {
-      super.init(coder: coder)
-      
-      self.layer.cornerRadius = 15
-      self.layer.borderWidth = 0.1
-      self.layer.borderColor = UIColor.lightGray.cgColor
+   override func prepareForReuse() {
+      wallpaperImageView.image = nil
+      self.isHidden = false
    }
 }

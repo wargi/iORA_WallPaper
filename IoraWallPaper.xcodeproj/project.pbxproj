@@ -324,10 +324,10 @@
 		8EF4ADB424C94AC50051F512 /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
-				8E88804A248DFD0100E7E620 /* WallPaperCollectionViewCell.swift */,
 				8ED9C1FB24AA3CB5008F41FC /* HeaderCollectionViewCell.swift */,
-				8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */,
+				8E88804A248DFD0100E7E620 /* WallPaperCollectionViewCell.swift */,
 				8E6E32D624C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift */,
+				8E06667C24AA90ED00FB5B92 /* BannerCollectionViewCell.swift */,
 				8EBADD6724BC25410059C3C1 /* CategoryCollectionViewCell.swift */,
 				8EF4ADB824C94CD50051F512 /* AboutTableViewCell.swift */,
 			);

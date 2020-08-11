@@ -15,6 +15,9 @@ import CenteredCollectionView
 
 class DetailImageViewController: UIViewController, ViewModelBindableType {
    static let identifier = "DetailImageViewController"
+   var imageOperations: [IndexPath: ImageLoadOpertaion] = [:]
+   var downloadQueue = OperationQueue()
+   
    // 상단 버튼
    @IBOutlet private weak var backButton: UIButton!
    @IBOutlet private weak var calendarButton: UIButton!
@@ -33,7 +36,9 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-3940256099942544/1712485313")
+      navigationController?.navigationBar.isHidden = true
+      
+      rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-4824477530561217/9898668680")
       
       configure()
       
@@ -91,21 +96,13 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       // 파일 다운로드
       saveButton.rx.tap
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-         .map { self.pageControl.currentPage }
          .subscribe(onNext: {
             self.rewardedAd?.load(GADRequest()) { error in
-//              self.adRequestInProgress = false
               if let error = error {
                 print("Loading failed: \(error)")
               } else {
-                print("Loading Succeeded")
+                self.rewardedAd?.present(fromRootViewController: self, delegate: self)
               }
-            }
-            let alert = self.viewModel.downloadAction(index: $0)
-            self.present(alert, animated: true) {
-               if alert.title != "Save Fail" {
-                  alert.dismiss(animated: true, completion: nil)
-               }
             }
          })
          .disposed(by: rx.disposeBag)
@@ -113,7 +110,6 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       viewModel.wallpapersSubject
          .bind(to: collectionView.rx.items(cellIdentifier: DetailCollectionViewCell.identifier,
                                            cellType: DetailCollectionViewCell.self)) { item, wallpaper, cell in
-                                             
                                              cell.configure(info: wallpaper)
       }
       .disposed(by: rx.disposeBag)
@@ -167,6 +163,29 @@ extension DetailImageViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension DetailImageViewController: UICollectionViewDelegate {
+   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      guard let cell = cell as? DetailCollectionViewCell,
+         let target = cell.info,
+         cell.wallPaperImageView.image == nil else { return }
+      
+      let imageOp = ImageLoadOpertaion(url: PrepareForSetUp.getImageURL(info: target)) { (image) in
+         DispatchQueue.main.async {
+            cell.display(image: image)
+            if cell.info?.image == nil { cell.info?.image = image }
+         }
+      }
+      
+      downloadQueue.addOperation(imageOp)
+      imageOperations.updateValue(imageOp, forKey: indexPath)
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      if let op = imageOperations[indexPath] {
+         op.cancel()
+         imageOperations.removeValue(forKey: indexPath)
+      }
+   }
+   
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       let currentCenteredPage = centeredCollectionViewFlowLayout.currentCenteredPage
       
@@ -180,6 +199,12 @@ extension DetailImageViewController: GADRewardedAdDelegate {
    /// Tells the delegate that the user earned a reward.
    func rewardedAd(_ rewardedAd: GADRewardedAd, userDidEarn reward: GADAdReward) {
       print("Reward received with currency: \(reward.type), amount \(reward.amount).")
+      let alert = self.viewModel.downloadAction(index: pageControl.currentPage)
+      self.present(alert, animated: true) {
+         if alert.title != "Save Fail" {
+            alert.dismiss(animated: true, completion: nil)
+         }
+      }
    }
    /// Tells the delegate that the rewarded ad was presented.
    func rewardedAdDidPresent(_ rewardedAd: GADRewardedAd) {

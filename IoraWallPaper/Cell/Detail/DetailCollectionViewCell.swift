@@ -16,10 +16,22 @@ class DetailCollectionViewCell: UICollectionViewCell {
    @IBOutlet weak var wallPaperImageView: UIImageView!
    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
    @IBOutlet private weak var starButton: UIButton!
-   private var info: MyWallPaper?
+   var info: MyWallPaper?
    
-   func configure(info: MyWallPaper) {
-      self.info = info
+   var isLoading: Bool {
+      get { return activityIndicator.isAnimating }
+      set {
+         if newValue {
+            activityIndicator.startAnimating()
+         } else {
+            activityIndicator.stopAnimating()
+         }
+      }
+   }
+   
+   override func awakeFromNib() {
+      super.awakeFromNib()
+      
       layer.masksToBounds = false
       layer.shadowColor = UIColor.black.cgColor
       layer.shadowOpacity = 0.4
@@ -28,7 +40,15 @@ class DetailCollectionViewCell: UICollectionViewCell {
       layer.shadowPath = UIBezierPath(roundedRect: bounds,
                                       cornerRadius: 30).cgPath
       wallPaperImageView.layer.cornerRadius = 30
-      
+   }
+   
+   func display(image: UIImage?) {
+      wallPaperImageView.image = image
+   }
+   
+   func configure(info: MyWallPaper) {
+      self.info = info
+
       guard let urlStr = PrepareForSetUp.shared.displayType == .retina ? info.wallpaper.imageType.retinaDeviceImageURL : info.wallpaper.imageType.superRetinaDeviceImageURL else {
             fatalError("invalid favoriteArr")
       }
@@ -41,18 +61,6 @@ class DetailCollectionViewCell: UICollectionViewCell {
          }
       })
          .disposed(by: rx.disposeBag)
-
-      if let image = info.image {
-         wallPaperImageView.image = image
-      } else {
-         self.activityIndicator.startAnimating()
-//         PrepareForSetUp.shared.imageDownload(info: info) { image in
-//            DispatchQueue.main.async {
-//               self.activityIndicator.stopAnimating()
-//               self.wallPaperImageView.image = image
-//            }
-//         }
-      }
    }
    
    @IBAction private func addFavoriteAction(_ sender: UIButton) {

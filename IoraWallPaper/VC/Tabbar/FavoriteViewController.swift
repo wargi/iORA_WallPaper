@@ -14,7 +14,10 @@ import NSObject_Rx
 class FavoriteViewController: UIViewController {
    @IBOutlet private weak var collectionView: UICollectionView!
    @IBOutlet private weak var emptyView: UIView!
+   
    var viewModel = FavoriteViewModel()
+   var imageOperations: [IndexPath: ImageLoadOpertaion] = [:]
+   var downloadQueue = OperationQueue()
    
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -44,7 +47,7 @@ class FavoriteViewController: UIViewController {
       WallPapers.shared.favoriteSubject
          .bind(to: collectionView.rx.items(cellIdentifier: FavoriteWallpaperCollectionViewCell.identifier,
                                            cellType: FavoriteWallpaperCollectionViewCell.self)) { index, urlStr, cell in
-                                             cell.configure(urlString: urlStr)
+                                             cell.targetUrlStr = urlStr
       }
       .disposed(by: rx.disposeBag)
       
@@ -82,7 +85,30 @@ class FavoriteViewController: UIViewController {
 extension FavoriteViewController: UICollectionViewDelegate {
    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       self.collectionView.deselectItem(at: IndexPath(item: indexPath.item, section: 0), animated: true)
+   }
+   
+   
+   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      guard let cell = cell as? FavoriteWallpaperCollectionViewCell,
+         let targetUrlStr = cell.targetUrlStr,
+         let targetUrl = URL(string: targetUrlStr),
+         cell.wallpaperImageView.image == nil else { return }
       
+      let imageOp = ImageLoadOpertaion(url: targetUrl) { (image) in
+         DispatchQueue.main.async {
+            cell.display(image: image)
+         }
+      }
+      
+      downloadQueue.addOperation(imageOp)
+      imageOperations.updateValue(imageOp, forKey: indexPath)
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+      if let op = imageOperations[indexPath] {
+         op.cancel()
+         imageOperations.removeValue(forKey: indexPath)
+      }
    }
 }
 

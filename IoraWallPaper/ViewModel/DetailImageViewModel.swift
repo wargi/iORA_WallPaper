@@ -36,8 +36,9 @@ final class DetailImageViewModel: CommonViewModel {
    
    func downloadAction(index: Int) -> UIAlertController {
       let wallpaper = wallpapers[index]
-      
-      guard let alert = PrepareForSetUp.shared.imageFileDownload(image: wallpaper.image) else {
+      let url = PrepareForSetUp.getImageURL(info: wallpaper)
+      guard let image = WallPapers.shared.cacheImage[url] else { fatalError() }
+      guard let alert = PrepareForSetUp.shared.imageFileDownload(image: image) else {
          fatalError()
       }
       
