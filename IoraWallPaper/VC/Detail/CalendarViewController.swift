@@ -95,7 +95,9 @@ class CalendarViewController: UIViewController, ViewModelBindableType {
       downloadButton.rx.tap
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
          .subscribe(onNext: { _ in
+            self.isHiddenDisplayUI(isHidden: true)
             if let alert = PrepareForSetUp.shared.screenImageDownload() {
+               self.isHiddenDisplayUI(isHidden: false)
                if alert.title == "Save Success :)" {
                   let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
                      self.dismiss(animated: true, completion: nil)
