@@ -97,13 +97,7 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
       saveButton.rx.tap
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
          .subscribe(onNext: {
-            self.rewardedAd?.load(GADRequest()) { error in
-              if let error = error {
-                print("Loading failed: \(error)")
-              } else {
-                self.rewardedAd?.present(fromRootViewController: self, delegate: self)
-              }
-            }
+            
          })
          .disposed(by: rx.disposeBag)
       

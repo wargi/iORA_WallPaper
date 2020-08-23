@@ -11,6 +11,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 import NSObject_Rx
+import GoogleMobileAds
 
 // 받아오는 데이터
 struct ImageInfo: Codable {
@@ -42,6 +43,7 @@ class WallPapers {
    var tags = [Tag]()
    let tagSubject = BehaviorSubject<[Tag]>(value: [])
    
+   var rewardedAd: GADRewardedAd?
    let bag = DisposeBag()
    
    // 데이터 다운로드
@@ -62,7 +64,15 @@ class WallPapers {
       }
    }
    
-   func subscribeFavorite() {
-
+   func createAndLoadRewardedAd() -> GADRewardedAd? {
+     rewardedAd = GADRewardedAd(adUnitID: "ca-app-pub-4824477530561217/9898668680")
+     rewardedAd?.load(GADRequest()) { error in
+       if let error = error {
+         print("Loading failed: \(error)")
+       } else {
+         print("Loading Succeeded")
+       }
+     }
+     return rewardedAd
    }
 }
