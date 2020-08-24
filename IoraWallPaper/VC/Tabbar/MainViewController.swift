@@ -28,7 +28,6 @@ class MainViewController: UIViewController, ViewModelBindableType {
    
    override func viewDidLoad() {
       super.viewDidLoad()
-      WallPapers.shared.subscribeFavorite()
       collectionViewSetUp()
       configure()
    }

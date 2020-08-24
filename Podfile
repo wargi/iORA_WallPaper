@@ -24,7 +24,7 @@ target 'IoraWallPaper' do
   pod 'RxSwiftExt'
   pod 'Action'
   pod 'RxDataSources'
-  pod "RxGesture"
+  pod 'RxGesture'
   pod 'RxReachability'
   pod 'RxKeyboard'
   
