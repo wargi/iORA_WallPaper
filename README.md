@@ -42,7 +42,7 @@
 
 - **배경화면 검색**
 
-<img src="/Users/wargi_p/iOS/iORA_WallPaper/iORAFlow/iORA03.png" alt="iORA01" style="zoom:150%;" />
+![iORA01](https://github.com/wargi/iORA_WallPaper/blob/master/iORAFlow/IORA03.png)
 
 - **즐겨찾는 배경 설정**
 
