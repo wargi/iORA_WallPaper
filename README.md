@@ -42,7 +42,7 @@
 
 - **배경화면 검색**
 
-![iORA01](https://github.com/wargi/iORA_WallPaper/blob/master/iORAFlow/IORA03.png)
+![iORA01](https://github.com/wargi/iORA_WallPaper/blob/master/iORAFlow/iORA03.png)
 
 - **즐겨찾는 배경 설정**
 
