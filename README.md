@@ -1,4 +1,4 @@
-# IORA 
+# iORA 
 <p align="center">
 <img src="https://img.shields.io/badge/swift-5.0-blue.svg" />
 <img src="https://img.shields.io/badge/xcode-11.5-green.svg" />
@@ -11,57 +11,71 @@
 <br>
 
 > - 첫번째 개인 앱 프로젝트  
-> - 직접 만든 여러가지 배경화면을 제공하는 어플입니다.
+> - 혼자서 기획부터 출시까지 경험하고 싶어 진행한 개인 프로젝트
 
 <br>
 
 ## Contents
 - IORA
-  - [Contents](#contents)
-  - [About IORA](#about-IORA)
-  - [App Analysis](#app-analysis)
-  - [Version Update](#version-update)
-        - [**update history**](#update-history)
+  - [About IORA](#About IORA)
+  - [Preview](#Preview)
+  - [Version History](#Version History)
+  - [Download](#download)
   - [What I Learned](#what-i-learned)
   - [Things to do next](#things-to-do-next)
-  - [Contact](#contact)
 
 <br>
 
 ## About IORA
 
-![ver 1.0](./Scrennshot/ver%201.0.png) 
+![AppStoreImage](./Scrennshot/AppStoreImage.png) 
 
 - 프로젝트 기간: 20. 06. ~ 20. 07.
-- 직접 만든 여러가지 배경화면을 제공하는 어플입니다.
-- 프로젝트 처음부터 출시까지 경험해보고 개발과 기획을 모두 진행하였습니다.
-
-<br>
-
->   - 카테고리별 모아보기
->   - Calendar: 좋아하는 배경화면에 달력을 추가
->   - Preview: 적용한 화면을 미리 확인
->   - Download: 배경화면 다운로드
->   - Share: 배경화면 공유
->   - 카테고리별 검색
+- **팀프로젝트에서 벗어나 혼자**서 처음 **기획부터 UX/UI에 대해 고민해 보고, 앱을 앱스토어에 출시**까지 모든 경험을 해보고 싶어 시작한 개인 프로젝트입니다. 
+- **주요 기능**: **다양한 배경화면을** 보여주고, 사용자가 마음에 드는 **배경화면을 다운**로드 받거나, 마음에 드는 배경화면을 즐겨찾기, 친구에게 **공유** 등을 할 수 있고 또, **자신이 선택한 배경화면에 달력을 추가**하여, 배경화면을 설정할 수 있는 앱입니다.
 
 <br>
 
 ## Preview
-![]()
-- Week-it은 2018년 7월에 release되어 약 7개월 간 6만건의 노출 수, 2,000건의 판매량을 기록하였습니다.
-- 한눈에 보이는 단순한 디자인 덕에 🇺🇸 미국, 🇬🇧 영국 등 해외에서 더욱 인기가 있습니다.
-- 📫 현재(19.02.14)까지 총 16명이 더 나은 Week-it을 위해 피드백 메일을 보내주셨습니다.
-- [Youtube Link](https://www.youtube.com/watch?v=l0sixcSdIpw&feature=youtu.be)
+[App 실행 영상](https://www.youtube.com/watch?v=l0sixcSdIpw&feature=youtu.be)
+
+- **배경화면 검색**
+
+![iORA01](iORAFlow/IORA03.png)
+
+- **즐겨찾는 배경 설정**
+
+![iORA02](iORAFlow/IORA0.png)
+
+- **카테고리**
+
+![iORA03](iORAFlow/IORA0.png)
+
+- **달력 설정**
+
+![iORA04](iORAFlow/IORA0.png)
+
+- **배경화면 적용 화면 미리보기**
+
+![iORA05](iORAFlow/IORA0.png)
+
+<br>
 
 ## Version History
 - Version 1.0.0: App Store Release
 
 <br>
 
+## Download
+
+<a href="https://apps.apple.com/kr/app/iora/id1518747131"> ![Available](iORAFlow/Download_on_the_App_Store_Badge_US-UK_blk.png)</a>
+
+<br>
+
 ## What I Learned
 - RxSwift
-- Firebase   
+- Firebase Cloud(Realtime DB, Stroage)
+- Push Notification  
 - Date, Calendar
 - CollectionView(DataPrefetch)
 - MVVM
@@ -71,15 +85,9 @@
 <br>
 
 ## Things to do next 
-- MVVM
+- **MVVM**
   - MVVM 패턴으로 완벽히 짜여있지 않아 공부하며 계속 수정해나가겠습니다. 
 - RxSwift
   - 이번 프로젝트에 처음 적용하고 사용해보았지만, 부족함을 느껴 계속 공부해가며 하나씩 바꿔나갈 예정입니다 :)
-- Continuous refactoring
+- **Continuous refactoring**
   - 계속적인 리팩토링만이 살 길 !!
-
-<br>
-
-## Contact
-- phone: 010 2249 1665
-- mail: wkahdla12346@gmail.com
