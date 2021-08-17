@@ -46,19 +46,19 @@
 
 - **즐겨찾는 배경 설정**
 
-<img src="/Users/wargi_p/iOS/iORA_WallPaper/iORAFlow/iORA05.png" alt="iORA02" style="zoom:150%;" />
+![iORA02](https://github.com/wargi/iORA_WallPaper/blob/master/iORAFlow/iORA05.png)
 
 - **카테고리**
 
-<img src="/Users/wargi_p/iOS/iORA_WallPaper/iORAFlow/iORA04.png" alt="iORA03" style="zoom:100%;" />
+![iORA03](https://github.com/wargi/iORA_WallPaper/blob/master/iORAFlow/iORA04.png)
 
 - **달력 설정**
 
-<img src="/Users/wargi_p/iOS/iORA_WallPaper/iORAFlow/iORA06.png" alt="iORA04" style="zoom:100%;" />
+![iORA04](https://github.com/wargi/iORA_WallPaper/blob/master/iORAFlow/iORA06.png)
 
 - **배경화면 적용 화면 미리보기**
 
-![iORA05](/Users/wargi_p/iOS/iORA_WallPaper/iORAFlow/iORA07.png)
+![iORA05](https://github.com/wargi/iORA_WallPaper/blob/master/iORAFlow/iORA07.png)
 
 <br>
 
