@@ -1,10 +1,11 @@
 # iORA 
 <p align="center">
 <img src="https://img.shields.io/badge/swift-5.0-blue.svg" />
-<img src="https://img.shields.io/badge/xcode-11.5-green.svg" />
-<img src="https://img.shields.io/badge/ios-12.0-yellow.svg" />
+<img src="https://img.shields.io/badge/xcode-12.0-green.svg" />
+<img src="https://img.shields.io/badge/ios-13.4-yellow.svg" />
 <img src="https://img.shields.io/badge/RxSwift-5.11-orange.svg" />
 <img src="https://img.shields.io/badge/licence-MIT-lightgrey.svg" /> <br><br>
+
 
 
 </p>
@@ -32,7 +33,7 @@
 
 - 프로젝트 기간: 20. 06. ~ 20. 07.
 - **팀프로젝트에서 벗어나 혼자**서 처음 **기획부터 UX/UI에 대해 고민해 보고, 앱을 앱스토어에 출시**까지 모든 경험을 해보고 싶어 시작한 개인 프로젝트입니다. 
-- **주요 기능**: **다양한 배경화면을** 보여주고, 사용자가 마음에 드는 **배경화면을 다운**로드 받거나, 마음에 드는 배경화면을 즐겨찾기, 친구에게 **공유** 등을 할 수 있고 또, **자신이 선택한 배경화면에 달력을 추가**하여, 배경화면을 설정할 수 있는 앱입니다.
+- **주요 기능**: **다양한 배경화면을** 보여주고, 사용자가 마음에 드는 **배경화면을 다운**로드하거나, 마음에 드는 배경화면을 즐겨찾기, 친구에게 **공유** 등을 할 수 있고 또, **자신이 선택한 배경화면에 달력을 추가**하여, 배경화면을 설정할 수 있는 앱입니다.
 
 <br>
 
@@ -45,19 +46,19 @@
 
 - **즐겨찾는 배경 설정**
 
-![iORA02](iORAFlow/IORA0.png)
+![iORA02](iORAFlow/IORA05.png)
 
 - **카테고리**
 
-![iORA03](iORAFlow/IORA0.png)
+![iORA03](iORAFlow/IORA04.png)
 
 - **달력 설정**
 
-![iORA04](iORAFlow/IORA0.png)
+![iORA04](iORAFlow/IORA06.png)
 
 - **배경화면 적용 화면 미리보기**
 
-![iORA05](iORAFlow/IORA0.png)
+![iORA05](iORAFlow/IORA07.png)
 
 <br>
 
