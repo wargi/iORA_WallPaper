@@ -18,9 +18,9 @@
 
 ## Contents
 - IORA
-  - [About IORA](#About IORA)
-  - [Preview](#Preview)
-  - [Version History](#Version History)
+  - [About IORA](#about-iora)
+  - [Preview](#preview)
+  - [Version History](#version-history)
   - [Download](#download)
   - [What I Learned](#what-i-learned)
   - [Things to do next](#things-to-do-next)
@@ -28,8 +28,6 @@
 <br>
 
 ## About IORA
-
-![AppStoreImage](./Scrennshot/AppStoreImage.png) 
 
 - 프로젝트 기간: 20. 06. ~ 20. 07.
 - **팀프로젝트에서 벗어나 혼자**서 처음 **기획부터 UX/UI에 대해 고민해 보고, 앱을 앱스토어에 출시**까지 모든 경험을 해보고 싶어 시작한 개인 프로젝트입니다. 
