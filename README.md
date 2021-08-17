@@ -36,7 +36,7 @@
 <br>
 
 ## Preview
-[App 실행 영상](https://www.youtube.com/watch?v=l0sixcSdIpw&feature=youtu.be)
+[App 실행 영상]()
 
 - **배경화면 검색**
 
