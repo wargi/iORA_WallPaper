@@ -30,7 +30,7 @@ extension AboutSettingViewController: UITableViewDataSource {
          return cell
       default:
          guard let cell = tableView.dequeueReusableCell(withIdentifier: AboutTableViewCell.identifier,
-                                                        for: indexPath) as? AboutTableViewCell else { fatalError() }
+                                                        for: indexPath) as? AboutTableViewCell else { return UITableViewCell() }
          cell.selectionStyle = .none
          cell.titleLabel.text = indexPath.row == 1 ? "Design" : "iOS Developer"
          cell.nameLabel.text = indexPath.row == 1 ? "Sophie" : "Wargi"

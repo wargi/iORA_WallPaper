@@ -51,8 +51,10 @@ class CategoryViewController: UIViewController {
             self.collectionView.deselectItem(at: $0, animated: false)
          })
          .map { self.viewModel.showDetailVC(item: $0.item) }
-         .subscribe(onNext: {
-            self.navigationController?.pushViewController($0, animated: true)
+         .subscribe(onNext: { [weak self] opVC in
+            guard let strongSelf = self,
+                  let vc = opVC else { return }
+            strongSelf.navigationController?.pushViewController(vc, animated: true)
          })
          .disposed(by: rx.disposeBag)
    }
@@ -62,9 +64,10 @@ extension CategoryViewController: UICollectionViewDelegate, UICollectionViewDele
    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
       guard let cell = cell as? CategoryCollectionViewCell,
          let target = cell.category,
+         let url = PrepareForSetUp.getImageURL(info: target.result[0]),
          cell.imageView.image == nil else { return }
       
-      let imageOp = ImageLoadOpertaion(url: PrepareForSetUp.getImageURL(info: target.result[0])) { (image) in
+      let imageOp = ImageLoadOpertaion(url: url) { (image) in
          DispatchQueue.main.async {
             cell.display(image: image)
          }

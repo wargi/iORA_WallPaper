@@ -53,8 +53,10 @@ class SearchViewController: UIViewController, ViewModelBindableType {
          })
          .map { $0.0 }
          .map { self.viewModel.showSearchResult(tagName: $0) }
-         .subscribe(onNext: {
-            self.navigationController?.pushViewController($0, animated: true)
+         .subscribe(onNext: { [weak self] opVC in
+            guard let strongSelf = self,
+                  let vc = opVC else { return }
+            strongSelf.navigationController?.pushViewController(vc, animated: true)
          })
          .disposed(by: rx.disposeBag)
    }

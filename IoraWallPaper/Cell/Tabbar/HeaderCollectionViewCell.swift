@@ -36,7 +36,7 @@ extension HeaderCollectionReusableView: UICollectionViewDataSource {
    }
    
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.identifier, for: indexPath) as? BannerCollectionViewCell else { fatalError() }
+      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BannerCollectionViewCell.identifier, for: indexPath) as? BannerCollectionViewCell else { return UICollectionViewCell() }
       
       let image = indexPath.row == 0 ? UIImage(named: "banner") : UIImage(named: "banner2")
       

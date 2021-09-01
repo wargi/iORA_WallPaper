@@ -47,9 +47,7 @@ class DetailCollectionViewCell: UICollectionViewCell {
    func configure(info: MyWallPaper) {
       self.info = info
 
-      guard let urlStr = PrepareForSetUp.shared.displayType == .retina ? info.wallpaper.imageType.retinaDeviceImageURL : info.wallpaper.imageType.superRetinaDeviceImageURL else {
-            fatalError("invalid favoriteArr")
-      }
+      guard let urlStr = PrepareForSetUp.shared.displayType == .retina ? info.wallpaper.imageType.retinaDeviceImageURL : info.wallpaper.imageType.superRetinaDeviceImageURL else { return }
       
       WallPapers.shared.favoriteSubject.subscribe(onNext:{
          if $0.contains(urlStr) {

@@ -28,7 +28,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
       WallPapers.shared.firebaseDataSetUp()
       if let favArr = UserDefaults.standard.object(forKey: "favoriteArr") as? [String] {
-         print(favArr)
          WallPapers.shared.favoriteArr = favArr
          WallPapers.shared.favoriteSubject.onNext(favArr)
       } else {

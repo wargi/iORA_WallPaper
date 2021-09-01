@@ -16,9 +16,9 @@ final class ShowPreViewModel {
    let wallpaper: MyWallPaper
    public var info: BehaviorSubject<MyWallPaper>
    
-   func downloadAction() -> UIAlertController {
+   func downloadAction() -> UIAlertController? {
       guard let alert = PrepareForSetUp.shared.imageFileDownload(image: wallpaper.image) else {
-         fatalError()
+         return nil
       }
       
       return alert

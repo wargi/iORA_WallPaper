@@ -91,10 +91,10 @@ class PrepareForSetUp {
    
    //MARK: IMAGE DOWNLOAD
    // 이미지 다운로드
-   static func getImageURL(info: MyWallPaper) -> URL {
+   static func getImageURL(info: MyWallPaper) -> URL? {
       let urlString = PrepareForSetUp.shared.displayType == .retina ? info.wallpaper.imageType.retinaDeviceImageURL : info.wallpaper.imageType.superRetinaDeviceImageURL
       
-      guard let urlStr = urlString, let url = URL(string: urlStr) else { fatalError("Invalid URL") }
+      guard let urlStr = urlString, let url = URL(string: urlStr) else { return nil }
       
       return url
    }
@@ -117,7 +117,6 @@ class PrepareForSetUp {
    
    // Photo Library +++ ADD FILE
    func imageFileDownload(image: UIImage?) -> UIAlertController? {
-      print(image?.size)
       guard let image = image else { return nil }
       
       return PHPhotoLibrary.shared().savePhoto(image: image, albumName: "IORA")

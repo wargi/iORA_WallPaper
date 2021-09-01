@@ -623,6 +623,7 @@ Check your connection</string>
                                                 </activityIndicatorView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jHI-an-w9B">
                                                     <rect key="frame" x="0.0" y="0.0" width="245" height="259"/>
+                                                    <color key="backgroundColor" systemColor="placeholderTextColor"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -761,6 +762,7 @@ Check your connection</string>
                                                 </activityIndicatorView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8J2-Me-hif">
                                                     <rect key="frame" x="0.0" y="0.0" width="170" height="189"/>
+                                                    <color key="backgroundColor" systemColor="placeholderTextColor"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hMV-ek-QtC">
                                                     <rect key="frame" x="117" y="3" width="50" height="50"/>
@@ -1630,6 +1632,9 @@ Check your connection</string>
         </namedColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="placeholderTextColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="scrollViewTexturedBackgroundColor">
             <color red="0.43529411764705878" green="0.44313725490196082" blue="0.47450980392156861" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

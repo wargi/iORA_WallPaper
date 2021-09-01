@@ -52,22 +52,24 @@ class ShowPreViewController: UIViewController, ViewModelBindableType {
       // 파일 다운로드 Action
       downloadButton.rx.tap
          .throttle(.milliseconds(500), scheduler: MainScheduler.instance)
-         .subscribe(onNext: { _ in
-            let alert = self.viewModel.downloadAction()
+         .subscribe(onNext: { [weak self] _ in
+            guard let strongSelf = self else { return }
+            guard let alert = strongSelf.viewModel.downloadAction() else { return }
             if alert.title == "Save Success :)" {
                let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
-                  self.dismiss(animated: true, completion: nil)
+                strongSelf.dismiss(animated: true, completion: nil)
                }
                alert.addAction(okAction)
             }
             
-            self.present(alert, animated: true, completion: nil)
+            strongSelf.present(alert, animated: true, completion: nil)
          })
          .disposed(by: rx.disposeBag)
       
       closeButton.rx.tap
-         .subscribe(onNext: { _ in
-            self.dismiss(animated: true, completion: nil)
+         .subscribe(onNext: { [weak self] _ in
+            guard let strongSelf = self else { return }
+            strongSelf.dismiss(animated: true, completion: nil)
          })
          .disposed(by: rx.disposeBag)
    }

@@ -44,7 +44,6 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
         
         var width: CGFloat = 0
         let collectionWidth = UIScreen.main.bounds.size.width
-        print(UIScreen.main.bounds)
         switch (UIScreen.main.bounds.size) {
         case CGSize(width: 414.0, height: 896.0): // 11 & pro max
             width = collectionWidth * 0.8
@@ -74,16 +73,20 @@ class DetailImageViewController: UIViewController, ViewModelBindableType {
         calendarButton.rx.tap
             .map { self.pageControl.currentPage }
             .map { self.viewModel.showCalendarVC(index: $0) }
-            .subscribe(onNext: {
-                self.navigationController?.tabBarController?.present($0, animated: true, completion: nil)
+            .subscribe(onNext: { [weak self] opVC in
+                guard let strongSelf = self,
+                      let vc = opVC else { return }
+                strongSelf.navigationController?.tabBarController?.present(vc, animated: true, completion: nil)
             })
             .disposed(by: rx.disposeBag)
         
         previewButton.rx.tap
             .map { self.pageControl.currentPage }
             .map { self.viewModel.showPreViewVC(index: $0) }
-            .subscribe(onNext: {
-                self.navigationController?.tabBarController?.present($0, animated: true, completion: nil)
+            .subscribe(onNext: { [weak self] opVC in
+                guard let strongSelf = self,
+                      let vc = opVC else { return }
+                strongSelf.navigationController?.tabBarController?.present(vc, animated: true, completion: nil)
             })
             .disposed(by: rx.disposeBag)
         
@@ -155,9 +158,10 @@ extension DetailImageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? DetailCollectionViewCell,
               let target = cell.info,
+              let url = PrepareForSetUp.getImageURL(info: target),
               cell.wallPaperImageView.image == nil else { return }
         
-        let imageOp = ImageLoadOpertaion(url: PrepareForSetUp.getImageURL(info: target)) { (image) in
+        let imageOp = ImageLoadOpertaion(url: url) { (image) in
             DispatchQueue.main.async {
                 cell.display(image: image)
                 if cell.info?.image == nil { cell.info?.image = image }

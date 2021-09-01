@@ -59,8 +59,10 @@ class InitialLaunchViewController: UIViewController, ViewModelBindableType {
       
       startButton.rx.tap
          .map { self.viewModel.showMainVC() }
-         .subscribe(onNext: {
-            self.present($0, animated: true, completion: nil)
+         .subscribe(onNext: { [weak self] opVC in
+            guard let strongSelf = self,
+                  let vc = opVC else { return }
+            strongSelf.present(vc, animated: true, completion: nil)
          })
          .disposed(by: rx.disposeBag)
    }
