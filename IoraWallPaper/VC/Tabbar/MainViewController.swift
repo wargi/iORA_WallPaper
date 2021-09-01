@@ -185,9 +185,9 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let op = imageOperations[indexPath] {
-            op.cancel()
-            imageOperations.removeValue(forKey: indexPath)
-        }
+//        if let op = imageOperations[indexPath] {
+//            op.cancel()
+//            imageOperations.removeValue(forKey: indexPath)
+//        }
     }
 }

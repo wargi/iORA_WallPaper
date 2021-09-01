@@ -161,8 +161,11 @@ extension DetailImageViewController: UICollectionViewDelegate {
               let url = PrepareForSetUp.getImageURL(info: target),
               cell.wallPaperImageView.image == nil else { return }
         
+        cell.isLoading = true
+        
         let imageOp = ImageLoadOpertaion(url: url) { (image) in
             DispatchQueue.main.async {
+                cell.isLoading = false
                 cell.display(image: image)
                 if cell.info?.image == nil { cell.info?.image = image }
             }
@@ -170,13 +173,6 @@ extension DetailImageViewController: UICollectionViewDelegate {
         
         downloadQueue.addOperation(imageOp)
         imageOperations.updateValue(imageOp, forKey: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let op = imageOperations[indexPath] {
-            op.cancel()
-            imageOperations.removeValue(forKey: indexPath)
-        }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -98,8 +98,11 @@ extension FavoriteViewController: UICollectionViewDelegate {
               let targetUrl = URL(string: targetUrlStr),
               cell.wallpaperImageView.image == nil else { return }
         
+        cell.isLoading = true
+        
         let imageOp = ImageLoadOpertaion(url: targetUrl) { (image) in
             DispatchQueue.main.async {
+                cell.isLoading = false
                 cell.display(image: image)
             }
         }

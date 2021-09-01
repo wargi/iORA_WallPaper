@@ -16,6 +16,8 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     @IBOutlet private weak var backButton: UIButton!
+    var imageOperations: [IndexPath: ImageLoadOpertaion] = [:]
+    var downloadQueue = OperationQueue()
     
     var resultWallPapers = [MyWallPaper]()
     var viewModel: SearchResultViewModel!
@@ -30,33 +32,16 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
     }
     
     func bindViewModel() {
+        if let wallpaers = try? viewModel.wallpapers.value() {
+            wallpaers.forEach {
+                print($0.wallpaper.imageName)
+            }   
+        }
+        
         viewModel.title
             .drive(titleLabel.rx.text)
             .disposed(by: rx.disposeBag)
-        
-        viewModel.wallpapers
-            .bind(to: collectionView.rx.items(cellIdentifier: WallPaperCollectionViewCell.identifier,
-                                              cellType: WallPaperCollectionViewCell.self)) { item, wallpaper, cell in
-                if let image = wallpaper.image {
-                    cell.wallpaperImageView.image = image
-                } else {
-                    //            cell.configure(info: wallpaper)
-                }
-            }
-            .disposed(by: rx.disposeBag)
-        
-        // 화면 전환 전 데이터 전달
-        Observable.zip(collectionView.rx.modelSelected(MyWallPaper.self), collectionView.rx.itemSelected)
-            .do(onNext: { self.collectionView.deselectItem(at: $0.1, animated: true) })
-            .map { $0.0 }
-            .map { self.viewModel.showDetailVC(wallpaper: $0) }
-            .subscribe(onNext: { [weak self] opVC in
-                guard let strongSelf = self,
-                      let vc = opVC else { return }
-                strongSelf.navigationController?.pushViewController(vc, animated: true)
-            })
-            .disposed(by: rx.disposeBag)
-        
+       
         backButton.rx.tap
             .subscribe(onNext: { _ in
                 self.navigationController?.popViewController(animated: true)
@@ -65,7 +50,54 @@ class SearchResultViewController: UIViewController, ViewModelBindableType {
     }
 }
 
+extension SearchResultViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let count = try? viewModel.wallpapers.value().count else { return 0 }
+        return count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let wallpapers = try? viewModel.wallpapers.value(),
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WallPaperCollectionViewCell.identifier, for: indexPath) as? WallPaperCollectionViewCell else { return UICollectionViewCell() }
+        
+        let wallpaper = wallpapers[indexPath.row]
+        cell.wallpaper = wallpaper
+        
+        return cell
+    }
+}
+
+extension SearchResultViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.collectionView.deselectItem(at: IndexPath(item: indexPath.item, section: 0), animated: true)
+        
+        guard let wallpaper = try? viewModel.wallpapers.value()[indexPath.row],
+              let vc = viewModel.showDetailVC(wallpaper: wallpaper) else { return }
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
 extension SearchResultViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        guard let cell = cell as? WallPaperCollectionViewCell,
+              let target = cell.wallpaper,
+              let url = PrepareForSetUp.getImageURL(info: target),
+              cell.wallpaperImageView.image == nil else { return }
+        
+        cell.isLoading = true
+        
+        let imageOp = ImageLoadOpertaion(url: url) { (image) in
+            DispatchQueue.main.async {
+                cell.isLoading = false
+                cell.display(image: image)
+            }
+        }
+        
+        downloadQueue.addOperation(imageOp)
+        imageOperations.updateValue(imageOp, forKey: indexPath)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = (collectionView.bounds.size.width - 30) / 2
         
