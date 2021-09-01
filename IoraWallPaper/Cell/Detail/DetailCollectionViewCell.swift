@@ -32,13 +32,11 @@ class DetailCollectionViewCell: UICollectionViewCell {
    override func awakeFromNib() {
       super.awakeFromNib()
       
-      layer.masksToBounds = false
-      layer.shadowColor = UIColor.black.cgColor
-      layer.shadowOpacity = 0.4
-      layer.shadowOffset = CGSize(width: 0, height: 1.0)
-      layer.shadowRadius = 6
-      layer.shadowPath = UIBezierPath(roundedRect: bounds,
-                                      cornerRadius: 30).cgPath
+    shadow(offset: CGSize.init(width: 3, height: 3),
+           color: UIColor.black.cgColor,
+           radius: 4.0,
+           opacity: 0.2)
+    
       wallPaperImageView.layer.cornerRadius = 30
    }
    
@@ -88,4 +86,18 @@ class DetailCollectionViewCell: UICollectionViewCell {
       starButton.setImage(UIImage(named: "starM"), for: .normal)
       wallPaperImageView.image = nil
    }
+}
+
+extension UIView {
+    func shadow(offset: CGSize, color: CGColor?, radius: CGFloat, opacity: Float) {
+        layer.masksToBounds = false
+        layer.shadowOffset = offset
+        layer.shadowColor = color
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+        
+        let backgroundCGColor = backgroundColor?.cgColor
+        backgroundColor = nil
+        layer.backgroundColor =  backgroundCGColor
+    }
 }

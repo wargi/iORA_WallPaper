@@ -4,20 +4,19 @@
 target 'IoraWallPaper' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-  
-  pod 'CenteredCollectionView'
+
+  # Pods for IoraWallPaper
 
   # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
-  pod 'Firebase/AdMob'
   pod 'Firebase/Storage'
   pod 'Firebase/Database'
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
 
   # RxSwift: Main Framework
-  pod 'RxSwift'
-  pod 'RxCocoa'
+  pod 'RxSwift', '6.2.0'
+  pod 'RxCocoa', '6.2.0'
   
   # RxSwift: Etc
   pod 'NSObject+Rx'
@@ -31,19 +30,7 @@ target 'IoraWallPaper' do
   # Networking
   pod 'RxAlamofire'
 
-end
+  # Etc
+  pod 'CenteredCollectionView'
 
-deployment_target = '12.0'
-
-post_install do |installer|
-    installer.generated_projects.each do |project|
-        project.targets.each do |target|
-            target.build_configurations.each do |config|
-                config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = deployment_target
-            end
-        end
-        project.build_configurations.each do |config|
-            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = deployment_target
-        end
-    end
 end

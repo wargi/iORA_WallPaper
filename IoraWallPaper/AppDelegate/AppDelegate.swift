@@ -9,7 +9,6 @@
 import UIKit
 import Firebase
 import RxSwift
-import GoogleMobileAds
 import NSObject_Rx
 
 @UIApplicationMain
@@ -19,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
    
    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       FirebaseApp.configure()
-      GADMobileAds.sharedInstance().start(completionHandler: nil)
-      Messaging.messaging().delegate = self
       UNUserNotificationCenter.current().delegate = self
       
       let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -55,12 +52,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate {
    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
       
-   }
-}
-
-extension AppDelegate: MessagingDelegate {
-   func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-      let dataDict:[String: String] = ["token": fcmToken]
-      NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
    }
 }
