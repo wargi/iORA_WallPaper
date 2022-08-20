@@ -56,6 +56,14 @@
 		8EDCBF75249BB53400022E19 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EDCBF74249BB53400022E19 /* Reachability.swift */; };
 		8EF4ADB724C94BF30051F512 /* AboutSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4ADB624C94BF30051F512 /* AboutSettingViewController.swift */; };
 		8EF4ADB924C94CD50051F512 /* AboutTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF4ADB824C94CD50051F512 /* AboutTableViewCell.swift */; };
+		E925500428B0CA6A00CAB8E0 /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925500328B0CA6A00CAB8E0 /* MailView.swift */; };
+		E925500628B0DE8600CAB8E0 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925500528B0DE8600CAB8E0 /* AboutView.swift */; };
+		E925500828B0E01100CAB8E0 /* CustomLinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925500728B0E01100CAB8E0 /* CustomLinkButton.swift */; };
+		E925500B28B0E61600CAB8E0 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925500A28B0E61600CAB8E0 /* Color+.swift */; };
+		E925500D28B0EA5A00CAB8E0 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925500C28B0EA5A00CAB8E0 /* Font+.swift */; };
+		E925501128B0EEB500CAB8E0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925501028B0EEB500CAB8E0 /* MainView.swift */; };
+		E9983E6528B0BAB400D71496 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9983E6428B0BAB400D71496 /* SettingView.swift */; };
+		E9983E6728B0BAF900D71496 /* IoraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9983E6628B0BAF900D71496 /* IoraApp.swift */; };
 		ED5E00F971D1A76F31E3C533 /* Pods_IoraWallPaper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DDE7EB71F36339A75EF61B /* Pods_IoraWallPaper.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +127,14 @@
 		8EF4ADB624C94BF30051F512 /* AboutSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutSettingViewController.swift; sourceTree = "<group>"; };
 		8EF4ADB824C94CD50051F512 /* AboutTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCell.swift; sourceTree = "<group>"; };
 		E0168B0AA962DE1056398959 /* Pods-IoraWallPaper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IoraWallPaper.release.xcconfig"; path = "Target Support Files/Pods-IoraWallPaper/Pods-IoraWallPaper.release.xcconfig"; sourceTree = "<group>"; };
+		E925500328B0CA6A00CAB8E0 /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
+		E925500528B0DE8600CAB8E0 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		E925500728B0E01100CAB8E0 /* CustomLinkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLinkButton.swift; sourceTree = "<group>"; };
+		E925500A28B0E61600CAB8E0 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		E925500C28B0EA5A00CAB8E0 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
+		E925501028B0EEB500CAB8E0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E9983E6428B0BAB400D71496 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		E9983E6628B0BAF900D71496 /* IoraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoraApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +220,7 @@
 				8E4CF0F924D1ECFA00CE2760 /* Utility */,
 				8E922AC72490CBAF00424D10 /* Model */,
 				8E5D0DB124A27B38003A25C6 /* ViewModel */,
+				E9254FFD28B0C02900CAB8E0 /* Screen */,
 				8E888048248DF73900E7E620 /* VC */,
 				8E888049248DF73E00E7E620 /* Cell */,
 				8E888046248DF71B00E7E620 /* Resource */,
@@ -229,6 +246,7 @@
 			children = (
 				8E888032248DF71300E7E620 /* AppDelegate.swift */,
 				8E4DA1CB24AD3DC200B69CFE /* SceneDelegate.swift */,
+				E9983E6628B0BAF900D71496 /* IoraApp.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -280,6 +298,8 @@
 				8E8B4A752497282F0072620A /* PHPhotoLibrary+PhotoSave.swift */,
 				8EDCBF74249BB53400022E19 /* Reachability.swift */,
 				8EDCBF72249BADF900022E19 /* GoogleService-Info.plist */,
+				E925500C28B0EA5A00CAB8E0 /* Font+.swift */,
+				E925500A28B0E61600CAB8E0 /* Color+.swift */,
 			);
 			path = Supporting;
 			sourceTree = "<group>";
@@ -345,6 +365,58 @@
 				E0168B0AA962DE1056398959 /* Pods-IoraWallPaper.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E9254FFD28B0C02900CAB8E0 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				E925501028B0EEB500CAB8E0 /* MainView.swift */,
+				E9254FFE28B0C03400CAB8E0 /* List */,
+				E9254FFF28B0C03A00CAB8E0 /* Favorite */,
+				E925500028B0C04900CAB8E0 /* Category */,
+				E925500128B0C05400CAB8E0 /* Setting */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		E9254FFE28B0C03400CAB8E0 /* List */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		E9254FFF28B0C03A00CAB8E0 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		E925500028B0C04900CAB8E0 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		E925500128B0C05400CAB8E0 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				E9983E6428B0BAB400D71496 /* SettingView.swift */,
+				E925500528B0DE8600CAB8E0 /* AboutView.swift */,
+				E925500228B0C05C00CAB8E0 /* SubViews */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		E925500228B0C05C00CAB8E0 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				E925500328B0CA6A00CAB8E0 /* MailView.swift */,
+				E925500728B0E01100CAB8E0 /* CustomLinkButton.swift */,
+			);
+			path = SubViews;
 			sourceTree = "<group>";
 		};
 		F1748EC1CD9A581EDBA20BDC /* Frameworks */ = {
@@ -480,6 +552,7 @@
 			files = (
 				8E8B4A722494C5200072620A /* CalendarViewController.swift in Sources */,
 				8EF4ADB924C94CD50051F512 /* AboutTableViewCell.swift in Sources */,
+				E925500628B0DE8600CAB8E0 /* AboutView.swift in Sources */,
 				8EBADD6624BA10200059C3C1 /* CustomTabbarController.swift in Sources */,
 				8E5D395324A82554009E4D22 /* InitialLaunchViewController.swift in Sources */,
 				8E8B4A742494C6930072620A /* DayCollectionViewCell.swift in Sources */,
@@ -495,23 +568,30 @@
 				8EBADD5E24BA02A00059C3C1 /* FavoriteViewModel.swift in Sources */,
 				8EAD526C24C48B1B00B5E9D0 /* ViewModelBindableType.swift in Sources */,
 				8EBADD6824BC25410059C3C1 /* CategoryCollectionViewCell.swift in Sources */,
+				E9983E6728B0BAF900D71496 /* IoraApp.swift in Sources */,
 				8E028FE924C4ACD2002ECDD0 /* CommonViewModel.swift in Sources */,
 				8EDCAA3124AD038B00231F6B /* SetUp.swift in Sources */,
 				8E888037248DF71300E7E620 /* MainViewController.swift in Sources */,
 				8EBADD6024BA02BD0059C3C1 /* CategoryViewModel.swift in Sources */,
 				8E6E32D724C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift in Sources */,
+				E925500D28B0EA5A00CAB8E0 /* Font+.swift in Sources */,
 				8EBD4CCD24A4BC28005EC9A2 /* MainViewModel.swift in Sources */,
 				8EBD4CD324A4BC59005EC9A2 /* CalendarViewModel.swift in Sources */,
 				8EBADD6424BA03B80059C3C1 /* CategoryViewController.swift in Sources */,
 				8E45512724922AD200CD9F7C /* ShowPreViewController.swift in Sources */,
+				E925500B28B0E61600CAB8E0 /* Color+.swift in Sources */,
 				8EBD4CCF24A4BC35005EC9A2 /* DetailImageViewModel.swift in Sources */,
+				E9983E6528B0BAB400D71496 /* SettingView.swift in Sources */,
 				8E242FDD24A119640087A41F /* SearchViewController.swift in Sources */,
 				8ED9C1FC24AA3CB5008F41FC /* HeaderCollectionViewCell.swift in Sources */,
 				8E06667D24AA90ED00FB5B92 /* BannerCollectionViewCell.swift in Sources */,
 				8E4DA1CC24AD3DC200B69CFE /* SceneDelegate.swift in Sources */,
+				E925501128B0EEB500CAB8E0 /* MainView.swift in Sources */,
 				8E1BE51C24A1536B00317984 /* DetailCollectionViewCell.swift in Sources */,
+				E925500428B0CA6A00CAB8E0 /* MailView.swift in Sources */,
 				8E88804B248DFD0100E7E620 /* WallPaperCollectionViewCell.swift in Sources */,
 				8EDCBF75249BB53400022E19 /* Reachability.swift in Sources */,
+				E925500828B0E01100CAB8E0 /* CustomLinkButton.swift in Sources */,
 				8E95A9E72490839600F55F82 /* DetailImageViewController.swift in Sources */,
 				8EA0D44324DB81BD00953527 /* AsyncOperation.swift in Sources */,
 				8E888033248DF71300E7E620 /* AppDelegate.swift in Sources */,
@@ -595,7 +675,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = NO;
@@ -651,7 +731,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -674,7 +754,7 @@
 				DEVELOPMENT_TEAM = 3ZS2532XM8;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = IoraWallPaper/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -703,7 +783,7 @@
 				DEVELOPMENT_TEAM = 3ZS2532XM8;
 				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = YES;
 				INFOPLIST_FILE = IoraWallPaper/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
