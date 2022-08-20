@@ -1,5 +1,5 @@
 //
-//  AboutSettingView.swift
+//  SettingView.swift
 //  IoraWallPaper
 //
 //  Created by wargi on 2022/08/20.
@@ -9,7 +9,7 @@
 import SwiftUI
 import MessageUI
 
-struct AboutSettingView: View {
+struct SettingView: View {
     @State var composeResult: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingFeedback = false
     
@@ -83,8 +83,8 @@ struct AboutSettingView: View {
     }
 }
 
-struct AboutSettingView_Previews: PreviewProvider {
+struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        AboutSettingView()
+        SettingView()
     }
 }

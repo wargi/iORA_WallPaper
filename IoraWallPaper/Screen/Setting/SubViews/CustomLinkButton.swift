@@ -9,13 +9,31 @@
 import SwiftUI
 
 struct CustomLinkButton: View {
+    let title: String
+    let action: () -> ()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button {
+            action()
+        } label: {
+            HStack {
+                Text(title)
+                    .tint(.black)
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .font(.subheadline)
+                    .foregroundColor(.gray)
+            }
+        }
     }
 }
 
 struct CustomLinkButton_Previews: PreviewProvider {
     static var previews: some View {
-        CustomLinkButton()
+        CustomLinkButton(title: "Hello") {
+            
+        }
     }
 }
