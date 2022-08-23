@@ -10,7 +10,40 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            NavigationView {
+                Text("List")
+            }
+            .tabItem {
+                Image("list")
+                Text("List")
+            }
+            
+            NavigationView {
+                Text("Favorite")
+            }
+            .tabItem {
+                Image("tab_star")
+                Text("Favorite")
+            }
+            
+            NavigationView {
+                Text("Category")
+            }
+            .tabItem {
+                Image("category")
+                Text("Category")
+            }
+            
+            NavigationView {
+                SettingView()
+            }
+            .tabItem {
+                Image("setings")
+                Text("Setting")
+            }
+        }
+        .accentColor(.mainColor)
     }
 }
 
