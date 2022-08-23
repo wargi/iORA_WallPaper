@@ -1628,7 +1628,7 @@ Check your connection</string>
             <color red="0.13333333333333333" green="0.13333333333333333" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="mainColor">
-            <color red="0.58314865827560425" green="0.810158371925354" blue="0.73357731103897095" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.58431372549019611" green="0.81176470588235294" blue="0.73333333333333328" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="groupTableViewBackgroundColor">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

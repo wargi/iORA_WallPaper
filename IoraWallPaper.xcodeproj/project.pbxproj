@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -62,8 +62,17 @@
 		E925500B28B0E61600CAB8E0 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925500A28B0E61600CAB8E0 /* Color+.swift */; };
 		E925500D28B0EA5A00CAB8E0 /* Font+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925500C28B0EA5A00CAB8E0 /* Font+.swift */; };
 		E925501128B0EEB500CAB8E0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925501028B0EEB500CAB8E0 /* MainView.swift */; };
+		E925501328B0F39900CAB8E0 /* CategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925501228B0F39900CAB8E0 /* CategoryCardView.swift */; };
+		E925501628B0F94600CAB8E0 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925501528B0F94600CAB8E0 /* CategoriesView.swift */; };
+		E925501828B0F97A00CAB8E0 /* CategoriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925501728B0F97A00CAB8E0 /* CategoriesViewModel.swift */; };
+		E925501B28B10BB600CAB8E0 /* ImageCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925501A28B10BB600CAB8E0 /* ImageCollectionView.swift */; };
+		E925501D28B10F6B00CAB8E0 /* ImageCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925501C28B10F6B00CAB8E0 /* ImageCardView.swift */; };
+		E95C1BB328B1202E000E0510 /* ImageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95C1BB228B1202E000E0510 /* ImageListViewModel.swift */; };
 		E9983E6528B0BAB400D71496 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9983E6428B0BAB400D71496 /* SettingView.swift */; };
 		E9983E6728B0BAF900D71496 /* IoraApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9983E6628B0BAF900D71496 /* IoraApp.swift */; };
+		E99AB68528B50B4E001D67AF /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99AB68428B50B4E001D67AF /* MainListView.swift */; };
+		E99AB68828B50FC4001D67AF /* iPages in Frameworks */ = {isa = PBXBuildFile; productRef = E99AB68728B50FC4001D67AF /* iPages */; };
+		E99AB68B28B5269B001D67AF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E99AB68A28B5269B001D67AF /* Kingfisher */; };
 		ED5E00F971D1A76F31E3C533 /* Pods_IoraWallPaper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10DDE7EB71F36339A75EF61B /* Pods_IoraWallPaper.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,8 +142,15 @@
 		E925500A28B0E61600CAB8E0 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		E925500C28B0EA5A00CAB8E0 /* Font+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+.swift"; sourceTree = "<group>"; };
 		E925501028B0EEB500CAB8E0 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E925501228B0F39900CAB8E0 /* CategoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCardView.swift; sourceTree = "<group>"; };
+		E925501528B0F94600CAB8E0 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		E925501728B0F97A00CAB8E0 /* CategoriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewModel.swift; sourceTree = "<group>"; };
+		E925501A28B10BB600CAB8E0 /* ImageCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionView.swift; sourceTree = "<group>"; };
+		E925501C28B10F6B00CAB8E0 /* ImageCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCardView.swift; sourceTree = "<group>"; };
+		E95C1BB228B1202E000E0510 /* ImageListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListViewModel.swift; sourceTree = "<group>"; };
 		E9983E6428B0BAB400D71496 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		E9983E6628B0BAF900D71496 /* IoraApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IoraApp.swift; sourceTree = "<group>"; };
+		E99AB68428B50B4E001D67AF /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +158,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99AB68B28B5269B001D67AF /* Kingfisher in Frameworks */,
 				ED5E00F971D1A76F31E3C533 /* Pods_IoraWallPaper.framework in Frameworks */,
+				E99AB68828B50FC4001D67AF /* iPages in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -184,6 +202,8 @@
 				8EBD4CCC24A4BC28005EC9A2 /* MainViewModel.swift */,
 				8EBADD5D24BA02A00059C3C1 /* FavoriteViewModel.swift */,
 				8EBADD5F24BA02BD0059C3C1 /* CategoryViewModel.swift */,
+				E925501728B0F97A00CAB8E0 /* CategoriesViewModel.swift */,
+				E95C1BB228B1202E000E0510 /* ImageListViewModel.swift */,
 				8EBD4CD424A4BC64005EC9A2 /* SearchViewModel.swift */,
 				8EBD4CD724A4BC98005EC9A2 /* SearchResultViewModel.swift */,
 				8EBD4CCE24A4BC35005EC9A2 /* DetailImageViewModel.swift */,
@@ -371,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				E925501028B0EEB500CAB8E0 /* MainView.swift */,
+				E925501928B10BA100CAB8E0 /* Common */,
 				E9254FFE28B0C03400CAB8E0 /* List */,
 				E9254FFF28B0C03A00CAB8E0 /* Favorite */,
 				E925500028B0C04900CAB8E0 /* Category */,
@@ -382,6 +403,7 @@
 		E9254FFE28B0C03400CAB8E0 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				E99AB68428B50B4E001D67AF /* MainListView.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -396,6 +418,8 @@
 		E925500028B0C04900CAB8E0 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				E925501528B0F94600CAB8E0 /* CategoriesView.swift */,
+				E925501428B0F6E600CAB8E0 /* SubViews */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -417,6 +441,23 @@
 				E925500728B0E01100CAB8E0 /* CustomLinkButton.swift */,
 			);
 			path = SubViews;
+			sourceTree = "<group>";
+		};
+		E925501428B0F6E600CAB8E0 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				E925501228B0F39900CAB8E0 /* CategoryCardView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		E925501928B10BA100CAB8E0 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				E925501A28B10BB600CAB8E0 /* ImageCollectionView.swift */,
+				E925501C28B10F6B00CAB8E0 /* ImageCardView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		F1748EC1CD9A581EDBA20BDC /* Frameworks */ = {
@@ -448,6 +489,10 @@
 			dependencies = (
 			);
 			name = IoraWallPaper;
+			packageProductDependencies = (
+				E99AB68728B50FC4001D67AF /* iPages */,
+				E99AB68A28B5269B001D67AF /* Kingfisher */,
+			);
 			productName = IoraWallPaper;
 			productReference = 8E88802F248DF71300E7E620 /* iORA.app */;
 			productType = "com.apple.product-type.application";
@@ -476,6 +521,10 @@
 				Base,
 			);
 			mainGroup = 8E888026248DF71300E7E620;
+			packageReferences = (
+				E99AB68628B50FC4001D67AF /* XCRemoteSwiftPackageReference "iPages" */,
+				E99AB68928B5269B001D67AF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 8E888030248DF71300E7E620 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -551,6 +600,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E8B4A722494C5200072620A /* CalendarViewController.swift in Sources */,
+				E95C1BB328B1202E000E0510 /* ImageListViewModel.swift in Sources */,
 				8EF4ADB924C94CD50051F512 /* AboutTableViewCell.swift in Sources */,
 				E925500628B0DE8600CAB8E0 /* AboutView.swift in Sources */,
 				8EBADD6624BA10200059C3C1 /* CustomTabbarController.swift in Sources */,
@@ -572,16 +622,22 @@
 				8E028FE924C4ACD2002ECDD0 /* CommonViewModel.swift in Sources */,
 				8EDCAA3124AD038B00231F6B /* SetUp.swift in Sources */,
 				8E888037248DF71300E7E620 /* MainViewController.swift in Sources */,
+				E925501828B0F97A00CAB8E0 /* CategoriesViewModel.swift in Sources */,
 				8EBADD6024BA02BD0059C3C1 /* CategoryViewModel.swift in Sources */,
+				E99AB68528B50B4E001D67AF /* MainListView.swift in Sources */,
+				E925501D28B10F6B00CAB8E0 /* ImageCardView.swift in Sources */,
+				E925501628B0F94600CAB8E0 /* CategoriesView.swift in Sources */,
 				8E6E32D724C14DEC0058E4B0 /* FavoriteWallpaperCollectionViewCell.swift in Sources */,
 				E925500D28B0EA5A00CAB8E0 /* Font+.swift in Sources */,
 				8EBD4CCD24A4BC28005EC9A2 /* MainViewModel.swift in Sources */,
 				8EBD4CD324A4BC59005EC9A2 /* CalendarViewModel.swift in Sources */,
 				8EBADD6424BA03B80059C3C1 /* CategoryViewController.swift in Sources */,
+				E925501B28B10BB600CAB8E0 /* ImageCollectionView.swift in Sources */,
 				8E45512724922AD200CD9F7C /* ShowPreViewController.swift in Sources */,
 				E925500B28B0E61600CAB8E0 /* Color+.swift in Sources */,
 				8EBD4CCF24A4BC35005EC9A2 /* DetailImageViewModel.swift in Sources */,
 				E9983E6528B0BAB400D71496 /* SettingView.swift in Sources */,
+				E925501328B0F39900CAB8E0 /* CategoryCardView.swift in Sources */,
 				8E242FDD24A119640087A41F /* SearchViewController.swift in Sources */,
 				8ED9C1FC24AA3CB5008F41FC /* HeaderCollectionViewCell.swift in Sources */,
 				8E06667D24AA90ED00FB5B92 /* BannerCollectionViewCell.swift in Sources */,
@@ -823,6 +879,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E99AB68628B50FC4001D67AF /* XCRemoteSwiftPackageReference "iPages" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/benjaminsage/iPages";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.9;
+			};
+		};
+		E99AB68928B5269B001D67AF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E99AB68728B50FC4001D67AF /* iPages */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E99AB68628B50FC4001D67AF /* XCRemoteSwiftPackageReference "iPages" */;
+			productName = iPages;
+		};
+		E99AB68A28B5269B001D67AF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E99AB68928B5269B001D67AF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8E888027248DF71300E7E620 /* Project object */;
 }
