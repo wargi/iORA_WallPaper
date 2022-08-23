@@ -8,17 +8,18 @@
 
 import Foundation
 
-struct Tag {
-   var info: TagInfo
-   var result: [MyWallPaper]
+struct Tag: Identifiable {
+    var id = UUID()
+    var info: TagInfo
+    var result: [MyWallPaper]
 }
 
 struct TagInfo: Codable {
-   let name: String
-   let desc: String
-   
-   enum CodingKeys: String, CodingKey {
-      case name = "tagName"
-      case desc
-   }
+    let name: String
+    let desc: String
+    
+    enum CodingKeys: String, CodingKey {
+        case name = "tagName"
+        case desc
+    }
 }
