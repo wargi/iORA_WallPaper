@@ -31,10 +31,10 @@ class MyWallPaper: Identifiable {
     }
 }
 
-class WallPapers {
+class WallPapers: ObservableObject {
     static let shared = WallPapers()
     var cacheImage = [URL: UIImage?]()
-    var myWallPapers = [MyWallPaper]()
+    @Published var myWallPapers = [MyWallPaper]()
     let wallpaperSubject = BehaviorSubject<[MyWallPaper]>(value: [])
     
     var favoriteArr = [String]()
