@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+final class ImageListViewModel: ObservableObject {
+    @Published var wallpapers: [MyWallPaper]
+    
+    init(wallpapers: [MyWallPaper]) {
+        self.wallpapers = wallpapers
+    }
+}
