@@ -12,4 +12,8 @@ extension Color {
     static var mainColor: Color {
         return Color(.sRGB, red: 149/255, green: 207/255, blue: 187/255, opacity: 1.0)
     }
+    
+    static var backgroundColor: Color {
+        Color(.sRGB, red: 242/255, green: 242/255, blue: 247/255, opacity: 1.0)
+    }
 }
