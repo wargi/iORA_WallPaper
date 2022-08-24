@@ -18,8 +18,8 @@ struct AboutView: View {
                 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Contact")
+                        .foregroundColor(.mainColor)
                         .font(.nanumGothicBold(size: 18))
-                        .tint(.mainColor)
                     Text("iorastudio@naver.com")
                         .tint(.primary)
                 }
@@ -37,7 +37,7 @@ struct AboutView: View {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Design")
                             .font(.nanumGothicBold(size: 18))
-                            .tint(.primary)
+                            .foregroundColor(.mainColor)
                         Text("Sophie")
                             .font(.nanumGothic(size: 16))
                             .tint(.primary)
@@ -65,8 +65,8 @@ struct AboutView: View {
                 } label: {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("iOS Developer")
+                            .foregroundColor(.mainColor)
                             .font(.nanumGothicBold(size: 18))
-                            .tint(.primary)
                         Text("Wargi")
                             .font(.nanumGothic(size: 16))
                             .tint(.primary)

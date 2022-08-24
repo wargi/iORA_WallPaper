@@ -20,4 +20,8 @@ extension Font {
     static func nanumGothicExtraBold(size: CGFloat) -> Self {
         return .custom("nanumGothicExtraBold", size: size)
     }
+    
+    static func gmarketSansBold(size: CGFloat) -> Self {
+        return .custom("GmarketSansBold", size: size)
+    }
 }
