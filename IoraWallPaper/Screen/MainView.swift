@@ -12,7 +12,7 @@ struct MainView: View {
     var body: some View {
         TabView {
             NavigationView {
-                Text("List")
+                MainListView()
             }
             .tabItem {
                 Image("list")
@@ -20,7 +20,7 @@ struct MainView: View {
             }
             
             NavigationView {
-                Text("Favorite")
+                FavoriteView()
             }
             .tabItem {
                 Image("tab_star")
@@ -28,7 +28,7 @@ struct MainView: View {
             }
             
             NavigationView {
-                Text("Category")
+                CategoriesView()
             }
             .tabItem {
                 Image("category")
