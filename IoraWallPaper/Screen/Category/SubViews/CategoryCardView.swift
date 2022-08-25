@@ -7,38 +7,50 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct CategoryCardView: View {
+    var imageURL: URL?
+    var title: String
+    var description: String
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
-            Image("banner")
-                .resizable()
-                .scaledToFill()
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+            
+            GeometryReader { reader in
+                KFImage(imageURL)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: reader.size.width)
+            }
             
             Color.black
                 .opacity(0.4)
             
             VStack(alignment: .leading, spacing: 8) {
-                Text("Spring")
+                Text(title)
                     .foregroundColor(.white)
                     .font(.nanumGothicExtraBold(size: 25))
                 
-                Text("How do you overcome the servere cold weather?")
+                Text(description)
                     .lineLimit(2)
                     .foregroundColor(.white)
                     .font(.nanumGothicBold(size: 15))
+                    .multilineTextAlignment(.leading)
             }
             .padding([.top, .leading], 30)
             .padding(.trailing, 16)
         }
-        .ignoresSafeArea()
     }
 }
 
 struct CategoryCardView_Previews: PreviewProvider {
+    static var image = Image("banner")
+    static var title = "Spring"
+    static var description = "How do you overcome the servere cold weather?"
+    
     static var previews: some View {
-        CategoryCardView()
+        CategoryCardView(imageURL: nil, title: title, description: description)
             .previewLayout(.sizeThatFits)
     }
 }
